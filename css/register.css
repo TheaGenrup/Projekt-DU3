@@ -1,0 +1,62 @@
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    height: 100vh;
+    background-color: grey;
+    display: flex;
+    align-items: flex-end;
+    background-image: url(/media/register_bg.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.634);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 7vw;
+}
+
+h1,
+h2,
+.link {
+    text-align: center;
+    color: rgb(143, 143, 143);
+}
+
+input,
+button {
+    box-sizing: border-box;
+    margin: 1vh;
+    height: 7vh;
+    border-radius: 3.5vh;
+    border: none;
+    width: 90vw;
+    align-self: center;
+    background-color: rgba(113, 113, 113, 0.871);
+}
+
+button {
+    position: absolute;
+    bottom: 3vh;
+}
+
+input {
+    padding-left: 20px;
+    box-shadow: 0 0 10px 1px #939393;
+}
+
+button:hover {
+    box-shadow: 0 0 15px 1px #939393;
+}
+
+.register_button:hover {
+    color: khaki;
+    background-color: pink
+}
