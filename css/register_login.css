@@ -23,6 +23,10 @@ h1 {
     font-size: 7vw;
 }
 
+.login_h1 {
+    margin-bottom: 10vh;
+}
+
 h1,
 h2,
 .link {
@@ -39,24 +43,27 @@ button {
     border: none;
     width: 90vw;
     align-self: center;
-    background-color: rgba(113, 113, 113, 0.871);
 }
 
 button {
     position: absolute;
     bottom: 3vh;
+    background-color: rgba(113, 113, 113, 0.533);
 }
 
 input {
     padding-left: 20px;
     box-shadow: 0 0 10px 1px #939393;
+    background-color: rgba(113, 113, 113, 0.871);
 }
 
 button:hover {
     box-shadow: 0 0 15px 1px #939393;
+    cursor: pointer;
+    background-color: rgba(113, 113, 113, 0.709);
 }
 
-.register_button:hover {
-    color: khaki;
-    background-color: pink
+.link:hover {
+    color: rgb(233, 233, 233);
+    cursor: pointer;
 }
