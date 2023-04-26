@@ -6,17 +6,9 @@
         },
         "loginKey": "qxirxQlZP8nQwrtcte6EKxllB",
         "userSocial": {
-            "following": [
-                "e4123412jndnjd",
-                "1234513451dgdng",
-                "12345654gdwdg",
-                "1234514gdwd"
-            ],
+            "following": [],
             "followers": [
-                "e4123412jndnjd",
-                "1234513451dgdng",
-                "12345654gdwdg",
-                "1234514gdwd"
+                "317161457770161228256467772618"
             ]
         },
         "userIdentity": {
@@ -49,8 +41,12 @@
         },
         "loginKey": "",
         "userSocial": {
-            "following": [],
-            "followers": []
+            "following": [
+                "607133432034891031030642696328"
+            ],
+            "followers": [
+                3
+            ]
         },
         "userIdentity": {
             "id": "317161457770161228256467772618",
