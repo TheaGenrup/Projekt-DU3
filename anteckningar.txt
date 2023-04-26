@@ -1,2 +1,83 @@
 med den ikonen jag vi har nu måste vi "attribute" skaparen
 <a href="https://www.flaticon.com/free-icons/search-bar" title="search bar icons">Search bar icons created by Creatype - Flaticon</a>
+
+
+
+    <!-- register -->
+    <!--     <div class="container">
+        <h1 class="register_h1">WELCOME TO LAULU</h1>
+        <h2>Let's sign up</h2>
+
+        <input type="text" placeholder="Username">
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Password">
+        <br>
+        <button class="register_btn">Continue</button>
+
+    </div> -->
+
+    <!-- log in -->
+    <!--     <div class="container">
+        <h1 class="login_h1">WELCOME BACK!</h1>
+
+        <input type="text" placeholder="Username">
+        <input type="password" placeholder="Password">
+        <p class="link">Don't have an account? Sign up</p>
+        <br>
+        <button class="register_btn">Continue</button>
+
+    </div> -->
+
+    <!-- discover -->
+    <!--     <header>
+        <div id="laulu">LAULU</div>
+        <div id="search_icon"></div>
+    </header>
+    <main>
+        <div id="tabs">
+            <div id="discover_tab" class="tab">DISCOVER</div>
+            <div id="profile_tab" class="tab">MY PROFILE</div>
+        </div>
+        <div id="main_block"></div>
+    </main> -->
+
+    function renderLoggedInView(activeTab) {
+    console.log(activeTab.toLowerCase());
+
+    document.querySelector("body").innerHTML = `
+    <header>
+        <div id="laulu">LAULU</div>
+        <div id="search_icon"></div>
+    </header>
+    <main>
+        <div id="tabs">
+            <div class="tab">DISCOVER</div>
+            <div class="tab">MY PROFILE</div>
+        </div>
+        <div id="main_block"></div>
+    </main>
+    `
+
+
+    document.querySelectorAll(".tab").forEach(tab => {
+        console.log(tab.textContent.toLowerCase().replace(" ", ""));
+        if (tab.textContent.toLowerCase().replace(" ", "") == activeTab.toLowerCase()) {
+            tab.classList.add("active")
+        } else {
+            tab.classList.add("inactive")
+        }
+    });
+
+}
+
+renderLoggedInView("myProfile");
+
+
+function renderUserPage(userInfo) {
+
+
+    const html = document.querySelector("body").innerHTML = `
+    
+    `
+
+}
