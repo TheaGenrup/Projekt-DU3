@@ -1,4 +1,5 @@
 <?php
+
 function sendJSON($data, $statuscode = 200) {
     header("Content-Type: application/json");
     http_response_code($statuscode);
@@ -30,7 +31,6 @@ function getValidatedkey () {
     return $key;
 }
 
-
 function generateLoginKey () {
     $key = "";
     $characters = "0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
@@ -40,6 +40,18 @@ function generateLoginKey () {
         
     }
     return $key;
+}
+
+
+function generateUserId () {
+    $id = "";
+    $characters = "0123456789";
+    for ($i=0; $i < 30; $i++) { 
+        $n = rand(0, strlen($characters)-1);
+        $id .= $characters[$n];
+        
+    }
+    return $id;
 }
 
 function clog($data) {

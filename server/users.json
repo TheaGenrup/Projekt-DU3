@@ -1,7 +1,7 @@
 [
     {
         "userCredentials": {
-            "userName": "test",
+            "username": "test",
             "password": "test"
         },
         "loginKey": "qxirxQlZP8nQwrtcte6EKxllB",
@@ -20,7 +20,7 @@
             ]
         },
         "userIdentity": {
-            "id": "12341431234fdjdidd",
+            "id": "607133432034891031030642696328",
             "profilePic": "1241345512514",
             "displayName": "Anthony Fantano"
         },
@@ -41,5 +41,23 @@
                 "albumId": "5Bz2LxOp0wz7ov0T9WiRmc"
             }
         ]
+    },
+    {
+        "userCredentials": {
+            "username": "test2",
+            "password": "test2"
+        },
+        "loginKey": "",
+        "userSocial": {
+            "following": [],
+            "followers": []
+        },
+        "userIdentity": {
+            "id": "317161457770161228256467772618",
+            "profilePic": "default.jpg",
+            "displayName": "test2"
+        },
+        "reviews": [],
+        "favourites": []
     }
 ]

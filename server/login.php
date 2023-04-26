@@ -24,9 +24,9 @@ $data = json_decode($json, true);
 if (isset($data["username"], $data["password"])) {
     
     if (isset($data["acess"]) || $data["access"] == "Access-Login: Auth") {
-        $sentUserName = $data["username"];
+        $sentUsername = $data["username"];
         $sentPassword = $data["password"];
-        if ($sentUserName == "" || $sentPassword == "") {
+        if ($sentUsername == "" || $sentPassword == "") {
             $error = ["message" => "Empty username or password"];
             sendJSON($error, 400);
         }
@@ -34,8 +34,8 @@ if (isset($data["username"], $data["password"])) {
         $userData = getFileData("users.json");
         foreach ($userData as $index => $user) {
             $password = $user["userCredentials"]["password"];
-            $userName = $user["userCredentials"]["userName"];
-            if ($sentUserName == $userName && $sentPassword == $password) {
+            $username = $user["userCredentials"]["userName"];
+            if ($sentUsername == $username && $sentPassword == $password) {
                 $key = getValidatedkey();
                 $user["loginKey"] = $key;
                 $userData[$index] = $user;
@@ -72,7 +72,6 @@ if (isset($data["loginTokenKey"]) && isset($data["access"])) {
             unset($foundUser["userCredentials"]);
             sendJSON($foundUser, 200);
         }
-    
 }
 }
 
