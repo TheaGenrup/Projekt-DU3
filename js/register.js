@@ -22,4 +22,6 @@ fetch(request, data)
     console.log(r);
 })
 
+Om allt går bra returneras bara ett meddelande med "Registered"
+
 */

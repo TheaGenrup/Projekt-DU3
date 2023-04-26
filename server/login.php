@@ -34,7 +34,7 @@ if (isset($data["username"], $data["password"])) {
         $userData = getFileData("users.json");
         foreach ($userData as $index => $user) {
             $password = $user["userCredentials"]["password"];
-            $username = $user["userCredentials"]["userName"];
+            $username = $user["userCredentials"]["username"];
             if ($sentUsername == $username && $sentPassword == $password) {
                 $key = getValidatedkey();
                 $user["loginKey"] = $key;
