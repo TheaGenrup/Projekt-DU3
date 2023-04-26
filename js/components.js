@@ -1,5 +1,4 @@
 function renderLoggedInView(activeTab) {
-    console.log(activeTab.toLowerCase());
 
     document.querySelector("body").innerHTML = `
     <header>
@@ -17,7 +16,7 @@ function renderLoggedInView(activeTab) {
 
 
     document.querySelectorAll(".tab").forEach(tab => {
-        console.log(tab.textContent.toLowerCase().replace(" ", ""));
+
         if (tab.textContent.toLowerCase().replace(" ", "") == activeTab.toLowerCase()) {
             tab.classList.add("active")
         } else {
