@@ -45,13 +45,14 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgb(124, 124, 124);
 }
 
-#discover_tab {
+.active {
     background-color: rgb(164, 164, 164);
 }
 
-#profile_tab {
+.inactive {
     background-color: rgb(124, 124, 124);
 }
 
