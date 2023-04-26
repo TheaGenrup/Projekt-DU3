@@ -3,6 +3,7 @@ body {
     margin: 0;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     background-color: rgb(24, 24, 24);
 }
 
@@ -27,4 +28,34 @@ header {
     background-size: cover;
     height: 10vw;
     width: 10vw;
+}
+
+main {
+    height: 90vh;
+}
+
+#tabs {
+    display: flex;
+}
+
+.tab {
+    border-radius: 20px 20px 0 0;
+    height: 7vh;
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#discover_tab {
+    background-color: rgb(164, 164, 164);
+}
+
+#profile_tab {
+    background-color: rgb(124, 124, 124);
+}
+
+#main_block {
+    background-color: rgb(164, 164, 164);
+    height: 100%;
 }
