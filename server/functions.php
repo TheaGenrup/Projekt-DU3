@@ -35,10 +35,16 @@ function generateLoginKey () {
     $key = "";
     $characters = "0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
     for ($i=0; $i < 25; $i++) { 
-        $n = rand(0, strlen($characters-1));
+        $n = rand(0, strlen($characters)-1);
         $key .= $characters[$n];
         
     }
     return $key;
+}
+
+function clog($data) {
+    echo "<pre>";
+    var_dump($data);
+    echo "</pre>";
 }
 ?>
