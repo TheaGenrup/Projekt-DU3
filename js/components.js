@@ -32,6 +32,7 @@ renderLoggedInView("myProfile");
 function renderDiscoverView(reviews) {
 
     reviews.forEach(review => {
+        console.log(review);
 
         document.querySelector("main").innerHTML =
             `<div id="content_container"></div>`;
@@ -42,27 +43,35 @@ function renderDiscoverView(reviews) {
             <p id="who"></p>
             <p id="when"></p>
             <div id="album_overview">
+                <div id="album_cover_and_details"
+                    <div id="album_cover"></div>
+                    <div id="album_details">
 
-                <div id="album_cover"></div>
-                <div id="album_details">
-
-                    <p id="album_name"></p>
-                    <p id="artist_name"></p>
-                    <div id="stars"></div>
-                    <p id="review_">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad unde ea laborum tempora quidem sint commodi culpa dolorum fugiat illum.</p>comment
+                        <p id="album_name"></p>
+                        <p id="artist_name"></p>
+                        <div id="stars"></div>
+                        <p id="review_">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad unde ea laborum tempora quidem sint commodi culpa dolorum fugiat illum.</p>comment
+                    </div>
                 </div>
         </div></div>`
 
         document.querySelector("#content_container").innerHTML += newReview;
+
+        document.querySelector("#who").textContent = "@" + review.user_name + " added a review";
+        document.querySelector("#when").textContent = review.date + " " + review.timestamp;
+
+        document.querySelector("#album_cover").style.backgroundImage = `url(../media/dreams.jpg)`;
     });
 
-    document.querySelector()
 
 }
 
 renderDiscoverView([
     {
         album_name: "Dreams",
-        artist_name: "Fleetwood Mac"
+        artist_name: "Fleetwood Mac",
+        user_name: "Thea",
+        date: "2023-02-22",
+        timestamp: "16:35",
     }
 ]);

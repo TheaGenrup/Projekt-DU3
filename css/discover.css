@@ -86,13 +86,23 @@ nav {
     gap: 20px;
 }
 
-#profile_picture {
+#album_cover {
     height: 20vw;
     width: 20vw;
     background-position: center;
     background-size: cover;
-    border-radius: 50%;
+    border-radius: 20%;
     background-color: aliceblue;
+}
+
+#album_cover_and_details {
+    display: flex;
+
+}
+
+#album_details {
+    display: flex;
+
 }
 
 .review {
@@ -102,4 +112,8 @@ nav {
     background-color: rgb(212, 212, 212);
     box-sizing: border-box;
     padding: 10px;
+}
+
+p {
+    margin: 0;
 }
