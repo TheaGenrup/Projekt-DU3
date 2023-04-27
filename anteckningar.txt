@@ -81,3 +81,49 @@ function renderUserPage(userInfo) {
     `
 
 }
+Databas strukturen
+
+
+{
+        "userCredentials": {
+            "userName": "test",
+            "password": "test"
+        },
+        "loginKey": "0604004177627222964608635",
+        "userSocial": {
+            "following": [
+                "e4123412jndnjd",
+                "1234513451dgdng",
+                "12345654gdwdg",
+                "1234514gdwd"
+            ],
+            "followers": [
+                "e4123412jndnjd",
+                "1234513451dgdng",
+                "12345654gdwdg",
+                "1234514gdwd"
+            ]
+        },
+        "userIdentity": {
+            "id": "12341431234fdjdidd",
+            "profilePic": "1241345512514",
+            "displayName": "Anthony Fantano"
+        },
+        "reviews": [
+            {
+                "albumName": "Infest the Rat's nest",
+                "artist": "King Gizzard and the lizzard wizard",
+                "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
+                "reviewId": 0,
+                "reviewDescription": "I like when the music is making noise",
+                "rating": 5
+            }
+        ],
+        "favourites": [
+          {
+            "albumName": "Infest the Rat's nest",
+            "artist": "King Gizzard and the lizzard wizard",
+            "albumId": "5Bz2LxOp0wz7ov0T9WiRmc"
+          }
+        ]
+    }

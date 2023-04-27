@@ -59,3 +59,45 @@ main {
     background-color: rgb(164, 164, 164);
     height: 100%;
 }
+
+#bookmark_icon {
+    background-image: url(/media/bookmark.png);
+    background-position: center;
+    background-size: cover;
+    height: 10vw;
+    width: 10vw;
+}
+
+#following_followers {
+    display: grid;
+    grid-template-columns: auto auto;
+    text-align: center;
+    padding-top: 20vh;
+    column-gap: 1vh;
+}
+
+#following_followers div:nth-last-child(3) {
+    Grid-column: 1;
+    Grid-row: 2;
+}
+
+#profile_picture img {
+    height: 30vw;
+    width: 30vw;
+}
+
+#profile_picture {
+    padding-top: 20vh;
+}
+
+#profile_header p {
+    margin-top: 0;
+    text-align: center;
+}
+
+#profile_main {
+    background-color: grey;
+    border-radius: 5vh;
+    height: 75vh;
+    margin: 5vh 10vw 0 10vw;
+}
