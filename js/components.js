@@ -34,7 +34,7 @@ function renderProfileView(userInfo) {
     const profile_picture = userInfo[0].userIdentity.profilePic;
     const user_followers = userInfo[0].userSocial.following.length;
     const user_following = userInfo[0].userSocial.followers.length;
-    const username = userInfo[0].userCredentials.userName;
+    const username = userInfo[0].userCredentials.username;
 
     const html = document.querySelector("#main_block").innerHTML = `
     <header id="profile_header">
@@ -65,45 +65,4 @@ function renderProfileView(userInfo) {
         </div>
     </main>
     `
-}
-
-const user = [
-    {
-        "userCredentials": {
-            "userName": "Elinsauer",
-            "password": "Elin älskar riskakor"
-        },
-        "loginKey": "",
-        "userSocial": {
-            "following": [
-                "e4123412jndnjd",
-                "1234513451dgdng",
-                "12345654gdwdg",
-                "1234514gdwd"
-            ],
-            "followers": [
-                "e4123412jndnjd",
-                "1234513451dgdng",
-                "12345654gdwdg",
-                "1234514gdwd"
-            ]
-        },
-        "userIdentity": {
-            "id": "12341431234fdjdidd",
-            "profilePic": "1241345512514",
-            "displayName": "Anthony Fantano"
-        },
-        "reviews": [
-            {
-                "albumName": "Infest the Rat's nest",
-                "artist": "King Gizzard and the lizzard wizard",
-                "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
-                "reviewId": 0,
-                "reviewDescription": "I like when the music is making noise",
-                "rating": 5
-            }
-        ]
-    }
-]
-
-renderProfileView(user);
+};
