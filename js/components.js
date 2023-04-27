@@ -32,7 +32,6 @@ renderLoggedInView("myProfile");
 function renderDiscoverView(reviews) {
 
     reviews.forEach(review => {
-        console.log(review);
 
         document.querySelector("main").innerHTML =
             `<div id="content_container"></div>`;
@@ -43,17 +42,22 @@ function renderDiscoverView(reviews) {
             <p id="who"></p>
             <p id="when"></p>
             <div id="album_overview">
-                <div id="album_cover_and_details"
-                    <div id="album_cover"></div>
+                <div id="album_cover"></div>
                     <div id="album_details">
 
                         <p id="album_name"></p>
                         <p id="artist_name"></p>
-                        <div id="stars"></div>
-                        <p id="review_">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad unde ea laborum tempora quidem sint commodi culpa dolorum fugiat illum.</p>comment
-                    </div>
+                        <div id="stars">
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                        </div>
+                        <p id="review">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad unde ea laborum tempora quidem sint commodi culpa dolorum fugiat illum.</p>
                 </div>
-        </div></div>`
+            </div>
+        </div>`
 
         document.querySelector("#content_container").innerHTML += newReview;
 
@@ -61,6 +65,9 @@ function renderDiscoverView(reviews) {
         document.querySelector("#when").textContent = review.date + " " + review.timestamp;
 
         document.querySelector("#album_cover").style.backgroundImage = `url(../media/dreams.jpg)`;
+
+        document.querySelector("#album_name").textContent = review.album_name;
+        document.querySelector("#artist_name").textContent = review.artist_name;
     });
 
 

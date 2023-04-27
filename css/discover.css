@@ -72,6 +72,7 @@ nav {
 }
 
 #content_container {
+    font-size: 12px;
     box-sizing: border-box;
     padding: 5vw;
     height: 80vh;
@@ -82,8 +83,12 @@ nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
     gap: 20px;
+}
+
+#album_overview {
+    display: flex;
+    margin-top: 10px;
 }
 
 #album_cover {
@@ -92,12 +97,13 @@ nav {
     background-position: center;
     background-size: cover;
     border-radius: 20%;
-    background-color: aliceblue;
+    margin: 0 10px 0 0;
 }
 
-#album_cover_and_details {
+#album_details {
     display: flex;
-
+    flex-direction: column;
+    width: 70%;
 }
 
 #album_details {
@@ -113,6 +119,7 @@ nav {
     box-sizing: border-box;
     padding: 10px;
 }
+
 
 p {
     margin: 0;
