@@ -77,14 +77,17 @@ if (isset($data["username"], $data["password"], $data["displayName"])) {
                               "profilePic" => "default.jpg", 
                               "displayName" => "$sentDisplayName" 
                            ], 
-            "reviews" => [], 
-            "favourites" => [] 
+            "albumData" => [
+                "boards" => [],
+                "reviews" => [],
+                "favourites" => [] 
+            ]
          ]; 
           
         $userData[] = $newUser;
         saveFileData("users.json", $userData);
         $message = ["message" => "Registered"];
-        sendJSON($message, 200);
+        sendJSON($message, 202);
 
     }
 

@@ -26,7 +26,7 @@ function renderLoggedInView(activeTab) {
 
 }
 
-renderLoggedInView("myProfile");
+// renderLoggedInView("myProfile");
 
 
 function renderUserPage(userInfo) {

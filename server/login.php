@@ -21,7 +21,7 @@ if ($contentType != "application/json") {
 // User login input
 $json = file_get_contents("php://input");
 $data = json_decode($json, true);
-if (isset($data["username"], $data["password"])) {
+if (isset($data["username"], $data["password"]) && !isset($data["loginTokenKey"])) {
     
     if (isset($data["acess"]) || $data["access"] == "Access-Login: Auth") {
         $sentUsername = $data["username"];
@@ -42,7 +42,7 @@ if (isset($data["username"], $data["password"])) {
                 $foundUser = $user;
                 saveFileData("users.json", $userData);
                 unset($foundUser["userCredentials"]);
-                sendJSON($foundUser, 200);
+                sendJSON($foundUser, 202);
             }
         }
         $message = ["message" => "Incorrect Username or password"];
