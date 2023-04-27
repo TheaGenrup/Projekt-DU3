@@ -34,9 +34,7 @@ main {
     height: 90vh;
 }
 
-#tabs {
-    display: flex;
-}
+
 
 .tab {
     border-radius: 20px 20px 0 0;
@@ -56,7 +54,52 @@ main {
     background-color: rgb(124, 124, 124);
 }
 
-#main_block {
-    background-color: rgb(164, 164, 164);
+main {
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    color: white;
+    height: 9vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 40px 0 40px;
+}
+
+#content_container {
+    box-sizing: border-box;
+    padding: 5vw;
+    height: 80vh;
+    width: 90vw;
+    background-color: rgb(68, 68, 68);
+    border-radius: 20px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#profile_picture {
+    height: 20vw;
+    width: 20vw;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    background-color: aliceblue;
+}
+
+.review {
+    border-radius: 20px;
+    height: 25vh;
+    width: 100%;
+    background-color: rgb(212, 212, 212);
+    box-sizing: border-box;
+    padding: 10px;
 }

@@ -1,39 +1,68 @@
 function renderLoggedInView(activeTab) {
 
     document.querySelector("body").innerHTML = `
+
     <header>
         <div id="laulu">LAULU</div>
-        <div id="search_icon"></div>
     </header>
     <main>
-        <div id="tabs">
-            <div class="tab">DISCOVER</div>
-            <div class="tab">MY PROFILE</div>
-        </div>
-        <div id="main_block"></div>
     </main>
+    <nav>
+        <div id="discover_icon">Home</div>
+        <div id="search_icon"></div>
+        <div id="add_icon">Add</div>
+        <div id="profile_icon">Profile</div>
+    </nav>
     `
 
+    // den här funktionen funkar inte längre efterson det är ikoner, inte text
+    document.querySelectorAll(".viewIcon").forEach(viewIcon => {
 
-    document.querySelectorAll(".tab").forEach(tab => {
-
-        if (tab.textContent.toLowerCase().replace(" ", "") == activeTab.toLowerCase()) {
-            tab.classList.add("active")
+        if (viewIcon.textContent.toLowerCase().replace(" ", "") == activeviewIcon.toLowerCase()) {
+            viewIcon.classList.add("active")
         } else {
-            tab.classList.add("inactive")
+            viewIcon.classList.add("inactive")
         }
     });
 
 }
 
-// renderLoggedInView("myProfile");
+renderLoggedInView("myProfile");
 
+function renderDiscoverView(reviews) {
 
-function renderUserPage(userInfo) {
+    reviews.forEach(review => {
 
+        document.querySelector("main").innerHTML =
+            `<div id="content_container"></div>`;
 
-    const html = document.querySelector("body").innerHTML = `
-    
-    `
+        const newReview = `
+ 
+        <div class="review">
+            <p id="who"></p>
+            <p id="when"></p>
+            <div id="album_overview">
+
+                <div id="album_cover"></div>
+                <div id="album_details">
+
+                    <p id="album_name"></p>
+                    <p id="artist_name"></p>
+                    <div id="stars"></div>
+                    <p id="review_">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad unde ea laborum tempora quidem sint commodi culpa dolorum fugiat illum.</p>comment
+                </div>
+        </div></div>`
+
+        document.querySelector("#content_container").innerHTML += newReview;
+    });
+
+    document.querySelector()
 
 }
+
+renderDiscoverView([
+    {
+        album_name: "Dreams",
+        artist_name: "Fleetwood Mac"
+    }
+]);
