@@ -54,6 +54,9 @@ body{
     max-height: 620px;
     height: 100%;
     width: 100%;
+    border: 2px solid rgba(0, 0, 0, 0.447);
+    border-radius: 20px;
+    box-shadow: rgba(31, 31, 31, 0.132) 0px 2px 8px 0px;
 }
 #loginMessageContainer{
     display: flex;
@@ -62,7 +65,6 @@ body{
 }
 #loginMessageContainer #loginRegisterSign{
     font-size: 32px;
-    width: 100px;
     text-align: center;
 }
 #loginAndRegisterFormContainer{

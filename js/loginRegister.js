@@ -17,7 +17,7 @@ switchBtn.addEventListener("click", (e)=> {
         text.textContent = "Already have an account? ";
         switchBtn.textContent = "Log in";
         loginRegisterbtn.textContent = "Register";
-        loginRegisterSign.textContent = "Register"
+        loginRegisterSign.textContent = "Create an account"
 
     } else {
         loginAndRegisterForm.classList.add("loginForm");
@@ -114,10 +114,6 @@ fetch(request, data)
 
 Om allt går bra returneras användaren och dess info förutom dess användarnamn & lösenord
 */
-
-
-
-
 
 // Register Section
 
