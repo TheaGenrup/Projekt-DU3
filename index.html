@@ -15,20 +15,26 @@
 
 <body>
     <div id="mainContainer">
-        <div id="loginAndRegisterPageContainer">
-            <div id="logoBanner">
-                <h1>Laulu :D</h1>
-            </div>
-            <div id="loginAndRegisterFormContainer">
-                <form id="loginAndRegisterForm" class="loginForm">
-                    <input type="text" id="usernameInput" placeholder="username">
-                    <input type="text" id="passwordInput" placeholder="password">
-                    <input type="text" id="displaynameInput" placeholder="displayname">
-                </form>
-            </div>
-            <div id="loginRegisterSwitch">
-                <button id="loginRegisterBtn" class="loginBtn">Log in</button>
-                <p><span class="signupText">Don't have an account?</span> <span id="switchBtn">Sign up</span></p>
+        <div id="limitWrapper">
+            <div id="loginAndRegisterPageContainer">
+                <div id="logoBanner">
+                    <h1>Laulu :D</h1>
+                </div>
+                <div id="loginMessageContainer">
+                    <div id="loginRegisterSign">Login</div>
+                    <div id="loginRegistermessage"></div>
+                </div>
+                <div id="loginAndRegisterFormContainer">
+                    <form id="loginAndRegisterForm" class="loginForm">
+                        <input type="text" id="usernameInput" placeholder="username">
+                        <input type="text" id="passwordInput" placeholder="password">
+                        <input type="text" id="displaynameInput" placeholder="displayname">
+                    </form>
+                </div>
+                <div id="loginRegisterSwitch">
+                    <button id="loginRegisterBtn" class="loginBtn">Log in</button>
+                    <p><span class="signupText">Don't have an account?</span> <span id="switchBtn">Sign up</span></p>
+                </div>
             </div>
         </div>
     </div>
@@ -38,7 +44,7 @@
 </body>
 
 <script src="js/register.js"></script>
-<script src="js/login.js"></script>
+<script src="js/loginRegister.js"></script>
 <script src="js/discover.js"></script>
 <script src="js/profile.js"></script>
 <script src="js/components.js"></script>

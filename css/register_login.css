@@ -16,6 +16,15 @@ body {
     background-size: cover;
 }
 
+#limitWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+    background-color: white;
+}
+
 body{
     display: flex;
     justify-content: center;
@@ -41,8 +50,21 @@ body{
     padding: 5%;
     background-color: rgb(255, 255, 255);
     z-index: 2;
+    max-width: 400px;
+    max-height: 620px;
+    height: 100%;
+    width: 100%;
 }
-
+#loginMessageContainer{
+    display: flex;
+    justify-content: center;
+    height: 250px;
+}
+#loginMessageContainer #loginRegisterSign{
+    font-size: 32px;
+    width: 100px;
+    text-align: center;
+}
 #loginAndRegisterFormContainer{
     position: relative;
     display: flex;
@@ -69,7 +91,7 @@ body{
     height: 40px;
     width: 100%;
     border-radius: 10px;
-    padding: 5px;
+    padding: 5px 15px;
     background-color: rgb(216, 210, 210);
     color: rgb(83, 83, 83);
     border: 2px solid black;
@@ -104,12 +126,10 @@ body{
     #mainContainer {
         justify-content:left;
     }
-
-    #loginAndRegisterPageContainer{
-        height: 100%;
-        width: 50%;
-        overflow: scroll;
+    #limitWrapper{
+        min-width: 480px;
     }
+ 
   }
 
   /* Mobile */
@@ -117,11 +137,9 @@ body{
     #mainContainer {
         justify-content:center;
     }
-
-    #loginAndRegisterPageContainer{
-        max-width: 460px;
-        max-height: 700px;
+    #limitWrapper{
         height: 100%;
         width: 100%;
     }
+
   }

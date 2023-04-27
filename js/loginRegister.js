@@ -5,6 +5,10 @@ switchBtn.addEventListener("click", (e)=> {
     const loginRegisterSwitchcontainer = document.querySelector("#loginRegisterSwitch");
     const text = loginRegisterSwitchcontainer.querySelector(".signupText");
     const loginAndRegisterForm = document.querySelector("#loginAndRegisterForm");
+    const loginRegisterSign = document.querySelector("#loginRegisterSign");
+    document.querySelector("#usernameInput").value = "";
+    document.querySelector("#passwordInput").value = "";
+    document.querySelector("#displaynameInput").value = "";
     if (loginAndRegisterForm.classList.contains("loginForm")) {
         loginAndRegisterForm.classList.remove("loginForm");
         loginAndRegisterForm.classList.add("registerForm");
@@ -13,6 +17,7 @@ switchBtn.addEventListener("click", (e)=> {
         text.textContent = "Already have an account? ";
         switchBtn.textContent = "Log in";
         loginRegisterbtn.textContent = "Register";
+        loginRegisterSign.textContent = "Register"
 
     } else {
         loginAndRegisterForm.classList.add("loginForm");
@@ -20,8 +25,9 @@ switchBtn.addEventListener("click", (e)=> {
         loginAndRegisterForm.style.transition = "1.8s"
         loginAndRegisterForm.style.bottom = "-75px"
         text.textContent = "Don't have an account? "
-        switchBtn.textContent = "Sign in"
+        switchBtn.textContent = "Sign up"
         loginRegisterbtn.textContent = "Log in";
+        loginRegisterSign.textContent = "Login"
     }
 })
 
