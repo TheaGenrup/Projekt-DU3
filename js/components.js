@@ -44,15 +44,15 @@ function renderDiscoverView(reviews) {
         const newReview = `
  
         <div class="review">
-            <p id="who">@ ${review.user_name} added a review</p>
+            <p id="who">@ ${review.userName} added a review</p>
             <p id="when">${review.date} ${review.timestamp}</p>
             <div id="album_overview">
-                <div id="album_cover_${review.review_id}" class="album_cover"></div>
+                <div id="album_cover_${review.reviewId}" class="album_cover"></div>
                     <div id="album_details">
 
-                        <p id="album_name">${review.album_name}</p>
-                        <p id="artist_name">${review.artist_name}</p>
-                        <div id="stars_${review.review_id}" class="stars">
+                        <p id="albumName">${review.albumName}</p>
+                        <p id="artistName">${review.artistName}</p>
+                        <div id="stars_${review.reviewId}" class="stars">
                             <div class="star"></div>
                             <div class="star"></div>
                             <div class="star"></div>
@@ -68,10 +68,10 @@ function renderDiscoverView(reviews) {
         document.querySelector("#content_container").innerHTML += newReview;
 
         // add album cover
-        document.querySelector(`#album_cover_${review.review_id}`).style.backgroundImage = review.album_cover;
+        document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = review.albumCover;
 
         // change the background image of the right amount of stars
-        const stars = document.querySelectorAll(`#stars_${review.review_id} > div`);
+        const stars = document.querySelectorAll(`#stars_${review.reviewId} > div`);
 
         for (let i = 0; i < stars.length; i++) {
             const star = stars[i];
@@ -87,25 +87,36 @@ function renderDiscoverView(reviews) {
 
 renderDiscoverView([
     {
-        review_id: 1,
-        album_name: "Dreams",
-        artist_name: "Fleetwood Mac",
-        user_name: "Elin",
+        reviewId: 1,
+        albumName: "Dreams",
+        artistName: "Fleetwood Mac",
+        userName: "Elin",
         date: "2023-02-22",
         timestamp: "16:35",
         comment: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad unde ea laborum tempora quidem sint commodi culpa dolorum fugiat illum.",
         rating: 3,
-        album_cover: `url(../media/dreams.jpg)`
+        albumCover: `url(../media/dreams.jpg)`
     },
     {
-        review_id: 2,
-        album_name: "Och Stora Havet",
-        artist_name: "Jakob Hellman",
-        user_name: "Thea",
+        reviewId: 2,
+        albumName: "Och Stora Havet",
+        artistName: "Jakob Hellman",
+        userName: "Thea",
         date: "2023-02-25",
         timestamp: "14:38",
         comment: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad unde ea laborum tempora quidem sint commodi culpa dolorum fugiat illum.",
         rating: 4,
-        album_cover: `url(../media/hellman.jpg)`
+        albumCover: `url(../media/hellman.jpg)`
+    },
+    {
+        reviewId: 3,
+        albumName: "Och Stora Havet",
+        artistName: "Jakob Hellman",
+        userName: "Thea",
+        date: "2023-02-25",
+        timestamp: "14:38",
+        comment: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad unde ea laborum tempora quidem sint commodi culpa dolorum fugiat illum.",
+        rating: 4,
+        albumCover: `url(../media/hellman.jpg)`
     }
 ]);
