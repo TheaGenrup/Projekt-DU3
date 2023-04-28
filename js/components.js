@@ -112,11 +112,11 @@ renderDiscoverView([
         reviewId: 3,
         albumName: "Och Stora Havet",
         artistName: "Jakob Hellman",
-        userName: "Thea",
-        date: "2023-02-25",
-        timestamp: "14:38",
+        userName: "Filip",
+        date: "2023-02-26",
+        timestamp: "12:39",
         comment: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad unde ea laborum tempora quidem sint commodi culpa dolorum fugiat illum.",
-        rating: 4,
+        rating: 2,
         albumCover: `url(../media/hellman.jpg)`
     }
 ]);
