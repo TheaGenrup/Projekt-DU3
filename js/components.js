@@ -13,15 +13,15 @@ function renderLoggedInView(activeTab) {
         <div id="add_icon">Add</div>
         <div id="profile_icon">Profile</div>
     </nav>
-    `
+    `;
 
     // den här funktionen funkar inte längre efterson det är ikoner, inte text
     document.querySelectorAll(".viewIcon").forEach(viewIcon => {
 
         if (viewIcon.textContent.toLowerCase().replace(" ", "") == activeviewIcon.toLowerCase()) {
-            viewIcon.classList.add("active")
+            viewIcon.classList.add("active");
         } else {
-            viewIcon.classList.add("inactive")
+            viewIcon.classList.add("inactive");
         }
     });
 
@@ -73,10 +73,7 @@ function renderDiscoverView(reviews) {
         // add album cover
         document.querySelector("#album_cover").style.backgroundImage = `url(../media/dreams.jpg)`;
 
-        document.querySelectorAll(".star").forEach(star => {
-
-        });
-
+        // change the background image of the right amount of stars
         const stars = document.querySelectorAll(".star");
 
         for (let i = 0; i < stars.length; i++) {
@@ -85,7 +82,6 @@ function renderDiscoverView(reviews) {
                 star.style.backgroundImage = `url(../media/icons/filled_in_star.png)`;
             }
         }
-
 
 
 
