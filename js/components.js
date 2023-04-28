@@ -24,7 +24,7 @@ function renderLoggedInView(activeTab) {
 
 }
 
-renderLoggedInView("myProfile");
+/* renderLoggedInView("myProfile"); */
 
 
 function renderDiscoverView(reviews) {
@@ -85,7 +85,7 @@ function renderDiscoverView(reviews) {
 
 }
 
-renderDiscoverView([
+/* renderDiscoverView([
     {
         reviewId: 1,
         albumName: "Dreams",
@@ -119,4 +119,4 @@ renderDiscoverView([
         rating: 2,
         albumCover: `url(../media/hellman.jpg)`
     }
-]);
+]); */
