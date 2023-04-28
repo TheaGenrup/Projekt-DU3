@@ -1,6 +1,6 @@
 //  checkIfAlreadyLoggedIn();
-    // Switch between log in and register Section
-const switchBtn = document.querySelector("#switchBtn");
+// Switch between log in and register Section
+/* const switchBtn = document.querySelector("#switchBtn");
 switchBtn.addEventListener("click", (e)=> {
     const loginRegisterSwitchcontainer = document.querySelector("#loginRegisterSwitch");
     const text = loginRegisterSwitchcontainer.querySelector(".signupText");
@@ -88,7 +88,7 @@ function checkIfAlreadyLoggedIn() {
 }
 
 function renderLoginPage(params) {
-}
+} */
 
 /*
 const server = "login";
@@ -118,25 +118,25 @@ Om allt går bra returneras användaren och dess info förutom dess användarnam
 // Register Section
 
 function registerUser(username, password, displayname) {
-    const request = new Request (`/server/register.php`);
+    const request = new Request(`/server/register.php`);
     const data = {
-    headers: {"Content-type": "application/json"},
-    method: "POST",
-    body: JSON.stringify({
-        username: username,
-        password: password,
-        displayName: displayname,
-        access: "Access-Register: Auth"
-    })
-}
+        headers: { "Content-type": "application/json" },
+        method: "POST",
+        body: JSON.stringify({
+            username: username,
+            password: password,
+            displayName: displayname,
+            access: "Access-Register: Auth"
+        })
+    }
 
-fetch(request, data)
-.then(r=>{
-    console.log(r);
-    return r.json()
-})
-.then(r => {
-    console.log(r);
-})
-    
+    fetch(request, data)
+        .then(r => {
+            console.log(r);
+            return r.json()
+        })
+        .then(r => {
+            console.log(r);
+        })
+
 }

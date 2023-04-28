@@ -7,21 +7,6 @@ body {
     background-color: rgb(24, 24, 24);
 }
 
-header {
-    height: 10vh;
-    width: 100vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5vw;
-    box-sizing: border-box;
-}
-
-#laulu {
-    font-size: 10vw;
-    color: rgb(200, 200, 200);
-}
-
 #search_icon {
     background-image: url(/media/find_icon.png);
     background-position: center;
@@ -32,10 +17,6 @@ header {
 
 main {
     height: 90vh;
-}
-
-#tabs {
-    display: flex;
 }
 
 .tab {
@@ -56,7 +37,85 @@ main {
     background-color: rgb(124, 124, 124);
 }
 
-#main_block {
-    background-color: rgb(164, 164, 164);
+main {
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    color: white;
+    height: 9vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 40px 0 40px;
+}
+
+#content_container {
+    font-size: 12px;
+    box-sizing: border-box;
+    padding: 5vw;
+    height: 95%;
+    width: 90vw;
+    background-color: rgb(68, 68, 68);
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+#album_overview {
+    display: flex;
+    margin-top: 10px;
+}
+
+.album_cover {
+    height: 20vw;
+    width: 20vw;
+    background-position: center;
+    background-size: cover;
+    border-radius: 20%;
+    margin: 0 10px 0 0;
+}
+
+#album_details {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+#album_details {
+    display: flex;
+
+}
+
+.review {
+    border-radius: 20px;
+    height: 20vh;
+    width: 100%;
+    background-color: rgb(212, 212, 212);
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+
+p {
+    margin: 0;
+}
+
+.stars {
+    display: flex;
+}
+
+.star {
+    background-position: center;
+    background-size: cover;
+    background-image: url(../media/icons/empty_star.png);
+    height: 18px;
+    width: 18px;
 }
