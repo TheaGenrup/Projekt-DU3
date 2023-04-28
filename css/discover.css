@@ -7,21 +7,6 @@ body {
     background-color: rgb(24, 24, 24);
 }
 
-header {
-    height: 10vh;
-    width: 100vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5vw;
-    box-sizing: border-box;
-}
-
-#laulu {
-    font-size: 10vw;
-    color: rgb(200, 200, 200);
-}
-
 #search_icon {
     background-image: url(/media/find_icon.png);
     background-position: center;
@@ -33,8 +18,6 @@ header {
 main {
     height: 90vh;
 }
-
-
 
 .tab {
     border-radius: 20px 20px 0 0;
@@ -75,23 +58,23 @@ nav {
     font-size: 12px;
     box-sizing: border-box;
     padding: 5vw;
-    height: 80vh;
+    height: 95%;
     width: 90vw;
     background-color: rgb(68, 68, 68);
     border-radius: 20px;
 
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
     gap: 20px;
 }
+
 
 #album_overview {
     display: flex;
     margin-top: 10px;
 }
 
-#album_cover {
+.album_cover {
     height: 20vw;
     width: 20vw;
     background-position: center;
@@ -113,7 +96,7 @@ nav {
 
 .review {
     border-radius: 20px;
-    height: 25vh;
+    height: 20vh;
     width: 100%;
     background-color: rgb(212, 212, 212);
     box-sizing: border-box;
@@ -125,7 +108,7 @@ p {
     margin: 0;
 }
 
-#stars {
+.stars {
     display: flex;
 }
 
