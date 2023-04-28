@@ -1,7 +1,8 @@
+"use strict";
 //  checkIfAlreadyLoggedIn();
-    // Switch between log in and register Section
+// Switch between log in and register Section
 const switchBtn = document.querySelector("#switchBtn");
-switchBtn.addEventListener("click", (e)=> {
+switchBtn.addEventListener("click", (e) => {
     const loginRegisterSwitchcontainer = document.querySelector("#loginRegisterSwitch");
     const text = loginRegisterSwitchcontainer.querySelector(".signupText");
     const loginAndRegisterForm = document.querySelector("#loginAndRegisterForm");
@@ -31,9 +32,9 @@ switchBtn.addEventListener("click", (e)=> {
     }
 })
 
-    //login and register button
+//login and register button
 const loginRegisterbtn = document.querySelector("#loginRegisterBtn");
-loginRegisterbtn.addEventListener("click", (e)=> {
+loginRegisterbtn.addEventListener("click", (e) => {
     e.preventDefault();
     const loginOrRegister = e.target.textContent
     if (loginOrRegister === "Log in") {
@@ -48,7 +49,7 @@ loginRegisterbtn.addEventListener("click", (e)=> {
         registerUser(usernameInput, passwordInput, displaynameInput);
     }
 })
-    //  Log in Section 
+//  Log in Section 
 async function attemptLogin(username, password, access, loginKey) {
     if (!loginKey) {
         const userData = await fetchLogin(username, password, access);
@@ -58,14 +59,14 @@ async function attemptLogin(username, password, access, loginKey) {
     if (loginKey) {
         const userData = await fetchLogin(username, password, access, loginKey);
         // loginUser(userData);
-        console.log(userData);  
-    }  
-    
+        console.log(userData);
+    }
+
 }
 async function fetchLogin(username, password, access, loginKey) {
-    const request = new Request (`/server/login.php`);
+    const request = new Request(`/server/login.php`);
     const data = {
-        headers: {"Content-type": "application/json"},
+        headers: { "Content-type": "application/json" },
         method: "POST",
         body: JSON.stringify({
             username: username,
@@ -118,25 +119,25 @@ Om allt går bra returneras användaren och dess info förutom dess användarnam
 // Register Section
 
 function registerUser(username, password, displayname) {
-    const request = new Request (`/server/register.php`);
+    const request = new Request(`/server/register.php`);
     const data = {
-    headers: {"Content-type": "application/json"},
-    method: "POST",
-    body: JSON.stringify({
-        username: username,
-        password: password,
-        displayName: displayname,
-        access: "Access-Register: Auth"
-    })
-}
+        headers: { "Content-type": "application/json" },
+        method: "POST",
+        body: JSON.stringify({
+            username: username,
+            password: password,
+            displayName: displayname,
+            access: "Access-Register: Auth"
+        })
+    }
 
-fetch(request, data)
-.then(r=>{
-    console.log(r);
-    return r.json()
-})
-.then(r => {
-    console.log(r);
-})
-    
+    fetch(request, data)
+        .then(r => {
+            console.log(r);
+            return r.json()
+        })
+        .then(r => {
+            console.log(r);
+        })
+
 }
