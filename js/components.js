@@ -29,24 +29,32 @@ function renderLoggedInView(activeTab) {
 
 renderLoggedInView("myProfile");
 
+
 function renderDiscoverView(reviews) {
 
+    // go through all reviews to create them
     reviews.forEach(review => {
 
-        document.querySelector("main").innerHTML =
-            `<div id="content_container"></div>`;
+        document.querySelector("main").innerHTML = `<div id="content_container"></div>`;
 
+        // shorten comment
+        let comment = review.comment;
+        if (comment.length > 50) {
+            comment = comment.slice(0, 50) + "...";
+        }
+
+        // make html for new review
         const newReview = `
  
         <div class="review">
-            <p id="who"></p>
-            <p id="when"></p>
+            <p id="who">@ ${review.user_name} added a review</p>
+            <p id="when">${review.date} ${review.timestamp}</p>
             <div id="album_overview">
                 <div id="album_cover"></div>
                     <div id="album_details">
 
-                        <p id="album_name"></p>
-                        <p id="artist_name"></p>
+                        <p id="album_name">${review.album_name}</p>
+                        <p id="artist_name">${review.artist_name}</p>
                         <div id="stars">
                             <div class="star"></div>
                             <div class="star"></div>
@@ -54,20 +62,33 @@ function renderDiscoverView(reviews) {
                             <div class="star"></div>
                             <div class="star"></div>
                         </div>
-                        <p id="review">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad unde ea laborum tempora quidem sint commodi culpa dolorum fugiat illum.</p>
+                        <p id="review">${comment}</p>
                 </div>
             </div>
-        </div>`
+        </div>`;
 
+        // add new review to html
         document.querySelector("#content_container").innerHTML += newReview;
 
-        document.querySelector("#who").textContent = "@" + review.user_name + " added a review";
-        document.querySelector("#when").textContent = review.date + " " + review.timestamp;
-
+        // add album cover
         document.querySelector("#album_cover").style.backgroundImage = `url(../media/dreams.jpg)`;
 
-        document.querySelector("#album_name").textContent = review.album_name;
-        document.querySelector("#artist_name").textContent = review.artist_name;
+        document.querySelectorAll(".star").forEach(star => {
+
+        });
+
+        const stars = document.querySelectorAll(".star");
+
+        for (let i = 0; i < stars.length; i++) {
+            const star = stars[i];
+            if (i < review.rating) {
+                star.style.backgroundImage = `url(../media/icons/filled_in_star.png)`;
+            }
+        }
+
+
+
+
     });
 
 
@@ -77,8 +98,10 @@ renderDiscoverView([
     {
         album_name: "Dreams",
         artist_name: "Fleetwood Mac",
-        user_name: "Thea",
+        user_name: "Elin",
         date: "2023-02-22",
         timestamp: "16:35",
+        comment: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad unde ea laborum tempora quidem sint commodi culpa dolorum fugiat illum.",
+        rating: 3,
     }
 ]);

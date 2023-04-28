@@ -124,3 +124,11 @@ nav {
 p {
     margin: 0;
 }
+
+.star {
+    background-position: center;
+    background-size: cover;
+    background-image: url(../media/icons/empty_star.png);
+    height: 10px;
+    width: 10px;
+}
