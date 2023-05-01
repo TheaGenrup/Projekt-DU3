@@ -1,30 +1,20 @@
-function renderLoggedInView(activeTab) {
+function renderLoggedInView(userIdentity) {
 
     document.querySelector("body").innerHTML = `
 
     <main>
     </main>
     <nav>
-        <div id="discover_icon">Home</div>
-        <div id="search_icon"></div>
-        <div id="add_icon">Add</div>
-        <div id="profile_icon">Profile</div>
+        <img class="view_icon" src="/media/icons/discover.png" alt="Discover"></img>
+        <img class="view_icon" src="/media/icons/search.png" alt="Search"></img>
+        <img class="view_icon" src="/media/icons/add.png" alt="Add"></img>
+        <img class="view_icon" id="profile_picture" src="/media/icons/${userIdentity.profilePic}.png" alt="Profile"></img>
     </nav>
     `;
 
-    // den här funktionen funkar inte längre efterson det är ikoner, inte text
-    document.querySelectorAll(".viewIcon").forEach(viewIcon => {
-
-        if (viewIcon.textContent.toLowerCase().replace(" ", "") == activeviewIcon.toLowerCase()) {
-            viewIcon.classList.add("active");
-        } else {
-            viewIcon.classList.add("inactive");
-        }
-    });
+    document.querySelector("#profile_picture").src = userIdentity.profilePic;
 
 }
-
-/* renderLoggedInView("myProfile"); */
 
 
 function renderDiscoverView(reviews) {
@@ -34,24 +24,36 @@ function renderDiscoverView(reviews) {
     // go through all reviews to create them
     reviews.forEach(review => {
 
-        // shorten comment
-        let comment = review.comment;
-        if (comment.length > 50) {
-            comment = comment.slice(0, 50) + "...";
+        // shorten comment if needed
+        let comment = review.reviewDescription;
+        if (comment.length > 55) {
+            comment = comment.slice(0, 55) + "...";
+        }
+
+        // shorten album name if needed
+        let albumName = review.albumName;
+        if (albumName.length > 23) {
+            albumName = albumName.slice(0, 23) + "...";
+        }
+
+        // shorten artist name if needed
+        let artist = review.artist;
+        if (artist.length > 23) {
+            artist = artist.slice(0, 23) + "...";
         }
 
         // make html for new review
         const newReview = `
  
         <div class="review">
-            <p id="who">@ ${review.userName} added a review</p>
+            <p id="who">@ ${review.displayName} added a review</p>
             <p id="when">${review.date} ${review.timestamp}</p>
             <div id="album_overview">
                 <div id="album_cover_${review.reviewId}" class="album_cover"></div>
                     <div id="album_details">
 
-                        <p id="albumName">${review.albumName}</p>
-                        <p id="artistName">${review.artistName}</p>
+                        <p id="albumName">${albumName}</p>
+                        <p id="artist">${artist}</p>
                         <div id="stars_${review.reviewId}" class="stars">
                             <div class="star"></div>
                             <div class="star"></div>

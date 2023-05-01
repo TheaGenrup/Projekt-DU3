@@ -23,7 +23,7 @@ $json = file_get_contents("php://input");
 $data = json_decode($json, true);
 if (isset($data["username"], $data["password"]) && !isset($data["loginTokenKey"])) {
     
-    if (isset($data["acess"]) || $data["access"] == "Access-Login: Auth") {
+    if (isset($data["access"]) || $data["access"] == "Access-Login: Auth") {
         $sentUsername = $data["username"];
         $sentPassword = $data["password"];
         if ($sentUsername == "" || $sentPassword == "") {

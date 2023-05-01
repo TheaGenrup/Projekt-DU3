@@ -1,73 +1,21 @@
-body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(24, 24, 24);
-}
-
-#search_icon {
-    background-image: url(/media/find_icon.png);
-    background-position: center;
-    background-size: cover;
-    height: 10vw;
-    width: 10vw;
-}
-
-main {
-    height: 90vh;
-}
-
-.tab {
-    border-radius: 20px 20px 0 0;
-    height: 7vh;
-    width: 50vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(124, 124, 124);
-}
-
-.active {
-    background-color: rgb(164, 164, 164);
-}
-
-.inactive {
-    background-color: rgb(124, 124, 124);
-}
-
-main {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-nav {
-    color: white;
-    height: 9vh;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
-    padding: 0 40px 0 40px;
-}
-
 #content_container {
     font-size: 12px;
     box-sizing: border-box;
     padding: 5vw;
-    height: 95%;
+    height: 97%;
     width: 90vw;
     background-color: rgb(68, 68, 68);
     border-radius: 20px;
+    box-shadow: 0px 0px 11px 4px rgb(15, 15, 15);
+    ;
 
     display: flex;
     flex-direction: column;
     gap: 20px;
+    position: relative;
+    bottom: -1vh;
+    overflow: scroll;
 }
-
 
 #album_overview {
     display: flex;
@@ -75,8 +23,8 @@ nav {
 }
 
 .album_cover {
-    height: 20vw;
-    width: 20vw;
+    height: 12vh;
+    width: 12vh;
     background-position: center;
     background-size: cover;
     border-radius: 20%;
@@ -89,11 +37,6 @@ nav {
     width: 70%;
 }
 
-#album_details {
-    display: flex;
-
-}
-
 .review {
     border-radius: 20px;
     height: 20vh;
@@ -102,7 +45,6 @@ nav {
     box-sizing: border-box;
     padding: 10px;
 }
-
 
 p {
     margin: 0;
