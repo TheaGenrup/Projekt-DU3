@@ -7,12 +7,8 @@ body {
     background-color: rgb(24, 24, 24);
 }
 
-#search_icon {
-    background-image: url(/media/find_icon.png);
-    background-position: center;
-    background-size: cover;
-    height: 10vw;
-    width: 10vw;
+#profile_picture {
+    border-radius: 50%;
 }
 
 main {
@@ -30,4 +26,11 @@ nav {
     align-items: center;
     box-sizing: border-box;
     padding: 0 40px 0 40px;
+}
+
+.view_icon {
+    background-position: center;
+    background-size: cover;
+    height: 8vw;
+    width: 8vw;
 }
