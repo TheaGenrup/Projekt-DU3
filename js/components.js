@@ -66,11 +66,19 @@ function renderDiscoverView(reviews) {
             </div>
         </div>`;
 
+
+
         // add new review to html
         document.querySelector("#content_container").innerHTML += newReview;
 
         // add album cover
-        document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = review.albumCover;
+        if (review.albumCover === "" || review.albumCover === undefined) {
+
+            document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = "url(../media/icons/default_cover.png)";
+        } else {
+
+            document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = review.albumCover;
+        }
 
         // change the background image of the right amount of stars
         const stars = document.querySelectorAll(`#stars_${review.reviewId} > div`);
