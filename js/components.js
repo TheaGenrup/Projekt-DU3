@@ -192,7 +192,7 @@ function renderProfileView(userInfo) {
 
 
 };
-
+/* 
 const user = [{
     "userCredentials": {
         "username": "test2",
@@ -282,4 +282,4 @@ const user = [{
     }
 }];
 
-renderProfileView(user);
+renderProfileView(user); */
