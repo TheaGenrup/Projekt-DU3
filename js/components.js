@@ -31,12 +31,12 @@ renderLoggedInView("myProfile");
 
 function renderProfileView(userInfo) {
 
-    const profile_picture = userInfo[0].userIdentity.profilePic;
-    const user_followers = userInfo[0].userSocial.following.length;
-    const user_following = userInfo[0].userSocial.followers.length;
-    const username = userInfo[0].userCredentials.username;
+    const profile_picture = userInfo.userIdentity.profilePic;
+    const user_followers = userInfo.userSocial.following.length;
+    const user_following = userInfo.userSocial.followers.length;
+    const username = userInfo.userCredentials.username;
 
-    const html = document.querySelector("#main_block").innerHTML = `
+    const profile_html = document.querySelector("#main").innerHTML = `
     <header id="profile_header">
         <div>
             <div id="profile_picture">
@@ -65,4 +65,26 @@ function renderProfileView(userInfo) {
         </div>
     </main>
     `
+
+    const boards = userInfo.albumData.boards;
+
+    boards.forEach(board => {
+
+        const boardName = board.boardName;
+        const boardPicture = board.thumbnail;
+
+        const newBoard = `
+        <div class="profile_board">
+            <div>
+                <img src="${boardPicture}">
+            </div>
+            <p>${boardName}</p>
+        </div>
+        `
+        document.querySelector("#Board_of_boards").innerHTML += newBoard;
+
+        // Addera eventlistener på varje board 
+    });
+
+
 };
