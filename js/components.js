@@ -121,3 +121,154 @@ renderDiscoverView([
         albumCover: `url(../media/hellman.jpg)`
     }
 ]); */
+
+function renderProfileView(userInfo) {
+
+    const profile_picture = userInfo[0].userIdentity.profilePic;
+    const user_followers = userInfo[0].userSocial.following.length;
+    const user_following = userInfo[0].userSocial.followers.length;
+    const username = userInfo[0].userCredentials.username;
+
+    const profile_html = document.querySelector("main").innerHTML = `
+    <header id="profile_header">
+        <div>
+            <div id="profile_picture"></div>
+            <p>@${username}</p>
+        </div> 
+        <div>
+            <div id="following_followers">
+                <div>Followers</div>
+                <div>${user_followers}</div>
+                <div>Following</div>
+                <div>${user_following}</div>
+            </div>
+            <div>
+                <div id="settings_icon"></div>
+                <div id="bookmark_icon"></div>
+                <div id="add_board_icon"></div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div id="profile_main">
+            <h2>BOARDS</h2>
+            <div id="Board_of_boards"></div>
+        </div>
+    </main>
+    `
+
+    document.querySelector("#profile_picture").style.backgroundImage = profile_picture;
+
+    const boards = userInfo[0].albumData.boards;
+
+    boards.forEach(board => {
+
+        const boardName = board.boardName;
+        const boardPicture = board.thumbnail;
+
+        const newBoard = `
+        <div class="profile_board">
+            <div>
+                <img src="${boardPicture}">
+            </div>
+            <p>${boardName}</p>
+        </div>
+        `
+        document.querySelector("#Board_of_boards").innerHTML += newBoard;
+
+        // Addera eventlistener
+    });
+
+
+};
+
+const user = [{
+    "userCredentials": {
+        "username": "test2",
+        "password": "test2"
+    },
+    "loginKey": "FEQTxo5ivVNyPi31ldS8Q9QbX",
+    "userSocial": {
+        "following": [],
+        "followers": []
+    },
+    "userIdentity": {
+        "id": "607133432034891031030642696328",
+        "profilePic": "url(../media/mario.jpg)",
+        "displayName": "test2"
+    },
+    "albumData": {
+        "boards": [
+            {
+                "boardName": "Acid psychadelics",
+                "boardId": 0,
+                "reviews": [
+                    0,
+                    1
+                ],
+                "thumbnail": "\/server\/media\/users\/607133432034891031030642696328\/boards\/bildnamet"
+            },
+            {
+                "boardName": "Håkan H",
+                "boardId": 0,
+                "reviews": [
+                    0,
+                    1
+                ],
+                "thumbnail": "\/server\/media\/users\/607133432034891031030642696328\/boards\/bildnamet"
+            },
+            {
+                "boardName": "JAZZ",
+                "boardId": 0,
+                "reviews": [
+                    0,
+                    1
+                ],
+                "thumbnail": "\/server\/media\/users\/607133432034891031030642696328\/boards\/bildnamet"
+            },
+            {
+                "boardName": "POP",
+                "boardId": 0,
+                "reviews": [
+                    0,
+                    1
+                ],
+                "thumbnail": "\/server\/media\/users\/607133432034891031030642696328\/boards\/bildnamet"
+            }
+        ],
+        "reviews": [
+            {
+                "albumName": "Infest the Rat's nest",
+                "artist": "King Gizzard and the lizzard wizard",
+                "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
+                "reviewId": 0,
+                "reviewDescription": "I like when the music is making noise",
+                "rating": 5,
+                "boards": [
+                    0
+                ]
+            },
+            {
+                "albumName": "The microphones pt2",
+                "artist": "Mount eire",
+                "albumId": "???",
+                "reviewId": 1,
+                "reviewDescription": "Woah! I've never cired like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
+                "rating": 5,
+                "boards": [
+                    0
+                ]
+            }
+        ],
+        "favourites": [
+            {
+                "albumName": "The microphones pt2",
+                "artist": "Mount eire",
+                "albumId": "???",
+                "favouriteId": 0
+            }
+        ]
+    }
+}];
+
+renderProfileView(user);
