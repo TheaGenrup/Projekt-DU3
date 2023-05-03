@@ -6,6 +6,7 @@ function renderLoggedInView(userIdentity) {
     document.querySelector("body").innerHTML = `
 
     <main>
+        <div id="content_container"></div>
     </main>
     <nav>
         <img class="view_icon" src="/media/icons/discover.png" alt="Discover"></img>
@@ -19,10 +20,10 @@ function renderLoggedInView(userIdentity) {
 
 }
 
+// renderLoggedInView({ profilePic: "../media/profile_picture.jpg" });
+
 // om du ska testa den här funktionen, glöm inte ladda rätt css_filer
 function renderDiscoverView(reviews) {
-
-    document.querySelector("main").innerHTML = `<div id="content_container"></div>`;
 
     // go through all reviews to create them
     reviews.forEach(review => {
@@ -136,11 +137,11 @@ renderDiscoverView([
 function renderProfileView(userInfo) {
 
     const profile_picture = userInfo[0].userIdentity.profilePic;
-    const user_followers = userInfo[0].userSocial.following.length;
-    const user_following = userInfo[0].userSocial.followers.length;
+    const user_followers = userInfo[0].userSocial.followers.length;
+    const user_following = userInfo[0].userSocial.following.length;
     const username = userInfo[0].userCredentials.username;
 
-    const profile_html = document.querySelector("main").innerHTML = `
+    const profile_html = document.querySelector("#content_container").innerHTML = `
     <header id="profile_header">
         <div>
             <div id="profile_picture"></div>
@@ -163,7 +164,7 @@ function renderProfileView(userInfo) {
     <main>
         <div id="profile_main">
             <h2>BOARDS</h2>
-            <div id="Board_of_boards"></div>
+            <div id="board_of_boards"></div>
         </div>
     </main>
     `
@@ -182,17 +183,102 @@ function renderProfileView(userInfo) {
             <div>
                 <img src="${boardPicture}">
             </div>
-            <p>${boardName}</p>
+            <p class="board_name">${boardName}</p>
         </div>
         `
-        document.querySelector("#Board_of_boards").innerHTML += newBoard;
+        document.querySelector("#board_of_boards").innerHTML += newBoard;
 
-        // Addera eventlistener
+        console.log(document.querySelector(".board_name"));
+
     });
 
+    document.querySelectorAll(".board_name").forEach(board => {
+        board.addEventListener("click", showBoard);
+    });
 
 };
-/* 
+
+function showBoard(event) {
+
+    //how to pass arguments in to an addeventlistener
+
+    console.log(event.target.textContent);
+
+    // Theas function för reviews som jag tror vi kan använda här med
+    // go through all reviews to create them
+    /* reviews.forEach(review => {
+
+        // shorten comment if needed
+        let comment = review.reviewDescription;
+        if (comment.length > 55) {
+            comment = comment.slice(0, 55) + "...";
+        }
+
+        // shorten album name if needed
+        let albumName = review.albumName;
+        if (albumName.length > 23) {
+            albumName = albumName.slice(0, 23) + "...";
+        }
+
+        // shorten artist name if needed
+        let artist = review.artist;
+        if (artist.length > 23) {
+            artist = artist.slice(0, 23) + "...";
+        }
+
+        // make html for new review
+        const newReview = `
+ 
+        <div class="review">
+            <p id="who">@ ${review.displayName} added a review</p>
+            <p id="when">${review.date} ${review.timestamp}</p>
+            <div id="album_overview">
+                <div id="album_cover_${review.reviewId}" class="album_cover"></div>
+                    <div id="album_details">
+
+                        <p id="albumName">${albumName}</p>
+                        <p id="artist">${artist}</p>
+                        <div id="stars_${review.reviewId}" class="stars">
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                        </div>
+                        <p id="review">${comment}</p>
+                </div>
+            </div>
+        </div>`;
+
+        // add new review to html
+        document.querySelector("#content_container").innerHTML += newReview;
+
+        // add album cover
+        // add album cover
+        if (review.albumCover === "" || review.albumCover === undefined) {
+
+            document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = "url(../media/icons/default_cover.png)";
+        } else {
+
+            document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = review.albumCover;
+        }
+
+        // change the background image of the right amount of stars
+        const stars = document.querySelectorAll(`#stars_${review.reviewId} > div`);
+
+        for (let i = 0; i < stars.length; i++) {
+            const star = stars[i];
+            if (i < review.rating) {
+                star.style.backgroundImage = `url(../media/icons/filled_in_star.png)`;
+            }
+        }
+
+    }); */
+
+
+}
+
+
 const user = [{
     "userCredentials": {
         "username": "test2",
@@ -282,4 +368,4 @@ const user = [{
     }
 }];
 
-renderProfileView(user); */
+//renderProfileView(user);

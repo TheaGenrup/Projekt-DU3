@@ -106,7 +106,7 @@ main {
     padding-top: 15vh;
 }
 
-#Board_of_boards {
+#board_of_boards {
     display: grid;
     grid-template-columns: 40vw 40vw;
 }
@@ -114,4 +114,12 @@ main {
 .profile_board div {
     height: 25vw;
     width: 25vw;
+}
+
+.profile_board p {
+    cursor: pointer;
+}
+
+header {
+    color: white;
 }
