@@ -1,7 +1,8 @@
-*{
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    color: lightgrey;
 }
 
 body {
@@ -14,24 +15,24 @@ body {
     background-image: url(/media/register_bg.png);
     background-position: center;
     background-size: cover;
+    padding: 10px;
 }
 
-#limitWrapper{
+main {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
-    width: 50%;
-    background-color: white;
+    width: 100%;
 }
 
-body{
+body {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#mainContainer{
+#mainContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,35 +40,27 @@ body{
     height: 100%;
 }
 
-#logoBanner{
-}
-
-
-#loginAndRegisterPageContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 5%;
-    background-color: rgb(255, 255, 255);
-    z-index: 2;
-    max-width: 400px;
-    max-height: 620px;
+#loginAndRegisterPageContainer {
+    background-color: rgba(0, 0, 0, 0.744);
     height: 100%;
     width: 100%;
-    border: 2px solid rgba(0, 0, 0, 0.447);
     border-radius: 20px;
+    padding: 3vh;
     box-shadow: rgba(31, 31, 31, 0.132) 0px 2px 8px 0px;
 }
-#loginMessageContainer{
+
+#loginMessageContainer {
     display: flex;
     justify-content: center;
-    height: 250px;
+    flex-direction: column;
 }
-#loginMessageContainer #loginRegisterSign{
+
+#loginMessageContainer #loginRegisterSign {
     font-size: 32px;
     text-align: center;
 }
-#loginAndRegisterFormContainer{
+
+#loginAndRegisterFormContainer {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -76,9 +69,10 @@ body{
     width: 100%;
     overflow: hidden;
     z-index: 1;
+
 }
 
-#loginAndRegisterForm{
+#loginAndRegisterForm {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -86,27 +80,30 @@ body{
     justify-content: flex-end;
     width: 100%;
     height: 220px;
-    z-index: 0;
     bottom: -75px;
 }
-#loginAndRegisterForm input{
-    height: 40px;
+
+#loginAndRegisterForm * {
+    height: 60px;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 30px;
     padding: 5px 15px;
     background-color: rgb(216, 210, 210);
     color: rgb(83, 83, 83);
-    border: 2px solid black;
     margin-bottom: 25px;
 }
-#loginAndRegisterForm input:focus{
+
+#loginAndRegisterForm input:focus {
     outline: none;
 }
-#loginRegisterSwitch{
+
+
+#loginRegisterSwitch {
     height: 100px;
     text-align: center;
 }
-#loginRegisterSwitch button{
+
+#loginRegisterSwitch button {
     height: 40px;
     width: 100%;
     border-radius: 20px;
@@ -114,34 +111,38 @@ body{
     cursor: pointer;
     margin-bottom: 5px;
 }
-#loginRegisterSwitch #switchBtn{
+
+#loginRegisterSwitch #switchBtn {
     color: rgb(120, 172, 189);
     cursor: pointer;
 }
-#loginRegisterSwitch #switchBtn:hover{
+
+#loginRegisterSwitch #switchBtn:hover {
     color: rgb(97, 130, 141);
 }
 
 
-/* Desktop */
+/* 
 @media only screen and (min-width: 600px) {
     #mainContainer {
-        justify-content:left;
+        justify-content: left;
     }
-    #limitWrapper{
+
+    #limitWrapper {
         min-width: 480px;
     }
- 
-  }
 
-  /* Mobile */
+}
+
+
 @media only screen and (max-width: 600px) {
     #mainContainer {
-        justify-content:center;
+        justify-content: center;
     }
-    #limitWrapper{
+
+    #limitWrapper {
         height: 100%;
         width: 100%;
     }
 
-  }
+} */
