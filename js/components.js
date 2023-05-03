@@ -20,7 +20,7 @@ function renderLoggedInView(userIdentity) {
 
 }
 
-// renderLoggedInView({ profilePic: "../media/profile_picture.jpg" });
+renderLoggedInView({ profilePic: "../media/profile_picture.jpg" });
 
 // om du ska testa den här funktionen, glöm inte ladda rätt css_filer
 function renderDiscoverView(reviews) {
@@ -141,7 +141,7 @@ function renderProfileView(userInfo) {
     const user_following = userInfo[0].userSocial.following.length;
     const username = userInfo[0].userCredentials.username;
 
-    const profile_html = document.querySelector("#content_container").innerHTML = `
+    document.querySelector("#content_container").innerHTML = `
     <header id="profile_header">
         <div>
             <div id="profile_picture"></div>
@@ -161,12 +161,12 @@ function renderProfileView(userInfo) {
             </div>
         </div>
     </header>
-    <main>
+    <div id="board_container">
         <div id="profile_main">
             <h2>BOARDS</h2>
             <div id="board_of_boards"></div>
         </div>
-    </main>
+    </div>
     `
 
     document.querySelector("#profile_picture").style.backgroundImage = profile_picture;
@@ -203,6 +203,64 @@ function showBoard(event) {
     //how to pass arguments in to an addeventlistener
 
     console.log(event.target.textContent);
+
+    const board_name = event.target.textContent;
+    const userInfo = {
+        "albumData": {
+            "board": [
+                {
+                    "boardName": "Acid psychadelics",
+                    "boardId": 0,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "\/server\/media\/users\/607133432034891031030642696328\/boards\/bildnamet"
+                },
+            ],
+            "reviews": [
+                {
+                    "albumName": "Infest the Rat's nest",
+                    "artist": "King Gizzard and the lizzard wizard",
+                    "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
+                    "reviewId": 0,
+                    "reviewDescription": "I like when the music is making noise",
+                    "rating": 5,
+                    "boards": [
+                        0
+                    ]
+                },
+                {
+                    "albumName": "The microphones pt2",
+                    "artist": "Mount eire",
+                    "albumId": "???",
+                    "reviewId": 1,
+                    "reviewDescription": "Woah! I've never cired like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
+                    "rating": 5,
+                    "boards": [
+                        0
+                    ]
+                }
+            ]
+        }
+    }
+
+    document.querySelector("#board_container").innerHTML = `
+    <div id="board_content">
+        <h2${board_name}</h2>
+        <div id="board_reviews"></div>
+    </div>
+    `
+
+    //Den reviewn som har board-id samma som boardens id, visa upp
+
+    const boardReviewsArray = userInfo.albumData.reviews;
+    console.log(boardReviewsArray);
+
+    boardReviewsArray.forEach(review => {
+
+    });
+
 
     // Theas function för reviews som jag tror vi kan använda här med
     // go through all reviews to create them
@@ -368,4 +426,4 @@ const user = [{
     }
 }];
 
-//renderProfileView(user);
+renderProfileView(user);
