@@ -136,6 +136,18 @@ renderDiscoverView([
 
 function renderProfileView(userInfo) {
 
+    //getUser fetch, hämtar alla users från users.json och loopa igenom så vi hittar den me rätt id. Lägger till denna i en ny php (getUser.php?) Och den använder vi sedan som underlag för profilen
+    //ID:et får vi som argument
+
+    const userId = userInfo;
+
+    const request = new Request(`/server/get_user.php`);
+    const data = {
+        headers: { "Content-type": "application/json" },
+        method: "GET",
+        body: JSON.stringify(userId)
+    };
+
     const profile_picture = userInfo[0].userIdentity.profilePic;
     const user_followers = userInfo[0].userSocial.followers.length;
     const user_following = userInfo[0].userSocial.following.length;
@@ -201,6 +213,7 @@ function renderProfileView(userInfo) {
 function showBoard(event) {
 
     //how to pass arguments in to an addeventlistener
+    //Boards har ID
 
     console.log(event.target.textContent);
 
