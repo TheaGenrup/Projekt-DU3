@@ -179,7 +179,7 @@ function renderProfileView(userId) {
 
     document.querySelector("#profile_picture").style.backgroundImage = profilePicture;
 
-    const boards = userInfo[0].albumData.boards;
+    const boards = user.albumData.boards;
 
     boards.forEach(board => {
 
