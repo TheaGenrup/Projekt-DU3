@@ -1,33 +1,39 @@
 "use strict";
+/*
 const openSearchWindowBtn = document.querySelector("#openSearchWindowBtn");
 const closeSearchWindowBtn = document.querySelector("#closeSearchWindowBtn");
 openSearchWindowBtn.addEventListener("click", openSearchWindow);
 closeSearchWindowBtn.addEventListener("click", closeSearchWindow);
 searchField.addEventListener("keyup", searchAlbums);
+*/
 let token = "";
 let tokenTimer;
 
 function openSearchWindow() {
-    const searchWindow = document.querySelector("#searchWindow");
-    const searchFieldContainer = document.querySelector("#searchFieldContainer");
-    const searchField = document.querySelector("#searchField");
-    const closeSearchWindowBtn = document.querySelector("#closeSearchWindowBtn");
-
-    closeSearchWindowBtn.style.display = "block";
-    searchWindow.style.transition = "1s"
-    searchWindow.style.height = "100%";
-    searchFieldContainer.style.width = "100%";
-    searchFieldContainer.style.height = "100%";
-    searchField.style.display = "block";
     fetch("/server/spotifyApi/tokenAccess.php")
         .then(r=>r.json())
         .then(r => {
             token = r.token;
             tokenTimer = r.tokenTimeLeft;
-})
+    })
+    const searchWindow = document.querySelector("#searchWindow");
+    searchWindow.classList.add("open");
+    const searchFieldContainer = document.querySelector("#searchFieldContainer");
+    const searchField = document.querySelector("#searchField");
+    const closeSearchWindowBtn = document.querySelector("#closeSearchWindowBtn");
 
-
+    window.addEventListener("keyup", (e)=>{
+        if (e.key === "Escape" && searchWindow.classList.contains("open")) {closeSearchWindow();}
+    })
+    searchWindow.style.transition = "1.5s"
+    closeSearchWindowBtn.style.display = "block";
+    searchWindow.style.display = "block";
+    searchWindow.style.height = "100%";
+    searchFieldContainer.style.width = "100%";
+    searchFieldContainer.style.height = "100%";
+    searchField.style.display = "block";
 }
+
 function closeSearchWindow() {
     const searchWindow = document.querySelector("#searchWindow");
     const searchFieldContainer = document.querySelector("#searchFieldContainer");
@@ -65,16 +71,45 @@ function searchAlbums(e) {
             });
             let albumInfo = {
               artistName: artistsInAlbum,
-              name:       album.name,
-              image:      album.images[1].url,
+              albumName:  album.name,
               albumId:    album.id,
-              type:       album.album_type,
+              albumImage: album.images[1].url,
+              albumType:  album.album_type,
             }
             albumsFound.push(albumInfo)
           });
-          console.log(albumsFound);
+          listAlbums(albumsFound);
         });
   
       }
     }
+}
+
+function listAlbums(albums) {
+    const albumUl = document.querySelector("#albumUl");
+    albumUl.innerHTML = "";
+    if (albums.length > 0) {
+        console.log("TJOHO");
+    }
+    albums.forEach(album => {
+        const artistName = album.artistName;
+        const albumName = album.albumName;
+        const albumId = album.albumId;
+        const albumImage = album.albumImage;
+        const albumType = album.albumType;
+
+        const html = `
+            <img class ="albumPreviewImage" src="${albumImage}" alt="${albumName}">
+            <div class="albumInfo">
+                <p>Artist</p>
+                <p>${albumName}</p>
+                <p>${albumType}</p>
+            </div>
+        `;
+        const liDom = document.createElement("li");
+        liDom.setAttribute("id", albumId);
+        liDom.classList.add("albumPreview");
+        liDom.innerHTML = html;
+        albumUl.append(liDom);
+    });
 }

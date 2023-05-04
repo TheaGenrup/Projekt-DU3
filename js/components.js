@@ -37,39 +37,59 @@ function renderLoginPage() {
 }
 
 // om du ska testa den här funktionen, glöm inte ladda rätt css_filer
+// Render Logged in view
 function renderLoggedInView(userIdentity) {
-
     const html = `
-        <main id="mainContainer">
-            <div id="contentContainer"></div>
-        </main>
-        <nav>
-            <img class="view_icon" src="/media/icons/discover.png" alt="Discover"></img>
-            <img class="view_icon" id="openSearchWindowBtn" src="/media/icons/search.png" alt="Search"></img>
-            <img class="view_icon" src="/media/icons/add.png" alt="Add"></img>
-            <img class="view_icon" id="profile_picture" src="/media/icons/${userIdentity.profilePic}.png" alt="Profile"></img>
-            <div class="view_icon" id="logoutBtn">logout</div>
-            <div id="searchFieldContainer">
+    <main id="mainContainer">
+        <div id="contentContainer">
+            <div id="searchWindow">
+                <div id="usersUlContainer">
+                    <ul id="usersUl">
+                    </ul>
+                </div>
+                <div id="albumUlContainer">
+                    <ul id="albumUl">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+    <nav>
+        <img class="view_icon" src="/media/icons/discover.png" alt="Discover"></img>
+        <img class="view_icon" id="openSearchWindowBtn" src="/media/icons/search.png" alt="Search"></img>
+        <img class="view_icon" src="/media/icons/add.png" alt="Add"></img>
+        <img class="view_icon" id="profile_picture" src="/media/icons/${userIdentity.profilePic}.png" alt="Profile"></img>
+        <div class="view_icon" id="logoutBtn">logout</div>
+        <div id="searchFieldContainer">
             <img id="closeSearchWindowBtn" src="/media/icons/close_0.png" alt="">
             <input id="searchField" type="text" placeholder="Search albums and users"></input>
         </div>
-        </nav>
-
+    </nav>
     `;
     document.body.innerHTML = html;
+    // DOM elements used
     const logoutBtn = document.querySelector("#logoutBtn");
     const openSearchWindowBtn = document.querySelector("#openSearchWindowBtn");
     const closeSearchWindowBtn = document.querySelector("#closeSearchWindowBtn");
+    const searchField = document.querySelector("#searchField");
     
+    // DOM Event listeners
+    logoutBtn.addEventListener("click", renderLoginPage);
     openSearchWindowBtn.addEventListener("click", openSearchWindow);
     closeSearchWindowBtn.addEventListener("click", closeSearchWindow);
-    logoutBtn.addEventListener("click", renderLoginPage);
+    searchField.addEventListener("keyup", searchAlbums);
     document.querySelector("#style1").setAttribute("href", "/css/logged_in_basic_layout.css");
     document.querySelector("#style2").setAttribute("href", "/css/search.css");
     document.querySelector("#profile_picture").src = userIdentity.profilePic;
     return;
 
 }
+
+
+
+
+
+
 // renderLoggedInView({ profilePic: "../media/profile_picture.jpg" });
 
 // om du ska testa den här funktionen, glöm inte ladda rätt css_filer

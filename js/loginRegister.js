@@ -3,10 +3,10 @@ checkIfAlreadyLoggedIn();
 function checkIfAlreadyLoggedIn() {
     const key = localStorage.getItem("logInKey");
     if (key === undefined || key === null) {
-        //renderLoginPage(); 
+        renderLoginPage(); 
         return
     } else {
-        // attemptLogin("", "", "Access-Key: Auth", key);
+        attemptLogin("", "", "Access-Key: Auth", key);
     }
 };
 // Switch between log in and register Section
@@ -83,12 +83,14 @@ async function fetchLogin(username, password, access, loginKey) {
     }
     const response = await fetch(request, data);
     const resource = await response.json();
-    return resource
+    if (response.ok) {
+        return resource
+    }
+
 }
 
 function loginUser(userData) {
     localStorage.setItem("logInKey", userData.loginKey);
-    console.log(userData);
 
     renderLoggedInView({
         profilePic: userData.profilePic,
@@ -99,6 +101,64 @@ function loginUser(userData) {
     // renderDiscoverView(followingNewReviews);
 
 }
+
+// Register Section
+function registerUser(username, password, displayname) {
+    const request = new Request(`/server/register.php`);
+    const data = {
+        headers: { "Content-type": "application/json" },
+        method: "POST",
+        body: JSON.stringify({
+            username: username,
+            password: password,
+            displayName: displayname,
+            access: "Access-Register: Auth"
+        })
+    }
+
+    fetch(request, data)
+        .then(r => {
+            console.log(r);
+            return r.json()
+        })
+        .then(r => {
+            console.log(r);
+        })
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // temporary call to function
 /* loginUser({
@@ -181,29 +241,3 @@ fetch(request, data)
 
 Om allt går bra returneras användaren och dess info förutom dess användarnamn & lösenord
 */
-
-// Register Section
-
-function registerUser(username, password, displayname) {
-    const request = new Request(`/server/register.php`);
-    const data = {
-        headers: { "Content-type": "application/json" },
-        method: "POST",
-        body: JSON.stringify({
-            username: username,
-            password: password,
-            displayName: displayname,
-            access: "Access-Register: Auth"
-        })
-    }
-
-    fetch(request, data)
-        .then(r => {
-            console.log(r);
-            return r.json()
-        })
-        .then(r => {
-            console.log(r);
-        })
-
-}

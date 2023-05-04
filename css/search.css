@@ -12,41 +12,80 @@
 #mainContainer{
     position: relative;
 }
-
+    /*  Search section and styling */
+/*  Search Window Section */
 #searchWindow{
+    display: none;
     position: absolute;
     top: 0;
     width: 100%;
     height: 0%;
     background-color: rgb(176, 176, 176);
     z-index: 99999;
-    border: 1px solid lightcoral;
-    transition: 1.5s;
     overflow: scroll;
 }
+/*  Search filed section */
 #searchFieldContainer{
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
     right: 0;
-    width: 0%;
+    width: 9vh;
     height: 0%;
     background-color: rgb(24, 24, 24);
 }
 #searchFieldContainer #closeSearchWindowBtn{
     display: none;
-    display: none;
-    height: 5vw;
-    width: 5vw;
+    height: 4.5vw;
+    width: 4.5vw;
     margin-right: 10px;
     cursor: pointer;
 }
 #searchField{
     display: none;
-    height: 8vw;
+    height: 80%;
     width: 80%;
 
     padding-left: 10px;
     border-radius: 12px;
+}
+#searchField:focus{
+    outline: none;
+}
+/*  Search Results section and styling */
+
+#usersUlContainer{}
+#albumUlContainer{}
+
+.albumPreview{
+    display: flex;
+
+    padding: 5px;
+    cursor: pointer;
+
+    border-bottom: 2px solid rgb(100, 100, 100);
+}
+.albumPreview:hover{
+    transition: 0.5s;
+    background-color: rgb(119, 118, 118);
+    padding: 8px 5px;
+}
+.albumPreview .albumPreviewImage{
+    height: 20vw;
+    width: 20vw;
+
+    border-radius: 12px;
+    border: 1.6px solid rgba(0, 0, 0, 0.454);
+}
+
+.albumInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 100%;
+
+    padding: 5px;
+    font-size: 5vw;
 }
