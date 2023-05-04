@@ -3,14 +3,15 @@ const openSearchWindowBtn = document.querySelector("#openSearchWindowBtn");
 const closeSearchWindowBtn = document.querySelector("#closeSearchWindowBtn");
 openSearchWindowBtn.addEventListener("click", openSearchWindow);
 closeSearchWindowBtn.addEventListener("click", closeSearchWindow);
-searchField.addEventListener("keyup", search)
+searchField.addEventListener("keyup", searchAlbums);
+let token = "";
+let tokenTimer;
 
 function openSearchWindow() {
     const searchWindow = document.querySelector("#searchWindow");
     const searchFieldContainer = document.querySelector("#searchFieldContainer");
     const searchField = document.querySelector("#searchField");
     const closeSearchWindowBtn = document.querySelector("#closeSearchWindowBtn");
-    searchWindow.classList.toggle("status:open");
 
     closeSearchWindowBtn.style.display = "block";
     searchWindow.style.transition = "1s"
@@ -18,15 +19,20 @@ function openSearchWindow() {
     searchFieldContainer.style.width = "100%";
     searchFieldContainer.style.height = "100%";
     searchField.style.display = "block";
+    fetch("/server/spotifyApi/tokenAccess.php")
+        .then(r=>r.json())
+        .then(r => {
+            token = r.token;
+            tokenTimer = r.tokenTimeLeft;
+})
+
 
 }
-
 function closeSearchWindow() {
     const searchWindow = document.querySelector("#searchWindow");
     const searchFieldContainer = document.querySelector("#searchFieldContainer");
     const searchField = document.querySelector("#searchField");
     const closeSearchWindowBtn = document.querySelector("#closeSearchWindowBtn");
-    searchWindow.classList.toggle("status:open");
     
     closeSearchWindowBtn.style.display = "none";
     searchWindow.style.transition = "0s"
@@ -36,16 +42,13 @@ function closeSearchWindow() {
     searchField.style.display = "none";
 }
 
-function search(e) {
+function searchAlbums(e) {
     let input = e.target.value;
-    console.log(input);
-    /*
     if (input != "" || input === null || input === undefined) {
       let albumSearchEndpoint = `https://api.spotify.com/v1/search?q=${input}&type=album&offset=0&limit=10`;
       
   
       if (token.length > 0 || token != undefined) { 
-        seachFieldUlDom.innerHTML = "";
         fetch(albumSearchEndpoint, {
             headers: {
                 "Authorization": "Bearer " + token
@@ -54,7 +57,7 @@ function search(e) {
         .then(response => response.json())
         .then(albumResource => {
           const albumsfetched = albumResource.albums.items;
-          albumsFound = []
+          const albumsFound = []
           albumsfetched.forEach(album => {
             const artistsInAlbum = []; 
             album.artists.forEach(artist => {
@@ -69,11 +72,9 @@ function search(e) {
             }
             albumsFound.push(albumInfo)
           });
-            listResult(albumsFound);
-            qewffresults(albumsFound)
+          console.log(albumsFound);
         });
   
       }
     }
-    */
 }
