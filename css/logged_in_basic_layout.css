@@ -19,8 +19,10 @@ main {
 }
 
 nav {
+    position: relative;
     color: white;
     height: 9vh;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;

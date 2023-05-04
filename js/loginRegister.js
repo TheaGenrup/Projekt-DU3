@@ -3,9 +3,10 @@ checkIfAlreadyLoggedIn();
 function checkIfAlreadyLoggedIn() {
     const key = localStorage.getItem("logInKey");
     if (key === undefined || key === null) {
-        renderLoginPage(); 
+        //renderLoginPage(); 
+        return
     } else {
-        attemptLogin("", "", "Access-Key: Auth", key);
+        // attemptLogin("", "", "Access-Key: Auth", key);
     }
 };
 // Switch between log in and register Section

@@ -45,18 +45,25 @@ function renderLoggedInView(userIdentity) {
         </main>
         <nav>
             <img class="view_icon" src="/media/icons/discover.png" alt="Discover"></img>
-            <img class="view_icon" id="searchBtn" src="/media/icons/search.png" alt="Search"></img>
+            <img class="view_icon" id="openSearchWindowBtn" src="/media/icons/search.png" alt="Search"></img>
             <img class="view_icon" src="/media/icons/add.png" alt="Add"></img>
             <img class="view_icon" id="profile_picture" src="/media/icons/${userIdentity.profilePic}.png" alt="Profile"></img>
             <div class="view_icon" id="logoutBtn">logout</div>
+            <div id="searchFieldContainer">
+            <img id="closeSearchWindowBtn" src="/media/icons/close_0.png" alt="">
+            <input id="searchField" type="text" placeholder="Search albums and users"></input>
+        </div>
         </nav>
 
     `;
     document.body.innerHTML = html;
     const logoutBtn = document.querySelector("#logoutBtn");
+    const openSearchWindowBtn = document.querySelector("#openSearchWindowBtn");
+    const closeSearchWindowBtn = document.querySelector("#closeSearchWindowBtn");
+    
+    openSearchWindowBtn.addEventListener("click", openSearchWindow);
+    closeSearchWindowBtn.addEventListener("click", closeSearchWindow);
     logoutBtn.addEventListener("click", renderLoginPage);
-    const searchBtn = document.querySelector("#searchBtn");
-    searchBtn.addEventListener("click", openSearchWindow)
     document.querySelector("#style1").setAttribute("href", "/css/logged_in_basic_layout.css");
     document.querySelector("#style2").setAttribute("href", "/css/search.css");
     document.querySelector("#profile_picture").src = userIdentity.profilePic;

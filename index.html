@@ -8,16 +8,30 @@
     <link rel="shortcut icon" href="media/headphones.png">
     <title>Laulu</title>
     <!--     <link rel="stylesheet" href="css/index.css"> -->
-    <link rel="stylesheet" id="style1" href="css/register_login.css">
-    <link rel="stylesheet" id="style2" href="">
+    <link rel="stylesheet" id="style1" href="css/logged_in_basic_layout.css">
+    <link rel="stylesheet" id="style2" href="css/search.css">
     <!--     <link rel="stylesheet" href="css/logged_in_basic_layout.css">
     <link rel="stylesheet" href="css/discover.css"> -->
     <!--     <link rel="stylesheet" href="css/profile.css"> -->
 </head>
 
 <body>
-    <main id="mainContainer">
-    </main>
+        <main id="mainContainer">
+            <div id="contentContainer">
+                <div id="searchWindow"></div>
+            </div>
+        </main>
+        <nav>
+            <img class="view_icon" src="/media/icons/discover.png" alt="Discover"></img>
+            <img class="view_icon" id="openSearchWindowBtn" src="/media/icons/search.png" alt="Search"></img>
+            <img class="view_icon" src="/media/icons/add.png" alt="Add"></img>
+            <img class="view_icon" id="profile_picture" src="/media/icons/${userIdentity.profilePic}.png" alt="Profile"></img>
+            <div class="view_icon" id="logoutBtn">logout</div>
+            <div id="searchFieldContainer">
+                <img id="closeSearchWindowBtn" src="/media/icons/close_0.png" alt="">
+                <input id="searchField" type="text" placeholder="Search albums and users"></input>
+            </div>
+        </nav>
 </body>
 
 <script src="js/components.js"></script>
@@ -26,7 +40,6 @@
 <script src="js/discover.js"></script>
 <script src="js/profile.js"></script>
 <script src="js/index.js"></script>
-<script src="js/logout.js"></script>
 <script src="js/search.js"></script>
 
 </html>
