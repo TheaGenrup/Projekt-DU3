@@ -77,7 +77,8 @@ function renderLoggedInView(userIdentity) {
     logoutBtn.addEventListener("click", renderLoginPage);
     openSearchWindowBtn.addEventListener("click", openSearchWindow);
     closeSearchWindowBtn.addEventListener("click", closeSearchWindow);
-    searchField.addEventListener("keyup", searchAlbums);
+    // searchField.addEventListener("keyup", searchAlbums);
+    searchField.addEventListener("keyup", searchUsers);
     document.querySelector("#style1").setAttribute("href", "/css/logged_in_basic_layout.css");
     document.querySelector("#style2").setAttribute("href", "/css/search.css");
     document.querySelector("#profile_picture").src = userIdentity.profilePic;

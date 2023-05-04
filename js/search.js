@@ -53,7 +53,7 @@ function closeSearchWindow() {
 
 function searchAlbums(e) {
     let input = e.target.value;
-    if (input === "" || input === null || input === undefined) {return}
+    if (!input) {return}
     let albumSearchEndpoint = `https://api.spotify.com/v1/search?q=${input}&type=album&offset=0&limit=10`;
 
     if (token.length > 0 || token != undefined) { 
@@ -87,10 +87,13 @@ function searchAlbums(e) {
 }
 function searchUsers(e) {
     let input = e.target.value;
-    if (input === "" || input === null || input === undefined) {return}
+    if (!input) {return}
     const request = new Request(`/server/searchUsers.php?search=${input}`);
     fetch(request)
-        .then(r=>r.json())
+        .then(r=>{
+            console.log(r);
+            return r.json()
+        })
         .then(userResource => {
             console.log(userResource);
         })
