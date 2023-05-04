@@ -1,5 +1,7 @@
 <?php ini_set("display_errors", 1);
 
+//något som är fel här..
+
 if (!$_SERVER["REQUEST_METHOD"] == "GET") {
 
     $error = ["message" => "Invalid HTTP-method"];

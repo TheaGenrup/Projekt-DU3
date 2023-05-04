@@ -20,7 +20,7 @@ function renderLoggedInView(userIdentity) {
 
 }
 
-// renderLoggedInView({ profilePic: "../media/profile_picture.jpg" });
+//renderLoggedInView({ profilePic: "../media/profile_picture.jpg" });
 
 // om du ska testa den här funktionen, glöm inte ladda rätt css_filer
 function renderDiscoverView(reviews) {
@@ -142,68 +142,66 @@ function renderProfileView(userId) {
         .then(resource => {
             const user = resource;
             console.log(user);
+
+            const profilePicture = user.userIdentity.profilePic;
+            const userFollowers = user.userSocial.followers.length;
+            const userFollowing = user.userSocial.following.length;
+            const username = user.userCredentials.username;
+
+            document.querySelector("#content_container").innerHTML = `
+                <div id="profile_header">
+                    <div>
+                        <div id="profile_picture"></div>
+                        <p>@${username}</p>
+                    </div> 
+                    <div>
+                        <div id="following_followers">
+                            <div>Followers</div>
+                            <div>${userFollowers}</div>
+                            <div>Following</div>
+                            <div>${userFollowing}</div>
+                        </div>
+                        <div>
+                            <div id="settings_icon"></div>
+                            <div id="bookmark_icon"></div>
+                            <div id="add_board_icon"></div>
+                        </div>
+                    </div>
+                </div>
+                    <div>
+                        <div id="profile_main">
+                            <h2>BOARDS</h2>
+                            <div id="board_of_boards"></div>
+                        </div>
+                    </div>`
+
+            document.querySelector("#profile_picture").style.backgroundImage = profilePicture;
+
+            const boards = user.albumData.boards;
+
+            boards.forEach(board => {
+
+                const boardName = board.boardName;
+                const boardPicture = board.thumbnail;
+
+                const newBoard = `
+                <div class="profile_board">
+                    <div>
+                        <img src="${boardPicture}">
+                    </div>
+                    <p class="board_name">${boardName}</p>
+                </div>
+                `
+                document.querySelector("#board_of_boards").innerHTML += newBoard;
+
+                console.log(document.querySelector(".board_name"));
+
+            });
+
+            document.querySelectorAll(".board_name").forEach(board => {
+                board.addEventListener("click", showBoard);
+            });
         });
-
-    const profilePicture = user.userIdentity.profilePic;
-    const userFollowers = user.userSocial.followers.length;
-    const userFollowing = user.userSocial.following.length;
-    const username = user.userCredentials.username;
-
-    document.querySelector("#content_container").innerHTML = `
-    <div id="profile_header">
-        <div>
-            <div id="profile_picture"></div>
-            <p>@${username}</p>
-        </div> 
-        <div>
-            <div id="following_followers">
-                <div>Followers</div>
-                <div>${userFollowers}</div>
-                <div>Following</div>
-                <div>${userFollowing}</div>
-            </div>
-            <div>
-                <div id="settings_icon"></div>
-                <div id="bookmark_icon"></div>
-                <div id="add_board_icon"></div>
-            </div>
-        </div>
-    </div>
-    <div>
-        <div id="profile_main">
-            <h2>BOARDS</h2>
-            <div id="board_of_boards"></div>
-        </div>
-    </div>
-    `
-
-    document.querySelector("#profile_picture").style.backgroundImage = profilePicture;
-
-    const boards = user.albumData.boards;
-
-    boards.forEach(board => {
-
-        const boardName = board.boardName;
-        const boardPicture = board.thumbnail;
-
-        const newBoard = `
-        <div class="profile_board">
-            <div>
-                <img src="${boardPicture}">
-            </div>
-            <p class="board_name">${boardName}</p>
-        </div>
-        `
-        document.querySelector("#board_of_boards").innerHTML += newBoard;
-
-        console.log(document.querySelector(".board_name"));
-
-    });
-
-    document.querySelectorAll(".board_name").forEach(board => {
-        board.addEventListener("click", showBoard);
-    });
-
 };
 
 function showBoard(event) {
@@ -287,4 +285,4 @@ function showBoard(event) {
 
 }
 
-renderProfileView("607133432034891031030642696328");
+//renderProfileView("607133432034891031030642696328");
