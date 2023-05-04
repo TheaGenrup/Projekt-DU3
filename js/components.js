@@ -134,27 +134,23 @@ renderDiscoverView([
     }
 ]); */
 
-function renderProfileView(userInfo) {
+function renderProfileView(userId) {
 
-    //getUser fetch, hämtar alla users från users.json och loopa igenom så vi hittar den me rätt id. Lägger till denna i en ny php (getUser.php?) Och den använder vi sedan som underlag för profilen
-    //ID:et får vi som argument
+    const request = new Request(`/server/getUser.php/?id=${userId}`);
+    fetch(request)
+        .then(r => r.json())
+        .then(resource => {
+            const user = resource;
+            console.log(user);
+        });
 
-    const userId = userInfo;
+    const profilePicture = user.userIdentity.profilePic;
+    const userFollowers = user.userSocial.followers.length;
+    const userFollowing = user.userSocial.following.length;
+    const username = user.userCredentials.username;
 
-    const request = new Request(`/server/get_user.php`);
-    const data = {
-        headers: { "Content-type": "application/json" },
-        method: "GET",
-        body: JSON.stringify(userId)
-    };
-
-    const profile_picture = userInfo[0].userIdentity.profilePic;
-    const user_followers = userInfo[0].userSocial.followers.length;
-    const user_following = userInfo[0].userSocial.following.length;
-    const username = userInfo[0].userCredentials.username;
-
-    const profile_html = document.querySelector("#content_container").innerHTML = `
-    <header id="profile_header">
+    document.querySelector("#content_container").innerHTML = `
+    <div id="profile_header">
         <div>
             <div id="profile_picture"></div>
             <p>@${username}</p>
@@ -162,9 +158,9 @@ function renderProfileView(userInfo) {
         <div>
             <div id="following_followers">
                 <div>Followers</div>
-                <div>${user_followers}</div>
+                <div>${userFollowers}</div>
                 <div>Following</div>
-                <div>${user_following}</div>
+                <div>${userFollowing}</div>
             </div>
             <div>
                 <div id="settings_icon"></div>
@@ -172,16 +168,16 @@ function renderProfileView(userInfo) {
                 <div id="add_board_icon"></div>
             </div>
         </div>
-    </header>
-    <main>
+    </div>
+    <div>
         <div id="profile_main">
             <h2>BOARDS</h2>
             <div id="board_of_boards"></div>
         </div>
-    </main>
+    </div>
     `
 
-    document.querySelector("#profile_picture").style.backgroundImage = profile_picture;
+    document.querySelector("#profile_picture").style.backgroundImage = profilePicture;
 
     const boards = userInfo[0].albumData.boards;
 
@@ -291,94 +287,4 @@ function showBoard(event) {
 
 }
 
-
-const user = [{
-    "userCredentials": {
-        "username": "test2",
-        "password": "test2"
-    },
-    "loginKey": "FEQTxo5ivVNyPi31ldS8Q9QbX",
-    "userSocial": {
-        "following": [],
-        "followers": []
-    },
-    "userIdentity": {
-        "id": "607133432034891031030642696328",
-        "profilePic": "url(../media/mario.jpg)",
-        "displayName": "test2"
-    },
-    "albumData": {
-        "boards": [
-            {
-                "boardName": "Acid psychadelics",
-                "boardId": 0,
-                "reviews": [
-                    0,
-                    1
-                ],
-                "thumbnail": "\/server\/media\/users\/607133432034891031030642696328\/boards\/bildnamet"
-            },
-            {
-                "boardName": "Håkan H",
-                "boardId": 0,
-                "reviews": [
-                    0,
-                    1
-                ],
-                "thumbnail": "\/server\/media\/users\/607133432034891031030642696328\/boards\/bildnamet"
-            },
-            {
-                "boardName": "JAZZ",
-                "boardId": 0,
-                "reviews": [
-                    0,
-                    1
-                ],
-                "thumbnail": "\/server\/media\/users\/607133432034891031030642696328\/boards\/bildnamet"
-            },
-            {
-                "boardName": "POP",
-                "boardId": 0,
-                "reviews": [
-                    0,
-                    1
-                ],
-                "thumbnail": "\/server\/media\/users\/607133432034891031030642696328\/boards\/bildnamet"
-            }
-        ],
-        "reviews": [
-            {
-                "albumName": "Infest the Rat's nest",
-                "artist": "King Gizzard and the lizzard wizard",
-                "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
-                "reviewId": 0,
-                "reviewDescription": "I like when the music is making noise",
-                "rating": 5,
-                "boards": [
-                    0
-                ]
-            },
-            {
-                "albumName": "The microphones pt2",
-                "artist": "Mount eire",
-                "albumId": "???",
-                "reviewId": 1,
-                "reviewDescription": "Woah! I've never cired like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
-                "rating": 5,
-                "boards": [
-                    0
-                ]
-            }
-        ],
-        "favourites": [
-            {
-                "albumName": "The microphones pt2",
-                "artist": "Mount eire",
-                "albumId": "???",
-                "favouriteId": 0
-            }
-        ]
-    }
-}];
-
-//renderProfileView(user);
+renderProfileView("607133432034891031030642696328");
