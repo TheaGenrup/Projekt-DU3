@@ -1,25 +1,68 @@
 "use strict";
+// Render Login page, 
+function renderLoginPage() {
+    localStorage.clear();
+    const html = `
+    <main id="mainContainer">
+        <div id="limitWrapper">
+            <div id="loginAndRegisterPageContainer">
+                <div id="logoBanner">
+                    <h1>Laulu :D</h1>
+                </div>
+                <div id="loginMessageContainer">
+                    <div id="loginRegisterSign">Login</div>
+                    <div id="loginRegistermessage"></div>
+                </div>
+                <div id="loginAndRegisterFormContainer">
+                    <form id="loginAndRegisterForm" class="loginForm">
+                        <input type="text" id="usernameInput" placeholder="username">
+                        <input type="text" id="passwordInput" placeholder="password">
+                        <input type="text" id="displaynameInput" placeholder="displayname">
+                    </form>
+                </div>
+                <div id="loginRegisterSwitch">
+                    <button id="loginRegisterBtn" class="loginBtn">Log in</button>
+                    <p><span class="signupText">Don't have an account?</span> <span id="switchBtn">Sign up</span></p>
+                </div>
+            </div>
+        </div>
+    </main>
+    `
+    document.body.innerHTML = html;
+    const switchBtn = document.querySelector("#switchBtn");
+    const loginRegisterbtn = document.querySelector("#loginRegisterBtn");
+    switchBtn.addEventListener("click", switchLoginRegsiter);
+    loginRegisterbtn.addEventListener("click", loginRegister)
+    document.querySelector("#style1").setAttribute("href", "/css/register_login.css");
+}
 
 // om du ska testa den här funktionen, glöm inte ladda rätt css_filer
 function renderLoggedInView(userIdentity) {
 
-    document.querySelector("body").innerHTML = `
+    const html = `
+        <main id="mainContainer">
+            <div id="contentContainer"></div>
+        </main>
+        <nav>
+            <img class="view_icon" src="/media/icons/discover.png" alt="Discover"></img>
+            <img class="view_icon" id="searchBtn" src="/media/icons/search.png" alt="Search"></img>
+            <img class="view_icon" src="/media/icons/add.png" alt="Add"></img>
+            <img class="view_icon" id="profile_picture" src="/media/icons/${userIdentity.profilePic}.png" alt="Profile"></img>
+            <div class="view_icon" id="logoutBtn">logout</div>
+        </nav>
 
-    <main>
-        <div id="content_container"></div>
-    </main>
-    <nav>
-        <img class="view_icon" src="/media/icons/discover.png" alt="Discover"></img>
-        <img class="view_icon" src="/media/icons/search.png" alt="Search"></img>
-        <img class="view_icon" src="/media/icons/add.png" alt="Add"></img>
-        <img class="view_icon" id="profile_picture" src="/media/icons/${userIdentity.profilePic}.png" alt="Profile"></img>
-    </nav>
     `;
-
+    document.body.innerHTML = html;
+    const logoutBtn = document.querySelector("#logoutBtn");
+    logoutBtn.addEventListener("click", renderLoginPage);
+    const searchBtn = document.querySelector("#searchBtn");
+    searchBtn.addEventListener("click", openSearchWindow)
+    document.querySelector("#style1").setAttribute("href", "/css/logged_in_basic_layout.css");
+    document.querySelector("#style2").setAttribute("href", "/css/search.css");
     document.querySelector("#profile_picture").src = userIdentity.profilePic;
+    return;
 
 }
-
 // renderLoggedInView({ profilePic: "../media/profile_picture.jpg" });
 
 // om du ska testa den här funktionen, glöm inte ladda rätt css_filer
