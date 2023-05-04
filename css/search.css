@@ -1,0 +1,9 @@
+#contentContainer{
+    border: 2px solid lightcoral;
+    height: 100%;
+    width: 100%;
+}
+
+#mainContainer{
+    border: 1px solid lightblue;
+}

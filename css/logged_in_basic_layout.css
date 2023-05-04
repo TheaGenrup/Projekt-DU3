@@ -33,4 +33,9 @@ nav {
     background-size: cover;
     height: 8vw;
     width: 8vw;
+    cursor: pointer;
+}
+
+#logoutBtn{
+    cursor: pointer;
 }

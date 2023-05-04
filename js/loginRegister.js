@@ -1,8 +1,17 @@
 "use strict";
-//  checkIfAlreadyLoggedIn();
+checkIfAlreadyLoggedIn();
+function checkIfAlreadyLoggedIn() {
+    const key = localStorage.getItem("logInKey");
+    if (key === undefined || key === null) {
+        renderLoginPage(); 
+    } else {
+        attemptLogin("", "", "Access-Key: Auth", key);
+    }
+};
 // Switch between log in and register Section
-const switchBtn = document.querySelector("#switchBtn");
-switchBtn.addEventListener("click", (e) => {
+function switchLoginRegsiter(e) {
+    const switchBtn = e.target
+    const loginRegisterbtn = document.querySelector("#loginRegisterBtn");
     const loginRegisterSwitchcontainer = document.querySelector("#loginRegisterSwitch");
     const text = loginRegisterSwitchcontainer.querySelector(".signupText");
     const loginAndRegisterForm = document.querySelector("#loginAndRegisterForm");
@@ -19,7 +28,6 @@ switchBtn.addEventListener("click", (e) => {
         switchBtn.textContent = "Log in";
         loginRegisterbtn.textContent = "Register";
         loginRegisterSign.textContent = "Create an account"
-
     } else {
         loginAndRegisterForm.classList.add("loginForm");
         loginAndRegisterForm.classList.remove("registerForm");
@@ -30,11 +38,9 @@ switchBtn.addEventListener("click", (e) => {
         loginRegisterbtn.textContent = "Log in";
         loginRegisterSign.textContent = "Login"
     }
-})
-
+}
 //login and register button
-const loginRegisterbtn = document.querySelector("#loginRegisterBtn");
-loginRegisterbtn.addEventListener("click", (e) => {
+function loginRegister(e) {
     e.preventDefault();
     const loginOrRegister = e.target.textContent
     if (loginOrRegister === "Log in") {
@@ -48,18 +54,17 @@ loginRegisterbtn.addEventListener("click", (e) => {
         const displaynameInput = document.querySelector("#displaynameInput").value;
         registerUser(usernameInput, passwordInput, displaynameInput);
     }
-})
+}
+
 //  Log in Section 
 async function attemptLogin(username, password, access, loginKey) {
     if (!loginKey) {
         const userData = await fetchLogin(username, password, access);
-        // loginUser(userData);
-        console.log(userData);
+        loginUser(userData);
     }
     if (loginKey) {
         const userData = await fetchLogin(username, password, access, loginKey);
-        // loginUser(userData);
-        console.log(userData);
+        loginUser(userData);
     }
 
 }
@@ -80,22 +85,9 @@ async function fetchLogin(username, password, access, loginKey) {
     return resource
 }
 
-function checkIfAlreadyLoggedIn() {
-    const key = localStorage.getItem("LogInKey");
-
-    console.log(key);
-    if (!key) { return };
-    attemptLogin("", "", "Access-Key: Auth", key);
-}
-
-function renderLoginPage(params) {
-}
-
-// om du ska testa den här funktionen, glöm inte ladda rätt css_filer
-function loginUser(userData, followingNewReviews) {
-    // jag behöver ha med åtminstone reviews också för alla users som den inloggade följer som argument till loginUser för de måste också skickas med i anropet till renderDiscoverView
-
+function loginUser(userData) {
     localStorage.setItem("logInKey", userData.loginKey);
+    console.log(userData);
 
     renderLoggedInView({
         profilePic: userData.profilePic,
@@ -103,7 +95,7 @@ function loginUser(userData, followingNewReviews) {
 
     // to do: sortera reviews efter datum och tid
 
-    renderDiscoverView(followingNewReviews);
+    // renderDiscoverView(followingNewReviews);
 
 }
 
