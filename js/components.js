@@ -22,11 +22,44 @@ function renderLoggedInView(userIdentity) {
 
 // renderLoggedInView({ profilePic: "../media/profile_picture.jpg" });
 
+
+
 // om du ska testa den här funktionen, glöm inte ladda rätt css_filer
-function renderDiscoverView(reviews) {
+async function renderDiscoverView(userId) {
+
+    // fetch logged in user to get following
+    const responseUser = await fetch(new Request(`../server/getUser.php?/id=${userId}`));
+    const userData = await response.json();
+    console.log(userData);
+
+    const following = userData.socials.following;
+
+    const allFollowingUsers = [];
+
+    following.forEach(async followingUserId => {
+        const response = await fetch(new Request(`../server/getUser.php?/id=${followingUserId}`));
+        const followingUserData = await response.json();
+
+        console.log(followingUserData);
+
+        allFollowingUsers.push(followingUserData);
+    })
+
+    const latestReviews = [];
+
+    allFollowingUsers.forEach(followingUser => {
+
+        const twentyLatestReviews = followingUser.albumData.reviews.slice(-20);
+        twentyLatestReviews.forEach(review => latestReviews.push(review));
+    })
+
+    // sort latest reviews
+    const latestReviewsSorted = latestReviews.map(elem => new Date(elem)).sort((a, b) => b - a);
+
+    console.log(latestReviewsSorted);
 
     // go through all reviews to create them
-    reviews.forEach(review => {
+    latestReviewsSorted.forEach(review => {
 
         // shorten comment if needed
         let comment = review.reviewDescription;
@@ -48,27 +81,27 @@ function renderDiscoverView(reviews) {
 
         // make html for new review
         const newReview = `
- 
-        <div class="review">
-            <p id="who">@ ${review.displayName} added a review</p>
-            <p id="when">${review.date} ${review.timestamp}</p>
-            <div id="album_overview">
-                <div id="album_cover_${review.reviewId}" class="album_cover"></div>
-                    <div id="album_details">
-
-                        <p id="albumName">${albumName}</p>
-                        <p id="artist">${artist}</p>
-                        <div id="stars_${review.reviewId}" class="stars">
-                            <div class="star"></div>
-                            <div class="star"></div>
-                            <div class="star"></div>
-                            <div class="star"></div>
-                            <div class="star"></div>
-                        </div>
-                        <p id="review">${comment}</p>
+     
+            <div class="review">
+                <p id="who">@ ${review.displayName} added a review</p>
+                <p id="when">${review.date} ${review.timestamp}</p>
+                <div id="album_overview">
+                    <div id="album_cover_${review.reviewId}" class="album_cover"></div>
+                        <div id="album_details">
+    
+                            <p id="albumName">${albumName}</p>
+                            <p id="artist">${artist}</p>
+                            <div id="stars_${review.reviewId}" class="stars">
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                            </div>
+                            <p id="review">${comment}</p>
+                    </div>
                 </div>
-            </div>
-        </div>`;
+            </div>`;
 
         // add new review to html
         document.querySelector("#content_container").innerHTML += newReview;

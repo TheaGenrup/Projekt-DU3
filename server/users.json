@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "HkoZ87CbKB8dw6X990CT5hPye",
+        "loginKey": "0lRvHOeyE444gfJ5Ch5fzG4w1",
         "userSocial": {
             "following": [],
             "followers": [
@@ -38,18 +38,20 @@
                     "rating": 5,
                     "boards": [
                         0
-                    ]
+                    ],
+                    "timestamp": "2023-01-21T23:12:35"
                 },
                 {
                     "albumName": "The microphones pt2",
                     "artist": "Mount eire",
                     "albumId": "???",
                     "reviewId": 1,
-                    "reviewDescription": "Woah! I've never cired like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
+                    "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
                     "rating": 5,
                     "boards": [
                         0
-                    ]
+                    ],
+                    "timestamp": "2023-02-13T03:12:43"
                 }
             ],
             "favourites": [
