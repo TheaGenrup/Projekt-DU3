@@ -22,44 +22,137 @@ function renderLoggedInView(userIdentity) {
 
 // renderLoggedInView({ profilePic: "../media/profile_picture.jpg" });
 
-
-
+renderDiscoverView("607133432034891031030642696328");
 // om du ska testa den här funktionen, glöm inte ladda rätt css_filer
 async function renderDiscoverView(userId) {
 
     // fetch logged in user to get following
-    const responseUser = await fetch(new Request(`../server/getUser.php?/id=${userId}`));
-    const userData = await response.json();
-    console.log(userData);
+    const responseUser = await fetch(new Request(`../server/getUser.php/?id=${userId}`));
+    const userData = await responseUser.json();
 
-    const following = userData.socials.following;
+    const followingIds = userData.userSocial.following;
 
-    const allFollowingUsers = [];
+    const allFollowingUsersReviews = [];
 
-    following.forEach(async followingUserId => {
-        const response = await fetch(new Request(`../server/getUser.php?/id=${followingUserId}`));
-        const followingUserData = await response.json();
+    /* followingIds.forEach(async followingUserId => {
 
-        console.log(followingUserData);
+        const response = await fetch(new Request(`../server/getUser.php/?id=${followingUserId}`));
+        const userData = await response.json();
 
-        allFollowingUsers.push(followingUserData);
-    })
+        console.log(userData.albumData);
+        userData.albumData.reviews.slice(-20).forEach(review => {
+            console.log(allFollowingUsersReviews);
+            allFollowingUsersReviews.push(review);
+        });
 
-    const latestReviews = [];
 
-    allFollowingUsers.forEach(followingUser => {
+    }) */
 
-        const twentyLatestReviews = followingUser.albumData.reviews.slice(-20);
-        twentyLatestReviews.forEach(review => latestReviews.push(review));
-    })
+
+    for (let i = 0; i < followingIds.length; i++) {
+        const followingUserId = followingIds[i];
+        getReviews(followingUserId);
+    }
+
+    /*     async function getReviews(followingUserId) {
+            const response = await fetch(new Request(`../server/getUser.php/?id=${followingUserId}`));
+            const userData = await response.json();
+    
+            userData.albumData.reviews.slice(-20).forEach(review => {
+                allFollowingUsersReviews.push(review);
+            })
+        } */
+
+    async function getReviews(followingUserId) {
+        const response = await fetch(new Request(`../server/getReviews.php/?id=${followingUserId}`));
+        const reviews = await response.json();
+
+        const slicedReviews = reviews.slice(-30);
+
+        slicedReviews.forEach(review => {
+            allFollowingUsersReviews.push(review);
+        });
+
+    }
+
+    /*     const latestReviews = [];
+    
+        allFollowingUsersReviews.forEach(review => {
+            console.log(review);
+    
+            const twentyLatestReviews = review.albumData.reviews.slice(-3);
+            console.log(twentyLatestReviews);
+            twentyLatestReviews.forEach(review => latestReviews.push(review));
+        })
+        console.log(latestReviews); */
+    console.log(allFollowingUsersReviews);
+
 
     // sort latest reviews
-    const latestReviewsSorted = latestReviews.map(elem => new Date(elem)).sort((a, b) => b - a);
+    /*     const latestReviewsSorted = allFollowingUsersReviews.map(review => new Date(review.timestamp)).sort((a, b) => b - a); */
 
-    console.log(latestReviewsSorted);
+    /*     allFollowingUsersReviews.sort(function (a, b) {
+            return Date.parse(b.timestamp) - Date.parse(a.timestamp);
+        }); */
+    /* const myArray = [
+        {
+            "albumName": "Infest the Rat's nest",
+            "artist": "King Gizzard and the lizzard wizard",
+            "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
+            "reviewId": 0,
+            "reviewDescription": "I like when the music is making noise",
+            "rating": 5,
+            "boards": [
+                0
+            ],
+            "timestamp": "2025-01-21T23:12:35",
+            "displayName": "Anthony Fantano"
+        },
+        {
+            "albumName": "Dreams",
+            "artist": "Fleetwood Mac",
+            "albumId": "78",
+            "reviewId": 1,
+            "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2/3 hours? Yeah great feeling.",
+            "rating": 5,
+            "boards": [
+                0
+            ],
+            "timestamp": "2027-02-13T03:12:43",
+            "displayName": "Anthony Fantano"
+        },
+        {
+            "albumName": "Abbey Road",
+            "artist": "The Beatles",
+            "albumId": "43",
+            "reviewId": 1,
+            "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2/3 hours? Yeah great feeling.",
+            "rating": 5,
+            "boards": [
+                0
+            ],
+            "timestamp": "2023-03-16T21:17:11",
+            "displayName": "Anthony Fantano"
+        }
+    ];
+
+    myArray.sort((a, b) => {
+        const dateA = new Date(a.timestamp);
+        const dateB = new Date(b.timestamp);
+        return dateB - dateA;
+    });
+
+    console.log(myArray); */
+
+
+    allFollowingUsersReviews.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+
+    console.log(allFollowingUsersReviews);
+
 
     // go through all reviews to create them
-    latestReviewsSorted.forEach(review => {
+    allFollowingUsersReviews.forEach(review => {
 
         // shorten comment if needed
         let comment = review.reviewDescription;
@@ -240,25 +333,25 @@ function showBoard(event) {
     // Theas function för reviews som jag tror vi kan använda här med
     // go through all reviews to create them
     /* reviews.forEach(review => {
-
+ 
         // shorten comment if needed
         let comment = review.reviewDescription;
         if (comment.length > 55) {
             comment = comment.slice(0, 55) + "...";
         }
-
+ 
         // shorten album name if needed
         let albumName = review.albumName;
         if (albumName.length > 23) {
             albumName = albumName.slice(0, 23) + "...";
         }
-
+ 
         // shorten artist name if needed
         let artist = review.artist;
         if (artist.length > 23) {
             artist = artist.slice(0, 23) + "...";
         }
-
+ 
         // make html for new review
         const newReview = `
  
@@ -268,7 +361,7 @@ function showBoard(event) {
             <div id="album_overview">
                 <div id="album_cover_${review.reviewId}" class="album_cover"></div>
                     <div id="album_details">
-
+ 
                         <p id="albumName">${albumName}</p>
                         <p id="artist">${artist}</p>
                         <div id="stars_${review.reviewId}" class="stars">
@@ -282,30 +375,30 @@ function showBoard(event) {
                 </div>
             </div>
         </div>`;
-
+ 
         // add new review to html
         document.querySelector("#content_container").innerHTML += newReview;
-
+ 
         // add album cover
         // add album cover
         if (review.albumCover === "" || review.albumCover === undefined) {
-
+ 
             document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = "url(../media/icons/default_cover.png)";
         } else {
-
+ 
             document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = review.albumCover;
         }
-
+ 
         // change the background image of the right amount of stars
         const stars = document.querySelectorAll(`#stars_${review.reviewId} > div`);
-
+ 
         for (let i = 0; i < stars.length; i++) {
             const star = stars[i];
             if (i < review.rating) {
                 star.style.backgroundImage = `url(../media/icons/filled_in_star.png)`;
             }
         }
-
+ 
     }); */
 
 

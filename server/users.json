@@ -6,7 +6,10 @@
         },
         "loginKey": "0lRvHOeyE444gfJ5Ch5fzG4w1",
         "userSocial": {
-            "following": [],
+            "following": [
+                "317161457770161228256467772618",
+                "607133432034891031030642696328"
+            ],
             "followers": [
                 "317161457770161228256467772618"
             ]
@@ -39,19 +42,34 @@
                     "boards": [
                         0
                     ],
-                    "timestamp": "2023-01-21T23:12:35"
+                    "timestamp": "2023-01-21T23:12:35",
+                    "displayName": "Anthony Fantano"
                 },
                 {
-                    "albumName": "The microphones pt2",
-                    "artist": "Mount eire",
-                    "albumId": "???",
+                    "albumName": "Dreams",
+                    "artist": "Fleetwood Mac",
+                    "albumId": "78",
                     "reviewId": 1,
                     "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
                     "rating": 5,
                     "boards": [
                         0
                     ],
-                    "timestamp": "2023-02-13T03:12:43"
+                    "timestamp": "2023-02-13T03:12:43",
+                    "displayName": "Anthony Fantano"
+                },
+                {
+                    "albumName": "Abbey Road",
+                    "artist": "The Beatles",
+                    "albumId": "43",
+                    "reviewId": 1,
+                    "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
+                    "rating": 5,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": "2023-03-16T21:17:11",
+                    "displayName": "Anthony Fantano"
                 }
             ],
             "favourites": [
@@ -75,7 +93,7 @@
             "followers": []
         },
         "userIdentity": {
-            "id": "607133432034891031030642696328",
+            "id": "317161457770161228256467772618",
             "profilePic": "default.jpg",
             "displayName": "test2"
         },
@@ -93,15 +111,17 @@
             ],
             "reviews": [
                 {
-                    "albumName": "Infest the Rat's nest",
-                    "artist": "King Gizzard and the lizzard wizard",
+                    "albumName": "Och Stora Havet",
+                    "artist": "Jakob Hellman",
                     "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
                     "reviewId": 0,
                     "reviewDescription": "I like when the music is making noise",
                     "rating": 5,
                     "boards": [
                         0
-                    ]
+                    ],
+                    "timestamp": "2023-01-27T21:17:11",
+                    "displayName": "test2"
                 },
                 {
                     "albumName": "The microphones pt2",
@@ -112,7 +132,9 @@
                     "rating": 5,
                     "boards": [
                         0
-                    ]
+                    ],
+                    "timestamp": "2023-05-04T21:17:11",
+                    "displayName": "test2"
                 }
             ],
             "favourites": [
