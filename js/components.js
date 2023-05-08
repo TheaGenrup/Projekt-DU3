@@ -70,6 +70,7 @@ async function renderDiscoverView(userId) {
         const slicedReviews = reviews.slice(-30);
 
         slicedReviews.forEach(review => {
+            review.timestamp = new Date(review.timestamp)
             allFollowingUsersReviews.push(review);
         });
 
@@ -86,7 +87,6 @@ async function renderDiscoverView(userId) {
         })
         console.log(latestReviews); */
     console.log(allFollowingUsersReviews);
-
 
     // sort latest reviews
     /*     const latestReviewsSorted = allFollowingUsersReviews.map(review => new Date(review.timestamp)).sort((a, b) => b - a); */
@@ -145,7 +145,7 @@ async function renderDiscoverView(userId) {
     console.log(myArray); */
 
 
-    allFollowingUsersReviews.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+    allFollowingUsersReviews.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime());
 
 
     console.log(allFollowingUsersReviews);
@@ -199,7 +199,7 @@ async function renderDiscoverView(userId) {
         // add new review to html
         document.querySelector("#content_container").innerHTML += newReview;
 
-        // add album cover
+
         // add album cover
         if (review.albumCover === "" || review.albumCover === undefined) {
 
