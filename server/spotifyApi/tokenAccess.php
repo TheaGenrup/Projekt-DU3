@@ -65,8 +65,6 @@ if ($requestMethod == "GET") {
     );
     exit();
 }
-$test = ["message" => "test"];
-sendJSON($test, 201);
 ?>
 <!DOCTYPE html>
 <html lang="en">

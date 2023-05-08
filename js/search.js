@@ -85,24 +85,17 @@ function searchAlbums(e) {
 
     }
 }
-function searchUsers(e) {
-    let input = e.target.value;
-    if (!input) {return}
-    const request = new Request(`/server/searchUsers.php?search=${input}`);
-    fetch(request)
-        .then(r=>{
-            console.log(r);
-            return r.json()
-        })
-        .then(userResource => {
-            console.log(userResource);
-        })
-}
 
 function listAlbums(albums) {
     const albumUl = document.querySelector("#albumUl");
     albumUl.innerHTML = "";
+    const message = document.createElement("div");
+    message.classList.add("message")
+    message.textContent = "no albums found";
+    albumUl.append(message);
     if (albums.length > 0) {
+        message.textContent = "albums";
+        albumUl.append(message);
         albums.forEach(album => {
             const artistName = album.artistName;
             const albumName = album.albumName;
@@ -111,7 +104,7 @@ function listAlbums(albums) {
             const albumType = album.albumType;
     
             const html = `
-                <img class ="albumPreviewImage" src="${albumImage}" alt="${albumName}">
+                <img class ="previewImage" src="${albumImage}" alt="${albumName}">
                 <div class="albumInfo">
                     <p>${artistName}</p>
                     <p>${albumName}</p>
@@ -127,3 +120,52 @@ function listAlbums(albums) {
         });
     }
 }
+function searchUsers(e) {
+    let input = e.target.value;
+    if (!input) {return}
+    const request = new Request(`/server/searchUsers.php?search=${input}`);
+    fetch(request)
+        .then(r=>r.json())
+        .then(userResource => {
+            console.log(userResource);
+            listUsers(userResource);
+        })
+}
+
+function listUsers(users) {
+    const usersUl = document.querySelector("#usersUl");
+    usersUl.innerHTML = "";
+    usersUl.innerHTML = "";
+    const message = document.createElement("div");
+    message.classList.add("message")
+    message.textContent = "no users found";
+    if (users.length > 0) {
+        message.textContent = "users";
+        usersUl.append(message);
+        users.forEach(user => {
+            const displayName = user.displayName;
+            const id = user.id;
+            const profilePicture = user.profilePicture;
+
+            const html = `
+            <img src="${profilePicture}"></img>
+            <div>${displayName}</div>
+            `;
+
+            const liDom = document.createElement("li");
+            liDom.setAttribute("id", id);
+            liDom.innerHTML = html;
+            usersUl.append(liDom);
+        });
+    }
+}
+
+/*
+token.json information:
+{
+    "access_token": "BQAoCUDwy7YUnKgcDVi5cB9LmHM-ooJrjjFQIqiTwBwvVmcR_E912gr5ANoIKYGh-X64gdkgSYiw-Zs5w2CtqaK6LBFsxNCxTbTKN8bcVtOW5HopwoA5",
+    "token_type": "Bearer",
+    "expires_in": 3600,
+    "timestamp": 1683221337
+}
+*/

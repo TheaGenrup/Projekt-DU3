@@ -58,7 +58,15 @@
 #usersUlContainer{}
 #albumUlContainer{}
 
-.albumPreview{
+#searchWindow div ul li .previewImage{
+    height: 18vw;
+    width: 18vw;
+
+    border-radius: 12px;
+    border: 1.6px solid rgba(0, 0, 0, 0.454);
+}
+
+#searchWindow div ul li{
     display: flex;
     align-items: center;
 
@@ -67,18 +75,12 @@
 
     border-bottom: 2px solid rgb(100, 100, 100);
 }
-.albumPreview:hover{
+#searchWindow div ul li:hover{
     transition: 0.5s;
     background-color: rgb(119, 118, 118);
     padding: 8px 5px;
 }
-.albumPreview .albumPreviewImage{
-    height: 20vw;
-    width: 20vw;
 
-    border-radius: 12px;
-    border: 1.6px solid rgba(0, 0, 0, 0.454);
-}
 .albumPreview .saveToListBtn{
     text-align: center;
     height: 5vw;
@@ -92,7 +94,7 @@
     background-color: rgb(1, 110, 26);
 }
 
-.albumInfo{
+#searchWindow div ul li .albumInfo{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -100,5 +102,5 @@
     width: 100%;
 
     padding: 5px;
-    font-size: 5vw;
+    font-size: 3vw;
 }

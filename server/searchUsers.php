@@ -6,37 +6,37 @@ if ($requestMethod != "GET") {
     $error = ["message" => "Invalid method"];
     sendJSON($error, 405);
 }
-$input = $_GET["search"];
 // Check if we actually sent a search input
-
 if (!isset($_GET["search"])) {
     $error = ["message" => "Missing search input"];
     sendJSON($error, 400);
 };
+$input = $_GET["search"];
 $possibleMatches = [];
-$inputLength = strlen($input);
-for ($i=0; $i < $inputLength; $i++) { 
-    $keyPriority = $inputLength - $i;
-    $keyWord = substr($input, 0, $keyPriority);
-    $possibleMatches[] = $inputMatchObject = [
-        "keyWord" => $keyWord,
-        "wordPriority" => $keyPriority,
-        "displayNamesMatchingInput" => []
-    ];
-}
-//$possibleMatches[0]["displayNamesMatchingInput"][] = "test";
-//$possibleMatches[0]["displayNamesMatchingInput"][] = "test2";
 
 $userData = getFileData("users.json");
-foreach ($possibleMatches as $key => $inputMatchObject) {
-    $keyWord = $inputMatchObject["keyWord"];
-    foreach ($userData as $key => $user) {
-        $displayName = $user["userIdentity"]["displayName"];
-        
-        if (str_contains($displayName, $keyWord)) {
-            $inputMatchObject["displayNamesMatchingInput"][] = $user;
-        }
+foreach ($userData as $key => $user) {
+    $displayName = $user["userIdentity"]["displayName"];
+
+    if (str_contains($displayName, $input) == true) {
+        $id = $user["userIdentity"]["id"];
+        $profilePicture = $user["userIdentity"]["profilePic"];
+        $userObject = [
+            "displayName" => $displayName,
+            "id" => $id,
+            "profilePicture" => $profilePicture
+        ];
+        $possibleMatches[] = $userObject;
     }
+}
+
+if (count($possibleMatches) == 0) {
+    $response = ["users" => "No users found"];
+    sendJSON($response);
+} else {
+    $matches = array_splice($possibleMatches, 0, 5);
+    sendJson($matches);
+    
 }
 clog($possibleMatches);
 
