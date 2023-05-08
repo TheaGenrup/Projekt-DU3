@@ -1,15 +1,5 @@
-body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(24, 24, 24);
-}
-
-header {
+#profile_header {
     height: 10vh;
-    width: 100vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,55 +7,40 @@ header {
     box-sizing: border-box;
 }
 
-#laulu {
-    font-size: 10vw;
-    color: rgb(200, 200, 200);
+#profile_picture_top {
+    height: 25vw;
+    width: 25vw;
+    border-radius: 50%;
+    border: 1px solid black;
+    margin-top: 20vh;
 }
 
-#search_icon {
-    background-image: url(/media/find_icon.png);
+#bookmark_icon,
+#settings_icon,
+#add_board_icon {
     background-position: center;
     background-size: cover;
-    height: 10vw;
-    width: 10vw;
-}
-
-main {
-    height: 90vh;
-}
-
-#tabs {
-    display: flex;
-}
-
-.tab {
-    border-radius: 20px 20px 0 0;
-    height: 7vh;
-    width: 50vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#discover_tab {
-    background-color: rgb(164, 164, 164);
-}
-
-#profile_tab {
-    background-color: rgb(124, 124, 124);
-}
-
-#main_block {
-    background-color: rgb(164, 164, 164);
-    height: 100%;
+    height: 8vw;
+    width: 8vw;
 }
 
 #bookmark_icon {
-    background-image: url(/media/bookmark.png);
-    background-position: center;
-    background-size: cover;
-    height: 10vw;
-    width: 10vw;
+    background-image: url(/media/icons/Discover.png);
+}
+
+#settings_icon {
+    background-image: url(/media/icons/close_1.png);
+}
+
+#add_board_icon {
+    background-image: url(/media/icons/Add.png);
+}
+
+#profile_icons {
+    display: flex;
+    margin-top: 10vh;
+    gap: 3vw;
+    justify-content: right;
 }
 
 #following_followers {
@@ -74,6 +49,7 @@ main {
     text-align: center;
     padding-top: 20vh;
     column-gap: 1vh;
+    font-size: 16px;
 }
 
 #following_followers div:nth-last-child(3) {
@@ -86,40 +62,28 @@ main {
     width: 30vw;
 }
 
-#profile_picture {
-    padding-top: 20vh;
-}
-
 #profile_header p {
     margin-top: 0;
     text-align: center;
 }
 
-#profile_main {
-    background-color: grey;
-    border-radius: 5vh;
-    height: 75vh;
-    margin: 5vh 10vw 0 10vw;
-}
 
-#profile_main h2 {
+#boards h2 {
     padding-top: 15vh;
 }
 
 #board_of_boards {
     display: grid;
-    grid-template-columns: 40vw 40vw;
+    grid-template-columns: auto auto;
+    gap: 20px;
 }
 
-.profile_board div {
-    height: 25vw;
-    width: 25vw;
-}
-
-.profile_board p {
+#boards p {
     cursor: pointer;
 }
 
-header {
-    color: white;
+.profile_board img {
+    height: 30vw;
+    width: 30vw;
+    border-radius: 5%;
 }

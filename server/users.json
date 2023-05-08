@@ -13,7 +13,7 @@
         },
         "userIdentity": {
             "id": "607133432034891031030642696328",
-            "profilePic": "1241345512514",
+            "profilePic": "profile_picture.jpg",
             "displayName": "Anthony Fantano"
         },
         "albumData": {
@@ -25,7 +25,25 @@
                         0,
                         1
                     ],
-                    "thumbnail": "\/server\/media\/users\/607133432034891031030642696328\/boards\/bildnamet"
+                    "thumbnail": "board_1.jpg"
+                },
+                {
+                    "boardName": "POP",
+                    "boardId": 0,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "board_1.jpg"
+                },
+                {
+                    "boardName": "FAVOURITES",
+                    "boardId": 0,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "Sunflower.jpg"
                 }
             ],
             "reviews": [
@@ -73,7 +91,7 @@
             "followers": []
         },
         "userIdentity": {
-            "id": "607133432034891031030642696328",
+            "id": "608133432034891031030642696328",
             "profilePic": "default.jpg",
             "displayName": "test2"
         },

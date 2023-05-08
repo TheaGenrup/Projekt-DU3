@@ -151,7 +151,7 @@ function renderProfileView(userId) {
             document.querySelector("#content_container").innerHTML = `
                 <div id="profile_header">
                     <div>
-                        <div id="profile_picture"></div>
+                        <img id="profile_picture_top" src="../media/${profilePicture}"></img>
                         <p>@${username}</p>
                     </div> 
                     <div>
@@ -161,21 +161,19 @@ function renderProfileView(userId) {
                             <div>Following</div>
                             <div>${userFollowing}</div>
                         </div>
-                        <div>
+                        <div id="profile_icons">
                             <div id="settings_icon"></div>
                             <div id="bookmark_icon"></div>
                             <div id="add_board_icon"></div>
                         </div>
                     </div>
                 </div>
-                    <div>
-                        <div id="profile_main">
-                            <h2>BOARDS</h2>
-                            <div id="board_of_boards"></div>
-                        </div>
-                    </div>`
-
-            document.querySelector("#profile_picture").style.backgroundImage = profilePicture;
+                <div>
+                    <div id="boards">
+                        <h2>BOARDS</h2>
+                        <div id="board_of_boards"></div>
+                    </div>
+                </div>`
 
             const boards = user.albumData.boards;
 
@@ -187,7 +185,7 @@ function renderProfileView(userId) {
                 const newBoard = `
                 <div class="profile_board">
                     <div>
-                        <img src="${boardPicture}">
+                        <img src="../media/${boardPicture}"></img>
                     </div>
                     <p class="board_name">${boardName}</p>
                 </div>
