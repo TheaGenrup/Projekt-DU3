@@ -20,7 +20,7 @@ function renderLoggedInView(userIdentity) {
 
 }
 
-// renderLoggedInView({ profilePic: "../media/profile_picture.jpg" });
+renderLoggedInView("../media/profile_picture.jpg");
 
 renderDiscoverView("607133432034891031030642696328");
 // om du ska testa den här funktionen, glöm inte ladda rätt css_filer
@@ -44,108 +44,43 @@ async function renderDiscoverView(userId) {
             console.log(allFollowingUsersReviews);
             allFollowingUsersReviews.push(review);
         });
-
-
     }) */
 
-
-    for (let i = 0; i < followingIds.length; i++) {
-        const followingUserId = followingIds[i];
-        getReviews(followingUserId);
-    }
-
-    /*     async function getReviews(followingUserId) {
-            const response = await fetch(new Request(`../server/getUser.php/?id=${followingUserId}`));
-            const userData = await response.json();
-    
-            userData.albumData.reviews.slice(-20).forEach(review => {
-                allFollowingUsersReviews.push(review);
-            })
+    /* 
+        for (let i = 0; i < followingIds.length; i++) {
+            const followingUserId = followingIds[i];
+            getReviews(followingUserId);
         } */
 
+    for (const followingUserId of followingIds) {
+
+        const reviewsOneUser = await getReviews(followingUserId);
+
+        reviewsOneUser.forEach(review => {
+            allFollowingUsersReviews.push(review);
+        });
+    }
+    /* allFollowingUsersReviews = await getReviews(); */
+
     async function getReviews(followingUserId) {
+
+        const allReviews = [];
+
         const response = await fetch(new Request(`../server/getReviews.php/?id=${followingUserId}`));
         const reviews = await response.json();
 
-        const slicedReviews = reviews.slice(-30);
-
-        slicedReviews.forEach(review => {
-            review.timestamp = new Date(review.timestamp)
-            allFollowingUsersReviews.push(review);
+        reviews.forEach(review => {
+            allReviews.push(review);
         });
 
+        return allReviews;
     }
 
-    /*     const latestReviews = [];
-    
-        allFollowingUsersReviews.forEach(review => {
-            console.log(review);
-    
-            const twentyLatestReviews = review.albumData.reviews.slice(-3);
-            console.log(twentyLatestReviews);
-            twentyLatestReviews.forEach(review => latestReviews.push(review));
-        })
-        console.log(latestReviews); */
+
     console.log(allFollowingUsersReviews);
 
-    // sort latest reviews
-    /*     const latestReviewsSorted = allFollowingUsersReviews.map(review => new Date(review.timestamp)).sort((a, b) => b - a); */
 
-    /*     allFollowingUsersReviews.sort(function (a, b) {
-            return Date.parse(b.timestamp) - Date.parse(a.timestamp);
-        }); */
-    /* const myArray = [
-        {
-            "albumName": "Infest the Rat's nest",
-            "artist": "King Gizzard and the lizzard wizard",
-            "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
-            "reviewId": 0,
-            "reviewDescription": "I like when the music is making noise",
-            "rating": 5,
-            "boards": [
-                0
-            ],
-            "timestamp": "2025-01-21T23:12:35",
-            "displayName": "Anthony Fantano"
-        },
-        {
-            "albumName": "Dreams",
-            "artist": "Fleetwood Mac",
-            "albumId": "78",
-            "reviewId": 1,
-            "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2/3 hours? Yeah great feeling.",
-            "rating": 5,
-            "boards": [
-                0
-            ],
-            "timestamp": "2027-02-13T03:12:43",
-            "displayName": "Anthony Fantano"
-        },
-        {
-            "albumName": "Abbey Road",
-            "artist": "The Beatles",
-            "albumId": "43",
-            "reviewId": 1,
-            "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2/3 hours? Yeah great feeling.",
-            "rating": 5,
-            "boards": [
-                0
-            ],
-            "timestamp": "2023-03-16T21:17:11",
-            "displayName": "Anthony Fantano"
-        }
-    ];
-
-    myArray.sort((a, b) => {
-        const dateA = new Date(a.timestamp);
-        const dateB = new Date(b.timestamp);
-        return dateB - dateA;
-    });
-
-    console.log(myArray); */
-
-
-    allFollowingUsersReviews.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime());
+    allFollowingUsersReviews.sort((a, b) => b.timestamp - a.timestamp);
 
 
     console.log(allFollowingUsersReviews);
@@ -160,16 +95,17 @@ async function renderDiscoverView(userId) {
             comment = comment.slice(0, 55) + "...";
         }
 
-        // shorten album name if needed
-        let albumName = review.albumName;
-        if (albumName.length > 23) {
-            albumName = albumName.slice(0, 23) + "...";
-        }
-
-        // shorten artist name if needed
-        let artist = review.artist;
-        if (artist.length > 23) {
-            artist = artist.slice(0, 23) + "...";
+        function timeConverter(UNIX_timestamp) {
+            var a = new Date(UNIX_timestamp * 1000);
+            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            var year = a.getFullYear();
+            var month = months[a.getMonth()];
+            var date = a.getDate();
+            var hour = a.getHours();
+            var min = a.getMinutes();
+            var sec = a.getSeconds();
+            var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
+            return time;
         }
 
         // make html for new review
@@ -177,13 +113,13 @@ async function renderDiscoverView(userId) {
      
             <div class="review">
                 <p id="who">@ ${review.displayName} added a review</p>
-                <p id="when">${review.date} ${review.timestamp}</p>
+                <p id="when">${timeConverter(review.timestamp)}</p>
                 <div id="album_overview">
                     <div id="album_cover_${review.reviewId}" class="album_cover"></div>
                         <div id="album_details">
     
-                            <p id="albumName">${albumName}</p>
-                            <p id="artist">${artist}</p>
+                            <p id="albumName">${review.albumName}</p>
+                            <p id="artist">${review.artist}</p>
                             <div id="stars_${review.reviewId}" class="stars">
                                 <div class="star"></div>
                                 <div class="star"></div>
@@ -191,7 +127,7 @@ async function renderDiscoverView(userId) {
                                 <div class="star"></div>
                                 <div class="star"></div>
                             </div>
-                            <p id="review">${comment}</p>
+                            <p id="reviewDescription">${review.reviewDescription}</p>
                     </div>
                 </div>
             </div>`;

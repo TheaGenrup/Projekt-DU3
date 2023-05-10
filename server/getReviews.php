@@ -14,14 +14,25 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
             // find the user
             if ($user["userIdentity"]["id"] == $userId) {
+                
+                $reviewsToSend = [];
 
-                // add displayName to each review
                 foreach ($user["albumData"]["reviews"] as $review) {
-                   $review["displayName"] =  $user["userIdentity"]["displayName"];
-                   
-                }
+                    $reviewsToSend[] = [
+                        "albumName" => $review["albumName"],
+                        "timestamp" => $review["timestamp"],
+                        "displayName" => $user["userIdentity"]["displayName"],
+                        "artist" => $review["artist"],
+                        "rating" => $review["rating"],
+                        "reviewDescription" => $review["reviewDescription"],
+                        "reviewId" => $review["reviewId"],
+                        "albumCover" => $review["albumCover"]
+                    ];
+                };
 
-                sendJSON($user["albumData"]["reviews"]);
+                
+
+                sendJSON($reviewsToSend);
             } 
         } 
         sendJSON(["message" => "User Not Found"], 404);
