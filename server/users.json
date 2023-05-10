@@ -97,6 +97,14 @@
                     "albumName": "The microphones pt2",
                     "artist": "Mount eire",
                     "albumId": "???",
+                    "thumbnail": "board_1.jpg",
+                    "favouriteId": 0
+                },
+                {
+                    "albumName": "Och Stora Havet",
+                    "artist": "Jakob Hellman",
+                    "albumId": "???",
+                    "thumbnail": "hellman.jpg",
                     "favouriteId": 0
                 }
             ]
@@ -164,6 +172,7 @@
                     "albumName": "The microphones pt2",
                     "artist": "Mount eire",
                     "albumId": "???",
+                    "thumbnail": "board_1.jpg",
                     "favouriteId": 0
                 }
             ]

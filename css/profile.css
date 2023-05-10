@@ -4,6 +4,7 @@
     align-items: center;
     padding: 5vw;
     box-sizing: border-box;
+    padding-bottom: 0;
 }
 
 #profile_picture_top {
@@ -140,4 +141,51 @@ p {
     box-sizing: border-box;
     padding: 10px;
     text-align: center;
+}
+
+#favourites_icon {
+    background-position: center;
+    background-size: cover;
+    height: 11vw;
+    width: 11vw;
+    padding-bottom: 1vh;
+}
+
+.favourite_cover {
+    height: 8vh;
+    width: 8vh;
+    background-position: center;
+    background-size: cover;
+    border-radius: 20%;
+}
+
+#favourites_icon_container {
+    display: flex;
+    justify-content: center;
+}
+
+#favourite_info_container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2vw;
+}
+
+.favourite {
+    display: flex;
+    border-radius: 20px;
+    width: 100%;
+    background-color: rgb(212, 212, 212);
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+#favourites {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.favourite_album_name {
+    font-size: 4vw;
+    font-weight: bold;
 }

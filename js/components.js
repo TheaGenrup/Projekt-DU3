@@ -22,7 +22,7 @@ function renderLoggedInView(userIdentity) {
 
 }
 
-//renderLoggedInView({ profilePic: "../media/profile_picture.jpg" });
+renderLoggedInView({ profilePic: "../media/profile_picture.jpg" });
 
 renderDiscoverView("607133432034891031030642696328");
 // om du ska testa den här funktionen, glöm inte ladda rätt css_filer
@@ -269,6 +269,42 @@ function renderProfileView() {
                     <div id="board_of_boards"></div>
                 </div>`
 
+            document.querySelector("#bookmark_icon").addEventListener("click", showFavourites);
+
+            function showFavourites(event) {
+
+                document.querySelector("#board_and_review_container").innerHTML = `
+                <div id="favourites_icon_container">
+                    <img id="favourites_icon" src="../media/icons/Discover.png"></img>
+                </div>
+                <div id="favourites"></div>
+                `;
+
+                const arrayWithFavourites = user.albumData.favourites;
+
+                arrayWithFavourites.forEach(favourite => {
+
+                    const favouriteAlbum = favourite.albumName;
+                    const favouriteArtist = favourite.artist;
+                    const favouritePicture = favourite.thumbnail;
+
+                    const newFavourite = `
+                    <div class="favourite">
+                            <img class="favourite_cover" src="../media/${favouritePicture}"></img>
+                        <div id="favourite_info_container">
+                            <p class="favourite_album_name">${favouriteAlbum}</p>
+                            <p class="favourite_artist">${favouriteArtist}</p>
+                        </div>
+                    </div>
+                    `
+                    document.querySelector("#favourites").innerHTML += newFavourite;
+
+
+                })
+
+
+            }
+
             const boards = user.albumData.boards;
 
             boards.forEach(board => {
@@ -285,8 +321,6 @@ function renderProfileView() {
                 </div>
                 `
                 document.querySelector("#board_of_boards").innerHTML += newBoard;
-
-                console.log(document.querySelector(".board_name"));
 
             });
 
@@ -396,6 +430,8 @@ function renderProfileView() {
                         }
                     }
                 })
+
+
 
             }
         });
