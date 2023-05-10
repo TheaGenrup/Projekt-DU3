@@ -22,7 +22,7 @@ function renderLoggedInView(userIdentity) {
 
 }
 
-renderLoggedInView({ profilePic: "../media/profile_picture.jpg" });
+//renderLoggedInView({ profilePic: "../media/profile_picture.jpg" });
 
 // om du ska testa den här funktionen, glöm inte ladda rätt css_filer
 function renderDiscoverView(reviews) {
