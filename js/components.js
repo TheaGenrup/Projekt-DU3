@@ -17,39 +17,24 @@ function renderLoggedInView(profilePic) {
     `;
 
 }
-
+/* 
 renderLoggedInView("profile_picture.jpg");
 
-renderDiscoverView("607133432034891031030642696328");
+renderDiscoverView("607133432034891031030642696328"); */
 // om du ska testa den här funktionen, glöm inte ladda rätt css_filer
 async function renderDiscoverView(userId) {
 
-    // fetch logged in user to get following
+    // switch css files
+    document.querySelector("#css1").setAttribute("href", "../css/logged_in_basic_layout.css");
+    document.querySelector("#css2").setAttribute("href", "../css/discover.css");
+
+    // fetch logged in user to get following ids
     const responseUser = await fetch(new Request(`../server/getUser.php/?id=${userId}`));
     const userData = await responseUser.json();
-
     const followingIds = userData.userSocial.following;
-
     const allFollowingUsersReviews = [];
 
-    /* followingIds.forEach(async followingUserId => {
-
-        const response = await fetch(new Request(`../server/getUser.php/?id=${followingUserId}`));
-        const userData = await response.json();
-
-        console.log(userData.albumData);
-        userData.albumData.reviews.slice(-20).forEach(review => {
-            console.log(allFollowingUsersReviews);
-            allFollowingUsersReviews.push(review);
-        });
-    }) */
-
-    /* 
-        for (let i = 0; i < followingIds.length; i++) {
-            const followingUserId = followingIds[i];
-            getReviews(followingUserId);
-        } */
-
+    // get reviews of all following users by their ids, one user at a time
     for (const followingUserId of followingIds) {
 
         const reviewsOneUser = await getReviews(followingUserId);
@@ -57,22 +42,22 @@ async function renderDiscoverView(userId) {
         reviewsOneUser.forEach(review => {
             allFollowingUsersReviews.push(review);
         });
+
+        async function getReviews(followingUserId) {
+
+            const allReviews = [];
+
+            const response = await fetch(new Request(`../server/getReviews.php/?id=${followingUserId}`));
+            const reviews = await response.json();
+
+            reviews.forEach(review => {
+                allReviews.push(review);
+            });
+
+            return allReviews;
+        }
     }
-    /* allFollowingUsersReviews = await getReviews(); */
 
-    async function getReviews(followingUserId) {
-
-        const allReviews = [];
-
-        const response = await fetch(new Request(`../server/getReviews.php/?id=${followingUserId}`));
-        const reviews = await response.json();
-
-        reviews.forEach(review => {
-            allReviews.push(review);
-        });
-
-        return allReviews;
-    }
 
 
     allFollowingUsersReviews.sort((a, b) => b.timestamp - a.timestamp);
@@ -151,42 +136,6 @@ async function renderDiscoverView(userId) {
 
 
 }
-/* 
-renderDiscoverView([
-    {
-        reviewId: 1,
-        albumName: "Dreams",
-        artistName: "Fleetwood Mac",
-        userName: "Elin",
-        date: "2023-02-22",
-        timestamp: "16:35",
-        comment: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad unde ea laborum tempora quidem sint commodi culpa dolorum fugiat illum.",
-        rating: 3,
-        albumCover: `url(../media/dreams.jpg)`
-    },
-    {
-        reviewId: 2,
-        albumName: "Och Stora Havet",
-        artistName: "Jakob Hellman",
-        userName: "Thea",
-        date: "2023-02-25",
-        timestamp: "14:38",
-        comment: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad unde ea laborum tempora quidem sint commodi culpa dolorum fugiat illum.",
-        rating: 4,
-        albumCover: `url(../media/hellman.jpg)`
-    },
-    {
-        reviewId: 3,
-        albumName: "Och Stora Havet",
-        artistName: "Jakob Hellman",
-        userName: "Filip",
-        date: "2023-02-26",
-        timestamp: "12:39",
-        comment: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad unde ea laborum tempora quidem sint commodi culpa dolorum fugiat illum.",
-        rating: 2,
-        albumCover: `url(../media/hellman.jpg)`
-    }
-]); */
 
 function renderProfileView(userInfo) {
 

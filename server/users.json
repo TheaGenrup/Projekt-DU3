@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "0lRvHOeyE444gfJ5Ch5fzG4w1",
+        "loginKey": "EYcZrktgMhWtvgGBZ4asVA4mS",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -16,7 +16,7 @@
         },
         "userIdentity": {
             "id": "607133432034891031030642696328",
-            "profilePic": "1241345512514",
+            "profilePic": "profile_picture.jpg",
             "displayName": "Anthony Fantano"
         },
         "albumData": {
@@ -42,7 +42,7 @@
                     "boards": [
                         0
                     ],
-                    "albumCover": "url(../media/beatles.jpg)",
+                    "albumCover": "url(..\/media\/beatles.jpg)",
                     "timestamp": 1525948418,
                     "displayName": "Anthony Fantano",
                     "test": 15
@@ -52,7 +52,7 @@
                     "artist": "Fleetwood Mac",
                     "albumId": "78",
                     "reviewId": 9,
-                    "albumCover": "url(../media/dreams.jpg)",
+                    "albumCover": "url(..\/media\/dreams.jpg)",
                     "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
                     "rating": 5,
                     "boards": [
@@ -65,7 +65,7 @@
                 {
                     "albumName": "Abbey Road",
                     "artist": "The Beatles",
-                    "albumCover": "url(../media/beatles.jpg)",
+                    "albumCover": "url(..\/media\/beatles.jpg)",
                     "albumId": "43",
                     "reviewId": 46,
                     "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
@@ -127,7 +127,7 @@
                     ],
                     "timestamp": 1494412418,
                     "displayName": "test2",
-                    "albumCover": "url(../media/hellman.jpg)",
+                    "albumCover": "url(..\/media\/hellman.jpg)",
                     "test": 10
                 },
                 {
@@ -142,7 +142,7 @@
                     ],
                     "timestamp": 1494412418,
                     "displayName": "test2",
-                    "albumCover": "url(../media/beatles.jpg)",
+                    "albumCover": "url(..\/media\/beatles.jpg)",
                     "test": 11
                 }
             ],
