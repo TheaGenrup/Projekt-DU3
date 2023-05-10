@@ -28,6 +28,7 @@ body {
 
 #profile_picture {
     border-radius: 50%;
+    cursor: pointer;
 }
 
 main {

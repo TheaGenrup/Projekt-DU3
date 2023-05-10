@@ -18,9 +18,11 @@ function renderLoggedInView(userIdentity) {
 
     document.querySelector("#profile_picture").src = userIdentity.profilePic;
 
+    document.querySelector("#profile_picture").addEventListener("click", renderProfileView);
+
 }
 
-//renderLoggedInView({ profilePic: "../media/profile_picture.jpg" });
+renderLoggedInView({ profilePic: "../media/profile_picture.jpg" });
 
 // om du ska testa den här funktionen, glöm inte ladda rätt css_filer
 function renderDiscoverView(reviews) {
@@ -134,7 +136,10 @@ renderDiscoverView([
     }
 ]); */
 
-function renderProfileView(userId) {
+function renderProfileView() {
+
+    //ändra sedan denna till localstorage ID:et
+    const userId = "607133432034891031030642696328";
 
     const request = new Request(`/server/getUser.php/?id=${userId}`);
     fetch(request)
@@ -283,4 +288,3 @@ function showBoard(event) {
 
 }
 
-//renderProfileView("607133432034891031030642696328");
