@@ -53,12 +53,12 @@ loginRegisterbtn.addEventListener("click", (e) => {
 async function attemptLogin(username, password, access, loginKey) {
     if (!loginKey) {
         const userData = await fetchLogin(username, password, access);
-        // loginUser(userData);
-        console.log(userData);
+        loginUser(userData);
+
     }
     if (loginKey) {
         const userData = await fetchLogin(username, password, access, loginKey);
-        // loginUser(userData);
+        loginUser(userData);
         console.log(userData);
     }
 
@@ -92,15 +92,12 @@ function renderLoginPage(params) {
 }
 
 // om du ska testa den här funktionen, glöm inte ladda rätt css_filer
-function loginUser(userData, followingNewReviews) {
-    // jag behöver ha med åtminstone reviews också för alla users som den inloggade följer som argument till loginUser för de måste också skickas med i anropet till renderDiscoverView
+function loginUser(userData) {
 
     localStorage.setItem("logInKey", userData.loginKey);
     localStorage.setItem("userId", userData.userIdentity.id);
 
-    renderLoggedInView({
-        profilePic: userData.profilePic,
-    })
+    renderLoggedInView(userData.userIdentity.profilePic);
 
     renderDiscoverView(userData.userIdentity.id);
 

@@ -1,6 +1,6 @@
 #album_overview {
     display: flex;
-    margin-top: 10px;
+    margin-top: 1vh;
 }
 
 .album_cover {
@@ -20,8 +20,6 @@
 
 .review {
     border-radius: 20px;
-    height: 20vh;
-    width: 100%;
     background-color: rgb(212, 212, 212);
     box-sizing: border-box;
     padding: 10px;
@@ -33,6 +31,11 @@ p {
 
 .stars {
     display: flex;
+    margin: 0.5vh 0 0.5vh 0;
+}
+
+#albumName {
+    font-weight: bold;
 }
 
 .star {

@@ -60,7 +60,8 @@
                     "boards": [
                         0
                     ],
-                    "timestamp": "2023-01-21T23:12:35",
+                    "albumCover": "url(..\/media\/beatles.jpg)",
+                    "timestamp": 1525948418,
                     "displayName": "Anthony Fantano",
                     "test": 15
                 },
@@ -69,18 +70,20 @@
                     "artist": "Fleetwood Mac",
                     "albumId": "78",
                     "reviewId": 9,
+                    "albumCover": "url(..\/media\/dreams.jpg)",
                     "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
                     "rating": 5,
                     "boards": [
                         0
                     ],
-                    "timestamp": "2023-02-13T03:12:43",
+                    "timestamp": 1683714729,
                     "displayName": "Anthony Fantano",
                     "test": 16
                 },
                 {
                     "albumName": "Abbey Road",
                     "artist": "The Beatles",
+                    "albumCover": "url(..\/media\/beatles.jpg)",
                     "albumId": "43",
                     "reviewId": 46,
                     "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
@@ -88,7 +91,7 @@
                     "boards": [
                         0
                     ],
-                    "timestamp": "2023-03-16T21:17:11",
+                    "timestamp": 1557484418,
                     "displayName": "Anthony Fantano"
                 }
             ],
@@ -148,8 +151,9 @@
                     "boards": [
                         0
                     ],
-                    "timestamp": "2023-01-27T21:17:11",
+                    "timestamp": 1494412418,
                     "displayName": "test2",
+                    "albumCover": "url(..\/media\/hellman.jpg)",
                     "test": 10
                 },
                 {
@@ -162,8 +166,9 @@
                     "boards": [
                         0
                     ],
-                    "timestamp": "2023-05-04T21:17:11",
+                    "timestamp": 1494412418,
                     "displayName": "test2",
+                    "albumCover": "url(..\/media\/beatles.jpg)",
                     "test": 11
                 }
             ],
