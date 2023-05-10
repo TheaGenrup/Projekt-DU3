@@ -1,7 +1,7 @@
 "use strict";
 //  checkIfAlreadyLoggedIn();
 // Switch between log in and register Section
-const switchBtn = document.querySelector("#switchBtn");
+/* const switchBtn = document.querySelector("#switchBtn");
 switchBtn.addEventListener("click", (e) => {
     const loginRegisterSwitchcontainer = document.querySelector("#loginRegisterSwitch");
     const text = loginRegisterSwitchcontainer.querySelector(".signupText");
@@ -86,7 +86,7 @@ function checkIfAlreadyLoggedIn() {
     console.log(key);
     if (!key) { return };
     attemptLogin("", "", "Access-Key: Auth", key);
-}
+} */
 
 function renderLoginPage(params) {
 }
@@ -96,14 +96,13 @@ function loginUser(userData, followingNewReviews) {
     // jag behöver ha med åtminstone reviews också för alla users som den inloggade följer som argument till loginUser för de måste också skickas med i anropet till renderDiscoverView
 
     localStorage.setItem("logInKey", userData.loginKey);
+    localStorage.setItem("userId", userData.userIdentity.id);
 
     renderLoggedInView({
         profilePic: userData.profilePic,
     })
 
-    // to do: sortera reviews efter datum och tid
-
-    renderDiscoverView(followingNewReviews);
+    renderDiscoverView(userData.userIdentity.id);
 
 }
 

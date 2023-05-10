@@ -8,6 +8,13 @@ function sendJSON($data, $statuscode = 200) {
     exit();
 }
 
+function sendJSONNoExit($data, $statuscode = 200) {
+    header("Content-Type: application/json");
+    http_response_code($statuscode);
+    $json = json_encode($data);
+    echo $json;
+}
+
 
 function getFileData ($filename) {
     $json = file_get_contents($filename);

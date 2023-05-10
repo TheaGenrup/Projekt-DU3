@@ -24,6 +24,6 @@ if (!$_SERVER["REQUEST_METHOD"] == "GET") {
     }
 }
 
-
+sendJSON(["message" => "You need to use the GET method"], 405);
 
 ?>
