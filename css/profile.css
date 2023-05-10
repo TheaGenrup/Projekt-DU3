@@ -1,5 +1,4 @@
 #profile_header {
-    height: 10vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,7 +11,6 @@
     width: 25vw;
     border-radius: 50%;
     border: 1px solid black;
-    margin-top: 20vh;
 }
 
 #bookmark_icon,
@@ -38,7 +36,7 @@
 
 #profile_icons {
     display: flex;
-    margin-top: 10vh;
+    margin-top: 5vh;
     gap: 3vw;
     justify-content: right;
 }
@@ -47,7 +45,6 @@
     display: grid;
     grid-template-columns: auto auto;
     text-align: center;
-    padding-top: 20vh;
     column-gap: 1vh;
     font-size: 16px;
 }
@@ -68,22 +65,79 @@
 }
 
 
-#boards h2 {
-    padding-top: 15vh;
-}
-
 #board_of_boards {
     display: grid;
     grid-template-columns: auto auto;
     gap: 20px;
 }
 
-#boards p {
+#board_and_review_container p {
     cursor: pointer;
+}
+
+#board_and_review_container {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
 }
 
 .profile_board img {
     height: 30vw;
     width: 30vw;
     border-radius: 5%;
+}
+
+#album_overview {
+    display: flex;
+    margin-top: 10px;
+}
+
+.album_cover {
+    height: 12vh;
+    width: 12vh;
+    background-position: center;
+    background-size: cover;
+    border-radius: 20%;
+    margin: 0 10px 0 0;
+}
+
+#album_details {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.review {
+    border-radius: 20px;
+    height: 20vh;
+    width: 100%;
+    background-color: rgb(212, 212, 212);
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+p {
+    margin: 0;
+}
+
+.stars {
+    display: flex;
+}
+
+.star {
+    background-position: center;
+    background-size: cover;
+    background-image: url(../media/icons/empty_star.png);
+    height: 18px;
+    width: 18px;
+}
+
+#add_review {
+    border-radius: 20px;
+    height: 5vh;
+    width: 100%;
+    background-color: rgb(212, 212, 212);
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
 }
