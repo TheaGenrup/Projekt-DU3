@@ -1,7 +1,7 @@
 "use strict";
 
 // om du ska testa den här funktionen, glöm inte ladda rätt css_filer
-function renderLoggedInView(userIdentity) {
+function renderLoggedInView(profilePic) {
 
     document.querySelector("body").innerHTML = `
 
@@ -12,15 +12,13 @@ function renderLoggedInView(userIdentity) {
         <img class="view_icon" src="/media/icons/discover.png" alt="Discover"></img>
         <img class="view_icon" src="/media/icons/search.png" alt="Search"></img>
         <img class="view_icon" src="/media/icons/add.png" alt="Add"></img>
-        <img class="view_icon" id="profile_picture" src="/media/icons/${userIdentity.profilePic}.png" alt="Profile"></img>
+        <img class="view_icon" id="profile_picture" src="../media/${profilePic}" alt="Profile"></img>
     </nav>
     `;
 
-    document.querySelector("#profile_picture").src = userIdentity.profilePic;
-
 }
 
-renderLoggedInView("../media/profile_picture.jpg");
+renderLoggedInView("profile_picture.jpg");
 
 renderDiscoverView("607133432034891031030642696328");
 // om du ska testa den här funktionen, glöm inte ladda rätt css_filer
@@ -77,22 +75,16 @@ async function renderDiscoverView(userId) {
     }
 
 
-    console.log(allFollowingUsersReviews);
-
-
     allFollowingUsersReviews.sort((a, b) => b.timestamp - a.timestamp);
-
-
-    console.log(allFollowingUsersReviews);
 
 
     // go through all reviews to create them
     allFollowingUsersReviews.forEach(review => {
 
         // shorten comment if needed
-        let comment = review.reviewDescription;
-        if (comment.length > 55) {
-            comment = comment.slice(0, 55) + "...";
+        let reviewDescription = review.reviewDescription;
+        if (reviewDescription.length > 55) {
+            reviewDescription = reviewDescription.slice(0, 55) + "...";
         }
 
         function timeConverter(UNIX_timestamp) {
@@ -112,7 +104,7 @@ async function renderDiscoverView(userId) {
         const newReview = `
      
             <div class="review">
-                <p id="who">@ ${review.displayName} added a review</p>
+                <p id="who">@${review.displayName} added a review</p>
                 <p id="when">${timeConverter(review.timestamp)}</p>
                 <div id="album_overview">
                     <div id="album_cover_${review.reviewId}" class="album_cover"></div>
@@ -127,7 +119,7 @@ async function renderDiscoverView(userId) {
                                 <div class="star"></div>
                                 <div class="star"></div>
                             </div>
-                            <p id="reviewDescription">${review.reviewDescription}</p>
+                            <p id="reviewDescription">${reviewDescription}</p>
                     </div>
                 </div>
             </div>`;
