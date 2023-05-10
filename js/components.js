@@ -225,42 +225,7 @@ async function renderDiscoverView(userId) {
 
 
 }
-/* 
-renderDiscoverView([
-    {
-        reviewId: 1,
-        albumName: "Dreams",
-        artistName: "Fleetwood Mac",
-        userName: "Elin",
-        date: "2023-02-22",
-        timestamp: "16:35",
-        comment: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad unde ea laborum tempora quidem sint commodi culpa dolorum fugiat illum.",
-        rating: 3,
-        albumCover: `url(../media/dreams.jpg)`
-    },
-    {
-        reviewId: 2,
-        albumName: "Och Stora Havet",
-        artistName: "Jakob Hellman",
-        userName: "Thea",
-        date: "2023-02-25",
-        timestamp: "14:38",
-        comment: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad unde ea laborum tempora quidem sint commodi culpa dolorum fugiat illum.",
-        rating: 4,
-        albumCover: `url(../media/hellman.jpg)`
-    },
-    {
-        reviewId: 3,
-        albumName: "Och Stora Havet",
-        artistName: "Jakob Hellman",
-        userName: "Filip",
-        date: "2023-02-26",
-        timestamp: "12:39",
-        comment: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad unde ea laborum tempora quidem sint commodi culpa dolorum fugiat illum.",
-        rating: 2,
-        albumCover: `url(../media/hellman.jpg)`
-    }
-]); */
+
 
 function renderProfileView() {
 
@@ -299,11 +264,9 @@ function renderProfileView() {
                         </div>
                     </div>
                 </div>
-                <div>
-                    <div id="boards">
-                        <h2>BOARDS</h2>
-                        <div id="board_of_boards"></div>
-                    </div>
+                <div id="board_and_review_container">
+                    <h2>BOARDS</h2>
+                    <div id="board_of_boards"></div>
                 </div>`
 
             const boards = user.albumData.boards;
@@ -330,6 +293,111 @@ function renderProfileView() {
             document.querySelectorAll(".board_name").forEach(board => {
                 board.addEventListener("click", showBoard);
             });
+
+            function showBoard(event) {
+
+                document.querySelector("#board_and_review_container").innerHTML = `
+                <div id="add_review">ADD REVIEW</div>
+                `;
+                const reviewsInBoard = [];
+
+                user.albumData.boards.forEach(board => {
+
+                    if (board.boardName === event.target.textContent) {
+
+                        const boardID = board.boardId;
+                        const arrayWithReviews = user.albumData.reviews
+
+                        arrayWithReviews.forEach(review => {
+
+                            review.boards.forEach(board => {
+
+                                if (board === boardID) {
+                                    reviewsInBoard.push(review);
+                                }
+                            })
+                        })
+
+
+                    }
+                });
+                console.log(reviewsInBoard);
+
+                reviewsInBoard.forEach(review => {
+
+                    function timeConverter(UNIX_timestamp) {
+                        var a = new Date(UNIX_timestamp * 1000);
+                        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                        var year = a.getFullYear();
+                        var month = months[a.getMonth()];
+                        var date = a.getDate();
+                        var hour = a.getHours();
+                        var min = a.getMinutes();
+                        var sec = a.getSeconds();
+                        var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
+                        return time;
+                    }
+
+                    console.log(review);
+                    // shorten comment if needed
+                    let reviewDescription = review.reviewDescription;
+                    if (reviewDescription.length > 55) {
+                        reviewDescription = reviewDescription.slice(0, 55) + "...";
+                    }
+
+
+                    // make html for new review
+                    const newReview = `
+
+                        <div class="review">
+                            <p id="who">@ ${user.userIdentity.displayName} added a review</p>
+                            <p id="when">${timeConverter(review.timestamp)}</p>
+                            <div id="album_overview">
+                                <div id="album_cover_${review.reviewId}" class="album_cover"></div>
+                                <div id="album_details">
+
+                                    <p id="albumName">${review.albumName}</p>
+                                    <p id="artist">${review.artist}</p>
+                                    <div id="stars_${review.reviewId}" class="stars">
+                                        <div class="star"></div>
+                                        <div class="star"></div>
+                                        <div class="star"></div>
+                                        <div class="star"></div>
+                                        <div class="star"></div>
+                                    </div>
+                                    <p id="reviewDescription">${reviewDescription}</p>
+                                </div>
+                            </div>
+                        </div> `;
+
+                    // add new review to html
+
+
+                    document.querySelector("#board_and_review_container").innerHTML += newReview;
+
+
+                    // add album cover
+                    if (review.albumCover === "" || review.albumCover === undefined) {
+
+                        document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = "url(../media/icons/default_cover.png)";
+                    } else {
+
+                        document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = review.albumCover;
+                    }
+
+                    // change the background image of the right amount of stars
+                    const stars = document.querySelectorAll(`#stars_${review.reviewId} > div`);
+
+                    for (let i = 0; i < stars.length; i++) {
+                        const star = stars[i];
+                        console.log(star);
+                        if (i < review.rating) {
+                            star.style.backgroundImage = `url(../media/icons/filled_in_star.png)`;
+                        }
+                    }
+                })
+
+            }
         });
 };
 
