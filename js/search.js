@@ -9,13 +9,27 @@ searchField.addEventListener("keyup", searchAlbums);
 let token = "";
 let tokenTimer;
 
-function openSearchWindow() {
+async function fetchToken(params) {
+    fetch("/server/spotifyApi/tokenAccess.php")
+    .then(r=>r.json())
+    .then(r => {
+        token = r.token;
+        tokenTimer = r.tokenTimeLeft;
+        return token;
+})
+}
+
+async function openSearchWindow() {
+
+    token = await fetchToken();
+    /*
     fetch("/server/spotifyApi/tokenAccess.php")
         .then(r=>r.json())
         .then(r => {
             token = r.token;
             tokenTimer = r.tokenTimeLeft;
     })
+    */
     const searchWindow = document.querySelector("#searchWindow");
     searchWindow.classList.add("open");
     const searchFieldContainer = document.querySelector("#searchFieldContainer");
@@ -54,6 +68,7 @@ function closeSearchWindow() {
 function searchAlbums(e) {
     let input = e.target.value;
     if (!input) {return}
+    console.log(input);
     let albumSearchEndpoint = `https://api.spotify.com/v1/search?q=${input}&type=album&offset=0&limit=10`;
 
     if (token.length > 0 || token != undefined) { 
@@ -62,7 +77,9 @@ function searchAlbums(e) {
               "Authorization": "Bearer " + token
           }
       })
-      .then(response => response.json())
+      .then(response => {
+        console.log(response);
+        return response.json()})
       .then(albumResource => {
         const albumsfetched = albumResource.albums.items;
         const albumsFound = []
@@ -80,7 +97,9 @@ function searchAlbums(e) {
           }
           albumsFound.push(albumInfo)
         });
-        listAlbums(albumsFound);
+        // listAlbums(albumsFound);
+        console.log(albumsFound);
+        return albumsFound;
       });
 
     }

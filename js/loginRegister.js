@@ -91,6 +91,7 @@ async function fetchLogin(username, password, access, loginKey) {
 
 function loginUser(userData) {
     localStorage.setItem("logInKey", userData.loginKey);
+    localStorage.setItem("id", userData.userIdentity.id)
 
     renderLoggedInView({
         profilePic: userData.profilePic,

@@ -1,0 +1,70 @@
+*:not(#overlay, nav){
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#createContainer input{
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: #5c5c8e;
+    border: 2px solid #b7b9bb;
+}
+
+#addBoardPhotoBtn{
+    height: 35vw;
+    width: 35vw;
+    border-radius: 20px;
+}
+
+#createContainer{
+    height: 100%;
+    flex-direction:column;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+
+#createBoardContainer{
+    flex-direction: column;
+}
+
+#createReviewContainer{
+    height: 100%;
+    position: relative;
+    flex-direction: column;
+}
+#createReviewContainer div{
+    margin-bottom: 10px;
+}
+#searchAlbumContainer ul{
+    margin: 0;
+    padding: 0;
+    list-style-type:none;
+}
+
+#chooseRatingContainer img{
+    height: 30px;
+    width: 30px;
+}
+
+#createContainer .horizontalContainer button{
+    padding: 1.5px;
+    width: 70px;
+    background-color: #404082;
+    color: #e8e8e8;
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#createContainer .horizontalContainer button:hover{
+    background-color: #35356f;
+}
+
+.open{
+    display: flex;
+}
+
+.closed{
+    display: none;
+}

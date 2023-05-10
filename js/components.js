@@ -41,6 +41,9 @@ function renderLoginPage() {
 function renderLoggedInView(userIdentity) {
     const html = `
     <main id="mainContainer">
+    <dialog data-modal id="overlay">
+    </dialog>
+
         <div id="contentContainer">
             <div id="searchWindow">
                 <div id="usersUlContainer">
@@ -57,7 +60,7 @@ function renderLoggedInView(userIdentity) {
     <nav>
         <img class="view_icon" src="/media/icons/discover.png" alt="Discover"></img>
         <img class="view_icon" id="openSearchWindowBtn" src="/media/icons/search.png" alt="Search"></img>
-        <img class="view_icon" src="/media/icons/add.png" alt="Add"></img>
+        <img class="view_icon" id="addBtn" src="/media/icons/add.png" alt="Add"></img>
         <img class="view_icon" id="profile_picture" src="/media/icons/${userIdentity.profilePic}.png" alt="Profile"></img>
         <div class="view_icon" id="logoutBtn">logout</div>
         <div id="searchFieldContainer">
@@ -72,6 +75,7 @@ function renderLoggedInView(userIdentity) {
     const openSearchWindowBtn = document.querySelector("#openSearchWindowBtn");
     const closeSearchWindowBtn = document.querySelector("#closeSearchWindowBtn");
     const searchField = document.querySelector("#searchField");
+    const addBtn = document.querySelector("#addBtn");
     
     // DOM Event listeners
     logoutBtn.addEventListener("click", renderLoginPage);
@@ -79,6 +83,7 @@ function renderLoggedInView(userIdentity) {
     closeSearchWindowBtn.addEventListener("click", closeSearchWindow);
     searchField.addEventListener("keyup", searchAlbums);
     searchField.addEventListener("keyup", searchUsers);
+    addBtn.addEventListener("click", createBoardOrReview)
     document.querySelector("#style1").setAttribute("href", "/css/logged_in_basic_layout.css");
     document.querySelector("#style2").setAttribute("href", "/css/search.css");
     document.querySelector("#profile_picture").src = userIdentity.profilePic;
