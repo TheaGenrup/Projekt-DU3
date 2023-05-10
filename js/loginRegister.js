@@ -1,7 +1,7 @@
 "use strict";
 //  checkIfAlreadyLoggedIn();
 // Switch between log in and register Section
-/* const switchBtn = document.querySelector("#switchBtn");
+const switchBtn = document.querySelector("#switchBtn");
 switchBtn.addEventListener("click", (e) => {
     const loginRegisterSwitchcontainer = document.querySelector("#loginRegisterSwitch");
     const text = loginRegisterSwitchcontainer.querySelector(".signupText");
@@ -86,7 +86,7 @@ function checkIfAlreadyLoggedIn() {
     console.log(key);
     if (!key) { return };
     attemptLogin("", "", "Access-Key: Auth", key);
-} */
+}
 
 function renderLoginPage(params) {
 }
