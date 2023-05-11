@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "gs2sS05c3rp3GQBAzyiH9CTCP",
+        "loginKey": "ndfXI0ASq9xhJotnvlc75G739",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -60,7 +60,7 @@
                     "boards": [
                         0
                     ],
-                    "albumCover": "url(..\/media\/beatles.jpg)",
+                    "albumCover": "infest.jpg",
                     "timestamp": 1525948418,
                     "displayName": "Anthony Fantano",
                     "test": 15
@@ -70,8 +70,8 @@
                     "artist": "Fleetwood Mac",
                     "albumId": "78",
                     "reviewId": 9,
-                    "albumCover": "url(..\/media\/dreams.jpg)",
-                    "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
+                    "albumCover": "dreams.jpg",
+                    "reviewDescription": "More or less for me, they are as wonderful as sculptures or paints, because Dreams goes absolutely beyond music. Their instruments are like brushes with which we paint such wonderful songs as Sara, Gypsy, Big Love, Rhiannon, thanks to which we can experience artistic understanding.",
                     "rating": 5,
                     "boards": [
                         0
@@ -83,10 +83,10 @@
                 {
                     "albumName": "Abbey Road",
                     "artist": "The Beatles",
-                    "albumCover": "url(..\/media\/beatles.jpg)",
+                    "albumCover": "beatles.jpg",
                     "albumId": "43",
                     "reviewId": 46,
-                    "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
+                    "reviewDescription": "Once again, a perfect piece of music that fits its appropriate moods insanely well.",
                     "rating": 3,
                     "boards": [
                         0
@@ -146,14 +146,14 @@
                     "artist": "Jakob Hellman",
                     "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
                     "reviewId": 57,
-                    "reviewDescription": "I like when the music is making noise",
+                    "reviewDescription": "SOOOO smooth sounding. even in its simplicity this album is SOOO amazing, and it's absolutely timeless. probably in my top 5 of all time.",
                     "rating": 3,
                     "boards": [
                         0
                     ],
                     "timestamp": 1494412418,
                     "displayName": "test2",
-                    "albumCover": "url(..\/media\/hellman.jpg)",
+                    "albumCover": "hellman.jpg",
                     "test": 10
                 },
                 {
@@ -168,7 +168,7 @@
                     ],
                     "timestamp": 1494432518,
                     "displayName": "test2",
-                    "albumCover": "url(..\/media\/beatles.jpg)",
+                    "albumCover": "beatles.jpg",
                     "test": 11
                 }
             ],

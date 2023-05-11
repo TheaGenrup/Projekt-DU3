@@ -1,10 +1,10 @@
+#content_container {
+    gap: 20px;
+}
+
 #album_overview {
     display: flex;
     margin-top: 1vh;
-}
-
-.review {
-    cursor: pointer;
 }
 
 .album_cover {
@@ -33,28 +33,11 @@ p {
     margin: 0;
 }
 
-.stars {
-    display: flex;
-    margin: 0.5vh 0 0.5vh 0;
-}
-
 #albumName {
     font-weight: bold;
 }
 
 .star {
-    background-position: center;
-    background-size: cover;
-    background-image: url(../media/icons/empty_star.png);
     height: 18px;
     width: 18px;
-}
-
-#bookmark {
-    height: 2vh;
-    width: 2vh;
-}
-
-textarea:focus {
-    box-shadow: none;
 }

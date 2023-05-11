@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+}
+
+#content_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#display_name {
+    font-size: 2vh;
+    margin-top: 4vh;
+}
+
+#album_name {
+    font-size: 4vh;
+    margin-top: 4vh;
+}
+
+#artist {
+    font-size: 2.5vh;
+    margin-top: 3vh;
+    margin-bottom: 2vh;
+}
+
+#bookmark {
+    height: 2vh;
+    width: 2vh;
+}
+
+.album_cover_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#review_description {
+    margin-top: 2vh;
+}
+
+#other_reviews_head {
+    font-size: 3vh;
+    margin-top: 5vh;
+}
+
+#other_reviews_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.star {
+    height: 4vh;
+    width: 4vh;
+}

@@ -1,3 +1,20 @@
-.review:hover {
+.review,
+nav * {
     cursor: pointer;
+}
+
+
+.stars {
+    display: flex;
+    margin: 0.5vh 0 0.5vh 0;
+}
+
+.star {
+    background-position: center;
+    background-size: cover;
+    background-image: url(../media/icons/empty_star.png);
+}
+
+.bold {
+    font-weight: bold;
 }

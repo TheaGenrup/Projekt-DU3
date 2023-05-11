@@ -48,19 +48,6 @@ async function renderDiscoverView() {
             allFollowingUsersReviews.push(review);
         });
 
-        async function getReviews(followingUserId) {
-
-            const allReviews = [];
-
-            const response = await fetch(new Request(`../server/getReviews.php/?id=${followingUserId}`));
-            const reviews = await response.json();
-
-            reviews.forEach(review => {
-                allReviews.push(review);
-            });
-
-            return allReviews;
-        }
     }
 
 
@@ -74,8 +61,8 @@ async function renderDiscoverView() {
 
         // shorten comment if needed
         let reviewDescription = review.reviewDescription;
-        if (reviewDescription.length > 55) {
-            reviewDescription = reviewDescription.slice(0, 55) + "...";
+        if (reviewDescription.length > 50) {
+            reviewDescription = reviewDescription.slice(0, 50) + "...";
         }
 
         function timeConverter(UNIX_timestamp) {
@@ -95,7 +82,7 @@ async function renderDiscoverView() {
         const newReview = `
      
             <div class="review" id="review_${review.reviewId}">
-                <p id="who">@${review.displayName} added a review</p>
+                <p id="who" class="bold">@${review.displayName} added a review</p>
                 <p id="when">${timeConverter(review.timestamp)}</p>
                 <div id="album_overview">
                     <div id="album_cover_${review.reviewId}" class="album_cover"></div>
@@ -129,18 +116,10 @@ async function renderDiscoverView() {
             document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = "url(../media/icons/default_cover.png)";
         } else {
 
-            document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = review.albumCover;
+            document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = `url(../media/${review.albumCover})`;
         }
 
-        // change the background image of the right amount of stars
-        const stars = document.querySelectorAll(`#stars_${review.reviewId} > div`);
-
-        for (let i = 0; i < stars.length; i++) {
-            const star = stars[i];
-            if (i < review.rating) {
-                star.style.backgroundImage = `url(../media/icons/filled_in_star.png)`;
-            }
-        }
+        fillStars(review.rating, review.reviewId);
 
     });
 
@@ -348,15 +327,8 @@ function renderProfileView() {
                     }
 
                     // change the background image of the right amount of stars
-                    const stars = document.querySelectorAll(`#stars_${review.reviewId} > div`);
-
-                    for (let i = 0; i < stars.length; i++) {
-                        const star = stars[i];
-                        if (i < review.rating) {
-                            star.style.backgroundImage = `url(../media/icons/filled_in_star.png)`;
-                        }
-                    }
-                })
+                    fillStars(review.rating, review.reviewId);
+                });
 
 
 
@@ -368,7 +340,7 @@ function renderProfileView() {
 async function expandReview(event) {
 
     document.querySelector("#css1").setAttribute("href", "../css/logged_in_basic_layout.css");
-    document.querySelector("#css2").setAttribute("href", "../css/discover.css");
+    document.querySelector("#css2").setAttribute("href", "../css/expandedReview.css");
     document.querySelector("#content_container").innerHTML = "";
 
     const userId = event.currentTarget.dataset.userId;
@@ -381,25 +353,30 @@ async function expandReview(event) {
         if (reviewId == review.reviewId) {
 
             document.querySelector("#content_container").innerHTML = `
+                
             
-            <p id="displayName">@${review.displayName} reviewed</p>
-            <p>${review.albumName}</p>
-            <p>${review.artist}</p>
-            <div class="album_cover_container">
-                <img src="${review.albumCover}" alt="Album Cover">
-                <img src="/media/icons/bookmark.png" id="bookmark" alt="Bookmark">
-            </div>
-            <div id="stars">
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-            </div>
-            <textarea name="reviewDescription" id="" cols="30" rows="10"></textarea>
-            <p>Other reviews</p>
-            <div id="other_reviews_container"></div>
+                <p id="display_name"><span class="bold">@${review.displayName}</span> reviewed</p>
+                <p id="album_name">${review.albumName}</p>
+                <p id="artist">${review.artist}</p>
+                <div class="album_cover_container">
+                    <img src="url(../media/${review.albumCover})" alt="Album Cover">
+                    <img src="/media/icons/bookmark.png" id="bookmark" alt="Bookmark">
+                </div>
+                <div class="stars">
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                </div>
+                <p id="review_description">${review.reviewDescription}</p>
+                <p id="other_reviews_head">Previous reviews</p>
+                <div id="other_reviews_container"></div>
+           
             `;
+            const stars = document.querySelectorAll(`#stars > div`);
+
+            fillStars(review.rating);
 
         }
     })
