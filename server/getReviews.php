@@ -22,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                         "albumName" => $review["albumName"],
                         "timestamp" => $review["timestamp"],
                         "displayName" => $user["userIdentity"]["displayName"],
+                        "userId" => $user["userIdentity"]["id"],
                         "artist" => $review["artist"],
                         "rating" => $review["rating"],
                         "reviewDescription" => $review["reviewDescription"],

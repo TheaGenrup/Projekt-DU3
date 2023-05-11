@@ -20,11 +20,7 @@ function renderLoggedInView(profilePic) {
     document.querySelector("#profile_picture").addEventListener("click", renderProfileView);
 
 }
-/* 
-renderLoggedInView("profile_picture.jpg");
 
-renderDiscoverView("607133432034891031030642696328"); */
-// om du ska testa den här funktionen, glöm inte ladda rätt css_filer
 async function renderDiscoverView() {
 
     document.querySelector("#content_container").innerHTML = "";
@@ -98,7 +94,7 @@ async function renderDiscoverView() {
         // make html for new review
         const newReview = `
      
-            <div class="review">
+            <div class="review" id="review_${review.reviewId}">
                 <p id="who">@${review.displayName} added a review</p>
                 <p id="when">${timeConverter(review.timestamp)}</p>
                 <div id="album_overview">
@@ -122,6 +118,10 @@ async function renderDiscoverView() {
         // add new review to html
         document.querySelector("#content_container").innerHTML += newReview;
 
+        const reviewElement = document.querySelector(`#review_${review.reviewId}`);
+
+        reviewElement.dataset.userId = review.userId;
+        reviewElement.dataset.reviewId = review.reviewId;
 
         // add album cover
         if (review.albumCover === "" || review.albumCover === undefined) {
@@ -144,6 +144,10 @@ async function renderDiscoverView() {
 
     });
 
+    document.querySelectorAll(`.review`).forEach(review => {
+
+        review.addEventListener("click", expandReview);
+    });
 
 }
 
@@ -361,3 +365,12 @@ function renderProfileView() {
 };
 
 
+async function expandReview(event) {
+    console.log(event.currentTarget);
+
+    const userId = event.currentTarget.dataset.userId;
+    console.log(userId);
+
+
+    document.querySelector("#content_container").innerHTML = "";
+}

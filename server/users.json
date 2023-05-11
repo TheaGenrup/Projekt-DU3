@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "oILs1R4G2LcBQMaRBCaGCex2m",
+        "loginKey": "rGjJZQBdRsJFLykxzlCf5ZIYN",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -87,7 +87,7 @@
                     "albumId": "43",
                     "reviewId": 46,
                     "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
-                    "rating": 5,
+                    "rating": 3,
                     "boards": [
                         0
                     ],
@@ -147,7 +147,7 @@
                     "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
                     "reviewId": 57,
                     "reviewDescription": "I like when the music is making noise",
-                    "rating": 5,
+                    "rating": 3,
                     "boards": [
                         0
                     ],
@@ -162,11 +162,11 @@
                     "albumId": "???",
                     "reviewId": 100,
                     "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
-                    "rating": 5,
+                    "rating": 2,
                     "boards": [
                         0
                     ],
-                    "timestamp": 1494412418,
+                    "timestamp": 1494432518,
                     "displayName": "test2",
                     "albumCover": "url(..\/media\/beatles.jpg)",
                     "test": 11

@@ -3,6 +3,10 @@
     margin-top: 1vh;
 }
 
+.review {
+    cursor: pointer;
+}
+
 .album_cover {
     height: 12vh;
     width: 12vh;
