@@ -24,11 +24,11 @@
 }
 
 #bookmark_icon {
-    background-image: url(/media/icons/Discover.png);
+    background-image: url(/media/icons/bookmark.png);
 }
 
 #settings_icon {
-    background-image: url(/media/icons/close_1.png);
+    background-image: url(/media/icons/settings.png);
 }
 
 #add_board_icon {
