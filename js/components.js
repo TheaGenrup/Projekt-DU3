@@ -25,7 +25,11 @@ renderLoggedInView("profile_picture.jpg");
 
 renderDiscoverView("607133432034891031030642696328"); */
 // om du ska testa den här funktionen, glöm inte ladda rätt css_filer
-async function renderDiscoverView(userId) {
+async function renderDiscoverView() {
+
+    document.querySelector("#content_container").innerHTML = "";
+
+    const userId = localStorage.getItem("userId");
 
     // switch css files
     document.querySelector("#css1").setAttribute("href", "../css/logged_in_basic_layout.css");
@@ -33,7 +37,9 @@ async function renderDiscoverView(userId) {
 
     // fetch logged in user to get following ids
     const responseUser = await fetch(new Request(`../server/getUser.php/?id=${userId}`));
+
     const userData = await responseUser.json();
+
     const followingIds = userData.userSocial.following;
     const allFollowingUsersReviews = [];
 
@@ -68,6 +74,7 @@ async function renderDiscoverView(userId) {
 
     // go through all reviews to create them
     allFollowingUsersReviews.forEach(review => {
+
 
         // shorten comment if needed
         let reviewDescription = review.reviewDescription;
@@ -146,12 +153,15 @@ function renderProfileView() {
     //ändra sedan denna till localstorage ID:et
     const userId = "607133432034891031030642696328";
 
+    document.querySelector("#css1").setAttribute("href", "../css/logged_in_basic_layout.css");
+    document.querySelector("#css2").setAttribute("href", "../css/profile.css");
+
     const request = new Request(`/server/getUser.php/?id=${userId}`);
     fetch(request)
         .then(r => r.json())
         .then(resource => {
             const user = resource;
-            console.log(user);
+
 
             const profilePicture = user.userIdentity.profilePic;
             const userFollowers = user.userSocial.followers.length;
@@ -269,7 +279,7 @@ function renderProfileView() {
 
                     }
                 });
-                console.log(reviewsInBoard);
+
 
                 reviewsInBoard.forEach(review => {
 
@@ -286,7 +296,7 @@ function renderProfileView() {
                         return time;
                     }
 
-                    console.log(review);
+
                     // shorten comment if needed
                     let reviewDescription = review.reviewDescription;
                     if (reviewDescription.length > 55) {
@@ -338,7 +348,6 @@ function renderProfileView() {
 
                     for (let i = 0; i < stars.length; i++) {
                         const star = stars[i];
-                        console.log(star);
                         if (i < review.rating) {
                             star.style.backgroundImage = `url(../media/icons/filled_in_star.png)`;
                         }
