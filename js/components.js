@@ -9,15 +9,14 @@ function renderLoggedInView(profilePic) {
         <div id="content_container"></div>
     </main>
     <nav>
-        <img class="view_icon" src="/media/icons/discover.png" alt="Discover"></img>
-        <img class="view_icon" src="/media/icons/search.png" alt="Search"></img>
-        <img class="view_icon" src="/media/icons/add.png" alt="Add"></img>
+        <img class="view_icon" id="discover_icon" src="/media/icons/discover.png" alt="Discover"></img>
+        <img class="view_icon" id="search_icon" src="/media/icons/search.png" alt="Search"></img>
+        <img class="view_icon" id="add_icon" src="/media/icons/add.png" alt="Add"></img>
         <img class="view_icon" id="profile_picture" src="../media/${profilePic}" alt="Profile"></img>
     </nav>
     `;
 
-    document.querySelector("#profile_picture").src = profilePic;
-
+    document.querySelector("#discover_icon").addEventListener("click", renderDiscoverView);
     document.querySelector("#profile_picture").addEventListener("click", renderProfileView);
 
 }
