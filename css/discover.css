@@ -49,3 +49,12 @@ p {
     height: 18px;
     width: 18px;
 }
+
+#bookmark {
+    height: 2vh;
+    width: 2vh;
+}
+
+textarea:focus {
+    box-shadow: none;
+}

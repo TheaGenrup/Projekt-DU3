@@ -366,11 +366,41 @@ function renderProfileView() {
 
 
 async function expandReview(event) {
-    console.log(event.currentTarget);
+
+    document.querySelector("#css1").setAttribute("href", "../css/logged_in_basic_layout.css");
+    document.querySelector("#css2").setAttribute("href", "../css/discover.css");
+    document.querySelector("#content_container").innerHTML = "";
 
     const userId = event.currentTarget.dataset.userId;
-    console.log(userId);
+    const reviewId = event.currentTarget.dataset.reviewId;
 
+    const reviews = await fetchReview(userId);
 
-    document.querySelector("#content_container").innerHTML = "";
+    reviews.forEach(review => {
+
+        if (reviewId == review.reviewId) {
+
+            document.querySelector("#content_container").innerHTML = `
+            
+            <p id="displayName">@${review.displayName} reviewed</p>
+            <p>${review.albumName}</p>
+            <p>${review.artist}</p>
+            <div class="album_cover_container">
+                <img src="${review.albumCover}" alt="Album Cover">
+                <img src="/media/icons/bookmark.png" id="bookmark" alt="Bookmark">
+            </div>
+            <div id="stars">
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+            </div>
+            <textarea name="reviewDescription" id="" cols="30" rows="10"></textarea>
+            <p>Other reviews</p>
+            <div id="other_reviews_container"></div>
+            `;
+
+        }
+    })
 }
