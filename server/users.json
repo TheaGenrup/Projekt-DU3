@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "ndfXI0ASq9xhJotnvlc75G739",
+        "loginKey": "ToVeZlyOF40RVJVFt2W9QSbMr",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -66,7 +66,7 @@
                     "test": 15
                 },
                 {
-                    "albumName": "Dreams",
+                    "albumName": "Rumours",
                     "artist": "Fleetwood Mac",
                     "albumId": "78",
                     "reviewId": 9,
@@ -115,10 +115,10 @@
     },
     {
         "userCredentials": {
-            "username": "test2",
-            "password": "test2"
+            "username": "stevie",
+            "password": "crochetisfun"
         },
-        "loginKey": "FEQTxo5ivVNyPi31ldS8Q9QbX",
+        "loginKey": "SK5Xg2WuolfDGVthQECU8gnnB",
         "userSocial": {
             "following": [],
             "followers": []
@@ -126,7 +126,7 @@
         "userIdentity": {
             "id": "317161457770161228256467772618",
             "profilePic": "default.jpg",
-            "displayName": "test2"
+            "displayName": "Stevie Nicks"
         },
         "albumData": {
             "boards": [

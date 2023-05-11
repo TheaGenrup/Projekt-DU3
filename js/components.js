@@ -23,6 +23,7 @@ function renderLoggedInView(profilePic) {
 
 async function renderDiscoverView() {
 
+
     document.querySelector("#content_container").innerHTML = "";
 
     const userId = localStorage.getItem("userId");
@@ -37,49 +38,53 @@ async function renderDiscoverView() {
     const userData = await responseUser.json();
 
     const followingIds = userData.userSocial.following;
-    const allFollowingUsersReviews = [];
 
-    // get reviews of all following users by their ids, one user at a time
-    for (const followingUserId of followingIds) {
+    if (followingIds.length === 0) {
+        console.log("no following users");
+    } else {
 
-        const reviewsOneUser = await getReviews(followingUserId);
+        const allFollowingUsersReviews = [];
 
-        reviewsOneUser.forEach(review => {
-            allFollowingUsersReviews.push(review);
-        });
+        // get reviews of all following users by their ids, one user at a time
+        for (const followingUserId of followingIds) {
 
-    }
+            const reviewsOneUser = await getReviews(followingUserId);
 
+            reviewsOneUser.forEach(review => {
+                allFollowingUsersReviews.push(review);
+            });
 
-
-    allFollowingUsersReviews.sort((a, b) => b.timestamp - a.timestamp);
-
-
-    // go through all reviews to create them
-    allFollowingUsersReviews.forEach(review => {
-
-
-        // shorten comment if needed
-        let reviewDescription = review.reviewDescription;
-        if (reviewDescription.length > 50) {
-            reviewDescription = reviewDescription.slice(0, 50) + "...";
         }
 
-        function timeConverter(UNIX_timestamp) {
-            var a = new Date(UNIX_timestamp * 1000);
-            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-            var year = a.getFullYear();
-            var month = months[a.getMonth()];
-            var date = a.getDate();
-            var hour = a.getHours();
-            var min = a.getMinutes();
-            var sec = a.getSeconds();
-            var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
-            return time;
-        }
 
-        // make html for new review
-        const newReview = `
+        allFollowingUsersReviews.sort((a, b) => b.timestamp - a.timestamp);
+
+
+        // go through all reviews to create them
+        allFollowingUsersReviews.forEach(review => {
+
+
+            // shorten comment if needed
+            let reviewDescription = review.reviewDescription;
+            if (reviewDescription.length > 50) {
+                reviewDescription = reviewDescription.slice(0, 50) + "...";
+            }
+
+            function timeConverter(UNIX_timestamp) {
+                var a = new Date(UNIX_timestamp * 1000);
+                var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                var year = a.getFullYear();
+                var month = months[a.getMonth()];
+                var date = a.getDate();
+                var hour = a.getHours();
+                var min = a.getMinutes();
+                var sec = a.getSeconds();
+                var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
+                return time;
+            }
+
+            // make html for new review
+            const newReview = `
      
             <div class="review" id="review_${review.reviewId}">
                 <p id="who" class="bold">@${review.displayName} added a review</p>
@@ -102,31 +107,32 @@ async function renderDiscoverView() {
                 </div>
             </div>`;
 
-        // add new review to html
-        document.querySelector("#content_container").innerHTML += newReview;
+            // add new review to html
+            document.querySelector("#content_container").innerHTML += newReview;
 
-        const reviewElement = document.querySelector(`#review_${review.reviewId}`);
+            const reviewElement = document.querySelector(`#review_${review.reviewId}`);
 
-        reviewElement.dataset.userId = review.userId;
-        reviewElement.dataset.reviewId = review.reviewId;
+            reviewElement.dataset.userId = review.userId;
+            reviewElement.dataset.reviewId = review.reviewId;
 
-        // add album cover
-        if (review.albumCover === "" || review.albumCover === undefined) {
+            // add album cover
+            if (review.albumCover === "" || review.albumCover === undefined) {
 
-            document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = "url(../media/icons/default_cover.png)";
-        } else {
+                document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = "url(../media/icons/default_cover.png)";
+            } else {
 
-            document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = `url(../media/${review.albumCover})`;
-        }
+                document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = `url(../media/${review.albumCover})`;
+            }
 
-        fillStars(review.rating, review.reviewId);
+            fillStars(review.rating, review.reviewId);
 
-    });
+        });
 
-    document.querySelectorAll(`.review`).forEach(review => {
+        document.querySelectorAll(`.review`).forEach(review => {
 
-        review.addEventListener("click", expandReview);
-    });
+            review.addEventListener("click", expandReview);
+        });
+    }
 
 }
 
@@ -312,8 +318,6 @@ function renderProfileView() {
                         </div> `;
 
                     // add new review to html
-
-
                     document.querySelector("#board_and_review_container").innerHTML += newReview;
 
 
