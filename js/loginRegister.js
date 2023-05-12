@@ -90,7 +90,6 @@ function checkIfAlreadyLoggedIn() {
     attemptLogin("", "", "Access-Key: Auth", key);
 }
 
-// om du ska testa den här funktionen, glöm inte ladda rätt css_filer
 function loginUser(userData) {
 
     localStorage.setItem("logInKey", userData.loginKey);

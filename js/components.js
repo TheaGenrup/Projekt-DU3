@@ -1,6 +1,5 @@
 "use strict";
 
-// om du ska testa den här funktionen, glöm inte ladda rätt css_filer
 function renderLoggedInView(profilePic) {
 
     document.querySelector("body").innerHTML = `
