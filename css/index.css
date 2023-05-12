@@ -3,7 +3,6 @@ nav * {
     cursor: pointer;
 }
 
-
 .stars {
     display: flex;
     margin: 0.5vh 0 0.5vh 0;
@@ -17,4 +16,8 @@ nav * {
 
 .bold {
     font-weight: bold;
+}
+
+.pointer {
+    cursor: pointer;
 }

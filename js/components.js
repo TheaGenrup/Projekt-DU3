@@ -70,19 +70,6 @@ async function renderDiscoverView() {
                 reviewDescription = reviewDescription.slice(0, 50) + "...";
             }
 
-            function timeConverter(UNIX_timestamp) {
-                var a = new Date(UNIX_timestamp * 1000);
-                var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-                var year = a.getFullYear();
-                var month = months[a.getMonth()];
-                var date = a.getDate();
-                var hour = a.getHours();
-                var min = a.getMinutes();
-                var sec = a.getSeconds();
-                var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
-                return time;
-            }
-
             // make html for new review
             const newReview = `
      
@@ -93,7 +80,7 @@ async function renderDiscoverView() {
                     <div id="album_cover_${review.reviewId}" class="album_cover"></div>
                         <div id="album_details">
     
-                            <p id="albumName">${review.albumName}</p>
+                            <p id="album_name">${review.albumName}</p>
                             <p id="artist">${review.artist}</p>
                             <div id="stars_${review.reviewId}" class="stars">
                                 <div class="star"></div>
@@ -116,22 +103,19 @@ async function renderDiscoverView() {
             reviewElement.dataset.reviewId = review.reviewId;
 
             // add album cover
-            if (review.albumCover === "" || review.albumCover === undefined) {
+            if (review.albumCover === "" || review.albumCover === undefined || review.albumCover === null) {
 
                 document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = "url(../media/icons/default_cover.png)";
             } else {
 
-                document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = `url(../media/${review.albumCover})`;
+                document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = `url(../media/albumCovers/${review.albumCover})`;
             }
 
             fillStars(review.rating, review.reviewId);
 
         });
 
-        document.querySelectorAll(`.review`).forEach(review => {
-
-            review.addEventListener("click", expandReview);
-        });
+        document.querySelectorAll(`.review`).forEach(review => { review.addEventListener("click", expandReview); });
     }
 
 }
@@ -139,8 +123,7 @@ async function renderDiscoverView() {
 
 function renderProfileView() {
 
-    //ändra sedan denna till localstorage ID:et
-    const userId = "607133432034891031030642696328";
+    const userId = localStorage.getItem("userId");
 
     document.querySelector("#css1").setAttribute("href", "../css/logged_in_basic_layout.css");
     document.querySelector("#css2").setAttribute("href", "../css/profile.css");
@@ -151,17 +134,16 @@ function renderProfileView() {
         .then(resource => {
             const user = resource;
 
-
             const profilePicture = user.userIdentity.profilePic;
             const userFollowers = user.userSocial.followers.length;
             const userFollowing = user.userSocial.following.length;
-            const username = user.userCredentials.username;
+            const displayName = user.userIdentity.displayName;
 
             document.querySelector("#content_container").innerHTML = `
                 <div id="profile_header">
                     <div>
                         <img id="profile_picture_top" src="../media/${profilePicture}"></img>
-                        <p>@${username}</p>
+                        <p>@${displayName}</p>
                     </div> 
                     <div>
                         <div id="following_followers">
@@ -243,9 +225,7 @@ function renderProfileView() {
 
             function showBoard(event) {
 
-                document.querySelector("#board_and_review_container").innerHTML = `
-                <div id="add_review">ADD REVIEW</div>
-                `;
+                document.querySelector("#board_and_review_container").innerHTML = `<div id="add_review">ADD REVIEW</div>`;
                 const reviewsInBoard = [];
 
                 user.albumData.boards.forEach(board => {
@@ -271,20 +251,6 @@ function renderProfileView() {
 
 
                 reviewsInBoard.forEach(review => {
-
-                    function timeConverter(UNIX_timestamp) {
-                        var a = new Date(UNIX_timestamp * 1000);
-                        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-                        var year = a.getFullYear();
-                        var month = months[a.getMonth()];
-                        var date = a.getDate();
-                        var hour = a.getHours();
-                        var min = a.getMinutes();
-                        var sec = a.getSeconds();
-                        var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
-                        return time;
-                    }
-
 
                     // shorten comment if needed
                     let reviewDescription = review.reviewDescription;
@@ -322,18 +288,17 @@ function renderProfileView() {
 
 
                     // add album cover
-                    if (review.albumCover === "" || review.albumCover === undefined) {
+                    if (review.albumCover === "" || review.albumCover === undefined || review.albumCover === null) {
 
                         document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = "url(../media/icons/default_cover.png)";
                     } else {
 
-                        document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = review.albumCover;
+                        document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = `url(../media/albumCovers/${review.albumCover})`;
                     }
 
                     // change the background image of the right amount of stars
                     fillStars(review.rating, review.reviewId);
                 });
-
 
 
             }
@@ -358,12 +323,12 @@ async function expandReview(event) {
 
             document.querySelector("#content_container").innerHTML = `
                 
-            
-                <p id="display_name"><span class="bold">@${review.displayName}</span> reviewed</p>
+                <p id="timestamp"><span>${timeConverter(review.timestamp)}</span></p>
+                <p id="display_name"><span class="bold pointer">@${review.displayName}</span> reviewed</p>
                 <p id="album_name">${review.albumName}</p>
                 <p id="artist">${review.artist}</p>
                 <div class="album_cover_container">
-                    <img src="url(../media/${review.albumCover})" alt="Album Cover">
+                    <img src="url(../media/albumCovers/${review.albumCover})" alt="Album Cover">
                     <img src="/media/icons/bookmark.png" id="bookmark" alt="Bookmark">
                 </div>
                 <div class="stars">
@@ -378,10 +343,10 @@ async function expandReview(event) {
                 <div id="other_reviews_container"></div>
            
             `;
-            const stars = document.querySelectorAll(`#stars > div`);
 
             fillStars(review.rating);
 
+            document.querySelector(`#display_name`).addEventListener("click", renderProfileView);
         }
     })
 }
