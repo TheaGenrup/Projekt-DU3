@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "CnA3sjo2QOUkgEnIfTk5eCxuM",
+        "loginKey": "cGRO9Y2G1ZzlaHTbnFHep9aqc",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -125,7 +125,7 @@
         },
         "userIdentity": {
             "id": "317161457770161228256467772618",
-            "profilePic": "default.jpg",
+            "profilePic": "default.png",
             "displayName": "Stevie Nicks"
         },
         "albumData": {
@@ -195,8 +195,29 @@
         },
         "userIdentity": {
             "id": "716916262583862677799694090077",
-            "profilePic": "default.jpg",
+            "profilePic": "default.png",
             "displayName": "test5"
+        },
+        "albumData": {
+            "boards": [],
+            "reviews": [],
+            "favourites": []
+        }
+    },
+    {
+        "userCredentials": {
+            "username": "thea",
+            "password": "thea"
+        },
+        "loginKey": "pN0RlOH9V2ApRZUTgU7hUUCDU",
+        "userSocial": {
+            "following": [],
+            "followers": []
+        },
+        "userIdentity": {
+            "id": "507163198196757529667525417704",
+            "profilePic": "default.png",
+            "displayName": "thea"
         },
         "albumData": {
             "boards": [],

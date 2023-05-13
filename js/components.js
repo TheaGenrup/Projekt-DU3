@@ -37,8 +37,11 @@ async function renderDiscoverView() {
 
     const followingIds = userData.userSocial.following;
 
+    // check if the user follows anyone
     if (followingIds.length === 0) {
         console.log("no following users");
+
+        document.querySelector("#content_container").innerHTML = `<p id="no_following">It seems like you're not following anyone...</p>`;
     } else {
 
         const allFollowingUsersReviews = [];
