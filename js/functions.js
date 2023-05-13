@@ -39,9 +39,8 @@ function timeConverter(UNIX_timestamp) {
     var year = a.getFullYear();
     var month = months[a.getMonth()];
     var date = a.getDate();
-    var hour = a.getHours();
-    var min = a.getMinutes();
-    var sec = a.getSeconds();
+    var hour = a.getHours().toString().padStart(2, '0'); // add leading zero if less than 10
+    var min = a.getMinutes().toString().padStart(2, '0'); // add leading zero if less than 10
     var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
     return time;
 }

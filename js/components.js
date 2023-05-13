@@ -22,7 +22,6 @@ function renderLoggedInView(profilePic) {
 
 async function renderDiscoverView() {
 
-
     document.querySelector("#content_container").innerHTML = "";
 
     const userId = localStorage.getItem("userId");
@@ -152,9 +151,16 @@ function renderProfileView() {
                             <div>${userFollowing}</div>
                         </div>
                         <div id="profile_icons">
-                            <div id="settings_icon"></div>
-                            <div id="bookmark_icon"></div>
-                            <div id="add_board_icon"></div>
+                            <div class="settingsDropdown">
+                                <div id="settings_icon" class="pointer"></div>
+                                <div id="dropdown_content">
+                                    <div id="editAccountBtn" class="pointer">Edit Account</div>
+                                    <div id="logOutBtn" class="pointer">Log Out</div>
+                                </div>
+                            </div>
+                            
+                            <div id="bookmark_icon" class="pointer"></div>
+                            <div id="add_board_icon" class="pointer"></div>
                         </div>
                     </div>
                 </div>
@@ -163,13 +169,17 @@ function renderProfileView() {
                     <div id="board_of_boards"></div>
                 </div>`
 
+            document.querySelector("#settings_icon").addEventListener("click", e => {
+                document.querySelector("#dropdown_content").style.display = "block";
+            });
+            document.querySelector("#settings_icon").addEventListener("click", showSettingsDropdown);
             document.querySelector("#bookmark_icon").addEventListener("click", showFavourites);
 
             function showFavourites(event) {
 
                 document.querySelector("#board_and_review_container").innerHTML = `
                 <div id="favourites_icon_container">
-                    <img id="favourites_icon" src="../media/icons/Discover.png"></img>
+                    <img id="favourites_icon" src="../media/icons/bookmark.png"></img>
                 </div>
                 <div id="favourites"></div>
                 `;
@@ -184,7 +194,7 @@ function renderProfileView() {
 
                     const newFavourite = `
                     <div class="favourite">
-                            <img class="favourite_cover" src="../media/${favouritePicture}"></img>
+                            <img class="favourite_cover" src="../media/albumCovers/${favouritePicture}"></img>
                         <div id="favourite_info_container">
                             <p class="favourite_album_name">${favouriteAlbum}</p>
                             <p class="favourite_artist">${favouriteArtist}</p>
@@ -224,7 +234,7 @@ function renderProfileView() {
 
             function showBoard(event) {
 
-                document.querySelector("#board_and_review_container").innerHTML = `<div id="add_review">ADD REVIEW</div>`;
+                document.querySelector("#board_and_review_container").innerHTML = `<div id="add_review" class="pointer">ADD REVIEW</div>`;
                 const reviewsInBoard = [];
 
                 user.albumData.boards.forEach(board => {
@@ -248,27 +258,29 @@ function renderProfileView() {
                     }
                 });
 
+                reviewsInBoard.sort((a, b) => b.timestamp - a.timestamp);
+
 
                 reviewsInBoard.forEach(review => {
 
                     // shorten comment if needed
                     let reviewDescription = review.reviewDescription;
-                    if (reviewDescription.length > 55) {
-                        reviewDescription = reviewDescription.slice(0, 55) + "...";
+                    if (reviewDescription.length > 50) {
+                        reviewDescription = reviewDescription.slice(0, 50) + "...";
                     }
 
 
                     // make html for new review
                     const newReview = `
 
-                        <div class="review">
-                            <p id="who">@ ${user.userIdentity.displayName} added a review</p>
+                        <div class="review" id="review_${review.reviewId}>
+                            <p id="who">@ ${user.userIdentity.displayName}</p>
                             <p id="when">${timeConverter(review.timestamp)}</p>
                             <div id="album_overview">
                                 <div id="album_cover_${review.reviewId}" class="album_cover"></div>
                                 <div id="album_details">
 
-                                    <p id="albumName">${review.albumName}</p>
+                                    <p id="albumName"><span class="bold">${review.albumName}</span></p>
                                     <p id="artist">${review.artist}</p>
                                     <div id="stars_${review.reviewId}" class="stars">
                                         <div class="star"></div>
@@ -285,6 +297,12 @@ function renderProfileView() {
                     // add new review to html
                     document.querySelector("#board_and_review_container").innerHTML += newReview;
 
+                    /*                     const reviewElement = document.querySelector(`#review_${review.reviewId}`);
+                                        console.log(reviewElement);
+                                        reviewElement.dataset.userId = review.userId;
+                                        reviewElement.dataset.reviewId = review.reviewId;
+                     */
+                    //OBS! dessa är inte sorterade och stjärnorna syns inte
 
                     // add album cover
                     if (review.albumCover === "" || review.albumCover === undefined || review.albumCover === null) {
@@ -300,6 +318,9 @@ function renderProfileView() {
                 });
 
 
+                /*  document.querySelectorAll(".review").forEach(review => {
+                     review.addEventListener("click", expandReview);
+                 }) */
             }
         });
 };
@@ -315,6 +336,7 @@ async function expandReview(event) {
     const reviewId = event.currentTarget.dataset.reviewId;
 
     const reviews = await fetchReview(userId);
+
 
     reviews.forEach(review => {
 
@@ -348,4 +370,12 @@ async function expandReview(event) {
             document.querySelector(`#display_name`).addEventListener("click", renderProfileView);
         }
     })
+}
+
+function showSettingsDropdown(event) {
+
+    document.querySelector("#settings_icon").addEventListener("click", e => {
+        document.querySelector("#dropdown_content").style.display = "none";
+    });
+
 }

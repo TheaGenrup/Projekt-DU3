@@ -4,7 +4,6 @@
     align-items: center;
     padding: 5vw;
     box-sizing: border-box;
-    padding-bottom: 0;
 }
 
 #profile_picture_top {
@@ -33,6 +32,28 @@
 
 #add_board_icon {
     background-image: url(/media/icons/Add.png);
+}
+
+#settingsDropdown {
+    position: relative;
+    display: inline-block;
+}
+
+#dropdown_content {
+    display: none;
+    position: absolute;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    margin-top: 1vh;
+}
+
+#dropdown_content * {
+    display: block;
+    margin: 1vh;
+}
+
+#dropdown_content>* :hover {
+    color: grey;
 }
 
 #profile_icons {
@@ -81,6 +102,7 @@
     flex-direction: column;
     gap: 1vh;
     overflow: scroll;
+    border-radius: 20px;
 }
 
 .profile_board img {
@@ -95,8 +117,8 @@
 }
 
 .album_cover {
-    height: 12vh;
-    width: 12vh;
+    height: 11vh;
+    width: 11vh;
     background-position: center;
     background-size: cover;
     border-radius: 20%;
@@ -129,7 +151,6 @@ p {
     box-sizing: border-box;
     padding: 10px;
     text-align: center;
-    margin-top: 2vh;
 }
 
 #favourites_icon {

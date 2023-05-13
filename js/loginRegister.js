@@ -98,7 +98,6 @@ function loginUser(userData) {
     renderLoggedInView(userData.userIdentity.profilePic);
 
     renderDiscoverView();
-
 }
 
 /*
