@@ -40,62 +40,25 @@ function renderLoginPage() {
 function renderLoggedInView(profilePic) {
 
     document.querySelector("body").innerHTML = `
-
     <main>
-    <dialog data-modal id="overlay">
-    </dialog>
-    <div id="searchWindow">
-        <div id="usersUlContainer">
-            <ul id="usersUl">
-            </ul>
-        </div>
-        <div id="albumUlContainer">
-            <ul id="albumUl">
-            </ul>
-        </div>
-    </div>
-
-    <div id="contentContainer">
-    </div>
+        <div id="contentContainer"></div>
     </main>
     <nav>
         <img class="viewIcon" id="discoverIcon" src="/media/icons/discover.png" alt="Discover"></img>
-        <img class="viewIcon" id="openSearchWindowBtn" src="/media/icons/search.png" alt="Search"></img>
-        <img class="viewIcon" id="addBtn" src="/media/icons/add.png" alt="Add"></img>
+        <img class="viewIcon" id="searchIcon" src="/media/icons/search.png" alt="Search"></img>
+        <img class="viewIcon" id="addIcon" src="/media/icons/add.png" alt="Add"></img>
         <img class="viewIcon" id="profilePicture" src="/media/${profilePic}" alt="Profile"></img>
-        <div id="searchFieldContainer">
-            <img id="closeSearchWindowBtn" src="/media/icons/close_0.png" alt="">
-            <input id="searchField" type="text" placeholder="Search albums and users"></input>
-        </div>
     </nav>
     `;
 
     document.querySelector(`#profilePicture`).dataset.userId = localStorage.getItem("userId");
-
+    // DOM Event listeners
     document.querySelector("#discoverIcon").addEventListener("click", renderDiscoverView);
     document.querySelector("#profilePicture").addEventListener("click", renderProfileView);
-
-
-
-
-    const openSearchWindowBtn = document.querySelector("#openSearchWindowBtn");
-    const closeSearchWindowBtn = document.querySelector("#closeSearchWindowBtn");
-    const searchField = document.querySelector("#searchField");
-    const addBtn = document.querySelector("#addBtn");
-
-
-
-
-    // DOM Event listeners
-    openSearchWindowBtn.addEventListener("click", openSearchWindow);
-    closeSearchWindowBtn.addEventListener("click", closeSearchWindow);
-    searchField.addEventListener("keyup", searchAlbums);
-    searchField.addEventListener("keyup", searchUsers);
-    addBtn.addEventListener("click", createBoardOrReview)
-    document.querySelector("#css1").setAttribute("href", "/css/loggedInBasicLayout.css");
+    document.querySelector("#searchIcon").addEventListener("click", renderSearchView);
+    document.querySelector("#addIcon").addEventListener("click", renderCreateReviewView);
     return;
 }
-
 
 async function renderDiscoverView() {
 
@@ -148,8 +111,54 @@ async function renderDiscoverView() {
         document.querySelectorAll(`.review`).forEach(review => { review.addEventListener("click", expandReview); });
     }
 
-}
+};
 
+async function renderSearchView(e) {
+    // Get Spotify token
+    token = await fetchToken();
+    if (document.querySelector("#searchWindow")) { return };
+    const contentContainer = document.querySelector("#contentContainer");
+    const html = `
+    <div id="searchWindow">
+        <div>
+            <input type="text" id="searchField" placeholder="Album, Artist, user">
+        </div>
+        <ul id=userUl> </ul>
+        <ul id=albumUl> </ul>
+    </div>
+    `;
+    contentContainer.innerHTML = html;
+    document.querySelector("#searchField").addEventListener("keyup", searchAlbums);
+    document.querySelector("#searchField").addEventListener("keyup", searchUsers);
+
+    // CSS change
+    document.querySelector("#css2").setAttribute("href", "/css/search.css");
+};
+
+async function renderCreateReviewView(params) {
+    const userId = localStorage.getItem("userId");
+    const response = await fetch(`/server/getUser.php?id=${userId}`);
+    const userData = await response.json();
+
+    const usersBoards = userData.albumData.boards;
+
+    console.log(usersBoards);
+    const contentContainer = document.querySelector("#contentContainer");
+    contentContainer.innerHTML ="";
+    const html =
+    `
+        <h3>Review Album</h3>
+        <div id="createContainer">
+            <div class="createOption">New Board</div>
+            <div class="createOption">New Review</div>
+        </div>
+    `;
+    // <input type="text" placeholder="Album, Artist" id="searchField">   
+    contentContainer.innerHTML = html;
+
+    // CSS Change
+    document.querySelector("#css2").setAttribute("href", "/css/create.css");
+};
 
 function renderProfileView(event) {
 
@@ -370,7 +379,6 @@ function renderProfileView(event) {
         });
 };
 
-
 async function expandReview(event) {
 
     document.querySelector("#css1").setAttribute("href", "../css/loggedInBasicLayout.css");
@@ -420,4 +428,4 @@ async function expandReview(event) {
             document.querySelector(`#displayName`).addEventListener("click", renderProfileView);
         }
     })
-}
+};

@@ -94,7 +94,6 @@ function loginUser(userData) {
     localStorage.setItem("logInKey", userData.loginKey);
     localStorage.setItem("userId", userData.userIdentity.id);
     const profilePicture = userData.userIdentity.profilePic
-    console.log(profilePicture);
 
     renderLoggedInView(profilePicture)
     // renderDiscoverView(followingNewReviews);

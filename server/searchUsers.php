@@ -38,7 +38,6 @@ if (count($possibleMatches) == 0) {
     sendJson($matches);
     
 }
-clog($possibleMatches);
 
 
 ?>

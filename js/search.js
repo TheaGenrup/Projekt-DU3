@@ -9,56 +9,9 @@ async function fetchToken(params) {
         token = r.token;
         tokenTimer = r.tokenTimeLeft;
         return token;
-})
-}
+})};
 
-async function openSearchWindow() {
-
-    token = await fetchToken();
-    /*
-    fetch("/server/spotifyApi/tokenAccess.php")
-        .then(r=>r.json())
-        .then(r => {
-            token = r.token;
-            tokenTimer = r.tokenTimeLeft;
-    })
-    */
-    const searchWindow = document.querySelector("#searchWindow");
-    searchWindow.classList.add("open");
-    const searchFieldContainer = document.querySelector("#searchFieldContainer");
-    const searchField = document.querySelector("#searchField");
-    const closeSearchWindowBtn = document.querySelector("#closeSearchWindowBtn");
-    document.querySelector("#css3").setAttribute("href", "/css/search.css");
-
-    window.addEventListener("keyup", (e)=>{
-        if (e.key === "Escape" && searchWindow.classList.contains("open")) {closeSearchWindow();}
-    })
-    searchWindow.style.transition = "1.5s"
-    closeSearchWindowBtn.style.display = "block";
-    searchWindow.style.display = "block";
-    searchWindow.style.height = "92%";
-    searchFieldContainer.style.width = "100%";
-    searchFieldContainer.style.height = "100%";
-    searchField.style.display = "block";
-}
-
-function closeSearchWindow() {
-    const searchWindow = document.querySelector("#searchWindow");
-    const searchFieldContainer = document.querySelector("#searchFieldContainer");
-    const searchField = document.querySelector("#searchField");
-    const closeSearchWindowBtn = document.querySelector("#closeSearchWindowBtn");
-    
-    closeSearchWindowBtn.style.display = "none";
-    searchWindow.style.transition = "0s"
-    searchWindow.style.height = "0%";
-    searchFieldContainer.style.width = "0%";
-    searchFieldContainer.style.height = "0%";
-    searchField.style.display = "none";
-    // Kanske ta bort? Ska vi rensa lista efter man stängt ner den?
-    const albumUl = document.querySelector("#albumUl");
-    albumUl.innerHTML = "";
-}
-
+                    // SEARCH SECTION
 function searchAlbums(e) {
     const list = e.target.id;
     let input = e.target.value;
@@ -82,7 +35,7 @@ function searchAlbums(e) {
             artistsInAlbum.push(artist.name)
           });
           let albumInfo = {
-            artistName: artistsInAlbum,
+            albumArtists: artistsInAlbum,
             albumName:  album.name,
             albumId:    album.id,
             albumImage: album.images[2].url,
@@ -90,6 +43,8 @@ function searchAlbums(e) {
           }
           albumsFound.push(albumInfo);
         });
+        listAlbums(albumsFound);
+        /*
         switch (list) {
             case "searchField":
                 listAlbumsGeneralSearch(albumsFound);
@@ -98,10 +53,84 @@ function searchAlbums(e) {
                 listAlbumsForNewReview(albumsFound);
                 break;
         }
+        */
       });
 
     }
 }
+function searchUsers(e) {
+    let input = e.target.value;
+    if (!input) {return}
+    const request = new Request(`/server/searchUsers.php?search=${input}`);
+    fetch(request)
+        .then(r=>r.json())
+        .then(userResource => {
+            console.log(userResource);
+            listUsers(userResource);
+        })
+}
+                    // List results
+    // List Albums
+function listAlbums(albumsFound) {
+    const albumDomUl = document.querySelector("#albumUl");
+    albumDomUl.innerHTML = "";
+    if (albumsFound.length > 0) {
+        albumsFound.forEach(album => {
+            const albumName     = album.albumName;
+            const albumArtists  = album.albumArtists;
+            const albumId       = album.albumId;
+            const albumImage    = album.albumImage;
+            const albumType     = album.albumType;
+    
+            const liDom = document.createElement("li");
+            liDom.setAttribute("id", albumId)
+            liDom.innerHTML = 
+            `
+                <img src="${albumImage}"></img>
+                <div class="albumInformation">
+                    <p>${albumName}</p>
+                    <p>${albumArtists[0]}</p>
+                </div>
+                <button class="saveButton"><img src="/media/icons/bookmark.png" alt=""></button>
+            `;
+    
+            albumDomUl.append(liDom)
+        });
+    } else {
+        albumDomUl.innerHTML = "No Albums found :(";
+    }
+}
+    // List Users
+function listUsers(usersFound) {
+    const UserDomul = document.querySelector("#userUl");
+    UserDomul.innerHTML = "";
+    if (usersFound.length > 0) {
+        usersFound.forEach(user => {
+            console.log(user);
+            const UserDisplayName = user.displayName;
+            const Userid = user.id;
+            const UserprofilePicture = user.profilePicture;
+    
+    
+    
+            const liDom = document.createElement("li");
+            liDom.setAttribute("id", Userid);
+            liDom.innerHTML = 
+            `
+                <img src="${UserprofilePicture}"></img>
+                <div class="albumInformation">
+                    <p>${UserDisplayName}</p>
+                </div>
+                <button class="saveButton"><img src="/media/icons/bookmark.png" alt=""></button>
+            `;
+    
+            UserDomul.append(liDom)
+        });
+    } else {
+        UserDomul.innerHTML = "No users found";
+    }
+}
+
 
 function listAlbumsForNewReview(albums) {
     const albumUl = document.querySelector("#selectAlbumSearchUl");
@@ -162,82 +191,6 @@ function chooseAlbumToReview(e) {
     createReviewBtn.classList.remove("disabled");
 }
 
-function listAlbumsGeneralSearch(albums) {
-    const albumUl = document.querySelector("#albumUl");
-    albumUl.innerHTML = "";
-    const message = document.createElement("div");
-    message.classList.add("message")
-    message.textContent = "no albums found";
-    albumUl.append(message);
-    if (albums.length > 0) {
-        message.textContent = "albums";
-        albumUl.append(message);
-        albums.forEach(album => {
-            const artistName = album.artistName;
-            const albumName = album.albumName;
-            const albumId = album.albumId;
-            const albumImage = album.albumImage;
-            const albumType = album.albumType;
-    
-            const html = `
-                <img class ="previewImage" src="${albumImage}" alt="${albumName}">
-                <div class="albumInfo">
-                    <p>${artistName}</p>
-                    <p>${albumName}</p>
-                    <p>${albumType}</p>
-                </div>
-                <img class="saveToListBtn" src="./media/icons/Add.png" alt="Press to save album">
-            `;
-            const liDom = document.createElement("li");
-            liDom.setAttribute("id", albumId);
-            liDom.classList.add("albumPreview");
-            liDom.innerHTML = html;
-            albumUl.append(liDom);
-        });
-    }
-}
-function searchUsers(e) {
-    let input = e.target.value;
-    if (!input) {return}
-    const request = new Request(`/server/searchUsers.php?search=${input}`);
-    fetch(request)
-        .then(r=>r.json())
-        .then(userResource => {
-            console.log(userResource);
-            listUsers(userResource);
-        })
-}
-
-function listUsers(users) {
-    const usersUl = document.querySelector("#usersUl");
-    usersUl.innerHTML = "";
-    usersUl.innerHTML = "";
-    const message = document.createElement("div");
-    message.classList.add("message")
-    message.textContent = "no users found";
-    if (users.length > 0) {
-        message.textContent = "users";
-        usersUl.append(message);
-        users.forEach(user => {
-            const displayName = user.displayName;
-            const id = user.id;
-            let profilePicture = user.profilePicture;
-            if (!profilePicture) {
-                profilePicture = "default.png"
-            }
-
-            const html = `
-            <img class="previewImage"src="/media/${profilePicture}"></img>
-            <div>${displayName}</div>
-            `;
-
-            const liDom = document.createElement("li");
-            liDom.setAttribute("id", id);
-            liDom.innerHTML = html;
-            usersUl.append(liDom);
-        });
-    }
-}
 
 /*
 token.json information:

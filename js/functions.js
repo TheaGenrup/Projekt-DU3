@@ -88,7 +88,6 @@ function makeReview(review, container) {
 
     reviewElement.dataset.userId = review.userId;
     reviewElement.dataset.reviewId = review.reviewId;
-    console.log(review.albumCover);
 
     // add album cover
     if (review.albumCover === "" || review.albumCover === undefined || review.albumCover === null) {

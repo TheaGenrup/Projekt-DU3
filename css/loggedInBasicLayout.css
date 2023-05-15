@@ -93,7 +93,25 @@ nav {
 #overlayContentContainer {
     height: 85%;
 }
+/* Search field */
+#searchFieldContainer{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    width: 9vh;
+    height: 0%;
+    background-color: rgb(24, 24, 24);
+}
 
+#closeSearch{
+    display: none;
+    height: 4.5vw;
+    width: 4.5vw;
+    margin-right: 10px;
+    cursor: pointer;
+}
 textarea {
     resize: none;
     width: 100%;
