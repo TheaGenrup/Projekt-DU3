@@ -36,6 +36,8 @@ nav * {
     background-image: url(../media/icons/close_0.png);
     background-position: center;
     background-size: cover;
-    height: 4vh;
-    width: 4vh;
+    height: 3vh;
+    width: 3vh;
+    position: absolute;
+    right: 4.5vw;
 }

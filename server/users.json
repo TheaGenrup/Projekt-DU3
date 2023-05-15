@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "7DGik2kWn6KrM0daToOtfeTSk",
+        "loginKey": "PcmbtVazXm0m1HCJJ6bNrivDW",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -32,7 +32,7 @@
                 },
                 {
                     "boardName": "POP",
-                    "boardId": 0,
+                    "boardId": 1,
                     "reviews": [
                         0,
                         1
@@ -41,12 +41,30 @@
                 },
                 {
                     "boardName": "FAVOURITES",
-                    "boardId": 0,
+                    "boardId": 3,
                     "reviews": [
                         0,
                         1
                     ],
                     "thumbnail": "Sunflower.jpg"
+                },
+                {
+                    "boardName": "Rock",
+                    "boardId": 4,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "rock.jpg"
+                },
+                {
+                    "boardName": "Soul",
+                    "boardId": 5,
+                    "reviews": [
+                        7,
+                        9
+                    ],
+                    "thumbnail": "soul.jpg"
                 }
             ],
             "reviews": [
@@ -58,7 +76,8 @@
                     "reviewDescription": "I like when the music is making noise",
                     "rating": 5,
                     "boards": [
-                        0
+                        0,
+                        4
                     ],
                     "albumCover": "infest.jpg",
                     "timestamp": 1681141145,
@@ -74,7 +93,8 @@
                     "reviewDescription": "More or less for me, they are as wonderful as sculptures or paints, because Dreams goes absolutely beyond music. Their instruments are like brushes with which we paint such wonderful songs as Sara, Gypsy, Big Love, Rhiannon, thanks to which we can experience artistic understanding.",
                     "rating": 5,
                     "boards": [
-                        0
+                        0,
+                        5
                     ],
                     "timestamp": 1681546325,
                     "displayName": "Anthony Fantano",
@@ -89,7 +109,9 @@
                     "reviewDescription": "Once again, a perfect piece of music that fits its appropriate moods insanely well.",
                     "rating": 3,
                     "boards": [
-                        0
+                        0,
+                        3,
+                        4
                     ],
                     "timestamp": 1682950505,
                     "displayName": "Anthony Fantano"
@@ -137,7 +159,8 @@
                     "boardId": 0,
                     "reviews": [
                         0,
-                        1
+                        1,
+                        5
                     ],
                     "thumbnail": "\/server\/media\/users\/607133432034891031030642696328\/boards\/bildnamet"
                 }
@@ -151,7 +174,8 @@
                     "reviewDescription": "I like when the music is making noise",
                     "rating": 5,
                     "boards": [
-                        0
+                        0,
+                        3
                     ]
                 },
                 {
@@ -162,7 +186,8 @@
                     "reviewDescription": "Woah! I've never cired like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
                     "rating": 5,
                     "boards": [
-                        0
+                        0,
+                        4
                     ]
                 }
             ],

@@ -100,15 +100,12 @@ async function renderDiscoverView() {
 
         allFollowingUsersReviews.sort((a, b) => b.timestamp - a.timestamp);
 
-
         // go through all reviews to create them
         allFollowingUsersReviews.forEach(review => {
-
             makeReview(review, "#contentContainer");
-
         });
 
-        document.querySelectorAll(`.review`).forEach(review => { review.addEventListener("click", expandReview); });
+        document.querySelectorAll(`.review`).forEach(review => review.addEventListener("click", expandReview));
     }
 
 };
@@ -197,7 +194,7 @@ function renderProfileView(event) {
                 </div>
                 <div id="boardAndReviewContainer">
                     <h2 class="boardTitle">BOARDS</h2>
-                    <div id="boardOfBoards"></div>
+                    <div id="boardContainer"></div>
                 </div>`
 
 
@@ -267,14 +264,13 @@ function renderProfileView(event) {
                 const boardPicture = board.thumbnail;
 
                 const newBoard = `
-                <div class="profileBoard">
-                    <div>
-                        <img src="../media/${boardPicture}"></img>
-                    </div>
+                <div id="board_${board.boardId}" class="board">
+                    <img class="boardCover" src="../media/${boardPicture}"></img>
                     <p class="boardName">${boardName}</p>
                 </div>
                 `
-                document.querySelector("#boardOfBoards").innerHTML += newBoard;
+                document.querySelector("#boardContainer").innerHTML += newBoard;
+
 
             });
 
@@ -348,7 +344,7 @@ async function expandReview(event) {
 
             document.querySelector("#contentContainer").innerHTML = `
                 
-                <div id="closeReview"></div>
+                <div id="closeReview" class="pointer"></div>
                 <p id="timestamp"><span>${timeConverter(review.timestamp)}</span></p>
                 <p id="displayName"><span class="bold pointer">@${review.displayName}</span> reviewed</p>
                 <p id="albumName">${review.albumName}</p>
@@ -377,6 +373,7 @@ async function expandReview(event) {
             document.querySelector("#displayName").dataset.userId = review.userId;
 
             document.querySelector(`#displayName`).addEventListener("click", renderProfileView);
+            document.querySelector(`#closeReview`).addEventListener("click", e => renderDiscoverView());
         }
     })
 };
