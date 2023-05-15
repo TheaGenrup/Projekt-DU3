@@ -15,8 +15,13 @@ function renderLoggedInView(profilePic) {
     </nav>
     `;
 
+    document.querySelector(`#profile_picture`).dataset.userId = localStorage.getItem("userId");
+
     document.querySelector("#discover_icon").addEventListener("click", renderDiscoverView);
     document.querySelector("#profile_picture").addEventListener("click", renderProfileView);
+
+
+
 
 }
 
@@ -122,14 +127,15 @@ async function renderDiscoverView() {
 }
 
 
-function renderProfileView() {
+function renderProfileView(event) {
 
-    const userId = localStorage.getItem("userId");
+    const clickedUserId = event.currentTarget.dataset.userId;
+    const loggedInUserId = localStorage.getItem("userId");
 
     document.querySelector("#css1").setAttribute("href", "../css/logged_in_basic_layout.css");
     document.querySelector("#css2").setAttribute("href", "../css/profile.css");
 
-    const request = new Request(`/server/getUser.php/?id=${userId}`);
+    const request = new Request(`/server/getUser.php/?id=${clickedUserId}`);
     fetch(request)
         .then(r => r.json())
         .then(resource => {
@@ -153,18 +159,7 @@ function renderProfileView() {
                             <div>Following</div>
                             <div>${userFollowing}</div>
                         </div>
-                        <div id="profile_icons">
-                            <div class="settingsDropdown">
-                                <div id="settings_icon" class="pointer"></div>
-                                <div id="dropdown_content" class="closed">
-                                    <div id="editAccountBtn" class="pointer">Edit Account</div>
-                                    <div id="logOutBtn" class="pointer">Log Out</div>
-                                </div>
-                            </div>
-                            
-                            <div id="bookmark_icon" class="pointer"></div>
-                            <div id="add_board_icon" class="pointer"></div>
-                        </div>
+                        <div id="profile_icons_or_follow_button"></div>
                     </div>
                 </div>
                 <div id="board_and_review_container">
@@ -172,11 +167,29 @@ function renderProfileView() {
                     <div id="board_of_boards"></div>
                 </div>`
 
-            /*             document.querySelector("#settings_icon").addEventListener("click", e => {
-                            document.querySelector("#dropdown_content").style.display = "block";
-                        }); */
-            document.querySelector("#settings_icon").addEventListener("click", e => document.querySelector("#dropdown_content").classList.toggle("closed"));
-            document.querySelector("#bookmark_icon").addEventListener("click", showFavourites);
+
+
+
+            if (clickedUserId !== loggedInUserId) {
+                document.querySelector("#profile_icons_or_follow_button").innerHTML = `
+                <button id="follow_button">Follow</button>
+                `;
+            } else {
+                document.querySelector("#profile_icons_or_follow_button").innerHTML = `
+                <div class="settingsDropdown">
+                    <div id="settings_icon" class="pointer"></div>
+                    <div id="dropdown_content" class="closed">
+                        <div id="editAccountBtn" class="pointer">Edit Account</div>
+                        <div id="logOutBtn" class="pointer">Log Out</div>
+                    </div>
+                </div>                            
+                <div id="bookmark_icon" class="pointer"></div>
+                <div id="add_board_icon" class="pointer"></div>
+                `;
+
+                document.querySelector("#settings_icon").addEventListener("click", e => document.querySelector("#dropdown_content").classList.toggle("closed"));
+                document.querySelector("#bookmark_icon").addEventListener("click", showFavourites);
+            }
 
             function showFavourites(event) {
 
@@ -372,6 +385,8 @@ async function expandReview(event) {
             `;
 
             fillStars(review.rating);
+
+            document.querySelector("#display_name").dataset.userId = review.userId;
 
             document.querySelector(`#display_name`).addEventListener("click", renderProfileView);
         }
