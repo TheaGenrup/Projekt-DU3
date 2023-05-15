@@ -1,9 +1,7 @@
 "use strict";
 checkIfAlreadyLoggedIn();
 function checkIfAlreadyLoggedIn() {
-    console.log("test");
     const key = localStorage.getItem("logInKey");
-    console.log(key);
     if (key === undefined || key === null) {
         renderLoginPage(); 
         return
@@ -84,9 +82,7 @@ async function fetchLogin(username, password, access, loginKey) {
         })
     }
     const response = await fetch(request, data);
-    console.log(response);
     const resource = await response.json();
-    console.log(resource);
     if (response.ok) {
         return resource
     }
@@ -97,10 +93,10 @@ function loginUser(userData) {
 
     localStorage.setItem("logInKey", userData.loginKey);
     localStorage.setItem("userId", userData.userIdentity.id);
+    const profilePicture = userData.userIdentity.profilePic
+    console.log(profilePicture);
 
-    renderLoggedInView({
-        profilePic: userData.profilePic,
-    })
+    renderLoggedInView(profilePicture)
     // renderDiscoverView(followingNewReviews);
     renderDiscoverView();
 }

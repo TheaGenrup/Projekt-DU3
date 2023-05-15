@@ -61,7 +61,7 @@ function renderLoggedInView(profilePic) {
         <img class="view_icon" id="discover_icon" src="/media/icons/discover.png" alt="Discover"></img>
         <img class="view_icon" id="openSearchWindowBtn" src="/media/icons/search.png" alt="Search"></img>
         <img class="view_icon" id="addBtn" src="/media/icons/add.png" alt="Add"></img>
-        <img class="view_icon" id="profile_picture" src="../media/${profilePic}" alt="Profile"></img>
+        <img class="view_icon" id="profile_picture" src="/media/${profilePic}" alt="Profile"></img>
         <div id="searchFieldContainer">
             <img id="closeSearchWindowBtn" src="/media/icons/close_0.png" alt="">
             <input id="searchField" type="text" placeholder="Search albums and users"></input>
