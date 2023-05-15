@@ -89,8 +89,19 @@ async function fetchLogin(username, password, access, loginKey) {
 
 }
 
+function checkIfAlreadyLoggedIn() {
+    const key = localStorage.getItem("LogInKey");
+
+    console.log(key);
+
+    if (!key) { return };
+    attemptLogin("", "", "Access-Key: Auth", key);
+}
+
 function loginUser(userData) {
+
     localStorage.setItem("logInKey", userData.loginKey);
+    localStorage.setItem("userId", userData.userIdentity.id);
 
     renderLoggedInView({
         profilePic: userData.profilePic,
@@ -100,6 +111,7 @@ function loginUser(userData) {
 
     // renderDiscoverView(followingNewReviews);
 
+    renderDiscoverView();
 }
 
 // Register Section

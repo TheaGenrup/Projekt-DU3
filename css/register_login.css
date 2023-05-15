@@ -1,4 +1,4 @@
-*{
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
@@ -8,7 +8,6 @@ body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 0;
     height: 100vh;
-    background-color: grey;
     display: flex;
     align-items: flex-end;
     background-image: url(/media/register_bg.png);
@@ -16,22 +15,22 @@ body {
     background-size: cover;
 }
 
-#limitWrapper{
+#limitWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     width: 50%;
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0.525);
 }
 
-body{
+body {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#mainContainer{
+#mainContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,35 +38,32 @@ body{
     height: 100%;
 }
 
-#logoBanner{
-}
 
-
-#loginAndRegisterPageContainer{
+#loginAndRegisterPageContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 5%;
-    background-color: rgb(255, 255, 255);
     z-index: 2;
     max-width: 400px;
     max-height: 620px;
     height: 100%;
     width: 100%;
-    border: 2px solid rgba(0, 0, 0, 0.447);
-    border-radius: 20px;
-    box-shadow: rgba(31, 31, 31, 0.132) 0px 2px 8px 0px;
 }
-#loginMessageContainer{
+
+#loginMessageContainer {
     display: flex;
     justify-content: center;
     height: 250px;
 }
-#loginMessageContainer #loginRegisterSign{
+
+#loginMessageContainer #loginRegisterSign {
     font-size: 32px;
     text-align: center;
+    color: rgb(202, 202, 202);
 }
-#loginAndRegisterFormContainer{
+
+#loginAndRegisterFormContainer {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -78,7 +74,7 @@ body{
     z-index: 1;
 }
 
-#loginAndRegisterForm{
+#loginAndRegisterForm {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -89,59 +85,76 @@ body{
     z-index: 0;
     bottom: -75px;
 }
-#loginAndRegisterForm input{
-    height: 40px;
+
+#loginAndRegisterForm input {
+    height: 7vh;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 3.5vh;
     padding: 5px 15px;
-    background-color: rgb(216, 210, 210);
-    color: rgb(83, 83, 83);
-    border: 2px solid black;
+    background-color: rgb(207, 207, 207);
+    color: rgba(83, 83, 83, 0.9);
+    border: none;
     margin-bottom: 25px;
 }
-#loginAndRegisterForm input:focus{
+
+#loginAndRegisterForm input:focus {
     outline: none;
+    box-shadow: 0px 0px 15px 0px rgba(170, 170, 170, 0.75);
 }
-#loginRegisterSwitch{
+
+#loginRegisterSwitch {
     height: 100px;
     text-align: center;
 }
-#loginRegisterSwitch button{
-    height: 40px;
+
+#loginRegisterSwitch button {
+    height: 7vh;
     width: 100%;
-    border-radius: 20px;
-    background-color: rgb(255, 255, 255);
+    border-radius: 3.5vh;
+    background-color: rgb(237, 237, 237, 0.9);
     cursor: pointer;
-    margin-bottom: 5px;
+    margin-bottom: 3vh;
+    border: none;
+    color: grey;
 }
-#loginRegisterSwitch #switchBtn{
-    color: rgb(120, 172, 189);
+
+#loginRegisterSwitch button:hover {
+    background-color: rgb(196, 196, 196);
+    box-shadow: 0px 0px 15px 0px rgba(170, 170, 170, 0.75);
+}
+
+#loginRegisterSwitch #switchBtn {
+    color: rgb(158, 158, 158);
     cursor: pointer;
 }
-#loginRegisterSwitch #switchBtn:hover{
-    color: rgb(97, 130, 141);
+
+#loginRegisterSwitch #switchBtn:hover {
+    color: rgb(119, 119, 119);
 }
+
 
 
 /* Desktop */
 @media only screen and (min-width: 600px) {
     #mainContainer {
-        justify-content:left;
+        justify-content: left;
     }
-    #limitWrapper{
+
+    #limitWrapper {
         min-width: 480px;
     }
- 
-  }
 
-  /* Mobile */
+}
+
+/* Mobile */
 @media only screen and (max-width: 600px) {
     #mainContainer {
-        justify-content:center;
+        justify-content: center;
     }
-    #limitWrapper{
+
+    #limitWrapper {
         height: 100%;
         width: 100%;
     }
 
-  }
+}

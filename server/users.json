@@ -6,14 +6,17 @@
         },
         "loginKey": "tQrvAXrzUA0ZB2LzlWqh9zC5f",
         "userSocial": {
-            "following": [],
+            "following": [
+                "317161457770161228256467772618",
+                "607133432034891031030642696328"
+            ],
             "followers": [
                 "317161457770161228256467772618"
             ]
         },
         "userIdentity": {
             "id": "607133432034891031030642696328",
-            "profilePic": "1241345512514",
+            "profilePic": "profile_picture.jpg",
             "displayName": "Anthony Fantano"
         },
         "albumData": {
@@ -25,31 +28,71 @@
                         0,
                         1
                     ],
-                    "thumbnail": "\/server\/media\/users\/607133432034891031030642696328\/boards\/bildnamet"
+                    "thumbnail": "board_1.jpg"
+                },
+                {
+                    "boardName": "POP",
+                    "boardId": 0,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "board_1.jpg"
+                },
+                {
+                    "boardName": "FAVOURITES",
+                    "boardId": 0,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "Sunflower.jpg"
                 }
             ],
             "reviews": [
                 {
                     "albumName": "Infest the Rat's nest",
                     "artist": "King Gizzard and the lizzard wizard",
-                    "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
-                    "reviewId": 0,
+                    "albumId": "34",
+                    "reviewId": 7,
                     "reviewDescription": "I like when the music is making noise",
                     "rating": 5,
                     "boards": [
                         0
-                    ]
+                    ],
+                    "albumCover": "infest.jpg",
+                    "timestamp": 1681141145,
+                    "displayName": "Anthony Fantano",
+                    "test": 15
                 },
                 {
-                    "albumName": "The microphones pt2",
-                    "artist": "Mount eire",
-                    "albumId": "???",
-                    "reviewId": 1,
-                    "reviewDescription": "Woah! I've never cired like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
+                    "albumName": "Rumours",
+                    "artist": "Fleetwood Mac",
+                    "albumId": "78",
+                    "reviewId": 9,
+                    "albumCover": "dreams.jpg",
+                    "reviewDescription": "More or less for me, they are as wonderful as sculptures or paints, because Dreams goes absolutely beyond music. Their instruments are like brushes with which we paint such wonderful songs as Sara, Gypsy, Big Love, Rhiannon, thanks to which we can experience artistic understanding.",
                     "rating": 5,
                     "boards": [
                         0
-                    ]
+                    ],
+                    "timestamp": 1681546325,
+                    "displayName": "Anthony Fantano",
+                    "test": 16
+                },
+                {
+                    "albumName": "Abbey Road",
+                    "artist": "The Beatles",
+                    "albumCover": "beatles.jpg",
+                    "albumId": "43",
+                    "reviewId": 46,
+                    "reviewDescription": "Once again, a perfect piece of music that fits its appropriate moods insanely well.",
+                    "rating": 3,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1682950505,
+                    "displayName": "Anthony Fantano"
                 }
             ],
             "favourites": [
@@ -57,6 +100,14 @@
                     "albumName": "The microphones pt2",
                     "artist": "Mount eire",
                     "albumId": "???",
+                    "thumbnail": "board_1.jpg",
+                    "favouriteId": 0
+                },
+                {
+                    "albumName": "Och Stora Havet",
+                    "artist": "Jakob Hellman",
+                    "albumId": "???",
+                    "thumbnail": "hellman.jpg",
                     "favouriteId": 0
                 }
             ]
@@ -130,15 +181,15 @@
             "username": "test2",
             "password": "test2"
         },
-        "loginKey": "FEQTxo5ivVNyPi31ldS8Q9QbX",
+        "loginKey": "SK5Xg2WuolfDGVthQECU8gnnB",
         "userSocial": {
             "following": [],
             "followers": []
         },
         "userIdentity": {
-            "id": "607133432034891031030642696328",
-            "profilePic": "default.jpg",
-            "displayName": "test2"
+            "id": "317161457770161228256467772618",
+            "profilePic": "default.png",
+            "displayName": "Stevie Nicks"
         },
         "albumData": {
             "boards": [
@@ -154,26 +205,34 @@
             ],
             "reviews": [
                 {
-                    "albumName": "Infest the Rat's nest",
-                    "artist": "King Gizzard and the lizzard wizard",
+                    "albumName": "Och Stora Havet",
+                    "artist": "Jakob Hellman",
                     "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
-                    "reviewId": 0,
-                    "reviewDescription": "I like when the music is making noise",
-                    "rating": 5,
+                    "reviewId": 57,
+                    "reviewDescription": "SOOOO smooth sounding. even in its simplicity this album is SOOO amazing, and it's absolutely timeless. probably in my top 5 of all time.",
+                    "rating": 3,
                     "boards": [
                         0
-                    ]
+                    ],
+                    "timestamp": 1681312805,
+                    "displayName": "test2",
+                    "albumCover": "hellman.jpg",
+                    "test": 10
                 },
                 {
                     "albumName": "The microphones pt2",
                     "artist": "Mount eire",
                     "albumId": "???",
-                    "reviewId": 1,
+                    "reviewId": 100,
                     "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
-                    "rating": 5,
+                    "rating": 2,
                     "boards": [
                         0
-                    ]
+                    ],
+                    "timestamp": 1682832185,
+                    "displayName": "test2",
+                    "albumCover": "beatles.jpg",
+                    "test": 11
                 }
             ],
             "favourites": [
@@ -181,6 +240,7 @@
                     "albumName": "The microphones pt2",
                     "artist": "Mount eire",
                     "albumId": "???",
+                    "thumbnail": "board_1.jpg",
                     "favouriteId": 0
                 }
             ]
@@ -198,8 +258,29 @@
         },
         "userIdentity": {
             "id": "716916262583862677799694090077",
-            "profilePic": "default.jpg",
+            "profilePic": "default.png",
             "displayName": "test5"
+        },
+        "albumData": {
+            "boards": [],
+            "reviews": [],
+            "favourites": []
+        }
+    },
+    {
+        "userCredentials": {
+            "username": "thea",
+            "password": "thea"
+        },
+        "loginKey": "ju9ADEwdwWdfG5jGkAGWONtaU",
+        "userSocial": {
+            "following": [],
+            "followers": []
+        },
+        "userIdentity": {
+            "id": "507163198196757529667525417704",
+            "profilePic": "default.png",
+            "displayName": "thea"
         },
         "albumData": {
             "boards": [],

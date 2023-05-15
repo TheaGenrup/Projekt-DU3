@@ -1,25 +1,10 @@
 #content_container {
-    font-size: 12px;
-    box-sizing: border-box;
-    padding: 5vw;
-    height: 97%;
-    width: 90vw;
-    background-color: rgb(68, 68, 68);
-    border-radius: 20px;
-    box-shadow: 0px 0px 11px 4px rgb(15, 15, 15);
-    ;
-
-    display: flex;
-    flex-direction: column;
     gap: 20px;
-    position: relative;
-    bottom: -1vh;
-    overflow: scroll;
 }
 
 #album_overview {
     display: flex;
-    margin-top: 10px;
+    margin-top: 1vh;
 }
 
 .album_cover {
@@ -39,8 +24,6 @@
 
 .review {
     border-radius: 20px;
-    height: 20vh;
-    width: 100%;
     background-color: rgb(212, 212, 212);
     box-sizing: border-box;
     padding: 10px;
@@ -50,14 +33,16 @@ p {
     margin: 0;
 }
 
-.stars {
-    display: flex;
+#album_name {
+    font-weight: bold;
 }
 
 .star {
-    background-position: center;
-    background-size: cover;
-    background-image: url(../media/icons/empty_star.png);
     height: 18px;
     width: 18px;
+}
+
+#no_following {
+    margin: auto;
+    font-size: 5vw;
 }

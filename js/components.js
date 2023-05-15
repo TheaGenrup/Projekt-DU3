@@ -36,407 +36,380 @@ function renderLoginPage() {
     document.querySelector("#style1").setAttribute("href", "/css/register_login.css");
 }
 
-// om du ska testa den här funktionen, glöm inte ladda rätt css_filer
-// Render Logged in view
-function renderLoggedInView(userIdentity) {
-    const html = `
-    <main id="mainContainer">
-        <div id="contentContainer">
-            <div id="searchWindow">
-                <div id="usersUlContainer">
-                    <ul id="usersUl">
-                    </ul>
-                </div>
-                <div id="albumUlContainer">
-                    <ul id="albumUl">
-                    </ul>
-                </div>
-            </div>
-        </div>
+function renderLoggedInView(profilePic) {
+
+    document.querySelector("body").innerHTML = `
+
+    <main>
+        <div id="content_container"></div>
     </main>
     <nav>
-        <img class="view_icon" src="/media/icons/discover.png" alt="Discover"></img>
-        <img class="view_icon" id="openSearchWindowBtn" src="/media/icons/search.png" alt="Search"></img>
-        <img class="view_icon" src="/media/icons/add.png" alt="Add"></img>
-        <img class="view_icon" id="profile_picture" src="/media/icons/${userIdentity.profilePic}.png" alt="Profile"></img>
-        <div class="view_icon" id="logoutBtn">logout</div>
-        <div id="searchFieldContainer">
-            <img id="closeSearchWindowBtn" src="/media/icons/close_0.png" alt="">
-            <input id="searchField" type="text" placeholder="Search albums and users"></input>
-        </div>
+        <img class="view_icon" id="discover_icon" src="/media/icons/discover.png" alt="Discover"></img>
+        <img class="view_icon" id="search_icon" src="/media/icons/search.png" alt="Search"></img>
+        <img class="view_icon" id="add_icon" src="/media/icons/add.png" alt="Add"></img>
+        <img class="view_icon" id="profile_picture" src="../media/${profilePic}" alt="Profile"></img>
     </nav>
     `;
-    document.body.innerHTML = html;
-    // DOM elements used
-    const logoutBtn = document.querySelector("#logoutBtn");
-    const openSearchWindowBtn = document.querySelector("#openSearchWindowBtn");
-    const closeSearchWindowBtn = document.querySelector("#closeSearchWindowBtn");
-    const searchField = document.querySelector("#searchField");
-    
-    // DOM Event listeners
-    logoutBtn.addEventListener("click", renderLoginPage);
-    openSearchWindowBtn.addEventListener("click", openSearchWindow);
-    closeSearchWindowBtn.addEventListener("click", closeSearchWindow);
-    searchField.addEventListener("keyup", searchAlbums);
-    searchField.addEventListener("keyup", searchUsers);
-    document.querySelector("#style1").setAttribute("href", "/css/logged_in_basic_layout.css");
-    document.querySelector("#style2").setAttribute("href", "/css/search.css");
-    document.querySelector("#profile_picture").src = userIdentity.profilePic;
-    return;
+
+    document.querySelector("#discover_icon").addEventListener("click", renderDiscoverView);
+    document.querySelector("#profile_picture").addEventListener("click", renderProfileView);
 
 }
 
+async function renderDiscoverView() {
 
+    document.querySelector("#content_container").innerHTML = "";
 
+    const userId = localStorage.getItem("userId");
 
+    // switch css files
+    document.querySelector("#css1").setAttribute("href", "../css/logged_in_basic_layout.css");
+    document.querySelector("#css2").setAttribute("href", "../css/discover.css");
 
+    // fetch logged in user to get following ids
+    const responseUser = await fetch(new Request(`../server/getUser.php/?id=${userId}`));
 
-// renderLoggedInView({ profilePic: "../media/profile_picture.jpg" });
+    const userData = await responseUser.json();
 
-// om du ska testa den här funktionen, glöm inte ladda rätt css_filer
-function renderDiscoverView(reviews) {
+    const followingIds = userData.userSocial.following;
 
-    // go through all reviews to create them
-    reviews.forEach(review => {
+    // check if the user follows anyone
+    if (followingIds.length === 0) {
+        console.log("no following users");
 
-        // shorten comment if needed
-        let comment = review.reviewDescription;
-        if (comment.length > 55) {
-            comment = comment.slice(0, 55) + "...";
+        document.querySelector("#content_container").innerHTML = `<p id="no_following">It seems like you're not following anyone...</p>`;
+    } else {
+
+        const allFollowingUsersReviews = [];
+
+        // get reviews of all following users by their ids, one user at a time
+        for (const followingUserId of followingIds) {
+
+            const reviewsOneUser = await getReviews(followingUserId);
+
+            reviewsOneUser.forEach(review => {
+                allFollowingUsersReviews.push(review);
+            });
+
         }
 
-        // shorten album name if needed
-        let albumName = review.albumName;
-        if (albumName.length > 23) {
-            albumName = albumName.slice(0, 23) + "...";
-        }
 
-        // shorten artist name if needed
-        let artist = review.artist;
-        if (artist.length > 23) {
-            artist = artist.slice(0, 23) + "...";
-        }
+        allFollowingUsersReviews.sort((a, b) => b.timestamp - a.timestamp);
 
-        // make html for new review
-        const newReview = `
- 
-        <div class="review">
-            <p id="who">@ ${review.displayName} added a review</p>
-            <p id="when">${review.date} ${review.timestamp}</p>
-            <div id="album_overview">
-                <div id="album_cover_${review.reviewId}" class="album_cover"></div>
-                    <div id="album_details">
 
-                        <p id="albumName">${albumName}</p>
-                        <p id="artist">${artist}</p>
-                        <div id="stars_${review.reviewId}" class="stars">
-                            <div class="star"></div>
-                            <div class="star"></div>
-                            <div class="star"></div>
-                            <div class="star"></div>
-                            <div class="star"></div>
-                        </div>
-                        <p id="review">${comment}</p>
-                </div>
-            </div>
-        </div>`;
+        // go through all reviews to create them
+        allFollowingUsersReviews.forEach(review => {
 
-        // add new review to html
-        document.querySelector("#content_container").innerHTML += newReview;
 
-        // add album cover
-        // add album cover
-        if (review.albumCover === "" || review.albumCover === undefined) {
-
-            document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = "url(../media/icons/default_cover.png)";
-        } else {
-
-            document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = review.albumCover;
-        }
-
-        // change the background image of the right amount of stars
-        const stars = document.querySelectorAll(`#stars_${review.reviewId} > div`);
-
-        for (let i = 0; i < stars.length; i++) {
-            const star = stars[i];
-            if (i < review.rating) {
-                star.style.backgroundImage = `url(../media/icons/filled_in_star.png)`;
+            // shorten comment if needed
+            let reviewDescription = review.reviewDescription;
+            if (reviewDescription.length > 50) {
+                reviewDescription = reviewDescription.slice(0, 50) + "...";
             }
-        }
 
-    });
+            // make html for new review
+            const newReview = `
+     
+            <div class="review" id="review_${review.reviewId}">
+                <p id="who" class="bold">@${review.displayName} added a review</p>
+                <p id="when">${timeConverter(review.timestamp)}</p>
+                <div id="album_overview">
+                    <div id="album_cover_${review.reviewId}" class="album_cover"></div>
+                        <div id="album_details">
+    
+                            <p id="album_name">${review.albumName}</p>
+                            <p id="artist">${review.artist}</p>
+                            <div id="stars_${review.reviewId}" class="stars">
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                            </div>
+                            <p id="reviewDescription">${reviewDescription}</p>
+                    </div>
+                </div>
+            </div>`;
 
+            // add new review to html
+            document.querySelector("#content_container").innerHTML += newReview;
+
+            const reviewElement = document.querySelector(`#review_${review.reviewId}`);
+
+            reviewElement.dataset.userId = review.userId;
+            reviewElement.dataset.reviewId = review.reviewId;
+
+            // add album cover
+            if (review.albumCover === "" || review.albumCover === undefined || review.albumCover === null) {
+
+                document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = "url(../media/icons/default_cover.png)";
+            } else {
+
+                document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = `url(../media/albumCovers/${review.albumCover})`;
+            }
+
+            fillStars(review.rating, review.reviewId);
+
+        });
+
+        document.querySelectorAll(`.review`).forEach(review => { review.addEventListener("click", expandReview); });
+    }
 
 }
-/* 
-renderDiscoverView([
-    {
-        reviewId: 1,
-        albumName: "Dreams",
-        artistName: "Fleetwood Mac",
-        userName: "Elin",
-        date: "2023-02-22",
-        timestamp: "16:35",
-        comment: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad unde ea laborum tempora quidem sint commodi culpa dolorum fugiat illum.",
-        rating: 3,
-        albumCover: `url(../media/dreams.jpg)`
-    },
-    {
-        reviewId: 2,
-        albumName: "Och Stora Havet",
-        artistName: "Jakob Hellman",
-        userName: "Thea",
-        date: "2023-02-25",
-        timestamp: "14:38",
-        comment: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad unde ea laborum tempora quidem sint commodi culpa dolorum fugiat illum.",
-        rating: 4,
-        albumCover: `url(../media/hellman.jpg)`
-    },
-    {
-        reviewId: 3,
-        albumName: "Och Stora Havet",
-        artistName: "Jakob Hellman",
-        userName: "Filip",
-        date: "2023-02-26",
-        timestamp: "12:39",
-        comment: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad unde ea laborum tempora quidem sint commodi culpa dolorum fugiat illum.",
-        rating: 2,
-        albumCover: `url(../media/hellman.jpg)`
-    }
-]); */
 
-function renderProfileView(userInfo) {
 
-    const profile_picture = userInfo[0].userIdentity.profilePic;
-    const user_followers = userInfo[0].userSocial.followers.length;
-    const user_following = userInfo[0].userSocial.following.length;
-    const username = userInfo[0].userCredentials.username;
+function renderProfileView() {
 
-    const profile_html = document.querySelector("#content_container").innerHTML = `
-    <header id="profile_header">
-        <div>
-            <div id="profile_picture"></div>
-            <p>@${username}</p>
-        </div> 
-        <div>
-            <div id="following_followers">
-                <div>Followers</div>
-                <div>${user_followers}</div>
-                <div>Following</div>
-                <div>${user_following}</div>
-            </div>
-            <div>
-                <div id="settings_icon"></div>
-                <div id="bookmark_icon"></div>
-                <div id="add_board_icon"></div>
-            </div>
-        </div>
-    </header>
-    <main>
-        <div id="profile_main">
-            <h2>BOARDS</h2>
-            <div id="board_of_boards"></div>
-        </div>
-    </main>
-    `
+    const userId = localStorage.getItem("userId");
 
-    document.querySelector("#profile_picture").style.backgroundImage = profile_picture;
+    document.querySelector("#css1").setAttribute("href", "../css/logged_in_basic_layout.css");
+    document.querySelector("#css2").setAttribute("href", "../css/profile.css");
 
-    const boards = userInfo[0].albumData.boards;
+    const request = new Request(`/server/getUser.php/?id=${userId}`);
+    fetch(request)
+        .then(r => r.json())
+        .then(resource => {
+            const user = resource;
 
-    boards.forEach(board => {
+            const profilePicture = user.userIdentity.profilePic;
+            const userFollowers = user.userSocial.followers.length;
+            const userFollowing = user.userSocial.following.length;
+            const displayName = user.userIdentity.displayName;
 
-        const boardName = board.boardName;
-        const boardPicture = board.thumbnail;
+            document.querySelector("#content_container").innerHTML = `
+                <div id="profile_header">
+                    <div>
+                        <img id="profile_picture_top" src="../media/${profilePicture}"></img>
+                        <p>@${displayName}</p>
+                    </div> 
+                    <div>
+                        <div id="following_followers">
+                            <div>Followers</div>
+                            <div>${userFollowers}</div>
+                            <div>Following</div>
+                            <div>${userFollowing}</div>
+                        </div>
+                        <div id="profile_icons">
+                            <div class="settingsDropdown">
+                                <div id="settings_icon" class="pointer"></div>
+                                <div id="dropdown_content" class="closed">
+                                    <div id="editAccountBtn" class="pointer">Edit Account</div>
+                                    <div id="logOutBtn" class="pointer">Log Out</div>
+                                </div>
+                            </div>
+                            
+                            <div id="bookmark_icon" class="pointer"></div>
+                            <div id="add_board_icon" class="pointer"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="board_and_review_container">
+                    <h2>BOARDS</h2>
+                    <div id="board_of_boards"></div>
+                </div>`
 
-        const newBoard = `
-        <div class="profile_board">
-            <div>
-                <img src="${boardPicture}">
-            </div>
-            <p class="board_name">${boardName}</p>
-        </div>
-        `
-        document.querySelector("#board_of_boards").innerHTML += newBoard;
+            /*             document.querySelector("#settings_icon").addEventListener("click", e => {
+                            document.querySelector("#dropdown_content").style.display = "block";
+                        }); */
+            document.querySelector("#settings_icon").addEventListener("click", e => document.querySelector("#dropdown_content").classList.toggle("closed"));
+            document.querySelector("#bookmark_icon").addEventListener("click", showFavourites);
 
-        console.log(document.querySelector(".board_name"));
+            function showFavourites(event) {
 
-    });
+                document.querySelector("#board_and_review_container").innerHTML = `
+                <div id="favourites_icon_container">
+                    <img id="favourites_icon" src="../media/icons/bookmark.png"></img>
+                </div>
+                <div id="favourites"></div>
+                `;
 
-    document.querySelectorAll(".board_name").forEach(board => {
-        board.addEventListener("click", showBoard);
-    });
+                const arrayWithFavourites = user.albumData.favourites;
 
+                arrayWithFavourites.forEach(favourite => {
+
+                    const favouriteAlbum = favourite.albumName;
+                    const favouriteArtist = favourite.artist;
+                    const favouritePicture = favourite.thumbnail;
+
+                    const newFavourite = `
+                    <div class="favourite">
+                            <img class="favourite_cover" src="../media/albumCovers/${favouritePicture}"></img>
+                        <div id="favourite_info_container">
+                            <p class="favourite_album_name">${favouriteAlbum}</p>
+                            <p class="favourite_artist">${favouriteArtist}</p>
+                        </div>
+                    </div>
+                    `
+                    document.querySelector("#favourites").innerHTML += newFavourite;
+
+
+                })
+
+
+            }
+
+            const boards = user.albumData.boards;
+
+            boards.forEach(board => {
+
+                const boardName = board.boardName;
+                const boardPicture = board.thumbnail;
+
+                const newBoard = `
+                <div class="profile_board">
+                    <div>
+                        <img src="../media/${boardPicture}"></img>
+                    </div>
+                    <p class="board_name">${boardName}</p>
+                </div>
+                `
+                document.querySelector("#board_of_boards").innerHTML += newBoard;
+
+            });
+
+            document.querySelectorAll(".board_name").forEach(board => {
+                board.addEventListener("click", showBoard);
+            });
+
+            function showBoard(event) {
+
+                document.querySelector("#board_and_review_container").innerHTML = `<div id="add_review" class="pointer">ADD REVIEW</div>`;
+                const reviewsInBoard = [];
+
+                user.albumData.boards.forEach(board => {
+
+                    if (board.boardName === event.target.textContent) {
+
+                        const boardID = board.boardId;
+                        const arrayWithReviews = user.albumData.reviews
+
+                        arrayWithReviews.forEach(review => {
+
+                            review.boards.forEach(board => {
+
+                                if (board === boardID) {
+                                    reviewsInBoard.push(review);
+                                }
+                            })
+                        })
+
+
+                    }
+                });
+
+                reviewsInBoard.sort((a, b) => b.timestamp - a.timestamp);
+
+
+                reviewsInBoard.forEach(review => {
+
+                    // shorten comment if needed
+                    let reviewDescription = review.reviewDescription;
+                    if (reviewDescription.length > 50) {
+                        reviewDescription = reviewDescription.slice(0, 50) + "...";
+                    }
+
+
+                    // make html for new review
+                    const newReview = `
+
+                        <div class="review" id="review_${review.reviewId}>
+                            <p id="who">@ ${user.userIdentity.displayName}</p>
+                            <p id="when">${timeConverter(review.timestamp)}</p>
+                            <div id="album_overview">
+                                <div id="album_cover_${review.reviewId}" class="album_cover"></div>
+                                <div id="album_details">
+
+                                    <p id="albumName"><span class="bold">${review.albumName}</span></p>
+                                    <p id="artist">${review.artist}</p>
+                                    <div id="stars_${review.reviewId}" class="stars">
+                                        <div class="star"></div>
+                                        <div class="star"></div>
+                                        <div class="star"></div>
+                                        <div class="star"></div>
+                                        <div class="star"></div>
+                                    </div>
+                                    <p id="reviewDescription">${reviewDescription}</p>
+                                </div>
+                            </div>
+                        </div> `;
+
+                    // add new review to html
+                    document.querySelector("#board_and_review_container").innerHTML += newReview;
+
+                    /*                     const reviewElement = document.querySelector(`#review_${review.reviewId}`);
+                                        console.log(reviewElement);
+                                        reviewElement.dataset.userId = review.userId;
+                                        reviewElement.dataset.reviewId = review.reviewId;
+                     */
+                    //OBS! dessa är inte sorterade och stjärnorna syns inte
+
+                    // add album cover
+                    if (review.albumCover === "" || review.albumCover === undefined || review.albumCover === null) {
+
+                        document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = "url(../media/icons/default_cover.png)";
+                    } else {
+
+                        document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = `url(../media/albumCovers/${review.albumCover})`;
+                    }
+
+                    // change the background image of the right amount of stars
+                    fillStars(review.rating, review.reviewId);
+                });
+
+
+                /*  document.querySelectorAll(".review").forEach(review => {
+                     review.addEventListener("click", expandReview);
+                 }) */
+            }
+        });
 };
 
-function showBoard(event) {
 
-    //how to pass arguments in to an addeventlistener
+async function expandReview(event) {
 
-    console.log(event.target.textContent);
+    document.querySelector("#css1").setAttribute("href", "../css/logged_in_basic_layout.css");
+    document.querySelector("#css2").setAttribute("href", "../css/expandedReview.css");
+    document.querySelector("#content_container").innerHTML = "";
 
-    // Theas function för reviews som jag tror vi kan använda här med
-    // go through all reviews to create them
-    /* reviews.forEach(review => {
+    const userId = event.currentTarget.dataset.userId;
+    const reviewId = event.currentTarget.dataset.reviewId;
 
-        // shorten comment if needed
-        let comment = review.reviewDescription;
-        if (comment.length > 55) {
-            comment = comment.slice(0, 55) + "...";
-        }
+    const reviews = await fetchReview(userId);
 
-        // shorten album name if needed
-        let albumName = review.albumName;
-        if (albumName.length > 23) {
-            albumName = albumName.slice(0, 23) + "...";
-        }
 
-        // shorten artist name if needed
-        let artist = review.artist;
-        if (artist.length > 23) {
-            artist = artist.slice(0, 23) + "...";
-        }
+    reviews.forEach(review => {
 
-        // make html for new review
-        const newReview = `
- 
-        <div class="review">
-            <p id="who">@ ${review.displayName} added a review</p>
-            <p id="when">${review.date} ${review.timestamp}</p>
-            <div id="album_overview">
-                <div id="album_cover_${review.reviewId}" class="album_cover"></div>
-                    <div id="album_details">
+        if (reviewId == review.reviewId) {
 
-                        <p id="albumName">${albumName}</p>
-                        <p id="artist">${artist}</p>
-                        <div id="stars_${review.reviewId}" class="stars">
-                            <div class="star"></div>
-                            <div class="star"></div>
-                            <div class="star"></div>
-                            <div class="star"></div>
-                            <div class="star"></div>
-                        </div>
-                        <p id="review">${comment}</p>
+            document.querySelector("#content_container").innerHTML = `
+                
+                <div id="close_review"></div>
+                <p id="timestamp"><span>${timeConverter(review.timestamp)}</span></p>
+                <p id="display_name"><span class="bold pointer">@${review.displayName}</span> reviewed</p>
+                <p id="album_name">${review.albumName}</p>
+                <p id="artist">${review.artist}</p>
+                <div class="album_cover_container">
+                    <img src="/media/icons/bookmark.png" id="bookmark" alt="Bookmark">
+                    <img src="../media/albumCovers/${review.albumCover}" alt="Album Cover" 
+                    
+                    id="album_cover_expanded">
                 </div>
-            </div>
-        </div>`;
+                <div class="stars">
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                </div>
+                <p id="review_description">${review.reviewDescription}</p>
+                <p id="other_reviews_head">Previous reviews</p>
+                <div id="other_reviews_container"></div>
+           
+            `;
 
-        // add new review to html
-        document.querySelector("#content_container").innerHTML += newReview;
+            fillStars(review.rating);
 
-        // add album cover
-        // add album cover
-        if (review.albumCover === "" || review.albumCover === undefined) {
-
-            document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = "url(../media/icons/default_cover.png)";
-        } else {
-
-            document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = review.albumCover;
+            document.querySelector(`#display_name`).addEventListener("click", renderProfileView);
         }
-
-        // change the background image of the right amount of stars
-        const stars = document.querySelectorAll(`#stars_${review.reviewId} > div`);
-
-        for (let i = 0; i < stars.length; i++) {
-            const star = stars[i];
-            if (i < review.rating) {
-                star.style.backgroundImage = `url(../media/icons/filled_in_star.png)`;
-            }
-        }
-
-    }); */
-
-
+    })
 }
-
-
-const user = [{
-    "userCredentials": {
-        "username": "test2",
-        "password": "test2"
-    },
-    "loginKey": "FEQTxo5ivVNyPi31ldS8Q9QbX",
-    "userSocial": {
-        "following": [],
-        "followers": []
-    },
-    "userIdentity": {
-        "id": "607133432034891031030642696328",
-        "profilePic": "url(../media/mario.jpg)",
-        "displayName": "test2"
-    },
-    "albumData": {
-        "boards": [
-            {
-                "boardName": "Acid psychadelics",
-                "boardId": 0,
-                "reviews": [
-                    0,
-                    1
-                ],
-                "thumbnail": "\/server\/media\/users\/607133432034891031030642696328\/boards\/bildnamet"
-            },
-            {
-                "boardName": "Håkan H",
-                "boardId": 0,
-                "reviews": [
-                    0,
-                    1
-                ],
-                "thumbnail": "\/server\/media\/users\/607133432034891031030642696328\/boards\/bildnamet"
-            },
-            {
-                "boardName": "JAZZ",
-                "boardId": 0,
-                "reviews": [
-                    0,
-                    1
-                ],
-                "thumbnail": "\/server\/media\/users\/607133432034891031030642696328\/boards\/bildnamet"
-            },
-            {
-                "boardName": "POP",
-                "boardId": 0,
-                "reviews": [
-                    0,
-                    1
-                ],
-                "thumbnail": "\/server\/media\/users\/607133432034891031030642696328\/boards\/bildnamet"
-            }
-        ],
-        "reviews": [
-            {
-                "albumName": "Infest the Rat's nest",
-                "artist": "King Gizzard and the lizzard wizard",
-                "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
-                "reviewId": 0,
-                "reviewDescription": "I like when the music is making noise",
-                "rating": 5,
-                "boards": [
-                    0
-                ]
-            },
-            {
-                "albumName": "The microphones pt2",
-                "artist": "Mount eire",
-                "albumId": "???",
-                "reviewId": 1,
-                "reviewDescription": "Woah! I've never cired like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
-                "rating": 5,
-                "boards": [
-                    0
-                ]
-            }
-        ],
-        "favourites": [
-            {
-                "albumName": "The microphones pt2",
-                "artist": "Mount eire",
-                "albumId": "???",
-                "favouriteId": 0
-            }
-        ]
-    }
-}];
-
-//renderProfileView(user);

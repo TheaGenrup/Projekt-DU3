@@ -1,0 +1,41 @@
+.review,
+nav * {
+    cursor: pointer;
+}
+
+.stars {
+    display: flex;
+    margin: 0.5vh 0 0.5vh 0;
+}
+
+.star {
+    background-position: center;
+    background-size: cover;
+    background-image: url(../media/icons/empty_star.png);
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.closed {
+    display: none;
+}
+
+#album_cover_expanded {
+    height: 35vh;
+    width: 35vh;
+    border-radius: 5vh;
+}
+
+#close_review {
+    background-image: url(../media/icons/close_0.png);
+    background-position: center;
+    background-size: cover;
+    height: 4vh;
+    width: 4vh;
+}

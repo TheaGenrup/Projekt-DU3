@@ -5,19 +5,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="media/headphones.png">
+    <link rel="shortcut icon" href="#">
     <title>Laulu</title>
-    <!--     <link rel="stylesheet" href="css/index.css"> -->
-    <link rel="stylesheet" id="style1" href="css/logged_in_basic_layout.css">
-    <link rel="stylesheet" id="style2" href="css/search.css">
-    <!--     <link rel="stylesheet" href="css/logged_in_basic_layout.css">
-    <link rel="stylesheet" href="css/discover.css"> -->
-    <!--     <link rel="stylesheet" href="css/profile.css"> -->
+    <link rel="stylesheet" href="css/index.css">
+    <link id="css1" rel="stylesheet" href="css/register_login.css">
+    <link id="css2" rel="stylesheet" href="">
+    <link id="css3" rel="stylesheet" href="">
+
 </head>
 
 <body>
+    <div id="mainContainer">
+        <div id="limitWrapper">
+            <div id="loginAndRegisterPageContainer">
+                <div id="loginMessageContainer">
+                    <div id="loginRegisterSign">Login</div>
+                    <div id="loginRegistermessage"></div>
+                </div>
+                <div id="loginAndRegisterFormContainer">
+                    <form id="loginAndRegisterForm" class="loginForm">
+                        <input type="text" id="usernameInput" placeholder="username">
+                        <input type="password" id="passwordInput" placeholder="password">
+                        <input type="text" id="displaynameInput" placeholder="displayname">
+                    </form>
+                </div>
+                <div id="loginRegisterSwitch">
+                    <button id="loginRegisterBtn" class="loginBtn">Log in</button>
+                    <p><span class="signupText">Don't have an account?</span> <span id="switchBtn">Sign up</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 </body>
 
+<script src="js/functions.js"></script>
+<script src="js/fetch.js"></script>
 <script src="js/components.js"></script>
 <script src="js/loginRegister.js"></script>
 <script src="js/register.js"></script>
