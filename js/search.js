@@ -1,11 +1,4 @@
 "use strict";
-/*
-const openSearchWindowBtn = document.querySelector("#openSearchWindowBtn");
-const closeSearchWindowBtn = document.querySelector("#closeSearchWindowBtn");
-openSearchWindowBtn.addEventListener("click", openSearchWindow);
-closeSearchWindowBtn.addEventListener("click", closeSearchWindow);
-searchField.addEventListener("keyup", searchAlbums);
-*/
 let token = "";
 let tokenTimer;
 
@@ -35,6 +28,7 @@ async function openSearchWindow() {
     const searchFieldContainer = document.querySelector("#searchFieldContainer");
     const searchField = document.querySelector("#searchField");
     const closeSearchWindowBtn = document.querySelector("#closeSearchWindowBtn");
+    document.querySelector("#css3").setAttribute("href", "/css/search.css");
 
     window.addEventListener("keyup", (e)=>{
         if (e.key === "Escape" && searchWindow.classList.contains("open")) {closeSearchWindow();}
@@ -227,10 +221,13 @@ function listUsers(users) {
         users.forEach(user => {
             const displayName = user.displayName;
             const id = user.id;
-            const profilePicture = user.profilePicture;
+            let profilePicture = user.profilePicture;
+            if (!profilePicture) {
+                profilePicture = "default.png"
+            }
 
             const html = `
-            <img src="${profilePicture}"></img>
+            <img class="previewImage"src="/media/${profilePicture}"></img>
             <div>${displayName}</div>
             `;
 

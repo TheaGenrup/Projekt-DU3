@@ -13,6 +13,12 @@
     z-index: 99999;
     overflow: scroll;
 }
+
+#searchWindow *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 /*  Search filed section */
 #searchFieldContainer{
     display: flex;
@@ -44,7 +50,9 @@
 }
 /*  Search Results section and styling */
 
-#usersUlContainer{}
+#usersUl li .previewImage{
+
+}
 #albumUlContainer{}
 
 #searchWindow div ul li .previewImage{

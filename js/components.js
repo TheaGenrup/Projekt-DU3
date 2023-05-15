@@ -32,10 +32,11 @@ function renderLoginPage() {
     const loginRegisterbtn = document.querySelector("#loginRegisterBtn");
     switchBtn.addEventListener("click", switchLoginRegsiter);
     loginRegisterbtn.addEventListener("click", loginRegister)
-    document.querySelector("#css1").setAttribute("href", "/css/register_login.css");
+    document.querySelector("#css1").setAttribute("href", "/css/registerLogin.css");
+    document.querySelector("#css2").setAttribute("href", "/css/loggedInBasicLayout.css");
     return
 }
-
+// Render Logged in view
 function renderLoggedInView(profilePic) {
 
     document.querySelector("body").innerHTML = `
@@ -58,10 +59,10 @@ function renderLoggedInView(profilePic) {
     </div>
     </main>
     <nav>
-        <img class="view_icon" id="discover_icon" src="/media/icons/discover.png" alt="Discover"></img>
-        <img class="view_icon" id="openSearchWindowBtn" src="/media/icons/search.png" alt="Search"></img>
-        <img class="view_icon" id="addBtn" src="/media/icons/add.png" alt="Add"></img>
-        <img class="view_icon" id="profile_picture" src="/media/${profilePic}" alt="Profile"></img>
+        <img class="viewIcon" id="discoverIcon" src="/media/icons/discover.png" alt="Discover"></img>
+        <img class="viewIcon" id="openSearchWindowBtn" src="/media/icons/search.png" alt="Search"></img>
+        <img class="viewIcon" id="addBtn" src="/media/icons/add.png" alt="Add"></img>
+        <img class="viewIcon" id="profilePicture" src="/media/${profilePic}" alt="Profile"></img>
         <div id="searchFieldContainer">
             <img id="closeSearchWindowBtn" src="/media/icons/close_0.png" alt="">
             <input id="searchField" type="text" placeholder="Search albums and users"></input>
@@ -91,67 +92,10 @@ function renderLoggedInView(profilePic) {
     searchField.addEventListener("keyup", searchAlbums);
     searchField.addEventListener("keyup", searchUsers);
     addBtn.addEventListener("click", createBoardOrReview)
-    document.querySelector("#css1").setAttribute("href", "/css/logged_in_basic_layout.css");
-    document.querySelector("#css3").setAttribute("href", "/css/search.css");
-    document.querySelector("#css4").setAttribute("href", "/css/createBoardOrReview.css");
+    document.querySelector("#css1").setAttribute("href", "/css/loggedInBasicLayout.css");
     return;
 }
 
-// Render Logged in view
-/*
-function renderLoggedInView(userIdentity) {
-    const html = `
-    <main id="mainContainer">
-    <dialog data-modal id="overlay">
-    </dialog>
-
-        <div id="contentContainer">
-            <div id="searchWindow">
-                <div id="usersUlContainer">
-                    <ul id="usersUl">
-                    </ul>
-                </div>
-                <div id="albumUlContainer">
-                    <ul id="albumUl">
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </main>
-    <nav>
-        <img class="view_icon" src="/media/icons/discover.png" alt="Discover"></img>
-        <img class="view_icon" id="openSearchWindowBtn" src="/media/icons/search.png" alt="Search"></img>
-        <img class="view_icon" id="addBtn" src="/media/icons/add.png" alt="Add"></img>
-        <img class="view_icon" id="profile_picture" src="/media/icons/${userIdentity.profilePic}.png" alt="Profile"></img>
-        <div class="view_icon" id="logoutBtn">logout</div>
-        <div id="searchFieldContainer">
-            <img id="closeSearchWindowBtn" src="/media/icons/close_0.png" alt="">
-            <input id="searchField" type="text" placeholder="Search albums and users"></input>
-        </div>
-    </nav>
-    `;
-    document.body.innerHTML = html;
-    // DOM elements used
-    const logoutBtn = document.querySelector("#logoutBtn");
-    const openSearchWindowBtn = document.querySelector("#openSearchWindowBtn");
-    const closeSearchWindowBtn = document.querySelector("#closeSearchWindowBtn");
-    const searchField = document.querySelector("#searchField");
-    const addBtn = document.querySelector("#addBtn");
-    
-    // DOM Event listeners
-    logoutBtn.addEventListener("click", renderLoginPage);
-    openSearchWindowBtn.addEventListener("click", openSearchWindow);
-    closeSearchWindowBtn.addEventListener("click", closeSearchWindow);
-    searchField.addEventListener("keyup", searchAlbums);
-    searchField.addEventListener("keyup", searchUsers);
-    addBtn.addEventListener("click", createBoardOrReview)
-    document.querySelector("#css1").setAttribute("href", "/css/logged_in_basic_layout.css");
-    document.querySelector("#css2").setAttribute("href", "/css/search.css");
-    document.querySelector("#profile_picture").src = userIdentity.profilePic;
-    return;
-
-}
-*/
 
 async function renderDiscoverView() {
 
@@ -160,7 +104,7 @@ async function renderDiscoverView() {
     const userId = localStorage.getItem("userId");
 
     // switch css files
-    document.querySelector("#css1").setAttribute("href", "../css/logged_in_basic_layout.css");
+    document.querySelector("#css1").setAttribute("href", "../css/loggedInBasicLayout.css");
     document.querySelector("#css2").setAttribute("href", "../css/discover.css");
 
     // fetch logged in user to get following ids
@@ -264,7 +208,7 @@ function renderProfileView(event) {
                     </div>
                 </div>                            
                 <div id="bookmarkIcon" class="pointer"></div>
-                <div id="add_boardIcon" class="pointer"></div>
+                <div id="addBoardIcon" class="pointer"></div>
                 `;
 
                 document.querySelector("#settingsIcon").addEventListener("click", e => document.querySelector("#dropdownContent").classList.toggle("closed"));
