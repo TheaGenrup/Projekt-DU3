@@ -9,13 +9,27 @@ searchField.addEventListener("keyup", searchAlbums);
 let token = "";
 let tokenTimer;
 
-function openSearchWindow() {
+async function fetchToken(params) {
+    fetch("/server/spotifyApi/tokenAccess.php")
+    .then(r=>r.json())
+    .then(r => {
+        token = r.token;
+        tokenTimer = r.tokenTimeLeft;
+        return token;
+})
+}
+
+async function openSearchWindow() {
+
+    token = await fetchToken();
+    /*
     fetch("/server/spotifyApi/tokenAccess.php")
         .then(r=>r.json())
         .then(r => {
             token = r.token;
             tokenTimer = r.tokenTimeLeft;
     })
+    */
     const searchWindow = document.querySelector("#searchWindow");
     searchWindow.classList.add("open");
     const searchFieldContainer = document.querySelector("#searchFieldContainer");
@@ -52,6 +66,7 @@ function closeSearchWindow() {
 }
 
 function searchAlbums(e) {
+    const list = e.target.id;
     let input = e.target.value;
     if (!input) {return}
     let albumSearchEndpoint = `https://api.spotify.com/v1/search?q=${input}&type=album&offset=0&limit=10`;
@@ -62,7 +77,8 @@ function searchAlbums(e) {
               "Authorization": "Bearer " + token
           }
       })
-      .then(response => response.json())
+      .then(response => {
+        return response.json()})
       .then(albumResource => {
         const albumsfetched = albumResource.albums.items;
         const albumsFound = []
@@ -75,18 +91,84 @@ function searchAlbums(e) {
             artistName: artistsInAlbum,
             albumName:  album.name,
             albumId:    album.id,
-            albumImage: album.images[1].url,
+            albumImage: album.images[2].url,
             albumType:  album.album_type,
           }
-          albumsFound.push(albumInfo)
+          albumsFound.push(albumInfo);
         });
-        listAlbums(albumsFound);
+        switch (list) {
+            case "searchField":
+                listAlbumsGeneralSearch(albumsFound);
+                break;
+            case "searchAlbumInput":
+                listAlbumsForNewReview(albumsFound);
+                break;
+        }
       });
 
     }
 }
 
-function listAlbums(albums) {
+function listAlbumsForNewReview(albums) {
+    const albumUl = document.querySelector("#selectAlbumSearchUl");
+    albumUl.classList.remove("closed");
+    albumUl.innerHTML = "";
+    if (albums.length === 0) {
+        const message = document.createElement("li");
+        message.classList.add("message")
+        message.textContent = "no albums found";
+        albumUl.append(message);
+    }
+    if (albums.length > 0) {
+        albums.forEach(album => {
+            const artistName = album.artistName;
+            const albumName = album.albumName;
+            const albumId = album.albumId;
+            const albumImage = album.albumImage;
+            const albumType = album.albumType;
+    
+            const html = `
+                <img class ="previewImage" src="${albumImage}" alt="${albumName}">
+                <p class="artistName">${artistName}</p>
+                <p class="albumName">${albumName}</p>
+            `;
+            const liDom = document.createElement("li");
+            liDom.setAttribute("id", albumId);
+            liDom.classList.add("albumPreview");
+            liDom.innerHTML = html;
+
+            liDom.addEventListener("click", chooseAlbumToReview)
+            albumUl.append(liDom);
+        });
+    }
+}
+
+function chooseAlbumToReview(e) {
+    let liDom;
+    if (!e.target.id) { liDom = e.target.parentElement; } else { liDom = e.target; }
+    const artistName = liDom.querySelector(".artistName").textContent;
+    const albumName = liDom.querySelector(".albumName").textContent;
+    const albumImage = liDom.querySelector("img").src
+    const albumId = liDom.id;
+
+    const selectedAlbumContainer = document.querySelector("#selectedAlbumContainer");
+    const ArtistNameDom = selectedAlbumContainer.querySelector("#selectedArtistName");
+    const AlbumNameDom = selectedAlbumContainer.querySelector("#selectedAlbumName");
+    const AlbumImageDom = selectedAlbumContainer.querySelector("#selectedAlbumImage");
+    const createReviewBtn = document.querySelector("#createBtn");
+
+
+    selectedAlbumContainer.dataset.id = albumId;
+    ArtistNameDom.textContent = artistName;
+    AlbumNameDom.textContent = albumName;
+    AlbumImageDom.src = albumImage;
+
+    const albumUl = document.querySelector("#selectAlbumSearchUl");
+    albumUl.classList.add("closed");
+    createReviewBtn.classList.remove("disabled");
+}
+
+function listAlbumsGeneralSearch(albums) {
     const albumUl = document.querySelector("#albumUl");
     albumUl.innerHTML = "";
     const message = document.createElement("div");
