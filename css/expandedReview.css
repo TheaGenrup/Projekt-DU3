@@ -32,6 +32,8 @@
     height: 3.5vh;
     width: 3.5vh;
     position: relative;
+    bottom: -6.5vh;
+    right: -27vw;
 }
 
 .album_cover_container {

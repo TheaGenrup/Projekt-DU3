@@ -347,6 +347,7 @@ async function expandReview(event) {
 
             document.querySelector("#content_container").innerHTML = `
                 
+                <div id="close_review"></div>
                 <p id="timestamp"><span>${timeConverter(review.timestamp)}</span></p>
                 <p id="display_name"><span class="bold pointer">@${review.displayName}</span> reviewed</p>
                 <p id="album_name">${review.albumName}</p>
