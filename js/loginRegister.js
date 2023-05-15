@@ -1,7 +1,9 @@
 "use strict";
 checkIfAlreadyLoggedIn();
 function checkIfAlreadyLoggedIn() {
+    console.log("test");
     const key = localStorage.getItem("logInKey");
+    console.log(key);
     if (key === undefined || key === null) {
         renderLoginPage(); 
         return
@@ -82,20 +84,13 @@ async function fetchLogin(username, password, access, loginKey) {
         })
     }
     const response = await fetch(request, data);
+    console.log(response);
     const resource = await response.json();
+    console.log(resource);
     if (response.ok) {
         return resource
     }
 
-}
-
-function checkIfAlreadyLoggedIn() {
-    const key = localStorage.getItem("LogInKey");
-
-    console.log(key);
-
-    if (!key) { return };
-    attemptLogin("", "", "Access-Key: Auth", key);
 }
 
 function loginUser(userData) {
@@ -106,11 +101,7 @@ function loginUser(userData) {
     renderLoggedInView({
         profilePic: userData.profilePic,
     })
-
-    // to do: sortera reviews efter datum och tid
-
     // renderDiscoverView(followingNewReviews);
-
     renderDiscoverView();
 }
 

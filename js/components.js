@@ -1,5 +1,4 @@
 "use strict";
-// Render Login page, 
 function renderLoginPage() {
     localStorage.clear();
     const html = `
@@ -33,7 +32,8 @@ function renderLoginPage() {
     const loginRegisterbtn = document.querySelector("#loginRegisterBtn");
     switchBtn.addEventListener("click", switchLoginRegsiter);
     loginRegisterbtn.addEventListener("click", loginRegister)
-    document.querySelector("#style1").setAttribute("href", "/css/register_login.css");
+    document.querySelector("#css1").setAttribute("href", "/css/register_login.css");
+    return
 }
 
 function renderLoggedInView(profilePic) {
@@ -41,24 +41,116 @@ function renderLoggedInView(profilePic) {
     document.querySelector("body").innerHTML = `
 
     <main>
-        <div id="content_container"></div>
+    <dialog data-modal id="overlay">
+    </dialog>
+    <div id="searchWindow">
+        <div id="usersUlContainer">
+            <ul id="usersUl">
+            </ul>
+        </div>
+        <div id="albumUlContainer">
+            <ul id="albumUl">
+            </ul>
+        </div>
+    </div>
+
+    <div id="contentContainer">
+    </div>
     </main>
     <nav>
         <img class="view_icon" id="discover_icon" src="/media/icons/discover.png" alt="Discover"></img>
-        <img class="view_icon" id="search_icon" src="/media/icons/search.png" alt="Search"></img>
-        <img class="view_icon" id="add_icon" src="/media/icons/add.png" alt="Add"></img>
+        <img class="view_icon" id="openSearchWindowBtn" src="/media/icons/search.png" alt="Search"></img>
+        <img class="view_icon" id="addBtn" src="/media/icons/add.png" alt="Add"></img>
         <img class="view_icon" id="profile_picture" src="../media/${profilePic}" alt="Profile"></img>
+        <div id="searchFieldContainer">
+            <img id="closeSearchWindowBtn" src="/media/icons/close_0.png" alt="">
+            <input id="searchField" type="text" placeholder="Search albums and users"></input>
+        </div>
     </nav>
     `;
 
     document.querySelector("#discover_icon").addEventListener("click", renderDiscoverView);
     document.querySelector("#profile_picture").addEventListener("click", renderProfileView);
 
+    const openSearchWindowBtn = document.querySelector("#openSearchWindowBtn");
+    const closeSearchWindowBtn = document.querySelector("#closeSearchWindowBtn");
+    const searchField = document.querySelector("#searchField");
+    const addBtn = document.querySelector("#addBtn");
+
+
+
+
+        // DOM Event listeners
+        openSearchWindowBtn.addEventListener("click", openSearchWindow);
+        closeSearchWindowBtn.addEventListener("click", closeSearchWindow);
+        searchField.addEventListener("keyup", searchAlbums);
+        searchField.addEventListener("keyup", searchUsers);
+        addBtn.addEventListener("click", createBoardOrReview)
+        document.querySelector("#css1").setAttribute("href", "/css/logged_in_basic_layout.css");
+        document.querySelector("#css3").setAttribute("href", "/css/search.css");
+        document.querySelector("#css4").setAttribute("href", "/css/createBoardOrReview.css");
+        return;
 }
+
+// Render Logged in view
+/*
+function renderLoggedInView(userIdentity) {
+    const html = `
+    <main id="mainContainer">
+    <dialog data-modal id="overlay">
+    </dialog>
+
+        <div id="contentContainer">
+            <div id="searchWindow">
+                <div id="usersUlContainer">
+                    <ul id="usersUl">
+                    </ul>
+                </div>
+                <div id="albumUlContainer">
+                    <ul id="albumUl">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+    <nav>
+        <img class="view_icon" src="/media/icons/discover.png" alt="Discover"></img>
+        <img class="view_icon" id="openSearchWindowBtn" src="/media/icons/search.png" alt="Search"></img>
+        <img class="view_icon" id="addBtn" src="/media/icons/add.png" alt="Add"></img>
+        <img class="view_icon" id="profile_picture" src="/media/icons/${userIdentity.profilePic}.png" alt="Profile"></img>
+        <div class="view_icon" id="logoutBtn">logout</div>
+        <div id="searchFieldContainer">
+            <img id="closeSearchWindowBtn" src="/media/icons/close_0.png" alt="">
+            <input id="searchField" type="text" placeholder="Search albums and users"></input>
+        </div>
+    </nav>
+    `;
+    document.body.innerHTML = html;
+    // DOM elements used
+    const logoutBtn = document.querySelector("#logoutBtn");
+    const openSearchWindowBtn = document.querySelector("#openSearchWindowBtn");
+    const closeSearchWindowBtn = document.querySelector("#closeSearchWindowBtn");
+    const searchField = document.querySelector("#searchField");
+    const addBtn = document.querySelector("#addBtn");
+    
+    // DOM Event listeners
+    logoutBtn.addEventListener("click", renderLoginPage);
+    openSearchWindowBtn.addEventListener("click", openSearchWindow);
+    closeSearchWindowBtn.addEventListener("click", closeSearchWindow);
+    searchField.addEventListener("keyup", searchAlbums);
+    searchField.addEventListener("keyup", searchUsers);
+    addBtn.addEventListener("click", createBoardOrReview)
+    document.querySelector("#css1").setAttribute("href", "/css/logged_in_basic_layout.css");
+    document.querySelector("#css2").setAttribute("href", "/css/search.css");
+    document.querySelector("#profile_picture").src = userIdentity.profilePic;
+    return;
+
+}
+*/
 
 async function renderDiscoverView() {
 
-    document.querySelector("#content_container").innerHTML = "";
+    document.querySelector("#contentContainer").innerHTML = "";
 
     const userId = localStorage.getItem("userId");
 
@@ -77,7 +169,7 @@ async function renderDiscoverView() {
     if (followingIds.length === 0) {
         console.log("no following users");
 
-        document.querySelector("#content_container").innerHTML = `<p id="no_following">It seems like you're not following anyone...</p>`;
+        document.querySelector("#contentContainer").innerHTML = `<p id="no_following">It seems like you're not following anyone...</p>`;
     } else {
 
         const allFollowingUsersReviews = [];
@@ -132,7 +224,7 @@ async function renderDiscoverView() {
             </div>`;
 
             // add new review to html
-            document.querySelector("#content_container").innerHTML += newReview;
+            document.querySelector("#contentContainer").innerHTML += newReview;
 
             const reviewElement = document.querySelector(`#review_${review.reviewId}`);
 
@@ -176,7 +268,7 @@ function renderProfileView() {
             const userFollowing = user.userSocial.following.length;
             const displayName = user.userIdentity.displayName;
 
-            document.querySelector("#content_container").innerHTML = `
+            document.querySelector("#contentContainer").innerHTML = `
                 <div id="profile_header">
                     <div>
                         <img id="profile_picture_top" src="../media/${profilePicture}"></img>
@@ -369,7 +461,7 @@ async function expandReview(event) {
 
     document.querySelector("#css1").setAttribute("href", "../css/logged_in_basic_layout.css");
     document.querySelector("#css2").setAttribute("href", "../css/expandedReview.css");
-    document.querySelector("#content_container").innerHTML = "";
+    document.querySelector("#contentContainer").innerHTML = "";
 
     const userId = event.currentTarget.dataset.userId;
     const reviewId = event.currentTarget.dataset.reviewId;
@@ -381,7 +473,7 @@ async function expandReview(event) {
 
         if (reviewId == review.reviewId) {
 
-            document.querySelector("#content_container").innerHTML = `
+            document.querySelector("#contentContainer").innerHTML = `
                 
                 <div id="close_review"></div>
                 <p id="timestamp"><span>${timeConverter(review.timestamp)}</span></p>

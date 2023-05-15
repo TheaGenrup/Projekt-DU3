@@ -42,7 +42,7 @@ async function openSearchWindow() {
     searchWindow.style.transition = "1.5s"
     closeSearchWindowBtn.style.display = "block";
     searchWindow.style.display = "block";
-    searchWindow.style.height = "100%";
+    searchWindow.style.height = "92%";
     searchFieldContainer.style.width = "100%";
     searchFieldContainer.style.height = "100%";
     searchField.style.display = "block";
