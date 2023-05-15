@@ -7,7 +7,7 @@ body {
     background-color: rgb(24, 24, 24);
 }
 
-#content_container {
+#contentContainer {
     font-size: 2vh;
     box-sizing: border-box;
     padding: 5vw;
@@ -24,7 +24,7 @@ body {
     overflow: scroll;
 }
 
-#profile_picture {
+#profilePicture {
     border-radius: 50%;
     cursor: pointer;
 }
@@ -46,7 +46,7 @@ nav {
     padding: 0 40px 0 40px;
 }
 
-.view_icon {
+.viewIcon {
     background-position: center;
     background-size: cover;
     height: 8vw;
