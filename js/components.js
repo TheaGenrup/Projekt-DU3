@@ -60,61 +60,12 @@ async function renderDiscoverView() {
 
         allFollowingUsersReviews.sort((a, b) => b.timestamp - a.timestamp);
 
-
         // go through all reviews to create them
         allFollowingUsersReviews.forEach(review => {
 
+            makeReview(review, "#content_container");
+        })
 
-            // shorten comment if needed
-            let reviewDescription = review.reviewDescription;
-            if (reviewDescription.length > 50) {
-                reviewDescription = reviewDescription.slice(0, 50) + "...";
-            }
-
-            // make html for new review
-            const newReview = `
-     
-            <div class="review" id="review_${review.reviewId}">
-                <p id="who" class="bold">@${review.displayName} added a review</p>
-                <p id="when">${timeConverter(review.timestamp)}</p>
-                <div id="album_overview">
-                    <div id="album_cover_${review.reviewId}" class="album_cover"></div>
-                        <div id="album_details">
-    
-                            <p id="album_name">${review.albumName}</p>
-                            <p id="artist">${review.artist}</p>
-                            <div id="stars_${review.reviewId}" class="stars">
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                            </div>
-                            <p id="reviewDescription">${reviewDescription}</p>
-                    </div>
-                </div>
-            </div>`;
-
-            // add new review to html
-            document.querySelector("#content_container").innerHTML += newReview;
-
-            const reviewElement = document.querySelector(`#review_${review.reviewId}`);
-
-            reviewElement.dataset.userId = review.userId;
-            reviewElement.dataset.reviewId = review.reviewId;
-
-            // add album cover
-            if (review.albumCover === "" || review.albumCover === undefined || review.albumCover === null) {
-
-                document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = "url(../media/icons/default_cover.png)";
-            } else {
-
-                document.querySelector(`#album_cover_${review.reviewId}`).style.backgroundImage = `url(../media/albumCovers/${review.albumCover})`;
-            }
-
-            fillStars(review.rating, review.reviewId);
-
-        });
 
         document.querySelectorAll(`.review`).forEach(review => { review.addEventListener("click", expandReview); });
     }

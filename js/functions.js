@@ -44,3 +44,57 @@ function timeConverter(UNIX_timestamp) {
     var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
     return time;
 }
+
+function makeReview(review, container) {
+
+
+    // shorten comment if needed
+    let reviewDescription = review.reviewDescription;
+    if (reviewDescription.length > 50) {
+        reviewDescription = reviewDescription.slice(0, 50) + "...";
+    }
+
+    // make html for new review
+    const newReview = `
+     
+            <div class="review" id="review_${review.reviewId}">
+                <p id="who" class="bold">@${review.displayName} added a review</p>
+                <p id="when">${timeConverter(review.timestamp)}</p>
+                <div id="albumOverview">
+                    <div id="albumCover_${review.reviewId}" class="album_cover"></div>
+                        <div id="albumDetails">
+    
+                            <p id="albumName">${review.albumName}</p>
+                            <p id="artist">${review.artist}</p>
+                            <div id="stars_${review.reviewId}" class="stars">
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                            </div>
+                            <p id="reviewDescription">${reviewDescription}</p>
+                    </div>
+                </div>
+            </div>`;
+
+    // add new review to html
+    document.querySelector(container).innerHTML += newReview;
+
+    const reviewElement = document.querySelector(`#review_${review.reviewId}`);
+
+    reviewElement.dataset.userId = review.userId;
+    reviewElement.dataset.reviewId = review.reviewId;
+
+    // add album cover
+    if (review.albumCover === "" || review.albumCover === undefined || review.albumCover === null) {
+
+        document.querySelector(`#albumCover_${review.reviewId}`).style.backgroundImage = "url(../media/icons/default_cover.png)";
+    } else {
+
+        document.querySelector(`#albumCover_${review.reviewId}`).style.backgroundImage = `url(../media/albumCovers/${review.albumCover})`;
+    }
+
+    fillStars(review.rating, review.reviewId);
+
+}
