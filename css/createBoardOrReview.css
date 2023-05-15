@@ -7,9 +7,13 @@
 #createContainer input{
     width: 100%;
     padding: 5px;
-    border-radius: 10px;
+    margin-top: 5px;
+    border-radius: 10px 10px 0px 0px;
     background-color: #5c5c8e;
     border: 2px solid #b7b9bb;
+}
+#createContainer input:focus{
+    outline: none;
 }
 
 #addBoardPhotoBtn{
@@ -28,24 +32,92 @@
 #createBoardContainer{
     flex-direction: column;
 }
-
+/* CREATE REVIEW SECTION */
 #createReviewContainer{
-    height: 100%;
     position: relative;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    height: 100%;
+}
+#createReviewContainer div:not(#chooseRatingContainer){
+    margin-bottom: 10px;
     flex-direction: column;
 }
-#createReviewContainer div{
-    margin-bottom: 10px;
-}
-#searchAlbumContainer ul{
+
+/* LISTING ALBUMS ON SEARCH SECTION*/
+#selectAlbumSearchUl{
+    position: absolute;
+
+    list-style-type:none;
+    background-color: #5c5c8e;
+
+    max-height: 40%;
+    width: 100%;
+
     margin: 0;
     padding: 0;
-    list-style-type:none;
+    border-radius: 0px 0px 10px 10px;
+
+    overflow: scroll;
 }
 
-#chooseRatingContainer img{
+#selectAlbumSearchUl .albumPreview{
+    display: flex;
+    align-items: center;
+    min-height: 30px;
+    width: 100%;
+    border-top: 0.5px solid rgba(0, 0, 0, 0.483);
+    padding: 5px;
+}
+#selectAlbumSearchUl .albumPreview:hover{
+    background-color:#404082;
+    cursor: pointer;
+}
+#selectAlbumSearchUl .albumPreview:nth-child(1){
+    border-top: 0px;
+}
+#selectAlbumSearchUl .albumPreview *{
+    margin-right: 10px;
+    font-size: 3vw;
+}
+
+#selectAlbumSearchUl .albumPreview img{
+    height: 100%;
+    width: 25px;
+}
+/* SHOW SELECTED ALBUM SECTIONs */
+#selectedAlbumImage{
+    width: 30%;
+
+}
+
+/* RATING SECTION */
+#chooseRatingContainer{
+    display: flex;
+    width: fit-content;
+}
+
+#chooseRatingContainer div{
     height: 30px;
     width: 30px;
+    background-image: url(/media/icons/star-regular.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+#chooseRatingContainer div:nth-child(1){
+    height: 30px;
+    width: 30px;
+    background-image: url(/media/icons/star-solid.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+/* REVIEW DESCRIPTION SECTION */
+#reviewDescription{
+    width: 100%;
+    padding: 5px;
 }
 
 #createContainer .horizontalContainer button{
@@ -67,4 +139,14 @@
 
 .closed{
     display: none;
+}
+
+#mainContainer #overlay .disabled{
+    cursor: auto;
+    background-color: gray;
+    color: rgb(166, 166, 166);
+}
+
+#selectAlbumSearchUl .closed{
+    max-height: 10%;
 }
