@@ -37,7 +37,7 @@
                         0,
                         1
                     ],
-                    "thumbnail": "board_1.jpg"
+                    "thumbnail": "tameImpala.jpg"
                 },
                 {
                     "boardName": "FAVOURITES",
@@ -194,13 +194,22 @@
         "albumData": {
             "boards": [
                 {
-                    "boardName": "Acid psychadelics",
+                    "boardName": "AVICII",
                     "boardId": 0,
                     "reviews": [
                         0,
                         1
                     ],
-                    "thumbnail": "\/server\/media\/users\/607133432034891031030642696328\/boards\/bildnamet"
+                    "thumbnail": "avicii.jpg"
+                },
+                {
+                    "boardName": "MINE",
+                    "boardId": 0,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "stevieNicks.jpg"
                 }
             ],
             "reviews": [

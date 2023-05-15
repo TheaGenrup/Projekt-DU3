@@ -2,12 +2,12 @@
     gap: 20px;
 }
 
-#album_overview {
+#albumOverview {
     display: flex;
     margin-top: 1vh;
 }
 
-.album_cover {
+.albumCover {
     height: 12vh;
     width: 12vh;
     background-position: center;
@@ -16,7 +16,7 @@
     margin: 0 10px 0 0;
 }
 
-#album_details {
+#albumDetails {
     display: flex;
     flex-direction: column;
     width: 70%;
@@ -33,7 +33,7 @@ p {
     margin: 0;
 }
 
-#album_name {
+#albumName {
     font-weight: bold;
 }
 
@@ -42,7 +42,7 @@ p {
     width: 18px;
 }
 
-#no_following {
+#noFollowing {
     margin: auto;
     font-size: 5vw;
 }

@@ -2,7 +2,7 @@
     margin: 0;
 }
 
-#content_container {
+#contentContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,11 +13,11 @@
     margin-top: 4vh;
 }
 
-#display_name {
+#displayName {
     font-size: 2vh;
 }
 
-#album_name {
+#albumName {
     font-size: 4vh;
     margin-top: 4vh;
 }
@@ -36,22 +36,22 @@
     right: -27vw;
 }
 
-.album_cover_container {
+.albumCoverContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#review_description {
+#reviewDescription {
     margin-top: 2vh;
 }
 
-#other_reviews_head {
+#otherReviewsHead {
     font-size: 3vh;
     margin-top: 5vh;
 }
 
-#other_reviews_container {
+#otherReviewsContainer {
     display: flex;
     flex-direction: column;
 }

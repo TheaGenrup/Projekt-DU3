@@ -1,4 +1,4 @@
-#profile_header {
+#profileHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -6,30 +6,30 @@
     box-sizing: border-box;
 }
 
-#profile_picture_top {
+#profilePictureTop {
     height: 25vw;
     width: 25vw;
     border-radius: 50%;
 }
 
-#bookmark_icon,
-#settings_icon,
-#add_board_icon {
+#bookmarkIcon,
+#settingsIcon,
+#addBoardIcon {
     background-position: center;
     background-size: cover;
     height: 8vw;
     width: 8vw;
 }
 
-#bookmark_icon {
+#bookmarkIcon {
     background-image: url(/media/icons/bookmark.png);
 }
 
-#settings_icon {
+#settingsIcon {
     background-image: url(/media/icons/settings.png);
 }
 
-#add_board_icon {
+#addBoardIcon {
     background-image: url(/media/icons/Add.png);
 }
 
@@ -38,7 +38,7 @@
     display: inline-block;
 }
 
-#dropdown_content {
+#dropdownContent {
     position: absolute;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -46,23 +46,23 @@
     background-color: grey;
 }
 
-#dropdown_content * {
+#dropdownContent * {
     display: block;
     margin: 1vh;
 }
 
-#dropdown_content>* :hover {
+#dropdownContent>* :hover {
     color: grey;
 }
 
-#profile_icons {
+#profileIconsOrFollowButton {
     display: flex;
     margin-top: 5vh;
     gap: 3vw;
     justify-content: right;
 }
 
-#following_followers {
+#followingFollowers {
     display: grid;
     grid-template-columns: auto auto;
     text-align: center;
@@ -70,33 +70,37 @@
     font-size: 16px;
 }
 
-#following_followers div:nth-last-child(3) {
+#followingFollowers div:nth-last-child(3) {
     Grid-column: 1;
     Grid-row: 2;
 }
 
-#profile_picture img {
+#profilePicture img {
     height: 30vw;
     width: 30vw;
 }
 
-#profile_header p {
+#profileHeader p {
     margin-top: 0;
     text-align: center;
 }
 
 
-#board_of_boards {
+#boardOfBoards {
     display: grid;
     grid-template-columns: auto auto;
     gap: 20px;
 }
 
-#board_and_review_container p {
+.boardName {
+    text-align: center;
+}
+
+#boardAndReviewContainer p {
     cursor: pointer;
 }
 
-#board_and_review_container {
+#boardAndReviewContainer {
     display: flex;
     flex-direction: column;
     gap: 1vh;
@@ -104,18 +108,18 @@
     border-radius: 20px;
 }
 
-.profile_board img {
+.profileBoard img {
     height: 30vw;
     width: 30vw;
     border-radius: 5%;
 }
 
-#album_overview {
+#albumOverview {
     display: flex;
     margin-top: 10px;
 }
 
-.album_cover {
+.albumCover {
     height: 11vh;
     width: 11vh;
     background-position: center;
@@ -124,7 +128,7 @@
     margin: 0 10px 0 0;
 }
 
-#album_details {
+#albumDetails {
     display: flex;
     flex-direction: column;
     width: 70%;
@@ -142,7 +146,7 @@ p {
     margin: 0;
 }
 
-#add_review {
+#addReview {
     border-radius: 20px;
     height: 5vh;
     width: 100%;
@@ -152,7 +156,7 @@ p {
     text-align: center;
 }
 
-#favourites_icon {
+#favouritesIcon {
     background-position: center;
     background-size: cover;
     height: 11vw;
@@ -160,7 +164,7 @@ p {
     padding-bottom: 1vh;
 }
 
-.favourite_cover {
+.favouriteCover {
     height: 8vh;
     width: 8vh;
     background-position: center;
@@ -168,12 +172,12 @@ p {
     border-radius: 20%;
 }
 
-#favourites_icon_container {
+#favouritesIconContainer {
     display: flex;
     justify-content: center;
 }
 
-#favourite_info_container {
+#favouriteInfoContainer {
     display: flex;
     flex-direction: column;
     margin-left: 2vw;
@@ -194,7 +198,11 @@ p {
     gap: 1vh;
 }
 
-.favourite_album_name {
+.favouriteAlbumName {
     font-size: 4vw;
     font-weight: bold;
+}
+
+.boardTitle {
+    text-align: center;
 }
