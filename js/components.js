@@ -156,7 +156,7 @@ function renderProfileView() {
                         <div id="profile_icons">
                             <div class="settingsDropdown">
                                 <div id="settings_icon" class="pointer"></div>
-                                <div id="dropdown_content">
+                                <div id="dropdown_content" class="closed">
                                     <div id="editAccountBtn" class="pointer">Edit Account</div>
                                     <div id="logOutBtn" class="pointer">Log Out</div>
                                 </div>
@@ -172,10 +172,10 @@ function renderProfileView() {
                     <div id="board_of_boards"></div>
                 </div>`
 
-            document.querySelector("#settings_icon").addEventListener("click", e => {
-                document.querySelector("#dropdown_content").style.display = "block";
-            });
-            document.querySelector("#settings_icon").addEventListener("click", showSettingsDropdown);
+            /*             document.querySelector("#settings_icon").addEventListener("click", e => {
+                            document.querySelector("#dropdown_content").style.display = "block";
+                        }); */
+            document.querySelector("#settings_icon").addEventListener("click", e => document.querySelector("#dropdown_content").classList.toggle("closed"));
             document.querySelector("#bookmark_icon").addEventListener("click", showFavourites);
 
             function showFavourites(event) {
@@ -352,8 +352,10 @@ async function expandReview(event) {
                 <p id="album_name">${review.albumName}</p>
                 <p id="artist">${review.artist}</p>
                 <div class="album_cover_container">
-                    <img src="url(../media/albumCovers/${review.albumCover})" alt="Album Cover">
                     <img src="/media/icons/bookmark.png" id="bookmark" alt="Bookmark">
+                    <img src="../media/albumCovers/${review.albumCover}" alt="Album Cover" 
+                    
+                    id="album_cover_expanded">
                 </div>
                 <div class="stars">
                     <div class="star"></div>
@@ -373,12 +375,4 @@ async function expandReview(event) {
             document.querySelector(`#display_name`).addEventListener("click", renderProfileView);
         }
     })
-}
-
-function showSettingsDropdown(event) {
-
-    document.querySelector("#settings_icon").addEventListener("click", e => {
-        document.querySelector("#dropdown_content").style.display = "none";
-    });
-
 }

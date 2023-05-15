@@ -21,3 +21,13 @@ nav * {
 .pointer {
     cursor: pointer;
 }
+
+.closed {
+    display: none;
+}
+
+#album_cover_expanded {
+    height: 35vh;
+    width: 35vh;
+    border-radius: 5vh;
+}

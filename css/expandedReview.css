@@ -29,8 +29,9 @@
 }
 
 #bookmark {
-    height: 2vh;
-    width: 2vh;
+    height: 3.5vh;
+    width: 3.5vh;
+    position: relative;
 }
 
 .album_cover_container {
