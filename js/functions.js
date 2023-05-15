@@ -45,9 +45,6 @@ function timeConverter(UNIX_timestamp) {
     return time;
 }
 
-
-
-
 function makeReview(review, container) {
 
 
@@ -80,8 +77,8 @@ function makeReview(review, container) {
                     </div>
                 </div>
             </div>`;
-            
-// add new review to html
+
+    // add new review to html
     document.querySelector(container).innerHTML += newReview;
 
     const reviewElement = document.querySelector(`#review_${review.reviewId}`);

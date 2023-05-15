@@ -144,9 +144,9 @@ async function renderCreateReviewView(params) {
 
     console.log(usersBoards);
     const contentContainer = document.querySelector("#contentContainer");
-    contentContainer.innerHTML ="";
+    contentContainer.innerHTML = "";
     const html =
-    `
+        `
         <h3>Review Album</h3>
         <div id="createContainer">
             <div class="createOption">New Board</div>
@@ -201,8 +201,6 @@ function renderProfileView(event) {
                 </div>`
 
 
-
-
             if (clickedUserId !== loggedInUserId) {
                 document.querySelector("#profileIconsOrFollowButton").innerHTML = `
                 <button id="followButton">Follow</button>
@@ -221,6 +219,9 @@ function renderProfileView(event) {
                 `;
 
                 document.querySelector("#settingsIcon").addEventListener("click", e => document.querySelector("#dropdownContent").classList.toggle("closed"));
+                document.querySelector("#logOutBtn").addEventListener("click", e => {
+                    renderLoginPage();
+                })
                 document.querySelector("#bookmarkIcon").addEventListener("click", showFavourites);
             }
 
@@ -295,14 +296,15 @@ function renderProfileView(event) {
 
                     if (board.boardName === event.target.textContent) {
 
-                        const boardID = board.boardId;
+                        const boardId = board.boardId;
                         const arrayWithReviews = user.albumData.reviews
 
                         arrayWithReviews.forEach(review => {
 
                             review.boards.forEach(board => {
 
-                                if (board === boardID) {
+                                if (board === boardId) {
+                                    review.userId = user.userIdentity.id;
                                     reviewsInBoard.push(review);
                                 }
                             })
@@ -317,64 +319,13 @@ function renderProfileView(event) {
 
                 reviewsInBoard.forEach(review => {
 
-                    // shorten comment if needed
-                    let reviewDescription = review.reviewDescription;
-                    if (reviewDescription.length > 50) {
-                        reviewDescription = reviewDescription.slice(0, 50) + "...";
-                    }
-
-
-                    // make html for new review
-                    const newReview = `
-
-                        <div class="review" id="review_${review.reviewId}>
-                            <p id="who">@ ${user.userIdentity.displayName}</p>
-                            <p id="when">${timeConverter(review.timestamp)}</p>
-                            <div id="albumOverview">
-                                <div id="albumCover_${review.reviewId}" class="albumCover"></div>
-                                <div id="albumDetails">
-
-                                    <p id="albumName"><span class="bold">${review.albumName}</span></p>
-                                    <p id="artist">${review.artist}</p>
-                                    <div id="stars_${review.reviewId}" class="stars">
-                                        <div class="star"></div>
-                                        <div class="star"></div>
-                                        <div class="star"></div>
-                                        <div class="star"></div>
-                                        <div class="star"></div>
-                                    </div>
-                                    <p id="reviewDescription">${reviewDescription}</p>
-                                </div>
-                            </div>
-                        </div> `;
-
-                    // add new review to html
-                    document.querySelector("#boardAndReviewContainer").innerHTML += newReview;
-
-                    /*                     const reviewElement = document.querySelector(`#review_${review.reviewId}`);
-                                        console.log(reviewElement);
-                                        reviewElement.dataset.userId = review.userId;
-                                        reviewElement.dataset.reviewId = review.reviewId;
-                     */
-                    //OBS! dessa är inte sorterade och stjärnorna syns inte
-
-                    // add album cover
-                    if (review.albumCover === "" || review.albumCover === undefined || review.albumCover === null) {
-
-                        document.querySelector(`#albumCover_${review.reviewId}`).style.backgroundImage = "url(../media/icons/default_cover.png)";
-                    } else {
-
-                        document.querySelector(`#albumCover_${review.reviewId}`).style.backgroundImage = `url(../media/albumCovers/${review.albumCover})`;
-                    }
-
-                    // change the background image of the right amount of stars
-                    fillStars(review.rating, review.reviewId);
+                    makeReview(review, "#boardAndReviewContainer");
                 });
 
 
-                /*  document.querySelectorAll(".review").forEach(review => {
-                     review.addEventListener("click", expandReview);
-                 }) */
+                document.querySelectorAll(".review").forEach(review => {
+                    review.addEventListener("click", expandReview);
+                })
             }
         });
 };
