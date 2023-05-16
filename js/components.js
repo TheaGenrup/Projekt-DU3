@@ -332,28 +332,25 @@ async function expandReview(event) {
     document.querySelector("#css2").setAttribute("href", "../css/expandedReview.css");
     document.querySelector("#contentContainer").innerHTML = "";
 
-    const userId = event.currentTarget.dataset.userId;
-    const reviewId = event.currentTarget.dataset.reviewId;
+    const clickedUserId = event.currentTarget.dataset.userId;
+    const clickedReviewId = event.currentTarget.dataset.reviewId;
 
-    const reviews = await fetchReview(userId);
+    const reviewsOfClickedUser = await fetchReview(clickedUserId);
 
+    reviewsOfClickedUser.forEach(async (firstLoopThroughReview) => {
 
-    reviews.forEach(review => {
-
-        if (reviewId == review.reviewId) {
+        if (clickedReviewId == firstLoopThroughReview.reviewId) {
 
             document.querySelector("#contentContainer").innerHTML = `
                 
                 <div id="closeReview" class="pointer"></div>
-                <p id="timestamp"><span>${timeConverter(review.timestamp)}</span></p>
-                <p id="displayName"><span class="bold pointer">@${review.displayName}</span> reviewed</p>
-                <p id="albumName">${review.albumName}</p>
-                <p id="artist">${review.artist}</p>
+                <p id="timestampExpanded"><span>${timeConverter(firstLoopThroughReview.timestamp)}</span></p>
+                <p id="displayNameExpanded"><span class="bold pointer">@${firstLoopThroughReview.displayName}</span> reviewed</p>
+                <p id="albumNameExpanded">${firstLoopThroughReview.albumName}</p>
+                <p id="artistExpanded">${firstLoopThroughReview.artist}</p>
                 <div class="albumCoverContainer">
                     <img src="/media/icons/bookmark.png" id="bookmark" alt="Bookmark">
-                    <img src="../media/albumCovers/${review.albumCover}" alt="Album Cover" 
-                    
-                    id="albumCoverExpanded">
+                    <img src="../media/albumCovers/${firstLoopThroughReview.albumCover}" alt="Album Cover" id="albumCoverExpanded">
                 </div>
                 <div class="stars">
                     <div class="star"></div>
@@ -362,18 +359,90 @@ async function expandReview(event) {
                     <div class="star"></div>
                     <div class="star"></div>
                 </div>
-                <p id="reviewDescription">${review.reviewDescription}</p>
-                <p id="otherReviewsHead">Previous reviews</p>
-                <div id="otherReviewsContainer"></div>
+                <p id="reviewDescription">${firstLoopThroughReview.reviewDescription}</p>
+                <p id="otherReviewsHead">Other reviews of this album</p>
+                <div id="previousReviewsContainer"></div>
            
             `;
 
-            fillStars(review.rating);
+            fillStars(firstLoopThroughReview.rating);
 
-            document.querySelector("#displayName").dataset.userId = review.userId;
+            document.querySelector("#displayNameExpanded").dataset.userId = firstLoopThroughReview.userId;
 
-            document.querySelector(`#displayName`).addEventListener("click", renderProfileView);
+            document.querySelector(`#displayNameExpanded`).addEventListener("click", renderProfileView);
             document.querySelector(`#closeReview`).addEventListener("click", e => renderDiscoverView());
+
+            // previous reviews
+            const users = await getAllUsers();
+
+            const allReviewsOfAlbum = [];
+            users.forEach(user => {
+                user.albumData.reviews.forEach(secondLoopThroughReview => {
+
+                    if (secondLoopThroughReview.albumId === firstLoopThroughReview.albumId) {
+                        console.log(user.userIdentity.profilePic);
+
+                        secondLoopThroughReview.displayName = user.userIdentity.displayName;
+                        secondLoopThroughReview.userId = user.userIdentity.id;
+                        secondLoopThroughReview.profilePicture = user.userIdentity.profilePic;
+
+                        allReviewsOfAlbum.push(secondLoopThroughReview);
+                    }
+                });
+            })
+            // to do: man ska inte se den man redan är på
+
+            allReviewsOfAlbum.forEach(review => {
+                console.log(review);
+
+
+                // shorten comment if needed
+                let reviewDescription = review.reviewDescription;
+                if (reviewDescription.length > 50) {
+                    reviewDescription = reviewDescription.slice(0, 50) + "...";
+                }
+
+                // make html for new review
+                const newReview = `
+     
+                <div class="review" id="review_${review.reviewId}">
+                    <div id="userInfo">
+                        <div id="profilePictureInReview"></div>
+                        <div>
+                            <p id="who" class="bold">@${review.displayName}</p>
+                            <p id="when">${timeConverter(review.timestamp)}</p>
+                        </div>
+                    </div>
+                    <div id="albumDetails">
+                        <p id="albumName">${review.albumName}</p>
+                        <p id="artist">${review.artist}</p>
+                        <div id="stars_${review.reviewId}" class="stars">
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                        </div>
+                        <p id="reviewDescription">${reviewDescription}</p>
+                    </div>
+                </div>`;
+
+                // add new review to html
+                document.querySelector("#previousReviewsContainer").innerHTML += newReview;
+
+                const reviewElement = document.querySelector(`#review_${review.reviewId}`);
+
+                reviewElement.dataset.userId = review.userId;
+                reviewElement.dataset.reviewId = review.reviewId;
+
+                fillStars(review.rating, review.reviewId);
+
+                /* 
+                                document.querySelector("#profilePictureInReview").style.backgroundImage = `url(../media/${review.profilePic})`; */
+
+
+            })
+
         }
     })
 };

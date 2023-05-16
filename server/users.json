@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "PcmbtVazXm0m1HCJJ6bNrivDW",
+        "loginKey": "jzHV6xMNpuxTh4245glMaw1xX",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -71,40 +71,37 @@
                 {
                     "albumName": "Infest the Rat's nest",
                     "artist": "King Gizzard and the lizzard wizard",
-                    "albumId": "34",
+                    "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
                     "reviewId": 7,
                     "reviewDescription": "I like when the music is making noise",
-                    "rating": 5,
+                    "rating": 4,
                     "boards": [
                         0,
                         4
                     ],
                     "albumCover": "infest.jpg",
                     "timestamp": 1681141145,
-                    "displayName": "Anthony Fantano",
-                    "test": 15
+                    "displayName": "Anthony Fantano"
                 },
                 {
                     "albumName": "Rumours",
                     "artist": "Fleetwood Mac",
-                    "albumId": "78",
+                    "albumId": "nfipqn029",
                     "reviewId": 9,
-                    "albumCover": "dreams.jpg",
+                    "albumCover": "rumours.jpg",
                     "reviewDescription": "More or less for me, they are as wonderful as sculptures or paints, because Dreams goes absolutely beyond music. Their instruments are like brushes with which we paint such wonderful songs as Sara, Gypsy, Big Love, Rhiannon, thanks to which we can experience artistic understanding.",
-                    "rating": 5,
+                    "rating": 4,
                     "boards": [
                         0,
                         5
                     ],
-                    "timestamp": 1681546325,
-                    "displayName": "Anthony Fantano",
-                    "test": 16
+                    "timestamp": 1681546325
                 },
                 {
                     "albumName": "Abbey Road",
                     "artist": "The Beatles",
                     "albumCover": "beatles.jpg",
-                    "albumId": "43",
+                    "albumId": "g8f9q98",
                     "reviewId": 46,
                     "reviewDescription": "Once again, a perfect piece of music that fits its appropriate moods insanely well.",
                     "rating": 3,
@@ -113,22 +110,21 @@
                         3,
                         4
                     ],
-                    "timestamp": 1682950505,
-                    "displayName": "Anthony Fantano"
+                    "timestamp": 1682950505
                 }
             ],
             "favourites": [
                 {
                     "albumName": "The microphones pt2",
                     "artist": "Mount eire",
-                    "albumId": "???",
+                    "albumId": "8gt92bqf",
                     "thumbnail": "board_1.jpg",
                     "favouriteId": 0
                 },
                 {
                     "albumName": "Och Stora Havet",
                     "artist": "Jakob Hellman",
-                    "albumId": "???",
+                    "albumId": "biogq390wh",
                     "thumbnail": "hellman.jpg",
                     "favouriteId": 0
                 }
@@ -149,7 +145,7 @@
         },
         "userIdentity": {
             "id": "1234",
-            "profilePic": "1241345512514",
+            "profilePic": "profile_picture.jpg",
             "displayName": "John"
         },
         "albumData": {
@@ -172,30 +168,32 @@
                     "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
                     "reviewId": 0,
                     "reviewDescription": "I like when the music is making noise",
-                    "rating": 5,
+                    "rating": 3,
                     "boards": [
                         0,
                         3
-                    ]
+                    ],
+                    "timestamp": 1681547925
                 },
                 {
                     "albumName": "The microphones pt2",
                     "artist": "Mount eire",
-                    "albumId": "???",
-                    "reviewId": 1,
+                    "albumId": "8gt92bqf",
+                    "reviewId": 17902,
                     "reviewDescription": "Woah! I've never cired like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
-                    "rating": 5,
+                    "rating": 2,
                     "boards": [
                         0,
                         4
-                    ]
+                    ],
+                    "timestamp": 1681586723
                 }
             ],
             "favourites": [
                 {
                     "albumName": "The microphones pt2",
                     "artist": "Mount eire",
-                    "albumId": "???",
+                    "albumId": "8gt92bqf",
                     "favouriteId": 0
                 }
             ]
@@ -241,7 +239,7 @@
                 {
                     "albumName": "Och Stora Havet",
                     "artist": "Jakob Hellman",
-                    "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
+                    "albumId": "biogq390wh",
                     "reviewId": 57,
                     "reviewDescription": "SOOOO smooth sounding. even in its simplicity this album is SOOO amazing, and it's absolutely timeless. probably in my top 5 of all time.",
                     "rating": 3,
@@ -249,14 +247,12 @@
                         0
                     ],
                     "timestamp": 1681312805,
-                    "displayName": "test2",
-                    "albumCover": "hellman.jpg",
-                    "test": 10
+                    "albumCover": "hellman.jpg"
                 },
                 {
                     "albumName": "The microphones pt2",
                     "artist": "Mount eire",
-                    "albumId": "???",
+                    "albumId": "8gt92bqf",
                     "reviewId": 100,
                     "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
                     "rating": 2,
@@ -264,16 +260,14 @@
                         0
                     ],
                     "timestamp": 1682832185,
-                    "displayName": "test2",
-                    "albumCover": "beatles.jpg",
-                    "test": 11
+                    "albumCover": "beatles.jpg"
                 }
             ],
             "favourites": [
                 {
                     "albumName": "The microphones pt2",
                     "artist": "Mount eire",
-                    "albumId": "???",
+                    "albumId": "8gt92bqf",
                     "thumbnail": "board_1.jpg",
                     "favouriteId": 0
                 }
@@ -318,7 +312,37 @@
         },
         "albumData": {
             "boards": [],
-            "reviews": [],
+            "reviews": [
+                {
+                    "albumName": "Abbey Road",
+                    "artist": "The Beatles",
+                    "albumCover": "beatles.jpg",
+                    "albumId": "g8f9q98",
+                    "reviewId": 46,
+                    "reviewDescription": "Once again, a perfect piece of music that fits its appropriate moods insanely well.",
+                    "rating": 4,
+                    "boards": [
+                        0,
+                        3,
+                        4
+                    ],
+                    "timestamp": 1682950505
+                },
+                {
+                    "albumName": "Rumours",
+                    "artist": "Fleetwood Mac",
+                    "albumId": "nfipqn029",
+                    "reviewId": 5290,
+                    "albumCover": "rumours.jpg",
+                    "reviewDescription": "More or less for me, they are as wonderful as sculptures or paints, because Dreams goes absolutely beyond music. Their instruments are like brushes with which we paint such wonderful songs as Sara, Gypsy, Big Love, Rhiannon, thanks to which we can experience artistic understanding.",
+                    "rating": 4,
+                    "boards": [
+                        0,
+                        5
+                    ],
+                    "timestamp": 1681546325
+                }
+            ],
             "favourites": []
         }
     }

@@ -27,8 +27,8 @@ nav * {
 }
 
 #albumCoverExpanded {
-    height: 35vh;
-    width: 35vh;
+    height: 39vh;
+    width: 39vh;
     border-radius: 5vh;
 }
 
@@ -40,4 +40,11 @@ nav * {
     width: 3vh;
     position: absolute;
     right: 4.5vw;
+}
+
+.review {
+    border-radius: 20px;
+    background-color: rgb(212, 212, 212);
+    box-sizing: border-box;
+    padding: 10px;
 }

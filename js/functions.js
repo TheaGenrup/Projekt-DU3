@@ -1,23 +1,4 @@
-function fillStars(rating, reviewId) {
-
-    let stars;
-
-    if (reviewId == undefined) {
-        // if the function is called in expandReview
-        stars = document.querySelectorAll(`.stars > div`);
-    } else {
-        // if the function is called in renderDiscoverView
-        stars = document.querySelectorAll(`#stars_${reviewId} > div`);
-    }
-
-    for (let i = 0; i < stars.length; i++) {
-
-        const star = stars[i];
-        if (i < rating) {
-            star.style.backgroundImage = `url(../media/icons/filled_in_star.png)`;
-        }
-    }
-}
+"use strict";
 
 async function getReviews(followingUserId) {
 
@@ -31,6 +12,13 @@ async function getReviews(followingUserId) {
     });
 
     return allReviews;
+}
+
+async function getAllUsers() {
+
+    const response = await fetch(new Request(`../server/getAllUsers.php`));
+    return await response.json();
+
 }
 
 function timeConverter(UNIX_timestamp) {
@@ -97,4 +85,25 @@ function makeReview(review, container) {
 
     fillStars(review.rating, review.reviewId);
 
+}
+
+function fillStars(rating, reviewId) {
+
+    let stars;
+
+    if (reviewId == undefined) {
+        // if the function is called in expandReview
+        stars = document.querySelectorAll(`.stars > div`);
+    } else {
+        // if the function is called in renderDiscoverView
+        stars = document.querySelectorAll(`#stars_${reviewId} > div`);
+    }
+
+    for (let i = 0; i < stars.length; i++) {
+
+        const star = stars[i];
+        if (i < rating) {
+            star.style.backgroundImage = `url(../media/icons/filled_in_star.png)`;
+        }
+    }
 }
