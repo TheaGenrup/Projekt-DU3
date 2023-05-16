@@ -104,6 +104,19 @@ async function createBoardOrReview() {
         star.addEventListener("click", chooseRating)
         star.addEventListener("mouseover", starHoverEffect)
     });
+
+    function starHoverEffect(e) {
+        const index = parseInt(e.target.dataset.rating);
+        const starRatings = e.target.parentElement.querySelectorAll("div");
+        starRatings.forEach(star => {
+            star.style.backgroundImage = "url(/media/icons/star-regular.svg)";
+        });
+        for (let i = 0; i < index; i++) {
+            starRatings[i].style.backgroundImage = "url(/media/icons/star-solid.svg)";
+            
+        }
+    
+    }
     searchAlbumInput.addEventListener("keyup", searchAlbums);
     createNewBoardBtn.addEventListener("click", showCreateNewBoard);
     createNewReviewBtn.addEventListener("click", showCreateNewReview);

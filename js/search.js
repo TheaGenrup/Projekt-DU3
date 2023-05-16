@@ -15,7 +15,9 @@ async function fetchToken(params) {
 function searchAlbums(e) {
     const list = e.target.id;
     let input = e.target.value;
-    if (!input) {return}
+    if (!input) {
+        clearSearch();
+    return}
     let albumSearchEndpoint = `https://api.spotify.com/v1/search?q=${input}&type=album&offset=0&limit=10`;
 
     if (token.length > 0 || token != undefined) { 
@@ -73,7 +75,7 @@ function searchUsers(e) {
     // List Albums
 function listAlbums(albumsFound) {
     const albumDomUl = document.querySelector("#albumUl");
-    albumDomUl.innerHTML = "";
+    clearSearch();
     if (albumsFound.length > 0) {
         albumsFound.forEach(album => {
             const albumName     = album.albumName;
@@ -91,13 +93,12 @@ function listAlbums(albumsFound) {
                     <p>${albumName}</p>
                     <p>${albumArtists[0]}</p>
                 </div>
-                <button class="saveButton"><img src="/media/icons/bookmark.png" alt=""></button>
             `;
     
             albumDomUl.append(liDom)
         });
     } else {
-        albumDomUl.innerHTML = "No Albums found :(";
+        albumDomUl.innerHTML = "<li id='noResults'>No results found :(</li>";
     }
 }
     // List Users
@@ -201,3 +202,9 @@ token.json information:
     "timestamp": 1683221337
 }
 */
+
+function clearSearch() {
+    const albumDomUl = document.querySelector("#albumUl");
+    const searchField = document.querySelector("#searchField");
+    albumDomUl.innerHTML = "";
+}

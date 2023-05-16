@@ -121,7 +121,7 @@ async function renderSearchView(e) {
     const html = `
     <div id="searchWindow">
         <div>
-            <input type="text" id="searchField" placeholder="Album, Artist, user">
+            <input type="text" id="searchField" placeholder="Album, Artist, user" autocomplete="off">
         </div>
         <ul id=userUl> </ul>
         <ul id=albumUl> </ul>
@@ -140,10 +140,7 @@ async function renderCreateReviewView() {
     const userId = localStorage.getItem("userId");
     const response = await fetch(`/server/getUser.php?id=${userId}`);
     const userData = await response.json();
-    const  usersBoards = userData.albumData.boards;
-    console.log(usersBoards.length);
-
-
+    const usersBoards = userData.albumData.boards;
 
     // CSS Change
     document.querySelector("#css2").setAttribute("href", "/css/create.css");
@@ -175,30 +172,36 @@ async function renderCreateReviewView() {
     function renderCreateBoard() {
         html = 
         `
-            <div class="horizontalContainer">
-                <button id="goBackButton" class="navigationButton">Go back</button>
-                <button id="createButton" class="navigationButton disabled">Create</button>
+            <form id="uploadWrapper" class="board">
+            <input type="text" id="searchField" name="nameInput" placeholder="Name your board queen yas..." autocomplete="off">
+            <input name="userId" style="display:none" value="${userId}">
+
+            <div id="imageUploaderContainer">
+                <img id="imagePreview" src=""></img>
+                <input type="file" id="imageUploader" accept="image/*" name="imageInput">
             </div>
-            <input type="text" id="searchField" placeholder="Name your board queen yas...">
-            <form id="uploadWrapper" class="">
-                <input type="file" id="boardImage" accept="image/*">
             </form>
-            <output></output>
+            <div class="horizontalContainer">
+            <button id="goBackButton" class="navigationButton">Go back</button>
+            <button for="uploadWrapper" id="createButton" class="navigationButton disabled">Create</button>
+        </div>
         `;
         createContainer.innerHTML = html;
         createContainer.classList.add("board");
         // consts
-        const imageUploader = createContainer.querySelector("#boardImage");
-        const formWrapper = createContainer.querySelector("form");
+        const imageUploader = createContainer.querySelector("#imageUploader");
+        const imagePreview = createContainer.querySelector("#imagePreview");
         const boardNameInput = createContainer.querySelector("#searchField");
         const backButton = createContainer.querySelector("#goBackButton");
         const createButton = createContainer.querySelector("#createButton");
+        createButton.addEventListener("click", (e)=>{ e.preventDefault()});
+        backButton.addEventListener("click", (e)=>{ e.preventDefault()});
         // Show image preview
         imageUploader.onchange = evt => {
             const [file] = imageUploader.files;
             if (file) {
-                formWrapper.classList.add("imageUploaded");
-                formWrapper.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
+                imagePreview.classList.add("imageUploaded");
+                imagePreview.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
             }
         };
         // allow create if inputfield is not empy
@@ -213,27 +216,209 @@ async function renderCreateReviewView() {
             createButton.addEventListener("click", addBoardOrReview)
 
         })
-
-
         backButton.addEventListener("click", renderCreateReviewView);
     }
 
+
+
+
+
+/*
+
+    Album namn / artist / bild
+    välj
+    beskrivning
+    rating
+
+
+            <input type="text" id="searchField" name="nameInput" placeholder="Name your board queen yas...">
+            <input name="userId" style="display:none" value="${userId}">
+
+            <div id="imageUploaderContainer">
+                <img id="imagePreview" src=""></img>
+                <input type="file" id="imageUploader" accept="image/*" name="imageInput">
+            </div>
+
+*/
+
+
+
+
+
     // Render create a new review section;
+    async function renderCreateReview() {
+        token = await fetchToken();
+        html = 
+        `
+        <div id="searchContainer">
+            <input id="searchField" placeholder="search album..." autocomplete="off">
+            <ul id="albumUl"></ul>
+        </div>
+        <form id="uploadWrapper" class="review">
+            <div id="chooseBoardContainer">
+                <label for="chooseBoard">Choose board</label>
+                <select id="selectBoard">
+                </select>
+            </div>
+
+            <div class="horizontalContainer">
+                <div class="verticalContainer">
+                    <p id="chosenArtist">Artist:</p>
+                    <p id="chosenAlbum">Album:</p>
+                </div>
+                <img src="" id="albumImagePreview">
+            </div>
+
+            <div id="rateAlbumContainer" class="open">
+                <label for="">Album rating</label>
+                <div id="chooseRatingContainer">
+                    <div data-rating="1"></div>
+                    <div data-rating="2"></div>
+                    <div data-rating="3"></div>
+                    <div data-rating="4"></div>
+                    <div data-rating="5"></div>
+                </div>
+            </div>
+
+            <div class="open">
+                <label for="">ReviewDescription</label>
+                <textarea name="" id="reviewDescription" cols="30" rows="10"></textarea>
+            </div>
+        </form>
+
+        <div class="horizontalContainer">
+            <button id="goBackButton" class="navigationButton">Go back</button>
+            <button for="uploadWrapper" id="createButton" class="navigationButton disabled">Create</button>
+        </div>  
+        `;
+        createContainer.innerHTML = html;
+        createContainer.classList.add("board");
+        // consts
+        const albumSearchField = document.querySelector("#searchField");
+        const selectBoard = document.querySelector("#selectBoard");
+        const backButton = createContainer.querySelector("#goBackButton");
+        const createButton = createContainer.querySelector("#createButton");
+        const starRatings = createContainer.querySelectorAll("#chooseRatingContainer div");
+        // Event listener
+        // Prevent default for submitting forms
+        createButton.addEventListener("click", (e)=>{ e.preventDefault()});
+        backButton.addEventListener("click", (e)=>{ e.preventDefault()});
+        //Add boards to list of options
+        usersBoards.forEach(board => {
+            const optionDom = document.createElement("option");
+            optionDom.value = board.boardName;
+            optionDom.textContent = board.boardName;
+            selectBoard.append(optionDom);
+        });
+        //Star rating function
+        starRatings.forEach(star => {
+            //star.addEventListener("click", chooseRating)
+            star.addEventListener("mouseover", (e) => {
+                const index = parseInt(e.target.dataset.rating);
+                const starRatings = e.target.parentElement.querySelectorAll("div");
+                starRatings.forEach(star => {
+                    star.style.backgroundImage = "url(/media/icons/star-regular.svg)";
+                });
+                for (let i = 0; i < index; i++) {
+                    starRatings[i].style.backgroundImage = "url(/media/icons/star-solid.svg)";
+                    
+                }
+            });
+            star.addEventListener("mouseleave", (e) => {
+                const starRatings = e.target.parentElement.querySelectorAll("div");
+                starRatings.forEach(star => {
+                    if (!star.classList.contains("chosen")) {
+                        star.style.backgroundImage = "url(/media/icons/star-regular.svg)";
+                        starRatings[0].style.backgroundImage = "url(/media/icons/star-solid.svg)";
+                    }
+                });
+            });
+            star.addEventListener("click", (e) => {
+                const index = parseInt(e.target.dataset.rating);
+                const starRatings = e.target.parentElement.querySelectorAll("div");
+                starRatings.forEach(star => {
+                    star.classList.remove("chosen");
+                });
+                for (let i = 0; i < index; i++) {
+                    starRatings[i].style.backgroundImage = "url(/media/icons/star-solid.svg)";
+                    starRatings[i].classList.add("chosen");
+                }
+            });
+        });
+        albumSearchField.addEventListener("keyup", searchAlbums);
+        // Close search list when clicking outside it
+        document.addEventListener("click", (e)=>{
+            const searchContainer = document.querySelector("#searchContainer");
+            if (e.target.parentElement != searchContainer ) {
+                clearSearch();
+            }
+        });
+
+        // allow create if inputfield is not empy
+        /*
+        boardNameInput.addEventListener("keyup", (e)=>{
+            const input = e.target.value;
+            if (!input) {
+                createButton.classList.add("disabled");
+                createButton.removeEventListener("click", addBoardOrReview);
+                return
+            }
+            createButton.classList.remove("disabled");
+            createButton.addEventListener("click", addBoardOrReview)
+
+        })
+        */
+        backButton.addEventListener("click", renderCreateReviewView);
+
+
+
+        // functions
+
+    }
+
+
+/*
+
+    starRatings.forEach(star => {
+        star.addEventListener("click", chooseRating)
+        star.addEventListener("mouseover", starHoverEffect)
+    });
+
+    searchAlbumInput.addEventListener("keyup", searchAlbums);
+    createNewBoardBtn.addEventListener("click", showCreateNewBoard);
+    createNewReviewBtn.addEventListener("click", showCreateNewReview);
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // Add a new review or board function
     function addBoardOrReview(e) {
+        e.preventDefault();
         if (createContainer.classList.contains("board")) {
-            const imageUploader = createContainer.querySelector("#boardImage");
             const formWrapper = createContainer.querySelector("form");
-            const boardName = document.querySelector("#searchField").value;
-            const [file] = imageUploader.files;
-            console.log(file);
+            const formData = new FormData(formWrapper);
+            console.log(formData);
             const request = new Request("/server/addBoardOrReview.php",{
                 method:"POST",
-                body: {
-                    file: file,
-                    boardName: boardName
-                }
+                body: formData
             });
 
             fetch (request)

@@ -1,27 +1,20 @@
 
+
 #createContainer{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
+    /*max-height: 72vh;*/
 }
 
 #contentContainer h3{
     text-align: center;
+    margin: 10px 0px;
 }
 
-#createContainer #searchField{
-    width: 100%;
-    height: 10vw;
-    border-radius: 10px;
-    padding: 0px 5px;
-    border: none;
-}
 
-#createContainer #searchField:focus{
-    outline: none;
-}
 /* Big button styling*/
 #createContainer .selectButton{
     display: flex;
@@ -39,11 +32,27 @@
 
 /* Navigation button styling*/
 #createContainer .horizontalContainer{
-    margin-bottom: 50px;
 }
 
-/* Image upload styling*/
-#createContainer form{
+/* form styling*/
+#createContainer #uploadWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+}
+#createContainer #uploadWrapper .review{
+    justify-content: space-between;
+}
+#createContainer #uploadWrapper .board{
+    justify-content: center;
+}
+
+/* Image upload section*/
+#createContainer #imageUploaderContainer{
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,31 +63,134 @@
 
     border-radius: 20px;
     background-color:rgba(109, 109, 109, 0.426);
-    border: 1.5px solid black;
+    /*border: 1.5px solid black;*/
+}
+#imagePreview{
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    border: 2px solid black;
+    border-radius: 20px;
 
     background-image: url(/media/icons/settings.png);
     background-position: center;
     background-size: 50%;
     background-repeat: no-repeat;
 }
-#createContainer .imageUploaded{
-
+#createContainer #imagePreview{
     background-image: url(/media/icons/settings.png);
     background-position: cover;
     background-size:cover;
     background-repeat: no-repeat;
 }
-#createContainer form:hover{
-    background-color: #393939;
-}
-#createContainer #boardImage{
-    opacity: 0;
-    width: 45vw;
-    height: 45vw;
-    margin-top: 5vw;
+
+#createContainer #imageUploader{
+    position: absolute;
+    opacity: 0%;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
     cursor: pointer;
 }
+#createContainer #imageUploader:hover + #imagePreview{
+    background-color: #393939;
+}
 
+#uploadWrapper div{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Add review Section */
+#rateAlbumContainer{
+    width: 100%;
+}
+#albumImagePreview{
+    height: 100%;
+}
+#chooseRatingContainer {
+    display: flex;
+    width: 100%;
+}
+#chooseRatingContainer div{
+    background-image: url(/media/icons/star-regular.svg);
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+#chooseRatingContainer div:nth-child(1){
+    background-image: url(/media/icons/star-solid.svg);
+}
+/* Search for artist / album section */
+#searchContainer{
+    width: 100%;
+    position: relative;
+}
+#createContainer #searchField{
+    width: 100%;
+    height: 10vw;
+    border-radius: 10px;
+    padding: 0;
+    border: none;
+}
+
+#createContainer #searchField:focus{
+    outline: none;
+}
+#albumUl{
+    position: absolute;
+    width: 100%;
+    min-height: 1vw;
+    padding: 0;
+    margin: 0;
+    overflow: scroll;
+    overflow-x: none;
+}
+#albumUl li{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    padding: 3px 5px;
+    margin:0px;
+    background-color: rgb(112, 112, 112);
+    gap: 5px;
+
+}
+#albumUl li:hover{
+    background-color: rgb(83, 82, 82);
+    cursor: pointer;
+}
+#albumUl li img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 30px;
+}
+#albumUl li div{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+
+    max-height: 30px;
+    width: 100%;
+}
+/* Choose board section */
+#chooseBoardContainer{
+    margin: 5px 0px;
+}
+#selectBoard{
+    width: 100%;
+    background-color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+}
+#selectBoard option{
+}
 
 /* JS classes*/
 #createContainer .disabled{

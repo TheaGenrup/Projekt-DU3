@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "ZGUEsHXX4WQfVoL6RCdpOlnGB",
+        "loginKey": "DD90Q7aQ2fAmvwAjp2yhLR4lM",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -32,7 +32,7 @@
                 },
                 {
                     "boardName": "POP",
-                    "boardId": 0,
+                    "boardId": 1,
                     "reviews": [
                         0,
                         1
@@ -41,7 +41,7 @@
                 },
                 {
                     "boardName": "FAVOURITES",
-                    "boardId": 0,
+                    "boardId": 2,
                     "reviews": [
                         0,
                         1
@@ -281,7 +281,7 @@
             "username": "thea",
             "password": "thea"
         },
-        "loginKey": "sBS7uSLqIgRpchlbjq5kpj5VV",
+        "loginKey": "TDeC0zJ6oHrL7PZSgb7UlixEX",
         "userSocial": {
             "following": [],
             "followers": []
@@ -292,7 +292,17 @@
             "displayName": "thea"
         },
         "albumData": {
-            "boards": [],
+            "boards": [
+                {
+                    "boardName": "Acid psychadelics",
+                    "boardId": 0,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "board_1.jpg"
+                }
+            ],
             "reviews": [],
             "favourites": []
         }

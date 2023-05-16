@@ -18,6 +18,10 @@ button{
     min-width: 20vw;
 }
 
+body main #contentCOntainer #noResults{
+    padding: 10px 0px;
+}
+
 
 
 
@@ -126,6 +130,7 @@ nav {
 textarea {
     resize: none;
     width: 100%;
+    padding: 0;
     border-radius: 10px;
     background-color: #5c5c8e;
 
