@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "L0gLtNrp3Si0b6XJR4Cqkq10z",
+        "loginKey": "hbNDLX3doFRygglwG9gcHbQMv",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -102,7 +102,7 @@
                     "artist": "The Beatles",
                     "albumCover": "beatles.jpg",
                     "albumId": "g8f9q98",
-                    "reviewId": 46,
+                    "reviewId": 49,
                     "reviewDescription": "Once again, a perfect piece of music that fits its appropriate moods insanely well.",
                     "rating": 3,
                     "boards": [

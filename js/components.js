@@ -192,8 +192,8 @@ function renderProfileView(event) {
                         <div id="profileIconsOrFollowButton"></div>
                     </div>
                 </div>
+                <h2 id="title">BOARDS</h2>
                 <div id="boardAndReviewContainer">
-                    <h2 class="boardTitle">BOARDS</h2>
                     <div id="boardContainer"></div>
                 </div>`
 
@@ -275,15 +275,15 @@ function renderProfileView(event) {
             });
 
             document.querySelectorAll(".boardName").forEach(board => {
-                board.addEventListener("click", showBoard);
+                board.addEventListener("click", openBoard);
             });
 
 
 
-            function showBoard(event) {
+            function openBoard(event) {
 
+                document.querySelector("#title").textContent = event.target.textContent;
                 document.querySelector("#boardAndReviewContainer").innerHTML = `
-                <h1 class="boardTitle">${event.target.textContent}</h1>
                 <div id="addReview" class="pointer">ADD REVIEW</div>`;
 
                 const reviewsInBoard = [];
