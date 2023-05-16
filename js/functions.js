@@ -35,7 +35,6 @@ function timeConverter(UNIX_timestamp) {
 
 function makeReview(review, container) {
 
-
     // shorten comment if needed
     let reviewDescription = review.reviewDescription;
     if (reviewDescription.length > 50) {

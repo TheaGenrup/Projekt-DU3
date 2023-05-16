@@ -301,6 +301,7 @@ function renderProfileView(event) {
 
                                 if (board === boardId) {
                                     review.userId = user.userIdentity.id;
+                                    review.displayName = user.userIdentity.displayName;
                                     reviewsInBoard.push(review);
                                 }
                             })
@@ -353,11 +354,11 @@ async function expandReview(event) {
                     <img src="../media/albumCovers/${firstLoopThroughReview.albumCover}" alt="Album Cover" id="albumCoverExpanded">
                 </div>
                 <div class="stars">
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
+                    <div class="star" class="starExpanded"></div>
+                    <div class="star" class="starExpanded"></div>
+                    <div class="star" class="starExpanded"></div>
+                    <div class="star" class="starExpanded"></div>
+                    <div class="star" class="starExpanded"></div>
                 </div>
                 <p id="reviewDescription">${firstLoopThroughReview.reviewDescription}</p>
                 <p id="otherReviewsHead">Other reviews of this album</p>
@@ -380,26 +381,32 @@ async function expandReview(event) {
                 user.albumData.reviews.forEach(secondLoopThroughReview => {
 
                     if (secondLoopThroughReview.albumId === firstLoopThroughReview.albumId) {
-                        console.log(user.userIdentity.profilePic);
 
                         secondLoopThroughReview.displayName = user.userIdentity.displayName;
                         secondLoopThroughReview.userId = user.userIdentity.id;
                         secondLoopThroughReview.profilePicture = user.userIdentity.profilePic;
 
+                        // se till så att den reviewn vi redan kollar på inte kommer upp under sig själv
+                        if (secondLoopThroughReview.reviewId === firstLoopThroughReview.reviewId) {
+                            return;
+                        }
+
                         allReviewsOfAlbum.push(secondLoopThroughReview);
                     }
                 });
             })
-            // to do: man ska inte se den man redan är på
+
+            //kolla om det inte finns några
+            if (allReviewsOfAlbum.length === 0) {
+                document.querySelector("#previousReviewsContainer").innerHTML = "<p>No other reviews yet...</p>";
+            }
 
             allReviewsOfAlbum.forEach(review => {
-                console.log(review);
-
 
                 // shorten comment if needed
                 let reviewDescription = review.reviewDescription;
-                if (reviewDescription.length > 50) {
-                    reviewDescription = reviewDescription.slice(0, 50) + "...";
+                if (reviewDescription.length > 70) {
+                    reviewDescription = reviewDescription.slice(0, 70) + "...";
                 }
 
                 // make html for new review
@@ -437,9 +444,9 @@ async function expandReview(event) {
 
                 fillStars(review.rating, review.reviewId);
 
-                /* 
-                                document.querySelector("#profilePictureInReview").style.backgroundImage = `url(../media/${review.profilePic})`; */
+                //profilbilderna funkar inte
 
+                reviewElement.addEventListener("click", e => expandReview(e));
 
             })
 
