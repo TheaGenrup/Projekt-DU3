@@ -1,9 +1,91 @@
 
+#createContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
 
+#contentContainer h3{
+    text-align: center;
+}
 
+#createContainer #searchField{
+    width: 100%;
+    height: 10vw;
+    border-radius: 10px;
+    padding: 0px 5px;
+    border: none;
+}
 
-.createOption{
+#createContainer #searchField:focus{
+    outline: none;
+}
+/* Big button styling*/
+#createContainer .selectButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 45vw;
     height: 45vw;
+    margin-top: 5vw;
+    background-color: gray;
+}
 
+#createContainer .selectButton:hover{
+    background-color: rgb(109, 109, 109);
+}
+
+/* Navigation button styling*/
+#createContainer .horizontalContainer{
+    margin-bottom: 50px;
+}
+
+/* Image upload styling*/
+#createContainer form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 45vw;
+    height: 45vw;
+    margin-top: 5vw;
+
+    border-radius: 20px;
+    background-color:rgba(109, 109, 109, 0.426);
+    border: 1.5px solid black;
+
+    background-image: url(/media/icons/settings.png);
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+}
+#createContainer .imageUploaded{
+
+    background-image: url(/media/icons/settings.png);
+    background-position: cover;
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+#createContainer form:hover{
+    background-color: #393939;
+}
+#createContainer #boardImage{
+    opacity: 0;
+    width: 45vw;
+    height: 45vw;
+    margin-top: 5vw;
+    cursor: pointer;
+}
+
+
+/* JS classes*/
+#createContainer .disabled{
+    background-color: #393939;
+    cursor:auto;
+}
+#createContainer .disabled:hover{
+    background-color: #393939;
+    cursor:auto;
 }

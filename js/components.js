@@ -135,30 +135,120 @@ async function renderSearchView(e) {
     document.querySelector("#css2").setAttribute("href", "/css/search.css");
 };
 
-async function renderCreateReviewView(params) {
+async function renderCreateReviewView() {
+    // Get user boards
     const userId = localStorage.getItem("userId");
     const response = await fetch(`/server/getUser.php?id=${userId}`);
     const userData = await response.json();
+    const  usersBoards = userData.albumData.boards;
+    console.log(usersBoards.length);
 
-    const usersBoards = userData.albumData.boards;
 
-    console.log(usersBoards);
+
+    // CSS Change
+    document.querySelector("#css2").setAttribute("href", "/css/create.css");
+
+
     const contentContainer = document.querySelector("#contentContainer");
     contentContainer.innerHTML ="";
-    const html =
+    let html =
     `
-        <h3>Review Album</h3>
-        <div id="createContainer">
-            <div class="createOption">New Board</div>
-            <div class="createOption">New Review</div>
+        <h3>Add a new Board</h3>
+        <div id="createContainer" class="">
+            <div class="horizontalContainer">
+                <button id="createBoard" class="selectButton">New Board</button>
+                <button id="createReview" class="selectButton disabled">New Review</button>
+            </div>
         </div>
     `;
     // <input type="text" placeholder="Album, Artist" id="searchField">   
     contentContainer.innerHTML = html;
+    createContainer = contentContainer.querySelector("#createContainer");
+    const createBoardDom = contentContainer.querySelector("#createBoard");
+    const createReviewDom = contentContainer.querySelector("#createReview");
+            // Check if user have a board to which to add reviews to else they must first create a board
+    if (usersBoards.length > 0) { createReviewDom.classList.remove("disabled");
+        createReviewDom.addEventListener("click", renderCreateReview);
+    };
+            // Render create a new board section; Flytta till functions? men det är samtidigt en egen component
+    createBoardDom.addEventListener("click", renderCreateBoard)
+    function renderCreateBoard() {
+        html = 
+        `
+            <div class="horizontalContainer">
+                <button id="goBackButton" class="navigationButton">Go back</button>
+                <button id="createButton" class="navigationButton disabled">Create</button>
+            </div>
+            <input type="text" id="searchField" placeholder="Name your board queen yas...">
+            <form id="uploadWrapper" class="">
+                <input type="file" id="boardImage" accept="image/*">
+            </form>
+            <output></output>
+        `;
+        createContainer.innerHTML = html;
+        createContainer.classList.add("board");
+        // consts
+        const imageUploader = createContainer.querySelector("#boardImage");
+        const formWrapper = createContainer.querySelector("form");
+        const boardNameInput = createContainer.querySelector("#searchField");
+        const backButton = createContainer.querySelector("#goBackButton");
+        const createButton = createContainer.querySelector("#createButton");
+        // Show image preview
+        imageUploader.onchange = evt => {
+            const [file] = imageUploader.files;
+            if (file) {
+                formWrapper.classList.add("imageUploaded");
+                formWrapper.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
+            }
+        };
+        // allow create if inputfield is not empy
+        boardNameInput.addEventListener("keyup", (e)=>{
+            const input = e.target.value;
+            if (!input) {
+                createButton.classList.add("disabled");
+                createButton.removeEventListener("click", addBoardOrReview);
+                return
+            }
+            createButton.classList.remove("disabled");
+            createButton.addEventListener("click", addBoardOrReview)
 
-    // CSS Change
-    document.querySelector("#css2").setAttribute("href", "/css/create.css");
+        })
+
+
+        backButton.addEventListener("click", renderCreateReviewView);
+    }
+
+    // Render create a new review section;
+
+    // Add a new review or board function
+    function addBoardOrReview(e) {
+        if (createContainer.classList.contains("board")) {
+            const imageUploader = createContainer.querySelector("#boardImage");
+            const formWrapper = createContainer.querySelector("form");
+            const boardName = document.querySelector("#searchField").value;
+            const [file] = imageUploader.files;
+            console.log(file);
+            const request = new Request("/server/addBoardOrReview.php",{
+                method:"POST",
+                body: {
+                    file: file,
+                    boardName: boardName
+                }
+            });
+
+            fetch (request)
+                .then(response => {
+                    console.log(response);
+                    return response.json();
+                })
+                .then(r => {
+                    console.log(r);
+                })
+        }
+    }
+
 };
+
 
 function renderProfileView(event) {
 
@@ -429,3 +519,13 @@ async function expandReview(event) {
         }
     })
 };
+
+
+/*
+    om ingen board redan finns så måste man skapa en
+    namn på board
+    bild uppladdning
+
+
+
+*/
