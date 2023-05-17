@@ -3,6 +3,7 @@
 require_once "functions.php";
 
 
+
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     $users = json_decode(file_get_contents("users.json"), true);

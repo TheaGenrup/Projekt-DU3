@@ -281,6 +281,10 @@ function renderProfileView(event) {
 
 
             function openBoard(event) {
+                if (document.querySelector("#dropdownContent").classList === "closed") {
+
+                }
+                document.querySelector("#dropdownContent").classList.add("closed");
 
                 document.querySelector("#title").textContent = event.target.textContent;
                 document.querySelector("#boardAndReviewContainer").innerHTML = `
@@ -376,7 +380,7 @@ async function expandReview(event) {
             // previous reviews
             const users = await getAllUsers();
 
-            const allReviewsOfAlbum = [];
+            const allOtherReviewsOfAlbum = [];
             users.forEach(user => {
                 user.albumData.reviews.forEach(secondLoopThroughReview => {
 
@@ -391,17 +395,17 @@ async function expandReview(event) {
                             return;
                         }
 
-                        allReviewsOfAlbum.push(secondLoopThroughReview);
+                        allOtherReviewsOfAlbum.push(secondLoopThroughReview);
                     }
                 });
             })
 
-            //kolla om det inte finns några
-            if (allReviewsOfAlbum.length === 0) {
+            //kolla om det inte finns några andra
+            if (allOtherReviewsOfAlbum.length === 0) {
                 document.querySelector("#previousReviewsContainer").innerHTML = "<p>No other reviews yet...</p>";
             }
 
-            allReviewsOfAlbum.forEach(review => {
+            allOtherReviewsOfAlbum.forEach(review => {
 
                 // shorten comment if needed
                 let reviewDescription = review.reviewDescription;
@@ -452,4 +456,4 @@ async function expandReview(event) {
 
         }
     })
-};
+}

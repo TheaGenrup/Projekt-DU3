@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "hbNDLX3doFRygglwG9gcHbQMv",
+        "loginKey": "KL8k0S7b6fZnwGLtJe41wuCON",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -126,74 +126,6 @@
                     "artist": "Jakob Hellman",
                     "albumId": "biogq390wh",
                     "thumbnail": "hellman.jpg",
-                    "favouriteId": 0
-                }
-            ]
-        }
-    },
-    {
-        "userCredentials": {
-            "username": "test",
-            "password": "test"
-        },
-        "loginKey": "vSERxAWzDcsxOTYV81CCzp2Bh",
-        "userSocial": {
-            "following": [],
-            "followers": [
-                "317161457770161228256467772618"
-            ]
-        },
-        "userIdentity": {
-            "id": "1234",
-            "profilePic": "profile_picture.jpg",
-            "displayName": "John"
-        },
-        "albumData": {
-            "boards": [
-                {
-                    "boardName": "Acid psychadelics",
-                    "boardId": 0,
-                    "reviews": [
-                        0,
-                        1,
-                        5
-                    ],
-                    "thumbnail": "\/server\/media\/users\/607133432034891031030642696328\/boards\/bildnamet"
-                }
-            ],
-            "reviews": [
-                {
-                    "albumName": "Infest the Rat's nest",
-                    "artist": "King Gizzard and the lizzard wizard",
-                    "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
-                    "reviewId": 0,
-                    "reviewDescription": "I like when the music is making noise",
-                    "rating": 3,
-                    "boards": [
-                        0,
-                        3
-                    ],
-                    "timestamp": 1681547925
-                },
-                {
-                    "albumName": "The microphones pt2",
-                    "artist": "Mount eire",
-                    "albumId": "8gt92bqf",
-                    "reviewId": 17902,
-                    "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
-                    "rating": 4,
-                    "boards": [
-                        0,
-                        4
-                    ],
-                    "timestamp": 1681586723
-                }
-            ],
-            "favourites": [
-                {
-                    "albumName": "The microphones pt2",
-                    "artist": "Mount eire",
-                    "albumId": "8gt92bqf",
                     "favouriteId": 0
                 }
             ]
@@ -344,6 +276,113 @@
                 }
             ],
             "favourites": []
+        }
+    },
+    {
+        "userCredentials": {
+            "username": "elin",
+            "password": "elin"
+        },
+        "loginKey": "h3Z1GtxSJUj7EtGqKpVwkFmuV",
+        "userSocial": {
+            "following": [
+                "317161457770161228256467772618",
+                "607133432034891031030642696328"
+            ],
+            "followers": [
+                "317161457770161228256467772618"
+            ]
+        },
+        "userIdentity": {
+            "id": "7950179031790531",
+            "profilePic": "profile_picture.jpg",
+            "displayName": "Elin Sauer"
+        },
+        "albumData": {
+            "boards": [
+                {
+                    "boardName": "Acid psychadelics",
+                    "boardId": 0,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "board_1.jpg"
+                },
+                {
+                    "boardName": "POP",
+                    "boardId": 1,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "tameImpala.jpg"
+                },
+                {
+                    "boardName": "FAVOURITES",
+                    "boardId": 3,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "Sunflower.jpg"
+                },
+                {
+                    "boardName": "Rock",
+                    "boardId": 4,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "rock.jpg"
+                },
+                {
+                    "boardName": "Soul",
+                    "boardId": 5,
+                    "reviews": [
+                        7,
+                        9
+                    ],
+                    "thumbnail": "soul.jpg"
+                }
+            ],
+            "reviews": [
+                {
+                    "albumName": "Och Stora Havet",
+                    "artist": "Jakob Hellman",
+                    "albumId": "biogq390wh",
+                    "reviewId": 795031,
+                    "reviewDescription": "SOOOO smooth sounding. even in its simplicity this album is SOOO amazing, and it's absolutely timeless. probably in my top 5 of all time.",
+                    "rating": 3,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1681312805,
+                    "albumCover": "hellman.jpg"
+                },
+                {
+                    "albumName": "The microphones pt2",
+                    "artist": "Mount eire",
+                    "albumId": "8gt92bqf",
+                    "reviewId": 685913,
+                    "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
+                    "rating": 4,
+                    "boards": [
+                        0,
+                        4
+                    ],
+                    "timestamp": 1681586723,
+                    "albumCover": "hellman.jpg"
+                }
+            ],
+            "favourites": [
+                {
+                    "albumName": "The microphones pt2",
+                    "artist": "Mount eire",
+                    "albumId": "8gt92bqf",
+                    "favouriteId": 0
+                }
+            ]
         }
     }
 ]
