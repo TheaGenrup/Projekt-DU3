@@ -1,88 +1,30 @@
 [
     {
         "userCredentials": {
-            "username": "test",
-            "password": "test"
+            "username": "testFilip",
+            "password": "testFilip"
         },
-        "loginKey": "hbNDLX3doFRygglwG9gcHbQMv",
+        "loginKey": "ptlgsv876cZ8rQ1zBp9lejz2w",
         "userSocial": {
-            "following": [
-                "317161457770161228256467772618",
-                "607133432034891031030642696328"
-            ],
-            "followers": [
-                "317161457770161228256467772618"
-            ]
+            "following": [],
+            "followers": []
         },
         "userIdentity": {
-            "id": "607133432034891031030642696328",
-            "profilePic": "profile_picture.jpg",
-            "displayName": "Anthony Fantano"
+            "id": "114876995925839643911061291607",
+            "profilePic": "media\/default.png",
+            "displayName": "testFilip"
         },
         "albumData": {
-            "boards": [],
-            "reviews": [
+            "boards": [
                 {
-                    "albumName": "Infest the Rat's nest",
-                    "artist": "King Gizzard and the lizzard wizard",
-                    "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
-                    "reviewId": 7,
-                    "reviewDescription": "I like when the music is making noise",
-                    "rating": 4,
-                    "boards": [
-                        0,
-                        4
-                    ],
-                    "albumCover": "infest.jpg",
-                    "timestamp": 1681141145,
-                    "displayName": "Anthony Fantano"
-                },
-                {
-                    "albumName": "Rumours",
-                    "artist": "Fleetwood Mac",
-                    "albumId": "nfipqn029",
-                    "reviewId": 9,
-                    "albumCover": "rumours.jpg",
-                    "reviewDescription": "More or less for me, they are as wonderful as sculptures or paints, because Dreams goes absolutely beyond music. Their instruments are like brushes with which we paint such wonderful songs as Sara, Gypsy, Big Love, Rhiannon, thanks to which we can experience artistic understanding.",
-                    "rating": 4,
-                    "boards": [
-                        0,
-                        5
-                    ],
-                    "timestamp": 1681546325
-                },
-                {
-                    "albumName": "Abbey Road",
-                    "artist": "The Beatles",
-                    "albumCover": "beatles.jpg",
-                    "albumId": "g8f9q98",
-                    "reviewId": 49,
-                    "reviewDescription": "Once again, a perfect piece of music that fits its appropriate moods insanely well.",
-                    "rating": 3,
-                    "boards": [
-                        0,
-                        3,
-                        4
-                    ],
-                    "timestamp": 1682950505
+                    "boardName": "test",
+                    "boardId": 0,
+                    "reviews": [],
+                    "thumbnail": "defaultBoardImage.jpg"
                 }
             ],
-            "favourites": [
-                {
-                    "albumName": "The microphones pt2",
-                    "artist": "Mount eire",
-                    "albumId": "8gt92bqf",
-                    "thumbnail": "board_1.jpg",
-                    "favouriteId": 0
-                },
-                {
-                    "albumName": "Och Stora Havet",
-                    "artist": "Jakob Hellman",
-                    "albumId": "biogq390wh",
-                    "thumbnail": "hellman.jpg",
-                    "favouriteId": 0
-                }
-            ]
+            "reviews": [],
+            "favourites": []
         }
     },
     {
@@ -90,307 +32,82 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "vSERxAWzDcsxOTYV81CCzp2Bh",
+        "loginKey": "GLJDTHtXIDE4gRlTbWobstRf7",
         "userSocial": {
             "following": [],
-            "followers": [
-                "317161457770161228256467772618"
-            ]
+            "followers": []
         },
         "userIdentity": {
-            "id": "1234",
-            "profilePic": "profile_picture.jpg",
-            "displayName": "John"
+            "id": "107748312064071063361388211387",
+            "profilePic": "media\/default.png",
+            "displayName": "test"
         },
         "albumData": {
             "boards": [
                 {
-                    "boardName": "Acid psychadelics",
+                    "boardName": "New board",
                     "boardId": 0,
                     "reviews": [
                         0,
                         1,
-                        5
-                    ],
-                    "thumbnail": "\/server\/media\/users\/607133432034891031030642696328\/boards\/bildnamet"
-                }
-            ],
-            "reviews": [
-                {
-                    "albumName": "Infest the Rat's nest",
-                    "artist": "King Gizzard and the lizzard wizard",
-                    "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
-                    "reviewId": 0,
-                    "reviewDescription": "I like when the music is making noise",
-                    "rating": 3,
-                    "boards": [
-                        0,
+                        2,
                         3
                     ],
-                    "timestamp": 1681547925
-                },
-                {
-                    "albumName": "The microphones pt2",
-                    "artist": "Mount eire",
-                    "albumId": "8gt92bqf",
-                    "reviewId": 17902,
-                    "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
-                    "rating": 4,
-                    "boards": [
-                        0,
-                        4
-                    ],
-                    "timestamp": 1681586723
-                }
-            ],
-            "favourites": [
-                {
-                    "albumName": "The microphones pt2",
-                    "artist": "Mount eire",
-                    "albumId": "8gt92bqf",
-                    "favouriteId": 0
-                }
-            ]
-        }
-    },
-    {
-        "userCredentials": {
-            "username": "test2",
-            "password": "test2"
-        },
-        "loginKey": "SK5Xg2WuolfDGVthQECU8gnnB",
-        "userSocial": {
-            "following": [],
-            "followers": []
-        },
-        "userIdentity": {
-            "id": "317161457770161228256467772618",
-            "profilePic": "default.png",
-            "displayName": "Stevie Nicks"
-        },
-        "albumData": {
-            "boards": [
-                {
-                    "boardName": "AVICII",
-                    "boardId": 0,
-                    "reviews": [
-                        0,
-                        1
-                    ],
-                    "thumbnail": "avicii.jpg"
-                },
-                {
-                    "boardName": "MINE",
-                    "boardId": 0,
-                    "reviews": [
-                        0,
-                        1
-                    ],
-                    "thumbnail": "stevieNicks.jpg"
+                    "thumbnail": "defaultBoardImage.jpg"
                 }
             ],
             "reviews": [
                 {
-                    "albumName": "Och Stora Havet",
-                    "artist": "Jakob Hellman",
-                    "albumId": "biogq390wh",
-                    "reviewId": 57,
-                    "reviewDescription": "SOOOO smooth sounding. even in its simplicity this album is SOOO amazing, and it's absolutely timeless. probably in my top 5 of all time.",
+                    "albumName": "Fleetwood Mac",
+                    "artist": "Fleetwood Mac",
+                    "albumId": "5VIQ3VaAoRKOEpJ0fewdvo",
+                    "reviewId": 0,
+                    "reviewDescription": "shits lit",
                     "rating": 3,
                     "boards": [
                         0
                     ],
-                    "timestamp": 1681312805,
-                    "albumCover": "hellman.jpg"
+                    "timestamp": 1684339541,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e024fb043195e8d07e72edc7226"
                 },
                 {
-                    "albumName": "The microphones pt2",
-                    "artist": "Mount eire",
-                    "albumId": "8gt92bqf",
-                    "reviewId": 100,
-                    "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
-                    "rating": 2,
-                    "boards": [
-                        0
-                    ],
-                    "timestamp": 1682832185,
-                    "albumCover": "beatles.jpg"
-                }
-            ],
-            "favourites": [
-                {
-                    "albumName": "The microphones pt2",
-                    "artist": "Mount eire",
-                    "albumId": "8gt92bqf",
-                    "thumbnail": "board_1.jpg",
-                    "favouriteId": 0
-                }
-            ]
-        }
-    },
-    {
-        "userCredentials": {
-            "username": "test5",
-            "password": "test5"
-        },
-        "loginKey": "5jxwtpjrWNkOze6qI5kvrUb4n",
-        "userSocial": {
-            "following": [],
-            "followers": []
-        },
-        "userIdentity": {
-            "id": "716916262583862677799694090077",
-            "profilePic": "default.png",
-            "displayName": "test5"
-        },
-        "albumData": {
-            "boards": [],
-            "reviews": [],
-            "favourites": []
-        }
-    },
-    {
-        "userCredentials": {
-            "username": "thea",
-            "password": "thea"
-        },
-        "loginKey": "PSr2WduANkV0J3rZHdj93fSX9",
-        "userSocial": {
-            "following": [],
-            "followers": []
-        },
-        "userIdentity": {
-            "id": "507163198196757529667525417704",
-            "profilePic": "default.png",
-            "displayName": "thea"
-        },
-        "albumData": {
-            "boards": [
-                {
-                    "boardName": "Acid psychadelics",
-                    "boardId": 0,
-                    "reviews": [
-                        0,
-                        1
-                    ],
-                    "thumbnail": "board_1.jpg"
-                },
-                {
-                    "boardName": "test",
-                    "boardId": 1,
-                    "reviews": [],
-                    "thumbnail": "1684314563.jpeg"
-                }
-            ],
-            "reviews": [],
-            "favourites": []
-        }
-    },
-    {
-        "userCredentials": {
-            "username": "new",
-            "password": "new"
-        },
-        "loginKey": "2gGiGZMscpt2ajmXLowOinneT",
-        "userSocial": {
-            "following": [],
-            "followers": []
-        },
-        "userIdentity": {
-            "id": "997581526750528835137417809051",
-            "profilePic": "media\/default.png",
-            "displayName": "new"
-        },
-        "albumData": {
-            "boards": {
-                "0": {
-                    "boardName": "test",
-                    "boardId": 0,
-                    "reviews": [],
-                    "thumbnail": "defaultBoardImage.jpg"
-                },
-                "reviews": [
-                    0
-                ]
-            },
-            "reviews": [
-                {
-                    "albumName": "TESTING",
-                    "artist": "A$AP Rocky",
-                    "albumId": "3MATDdrpHmQCmuOcozZjDa",
-                    "reviewId": 0,
-                    "reviewDescription": "test",
-                    "rating": 4,
-                    "boards": [
-                        0
-                    ],
-                    "timestamp": 1684334946,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029feadc48ab0661e9b3a9170b"
-                }
-            ],
-            "favourites": []
-        }
-    },
-    {
-        "userCredentials": {
-            "username": "new2",
-            "password": "new2"
-        },
-        "loginKey": "JEGYS4u6FfoTxxzfYajXt1DT3",
-        "userSocial": {
-            "following": [],
-            "followers": []
-        },
-        "userIdentity": {
-            "id": "278125994862511486025380497134",
-            "profilePic": "media\/default.png",
-            "displayName": "new2"
-        },
-        "albumData": {
-            "boards": [
-                {
-                    "boardName": "My first board",
-                    "boardId": 0,
-                    "reviews": [
-                        0
-                    ],
-                    "thumbnail": "defaultBoardImage.jpg"
-                },
-                {
-                    "boardName": "test",
-                    "boardId": 1,
-                    "reviews": [
-                        1
-                    ],
-                    "thumbnail": "defaultBoardImage.jpg"
-                }
-            ],
-            "reviews": [
-                {
-                    "albumName": "TESTING",
-                    "artist": "A$AP Rocky",
-                    "albumId": "3MATDdrpHmQCmuOcozZjDa",
-                    "reviewId": 0,
-                    "reviewDescription": "test",
-                    "rating": 1,
-                    "boards": [
-                        0
-                    ],
-                    "timestamp": 1684336632,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029feadc48ab0661e9b3a9170b"
-                },
-                {
-                    "albumName": "Testament of Pain",
-                    "artist": "Second Wind",
-                    "albumId": "4QcvU5oeOOPllTq10EKX2n",
+                    "albumName": "Fleetwood Mac",
+                    "artist": "Fleetwood Mac",
+                    "albumId": "5VIQ3VaAoRKOEpJ0fewdvo",
                     "reviewId": 1,
-                    "reviewDescription": "second test",
+                    "reviewDescription": "Wow This is a great album! really good, I like the way the guitar goes woeh woeh waaa floooow ski skiskiskisis tjup. You should all listen to this guitar. It keeps going and then it's like sweeee waaaaa, okerwreri, ping. ",
                     "rating": 3,
                     "boards": [
-                        1
+                        0
                     ],
-                    "timestamp": 1684336660,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02366f4b4040227ae50c989b5e"
+                    "timestamp": 1684339628,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e024fb043195e8d07e72edc7226"
+                },
+                {
+                    "albumName": "A Laughing Death in Meatspace",
+                    "artist": "Tropical Fuck Storm",
+                    "albumId": "2Gbrm63qKXR2aaYEU80Rzs",
+                    "reviewId": 2,
+                    "reviewDescription": "Wow This is a great album! really good, I like the way the guitar goes woeh woeh waaa floooow ski skiskiskisis tjup. You should all listen to this guitar. It keeps going and then it's like sweeee waaaaa, okerwreri, ping. ",
+                    "rating": 3,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684339629,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02253634cd0b2b001a4b1681e6"
+                },
+                {
+                    "albumName": "Response Test",
+                    "artist": "Recharge",
+                    "albumId": "2WKZI9Lq2TtVBqD5RiukS8",
+                    "reviewId": 3,
+                    "reviewDescription": "Response test",
+                    "rating": 3,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684339766,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02bb5cd06b0ca1899407e83d7e"
                 }
             ],
             "favourites": []

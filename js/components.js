@@ -176,7 +176,7 @@ async function renderCreateReviewView() {
     function renderCreateBoard() {
         html = 
         `
-            <form id="uploadWrapper" class="board">
+            <form id="uploadWrapper" data-type="board">
             <input type="text" id="searchField" name="nameInput" placeholder="Name your board queen yas..." autocomplete="off">
             <input name="userId" style="display:none" value="${userId}">
 
@@ -239,7 +239,7 @@ async function renderCreateReviewView() {
             <input id="searchField" placeholder="search album..." autocomplete="off">
             <ul id="albumUl" data-chooseAlbum="chooseAlbum"></ul>
         </div>
-        <form id="uploadWrapper" class="review">
+        <form id="uploadWrapper" data-type="review">
             <div id="chooseBoardContainer">
                 <label for="chooseBoard">Choose board</label>
                 <select id="selectBoard">
@@ -352,7 +352,7 @@ async function renderCreateReviewView() {
 
 // Add a new review or board function
 function addBoardOrReview(bodyData) {
-    if (uploadWrapper.classList.contains("review")){
+    if (uploadWrapper.dataset.type = "review"){
         const request = new Request("/server/addBoardOrReview.php",{
             header: "Content-Type: application/json",
             method:"POST",
@@ -361,11 +361,12 @@ function addBoardOrReview(bodyData) {
         try {
             fetch (request)
             .then(response => {
-                console.log(response);
-                return response.json();
+                if (response.ok) {
+                    return response.json();
+                }
             })
             .then(resource => {
-                console.log(resource);
+                renderDiscoverView();
             })
             
         } catch (error) {
@@ -375,7 +376,7 @@ function addBoardOrReview(bodyData) {
     }
     
 
-    if (uploadWrapper.classList.contains("board")) {
+    if (uploadWrapper.dataset.type = "board") {
         const request = new Request("/server/addBoardOrReview.php",{
             header: "Content-Type: application/json",
             method:"POST",
