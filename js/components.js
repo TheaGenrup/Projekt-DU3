@@ -283,8 +283,13 @@ function renderProfileView(event) {
             function openBoard(event) {
 
                 document.querySelector("#title").textContent = event.target.textContent;
-                document.querySelector("#boardAndReviewContainer").innerHTML = `
-                <div id="addReview" class="pointer">ADD REVIEW</div>`;
+
+                document.querySelector("#boardAndReviewContainer").innerHTML = ``;
+
+                if (clickedUserId === loggedInUserId) {
+                    document.querySelector("#boardAndReviewContainer").innerHTML = `
+                    <div id="addReview" class="pointer">ADD REVIEW</div>`;
+                }
 
                 const reviewsInBoard = [];
 
@@ -318,6 +323,23 @@ function renderProfileView(event) {
 
                     makeReview(review, "#boardAndReviewContainer");
                 });
+
+
+
+                if (clickedUserId === loggedInUserId) {
+                    document.querySelectorAll(".review").forEach(review => {
+
+                        console.log(review);
+                        const reviewId = review.dataset.reviewId;
+                        console.log(reviewId);
+
+                        const newElement = document.createElement("div");
+                        newElement.classList.add("deleteBtn");
+                        document.querySelector(`#review_${reviewId}`).prepend(newElement);
+
+                        /*                         document.querySelectorAll(".deleteBtn").addEventListener("click", deleteReview) */
+                    });
+                }
 
 
                 document.querySelectorAll(".review").forEach(review => {
@@ -453,3 +475,5 @@ async function expandReview(event) {
         }
     })
 };
+
+
