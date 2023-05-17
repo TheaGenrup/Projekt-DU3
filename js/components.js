@@ -141,6 +141,7 @@ async function renderCreateReviewView() {
     const response = await fetch(`/server/getUser.php?id=${userId}`);
     const userData = await response.json();
     const usersBoards = userData.albumData.boards;
+    console.log(usersBoards);
 
     // CSS Change
     document.querySelector("#css2").setAttribute("href", "/css/create.css");
@@ -150,11 +151,17 @@ async function renderCreateReviewView() {
     contentContainer.innerHTML ="";
     let html =
     `
-        <h3>Add a new Board</h3>
         <div id="createContainer" class="">
+            <h3>Add new review</h3>
             <div class="horizontalContainer">
-                <button id="createBoard" class="selectButton">New Board</button>
-                <button id="createReview" class="selectButton disabled">New Review</button>
+                <div class="verticalContainer alignCenter">
+                    <button id="createBoard" class="selectButton"></button>
+                    <p>New board</p>
+                </div>
+                <div class="verticalContainer alignCenter">
+                    <button id="createReview" class="selectButton disabled"></button>
+                    <p>New board</p>
+                </div>
             </div>
         </div>
     `;
@@ -209,40 +216,21 @@ async function renderCreateReviewView() {
             const input = e.target.value;
             if (!input) {
                 createButton.classList.add("disabled");
-                createButton.removeEventListener("click", addBoardOrReview);
+                createButton.removeEventListener("click", addBoard);
                 return
             }
             createButton.classList.remove("disabled");
-            createButton.addEventListener("click", addBoardOrReview)
+            createButton.addEventListener("click", addBoard)
 
         })
+        function addBoard(e) {
+            e.preventDefault();
+            const formWrapper = createContainer.querySelector("form");
+            const formData = new FormData(formWrapper);
+            addBoardOrReview(formData);
+        }
         backButton.addEventListener("click", renderCreateReviewView);
     }
-
-
-
-
-
-/*
-
-    Album namn / artist / bild
-    välj
-    beskrivning
-    rating
-
-
-            <input type="text" id="searchField" name="nameInput" placeholder="Name your board queen yas...">
-            <input name="userId" style="display:none" value="${userId}">
-
-            <div id="imageUploaderContainer">
-                <img id="imagePreview" src=""></img>
-                <input type="file" id="imageUploader" accept="image/*" name="imageInput">
-            </div>
-
-*/
-
-
-
 
 
     // Render create a new review section;
@@ -252,7 +240,7 @@ async function renderCreateReviewView() {
         `
         <div id="searchContainer">
             <input id="searchField" placeholder="search album..." autocomplete="off">
-            <ul id="albumUl" data-set="chooseAlbum"></ul>
+            <ul id="albumUl" data-chooseAlbum="chooseAlbum"></ul>
         </div>
         <form id="uploadWrapper" class="review">
             <div id="chooseBoardContainer">
@@ -261,7 +249,7 @@ async function renderCreateReviewView() {
                 </select>
             </div>
 
-            <div class="horizontalContainer">
+            <div id="selectedAlbumContainer" class="horizontalContainer">
                 <div class="verticalContainer">
                     <p id="chosenArtist">Artist:</p>
                     <p id="chosenAlbum">Album:</p>
@@ -272,7 +260,7 @@ async function renderCreateReviewView() {
             <div id="rateAlbumContainer" class="open">
                 <label for="">Album rating</label>
                 <div id="chooseRatingContainer">
-                    <div data-rating="1"></div>
+                    <div class="chosen" data-rating="1"></div>
                     <div data-rating="2"></div>
                     <div data-rating="3"></div>
                     <div data-rating="4"></div>
@@ -304,15 +292,16 @@ async function renderCreateReviewView() {
         // Prevent default for submitting forms
         createButton.addEventListener("click", (e)=>{ e.preventDefault()});
         backButton.addEventListener("click", (e)=>{ e.preventDefault()});
-        // Select album from ul 
-        albumUl.addEventListener("resize", ()=> {
-            console.log("test");
-        })
         //Add boards to list of options
         usersBoards.forEach(board => {
             const optionDom = document.createElement("option");
             optionDom.value = board.boardName;
             optionDom.textContent = board.boardName;
+            optionDom.id = board.boardId
+            selectBoard.dataset.boardId = usersBoards[0].boardId
+            optionDom.addEventListener("click", ()=>{
+                selectBoard.dataset.boardId = optionDom.id
+            })
             selectBoard.append(optionDom);
         });
         //Star rating function
@@ -359,85 +348,58 @@ async function renderCreateReviewView() {
             }
         });
 
-        // allow create if inputfield is not empy
-        /*
-        boardNameInput.addEventListener("keyup", (e)=>{
-            const input = e.target.value;
-            if (!input) {
-                createButton.classList.add("disabled");
-                createButton.removeEventListener("click", addBoardOrReview);
-                return
-            }
-            createButton.classList.remove("disabled");
-            createButton.addEventListener("click", addBoardOrReview)
-
-        })
-        */
         backButton.addEventListener("click", renderCreateReviewView);
+    }
+};
 
 
-
-        // functions
+// Add a new review or board function
+function addBoardOrReview(bodyData) {
+    if (uploadWrapper.classList.contains("review")){
+        const request = new Request("/server/addBoardOrReview.php",{
+            header: "Content-Type: application/json",
+            method:"POST",
+            body: JSON.stringify(bodyData),
+        });
+        try {
+            fetch (request)
+            .then(response => {
+                console.log(response);
+                return response.json();
+            })
+            .then(resource => {
+                console.log(resource);
+            })
+            
+        } catch (error) {
+            console.log(error);
+        }
 
     }
+    
 
+    if (uploadWrapper.classList.contains("board")) {
+        const request = new Request("/server/addBoardOrReview.php",{
+            header: "Content-Type: application/json",
+            method:"POST",
+            body: bodyData,
+        });
 
-/*
-
-    starRatings.forEach(star => {
-        star.addEventListener("click", chooseRating)
-        star.addEventListener("mouseover", starHoverEffect)
-    });
-
-    searchAlbumInput.addEventListener("keyup", searchAlbums);
-    createNewBoardBtn.addEventListener("click", showCreateNewBoard);
-    createNewReviewBtn.addEventListener("click", showCreateNewReview);
-
-
-
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // Add a new review or board function
-    function addBoardOrReview(e) {
-        e.preventDefault();
-        if (createContainer.classList.contains("board")) {
-            const formWrapper = createContainer.querySelector("form");
-            const formData = new FormData(formWrapper);
-            console.log(formData);
-            const request = new Request("/server/addBoardOrReview.php",{
-                method:"POST",
-                body: formData
-            });
-
+        try {
             fetch (request)
-                .then(response => {
-                    console.log(response);
-                    return response.json();
-                })
-                .then(r => {
-                    console.log(r);
-                })
+            .then(response => {
+                console.log(response);
+                return response.json();
+            })
+            .then(r => {
+                console.log(r);
+            })
+            
+        } catch (error) {
+            console.log(error);
         }
     }
-
-};
+}
 
 
 function renderProfileView(event) {

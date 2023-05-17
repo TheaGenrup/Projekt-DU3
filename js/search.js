@@ -16,6 +16,7 @@ function searchAlbums(e) {
     const list = e.target.id;
     let input = e.target.value;
     if (!input) {
+        console.log(input);
         clearSearch();
     return}
     let albumSearchEndpoint = `https://api.spotify.com/v1/search?q=${input}&type=album&offset=0&limit=10`;
@@ -40,7 +41,7 @@ function searchAlbums(e) {
             albumArtists: artistsInAlbum,
             albumName:  album.name,
             albumId:    album.id,
-            albumImage: album.images[2].url,
+            albumImage: album.images[1].url,
             albumType:  album.album_type,
           }
           albumsFound.push(albumInfo);
@@ -67,7 +68,6 @@ function searchUsers(e) {
     fetch(request)
         .then(r=>r.json())
         .then(userResource => {
-            console.log(userResource);
             listUsers(userResource);
         })
 }
@@ -88,14 +88,12 @@ function listAlbums(albumsFound) {
             liDom.setAttribute("id", albumId)
             liDom.innerHTML = 
             `
-                <img src="${albumImage}"></img>
-                <div class="albumInformation">
-                    <p>${albumName}</p>
-                    <p>${albumArtists[0]}</p>
-                </div>
+                <img class="albumPreviewImage" src="${albumImage}"></img>
+                    <p class="albumName">${albumName}</p>
+                    <p class="artistName">${albumArtists[0]}</p>
             `;
-            if (albumUl) {
-                console.log(albumDomUl);
+            if (albumDomUl.dataset.choosealbum) {
+                liDom.addEventListener("click", chooseAlbumToReview)
             }
     
             albumDomUl.append(liDom)
@@ -110,7 +108,6 @@ function listUsers(usersFound) {
     UserDomul.innerHTML = "";
     if (usersFound.length > 0) {
         usersFound.forEach(user => {
-            console.log(user);
             const UserDisplayName = user.displayName;
             const Userid = user.id;
             const UserprofilePicture = user.profilePicture;
@@ -125,7 +122,6 @@ function listUsers(usersFound) {
                 <div class="albumInformation">
                     <p>${UserDisplayName}</p>
                 </div>
-                <button class="saveButton"><img src="/media/icons/bookmark.png" alt=""></button>
             `;
     
             UserDomul.append(liDom)
@@ -175,26 +171,52 @@ function chooseAlbumToReview(e) {
     if (!e.target.id) { liDom = e.target.parentElement; } else { liDom = e.target; }
     const artistName = liDom.querySelector(".artistName").textContent;
     const albumName = liDom.querySelector(".albumName").textContent;
-    const albumImage = liDom.querySelector("img").src
+    const albumCover = liDom.querySelector(".albumPreviewImage").src
     const albumId = liDom.id;
 
     const selectedAlbumContainer = document.querySelector("#selectedAlbumContainer");
-    const ArtistNameDom = selectedAlbumContainer.querySelector("#selectedArtistName");
-    const AlbumNameDom = selectedAlbumContainer.querySelector("#selectedAlbumName");
-    const AlbumImageDom = selectedAlbumContainer.querySelector("#selectedAlbumImage");
-    const createReviewBtn = document.querySelector("#createBtn");
+    const artistNameDom = selectedAlbumContainer.querySelector("#chosenArtist");
+    const albumNameDom = selectedAlbumContainer.querySelector("#chosenAlbum");
+    const albumCoverPreviewDom = selectedAlbumContainer.querySelector("#albumImagePreview");
+    const createReviewBtn = document.querySelector("#createButton");
+    const userId = localStorage.getItem("userId");
 
 
     selectedAlbumContainer.dataset.id = albumId;
-    ArtistNameDom.textContent = artistName;
-    AlbumNameDom.textContent = albumName;
-    AlbumImageDom.src = albumImage;
+    artistNameDom.textContent = artistName;
+    albumNameDom.textContent = albumName;
+    albumCoverPreviewDom.src = albumCover;
 
-    const albumUl = document.querySelector("#selectAlbumSearchUl");
-    albumUl.classList.add("closed");
     createReviewBtn.classList.remove("disabled");
+    createReviewBtn.addEventListener("click", addReview)
+
+    function addReview() {
+        const rating = document.querySelectorAll(".chosen").length
+        const reviewDescription = document.querySelector("#reviewDescription").value
+        const boardId = parseInt(document.querySelector("#selectBoard").dataset.boardId);
+        const reviewObject = {
+            rating: rating,
+            reviewDescription: reviewDescription,
+            boardId: boardId,
+            artistName: artistName,
+            albumName: albumName,
+            albumCover: albumCover,
+            albumId: albumId,
+            userId: userId,
+            review: "review"
+        }
+        addBoardOrReview(reviewObject);
+        
+    }
 }
 
+function clearSearch() {
+    const albumDomUl = document.querySelector("#albumUl");
+    const searchField = document.querySelector("#searchField");
+    if (albumDomUl) {
+        albumDomUl.innerHTML = "";
+    }
+}
 
 /*
 token.json information:
@@ -205,11 +227,3 @@ token.json information:
     "timestamp": 1683221337
 }
 */
-
-function clearSearch() {
-    const albumDomUl = document.querySelector("#albumUl");
-    const searchField = document.querySelector("#searchField");
-    if (albumDomUl) {
-        albumDomUl.innerHTML = "";
-    }
-}

@@ -39,6 +39,12 @@ body main #contentCOntainer #noResults{
     width: 100%;
 }
 
+.alignCenter{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 #contentContainer {
     font-size: 2vh;
     box-sizing: border-box;
@@ -133,6 +139,8 @@ textarea {
     padding: 0;
     border-radius: 10px;
     background-color: #5c5c8e;
+    box-sizing: border-box;
+    padding: 5px;
 
 }
 

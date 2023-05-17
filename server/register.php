@@ -74,7 +74,7 @@ if (isset($data["username"], $data["password"], $data["displayName"])) {
                   ], 
             "userIdentity" => [
                               "id" => "$id", 
-                              "profilePic" => "default.png", 
+                              "profilePic" => "media/default.png", 
                               "displayName" => "$sentDisplayName" 
                            ], 
             "albumData" => [

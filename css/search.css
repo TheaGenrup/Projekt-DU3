@@ -36,6 +36,9 @@
     background-color: rgb(112, 112, 112);
     gap: 5px;
 }
+#searchWindow ul li  img{
+    height: 20px;
+}
 #searchWindow ul li:hover {
     background-color: rgb(83, 82, 82);
     cursor: pointer;

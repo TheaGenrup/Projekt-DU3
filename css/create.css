@@ -20,10 +20,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 45vw;
-    height: 45vw;
+    width: 35vw;
+    height: 35vw;
     margin-top: 5vw;
     background-color: gray;
+
+    border-radius: 30px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 45%;
+}
+#createContainer #createBoard{
+    background-image: url(/media/icons/board.svg);
+}
+#createContainer #createReview{
+    background-image: url(/media/icons/vinyl.svg);
+    background-size: 60%;
 }
 
 #createContainer .selectButton:hover{
@@ -34,6 +47,7 @@
 #createContainer .horizontalContainer{
 }
 
+
 /* form styling*/
 #createContainer #uploadWrapper{
     display: flex;
@@ -41,7 +55,7 @@
     align-items: center;
 
     width: 100%;
-    height: 100%;
+    height: 85%;
 }
 #createContainer #uploadWrapper .review{
     justify-content: space-between;
@@ -135,6 +149,8 @@
     border-radius: 10px;
     padding: 0;
     border: none;
+    box-sizing: border-box;
+    padding: 0px 5px;
 }
 
 #createContainer #searchField:focus{
@@ -157,6 +173,7 @@
     margin:0px;
     background-color: rgb(112, 112, 112);
     gap: 5px;
+    height: 6vh;
 
 }
 #albumUl li:hover{
@@ -190,6 +207,14 @@
     border-radius: 10px;
 }
 #selectBoard option{
+}
+/* Chosen ablumb section */
+#selectedAlbumContainer{
+    height: 25%;
+
+}
+#selectedAlbumContainer img{
+
 }
 
 /* JS classes*/
