@@ -329,7 +329,6 @@ function renderProfileView(event) {
                 if (clickedUserId === loggedInUserId) {
                     document.querySelectorAll(".review").forEach(review => {
 
-                        console.log(review);
                         const reviewId = review.dataset.reviewId;
                         console.log(reviewId);
 
@@ -337,10 +336,12 @@ function renderProfileView(event) {
                         newElement.classList.add("deleteBtn");
                         document.querySelector(`#review_${reviewId}`).prepend(newElement);
 
-                        /*                         document.querySelectorAll(".deleteBtn").addEventListener("click", deleteReview) */
-                    });
-                }
+                        newElement.dataset.reviewId = reviewId;
 
+                    });
+
+                    document.querySelector(".deleteBtn").addEventListener("click", deleteReview);
+                }
 
                 document.querySelectorAll(".review").forEach(review => {
                     review.addEventListener("click", expandReview);
