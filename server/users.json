@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "MBwmOKPolXbWBGLGyqRHSngLU",
+        "loginKey": "2wF61TC10u2DfZVp8hOJxGYG1",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -67,37 +67,8 @@
                     "thumbnail": "soul.jpg"
                 }
             ],
-            "reviews": [
-                {
-                    "albumName": "Infest the Rat's nest",
-                    "artist": "King Gizzard and the lizzard wizard",
-                    "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
-                    "reviewId": 7,
-                    "reviewDescription": "I like when the music is making noise",
-                    "rating": 4,
-                    "boards": [
-                        0,
-                        4
-                    ],
-                    "albumCover": "infest.jpg",
-                    "timestamp": 1681141145,
-                    "displayName": "Anthony Fantano"
-                },
-                {
-                    "albumName": "Rumours",
-                    "artist": "Fleetwood Mac",
-                    "albumId": "nfipqn029",
-                    "reviewId": 9,
-                    "albumCover": "rumours.jpg",
-                    "reviewDescription": "More or less for me, they are as wonderful as sculptures or paints, because Dreams goes absolutely beyond music. Their instruments are like brushes with which we paint such wonderful songs as Sara, Gypsy, Big Love, Rhiannon, thanks to which we can experience artistic understanding.",
-                    "rating": 4,
-                    "boards": [
-                        0,
-                        5
-                    ],
-                    "timestamp": 1681546325
-                },
-                {
+            "reviews": {
+                "2": {
                     "albumName": "Abbey Road",
                     "artist": "The Beatles",
                     "albumCover": "beatles.jpg",
@@ -112,7 +83,7 @@
                     ],
                     "timestamp": 1682950505
                 }
-            ],
+            },
             "favourites": [
                 {
                     "albumName": "The microphones pt2",

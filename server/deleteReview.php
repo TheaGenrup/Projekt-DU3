@@ -9,30 +9,32 @@ if (!$_SERVER["REQUEST_METHOD"] == "DELETE") {
 
 } else {
 
-    $json = file_get_contents("php://input");
-    $inputData = json_decode($json, true);
+    $inputData = getFileData("php://input");
 
     //hämtar alla users
 
-    $filename = "users.json";
-    $usersContent = file_get_contents($filename);
-    $users = json_decode($usersContent, true);
+    $users = getFileData("users.json");
 
-    foreach ($users as $user) {
+    foreach ($users as $key => $user) {
         if ($inputData["userId"] == $user["userIdentity"]["id"]) {
             
             $arrayWithReviews = $user["albumData"]["reviews"];
             
             foreach($arrayWithReviews as $index => $review) {
                 if ($review["reviewId"] == $inputData["reviewId"]) {
-                    unset($arrayWithReviews, $index);
-                    sendJSON($review);
+                    unset($arrayWithReviews[$index]);
+                    //sendJSON($review);
                 }
             }
+
+            // $user["albumData"]["reviews"] = $arrayWithReviews;
+            $users[$key]["albumData"]["reviews"] = $arrayWithReviews;
         }
     }
+
+    saveFileData("users.json", $users);
 
 
 }
 
-
+?>

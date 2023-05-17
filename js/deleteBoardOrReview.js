@@ -3,9 +3,7 @@ async function deleteReview(event) {
     event.stopPropagation();
 
     const loggedInUserId = localStorage.getItem("userId");
-    console.log(loggedInUserId);
     const reviewId = event.target.dataset.reviewId;
-    console.log(reviewId);
 
     const bodyDelete = {
         userId: loggedInUserId,
@@ -19,7 +17,9 @@ async function deleteReview(event) {
     });
 
     const response = await fetch(requestDelete);
-    const resource = await response.json();
+    // const resource = await response.json();
+
+    document.querySelector(`#review_${reviewId}`).remove();
 
 
 };

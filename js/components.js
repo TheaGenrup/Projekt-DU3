@@ -298,7 +298,9 @@ function renderProfileView(event) {
                     if (board.boardName === event.target.textContent) {
 
                         const boardId = board.boardId;
-                        const arrayWithReviews = user.albumData.reviews
+                        const arrayWithReviews = user.albumData.reviews;
+
+                        console.log(arrayWithReviews);
 
                         arrayWithReviews.forEach(review => {
 
@@ -330,7 +332,6 @@ function renderProfileView(event) {
                     document.querySelectorAll(".review").forEach(review => {
 
                         const reviewId = review.dataset.reviewId;
-                        console.log(reviewId);
 
                         const newElement = document.createElement("div");
                         newElement.classList.add("deleteBtn");
@@ -340,7 +341,15 @@ function renderProfileView(event) {
 
                     });
 
-                    document.querySelector(".deleteBtn").addEventListener("click", deleteReview);
+
+                    document.querySelectorAll(".deleteBtn").forEach(button => {
+
+                        button.addEventListener("click", deleteReview);
+
+                    });
+
+
+
                 }
 
                 document.querySelectorAll(".review").forEach(review => {
