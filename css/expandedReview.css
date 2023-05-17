@@ -6,34 +6,34 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-x: hidden;
     background-color: rgb(153, 153, 153);
 }
 
-#timestamp {
+#timestampExpanded {
     margin-top: 4vh;
 }
 
-#displayName {
+#displayNameExpanded {
     font-size: 2vh;
 }
 
-#albumName {
+#albumNameExpanded {
     font-size: 4vh;
     margin-top: 4vh;
 }
 
-#artist {
-    font-size: 2.5vh;
-    margin-top: 3vh;
+#artistExpanded {
+    font-size: 2.9vh;
+    margin-top: 2vh;
     margin-bottom: 2vh;
 }
 
 #bookmark {
     height: 3.5vh;
     width: 3.5vh;
-    position: relative;
-    bottom: -6.5vh;
-    right: -27vw;
+    position: absolute;
+
 }
 
 .albumCoverContainer {
@@ -42,13 +42,14 @@
     align-items: center;
 }
 
-#reviewDescription {
+#reviewDescriptionExpanded {
     margin-top: 2vh;
 }
 
 #otherReviewsHead {
-    font-size: 3vh;
+    font-size: 2.7vh;
     margin-top: 5vh;
+    margin-bottom: 20px;
 }
 
 #otherReviewsContainer {
@@ -57,10 +58,50 @@
 }
 
 .stars {
-    margin-top: 4vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+.starExpanded {
+    height: 4vh;
+    width: 4vh;
+    background-position: center;
+    background-size: cover;
+    background-image: url(../media/icons/empty_star.png);
 }
 
 .star {
-    height: 4vh;
-    width: 4vh;
+    height: 3vh;
+    width: 3vh;
+}
+
+#previousReviewsContainer {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#userInfo {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+#albumName {
+    font-size: 5vw;
+    font-weight: bold;
+}
+
+#profilePictureInReview {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-image: url(/media/default.png);
+    background-position: center;
+    background-size: cover;
+}
+
+#starsOtherReviews .stars {
+    margin: 0;
 }

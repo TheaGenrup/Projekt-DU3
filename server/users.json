@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "XdSw25ur2xJn5Z6k167VRNJRo",
+        "loginKey": "hbNDLX3doFRygglwG9gcHbQMv",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -20,179 +20,65 @@
             "displayName": "Anthony Fantano"
         },
         "albumData": {
-            "boards": {
-                "0": {
-                    "boardName": "Acid psychadelics",
-                    "boardId": 0,
-                    "reviews": [
-                        0,
-                        1
-                    ],
-                    "thumbnail": "board_1.jpg"
-                },
-                "1": {
-                    "boardName": "POP",
-                    "boardId": 1,
-                    "reviews": [
-                        0,
-                        1
-                    ],
-                    "thumbnail": "tameImpala.jpg"
-                },
-                "2": {
-                    "boardName": "FAVOURITES",
-                    "boardId": 2,
-                    "reviews": [
-                        0,
-                        1
-                    ],
-                    "thumbnail": "Sunflower.jpg"
-                },
-                "reviews": [
-                    2,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0
-                ]
-            },
+            "boards": [],
             "reviews": [
                 {
                     "albumName": "Infest the Rat's nest",
                     "artist": "King Gizzard and the lizzard wizard",
-                    "albumId": "34",
-                    "reviewId": 0,
+                    "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
+                    "reviewId": 7,
                     "reviewDescription": "I like when the music is making noise",
-                    "rating": 5,
+                    "rating": 4,
                     "boards": [
-                        0
+                        0,
+                        4
                     ],
                     "albumCover": "infest.jpg",
                     "timestamp": 1681141145,
-                    "displayName": "Anthony Fantano",
-                    "test": 1
+                    "displayName": "Anthony Fantano"
                 },
                 {
                     "albumName": "Rumours",
                     "artist": "Fleetwood Mac",
-                    "albumId": "78",
-                    "reviewId": 1,
-                    "albumCover": "dreams.jpg",
+                    "albumId": "nfipqn029",
+                    "reviewId": 9,
+                    "albumCover": "rumours.jpg",
                     "reviewDescription": "More or less for me, they are as wonderful as sculptures or paints, because Dreams goes absolutely beyond music. Their instruments are like brushes with which we paint such wonderful songs as Sara, Gypsy, Big Love, Rhiannon, thanks to which we can experience artistic understanding.",
-                    "rating": 5,
+                    "rating": 4,
                     "boards": [
-                        0
+                        0,
+                        5
                     ],
-                    "timestamp": 1681546325,
-                    "displayName": "Anthony Fantano",
-                    "test": 16
+                    "timestamp": 1681546325
                 },
                 {
                     "albumName": "Abbey Road",
                     "artist": "The Beatles",
                     "albumCover": "beatles.jpg",
-                    "albumId": "43",
-                    "reviewId": 46,
+                    "albumId": "g8f9q98",
+                    "reviewId": 49,
                     "reviewDescription": "Once again, a perfect piece of music that fits its appropriate moods insanely well.",
                     "rating": 3,
                     "boards": [
-                        0
+                        0,
+                        3,
+                        4
                     ],
-                    "timestamp": 1682950505,
-                    "displayName": "Anthony Fantano"
-                },
-                {
-                    "albumName": "TESTING",
-                    "artist": "A$AP Rocky",
-                    "albumId": "3MATDdrpHmQCmuOcozZjDa",
-                    "reviewId": 2,
-                    "reviewDescription": "",
-                    "rating": 1,
-                    "boards": [
-                        0
-                    ],
-                    "timestamp": 1684331384,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029feadc48ab0661e9b3a9170b"
-                },
-                {
-                    "albumName": "TESTING",
-                    "artist": "A$AP Rocky",
-                    "albumId": "3MATDdrpHmQCmuOcozZjDa",
-                    "reviewId": 0,
-                    "reviewDescription": "Test",
-                    "rating": 1,
-                    "boards": [
-                        0
-                    ],
-                    "timestamp": 1684334409,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029feadc48ab0661e9b3a9170b"
-                },
-                {
-                    "albumName": "TESTING",
-                    "artist": "A$AP Rocky",
-                    "albumId": "3MATDdrpHmQCmuOcozZjDa",
-                    "reviewId": 0,
-                    "reviewDescription": "test",
-                    "rating": 5,
-                    "boards": [
-                        0
-                    ],
-                    "timestamp": 1684334522,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029feadc48ab0661e9b3a9170b"
-                },
-                {
-                    "albumName": "Journey To The Heart, Volume 1",
-                    "artist": "Various Artists",
-                    "albumId": "0rzZhQlhvCYuE0A0Ke8ye0",
-                    "reviewId": 0,
-                    "reviewDescription": "test",
-                    "rating": 3,
-                    "boards": [
-                        0
-                    ],
-                    "timestamp": 1684334612,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02810ba7b15589a127c77149b6"
-                },
-                {
-                    "albumName": "Testers, Pt. 2",
-                    "artist": "Rio Da Yung Og",
-                    "albumId": "6Iy88lmwieqKxrYbm90i6s",
-                    "reviewId": 0,
-                    "reviewDescription": "test",
-                    "rating": 2,
-                    "boards": [
-                        0
-                    ],
-                    "timestamp": 1684334646,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02b7f663f72bafc58f403e42af"
-                },
-                {
-                    "albumName": "Testimony",
-                    "artist": "August Alsina",
-                    "albumId": "7oim27wQfpCo2DQ3JWEwzn",
-                    "reviewId": 0,
-                    "reviewDescription": "test",
-                    "rating": 1,
-                    "boards": [
-                        0
-                    ],
-                    "timestamp": 1684334731,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e027efedca185c6a7df0846458d"
+                    "timestamp": 1682950505
                 }
             ],
             "favourites": [
                 {
                     "albumName": "The microphones pt2",
                     "artist": "Mount eire",
-                    "albumId": "???",
+                    "albumId": "8gt92bqf",
                     "thumbnail": "board_1.jpg",
                     "favouriteId": 0
                 },
                 {
                     "albumName": "Och Stora Havet",
                     "artist": "Jakob Hellman",
-                    "albumId": "???",
+                    "albumId": "biogq390wh",
                     "thumbnail": "hellman.jpg",
                     "favouriteId": 0
                 }
@@ -213,7 +99,7 @@
         },
         "userIdentity": {
             "id": "1234",
-            "profilePic": "1241345512514",
+            "profilePic": "profile_picture.jpg",
             "displayName": "John"
         },
         "albumData": {
@@ -223,7 +109,8 @@
                     "boardId": 0,
                     "reviews": [
                         0,
-                        1
+                        1,
+                        5
                     ],
                     "thumbnail": "\/server\/media\/users\/607133432034891031030642696328\/boards\/bildnamet"
                 }
@@ -235,28 +122,32 @@
                     "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
                     "reviewId": 0,
                     "reviewDescription": "I like when the music is making noise",
-                    "rating": 5,
+                    "rating": 3,
                     "boards": [
-                        0
-                    ]
+                        0,
+                        3
+                    ],
+                    "timestamp": 1681547925
                 },
                 {
                     "albumName": "The microphones pt2",
                     "artist": "Mount eire",
-                    "albumId": "???",
-                    "reviewId": 1,
-                    "reviewDescription": "Woah! I've never cired like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
-                    "rating": 5,
+                    "albumId": "8gt92bqf",
+                    "reviewId": 17902,
+                    "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
+                    "rating": 4,
                     "boards": [
-                        0
-                    ]
+                        0,
+                        4
+                    ],
+                    "timestamp": 1681586723
                 }
             ],
             "favourites": [
                 {
                     "albumName": "The microphones pt2",
                     "artist": "Mount eire",
-                    "albumId": "???",
+                    "albumId": "8gt92bqf",
                     "favouriteId": 0
                 }
             ]
@@ -302,7 +193,7 @@
                 {
                     "albumName": "Och Stora Havet",
                     "artist": "Jakob Hellman",
-                    "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
+                    "albumId": "biogq390wh",
                     "reviewId": 57,
                     "reviewDescription": "SOOOO smooth sounding. even in its simplicity this album is SOOO amazing, and it's absolutely timeless. probably in my top 5 of all time.",
                     "rating": 3,
@@ -310,14 +201,12 @@
                         0
                     ],
                     "timestamp": 1681312805,
-                    "displayName": "test2",
-                    "albumCover": "hellman.jpg",
-                    "test": 10
+                    "albumCover": "hellman.jpg"
                 },
                 {
                     "albumName": "The microphones pt2",
                     "artist": "Mount eire",
-                    "albumId": "???",
+                    "albumId": "8gt92bqf",
                     "reviewId": 100,
                     "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
                     "rating": 2,
@@ -325,16 +214,14 @@
                         0
                     ],
                     "timestamp": 1682832185,
-                    "displayName": "test2",
-                    "albumCover": "beatles.jpg",
-                    "test": 11
+                    "albumCover": "beatles.jpg"
                 }
             ],
             "favourites": [
                 {
                     "albumName": "The microphones pt2",
                     "artist": "Mount eire",
-                    "albumId": "???",
+                    "albumId": "8gt92bqf",
                     "thumbnail": "board_1.jpg",
                     "favouriteId": 0
                 }

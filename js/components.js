@@ -15,7 +15,7 @@ function renderLoginPage() {
                 <div id="loginAndRegisterFormContainer">
                     <form id="loginAndRegisterForm" class="loginForm">
                         <input type="text" id="usernameInput" placeholder="username">
-                        <input type="text" id="passwordInput" placeholder="password">
+                        <input type="password" id="passwordInput" placeholder="password">
                         <input type="text" id="displaynameInput" placeholder="displayname">
                     </form>
                 </div>
@@ -100,15 +100,12 @@ async function renderDiscoverView() {
 
         allFollowingUsersReviews.sort((a, b) => b.timestamp - a.timestamp);
 
-
         // go through all reviews to create them
         allFollowingUsersReviews.forEach(review => {
-
             makeReview(review, "#contentContainer");
-
         });
 
-        document.querySelectorAll(`.review`).forEach(review => { review.addEventListener("click", expandReview); });
+        document.querySelectorAll(`.review`).forEach(review => review.addEventListener("click", expandReview));
     }
 
 };
@@ -437,12 +434,10 @@ function renderProfileView(event) {
                         <div id="profileIconsOrFollowButton"></div>
                     </div>
                 </div>
+                <h2 id="title">BOARDS</h2>
                 <div id="boardAndReviewContainer">
-                    <h2 class="boardTitle">BOARDS</h2>
-                    <div id="boardOfBoards"></div>
+                    <div id="boardContainer"></div>
                 </div>`
-
-
 
 
             if (clickedUserId !== loggedInUserId) {
@@ -463,6 +458,9 @@ function renderProfileView(event) {
                 `;
 
                 document.querySelector("#settingsIcon").addEventListener("click", e => document.querySelector("#dropdownContent").classList.toggle("closed"));
+                document.querySelector("#logOutBtn").addEventListener("click", e => {
+                    renderLoginPage();
+                })
                 document.querySelector("#bookmarkIcon").addEventListener("click", showFavourites);
             }
 
@@ -508,27 +506,26 @@ function renderProfileView(event) {
                 const boardPicture = board.thumbnail;
 
                 const newBoard = `
-                <div class="profileBoard">
-                    <div>
-                        <img src="../media/${boardPicture}"></img>
-                    </div>
+                <div id="board_${board.boardId}" class="board">
+                    <img class="boardCover" src="../media/${boardPicture}"></img>
                     <p class="boardName">${boardName}</p>
                 </div>
                 `
-                document.querySelector("#boardOfBoards").innerHTML += newBoard;
+                document.querySelector("#boardContainer").innerHTML += newBoard;
+
 
             });
 
             document.querySelectorAll(".boardName").forEach(board => {
-                board.addEventListener("click", showBoard);
+                board.addEventListener("click", openBoard);
             });
 
 
 
-            function showBoard(event) {
+            function openBoard(event) {
 
+                document.querySelector("#title").textContent = event.target.textContent;
                 document.querySelector("#boardAndReviewContainer").innerHTML = `
-                <h1 class="boardTitle">${event.target.textContent}</h1>
                 <div id="addReview" class="pointer">ADD REVIEW</div>`;
 
                 const reviewsInBoard = [];
@@ -537,14 +534,16 @@ function renderProfileView(event) {
 
                     if (board.boardName === event.target.textContent) {
 
-                        const boardID = board.boardId;
+                        const boardId = board.boardId;
                         const arrayWithReviews = user.albumData.reviews
 
                         arrayWithReviews.forEach(review => {
 
                             review.boards.forEach(board => {
 
-                                if (board === boardID) {
+                                if (board === boardId) {
+                                    review.userId = user.userIdentity.id;
+                                    review.displayName = user.userIdentity.displayName;
                                     reviewsInBoard.push(review);
                                 }
                             })
@@ -559,64 +558,13 @@ function renderProfileView(event) {
 
                 reviewsInBoard.forEach(review => {
 
-                    // shorten comment if needed
-                    let reviewDescription = review.reviewDescription;
-                    if (reviewDescription.length > 50) {
-                        reviewDescription = reviewDescription.slice(0, 50) + "...";
-                    }
-
-
-                    // make html for new review
-                    const newReview = `
-
-                        <div class="review" id="review_${review.reviewId}>
-                            <p id="who">@ ${user.userIdentity.displayName}</p>
-                            <p id="when">${timeConverter(review.timestamp)}</p>
-                            <div id="albumOverview">
-                                <div id="albumCover_${review.reviewId}" class="albumCover"></div>
-                                <div id="albumDetails">
-
-                                    <p id="albumName"><span class="bold">${review.albumName}</span></p>
-                                    <p id="artist">${review.artist}</p>
-                                    <div id="stars_${review.reviewId}" class="stars">
-                                        <div class="star"></div>
-                                        <div class="star"></div>
-                                        <div class="star"></div>
-                                        <div class="star"></div>
-                                        <div class="star"></div>
-                                    </div>
-                                    <p id="reviewDescription">${reviewDescription}</p>
-                                </div>
-                            </div>
-                        </div> `;
-
-                    // add new review to html
-                    document.querySelector("#boardAndReviewContainer").innerHTML += newReview;
-
-                    /*                     const reviewElement = document.querySelector(`#review_${review.reviewId}`);
-                                        console.log(reviewElement);
-                                        reviewElement.dataset.userId = review.userId;
-                                        reviewElement.dataset.reviewId = review.reviewId;
-                     */
-                    //OBS! dessa är inte sorterade och stjärnorna syns inte
-
-                    // add album cover
-                    if (review.albumCover === "" || review.albumCover === undefined || review.albumCover === null) {
-
-                        document.querySelector(`#albumCover_${review.reviewId}`).style.backgroundImage = "url(../media/icons/default_cover.png)";
-                    } else {
-
-                        document.querySelector(`#albumCover_${review.reviewId}`).style.backgroundImage = `url(../media/albumCovers/${review.albumCover})`;
-                    }
-
-                    // change the background image of the right amount of stars
-                    fillStars(review.rating, review.reviewId);
+                    makeReview(review, "#boardAndReviewContainer");
                 });
 
 
-                /*  document.querySelectorAll(".review").forEach(review => {
-                     review.addEventListener("click", expandReview);
-                 }) */
+                document.querySelectorAll(".review").forEach(review => {
+                    review.addEventListener("click", expandReview);
+                })
             }
         });
 };
@@ -627,47 +575,123 @@ async function expandReview(event) {
     document.querySelector("#css2").setAttribute("href", "../css/expandedReview.css");
     document.querySelector("#contentContainer").innerHTML = "";
 
-    const userId = event.currentTarget.dataset.userId;
-    const reviewId = event.currentTarget.dataset.reviewId;
+    const clickedUserId = event.currentTarget.dataset.userId;
+    const clickedReviewId = event.currentTarget.dataset.reviewId;
 
-    const reviews = await fetchReview(userId);
+    const reviewsOfClickedUser = await fetchReview(clickedUserId);
 
+    reviewsOfClickedUser.forEach(async (firstLoopThroughReview) => {
 
-    reviews.forEach(review => {
-
-        if (reviewId == review.reviewId) {
+        if (clickedReviewId == firstLoopThroughReview.reviewId) {
 
             document.querySelector("#contentContainer").innerHTML = `
                 
-                <div id="closeReview"></div>
-                <p id="timestamp"><span>${timeConverter(review.timestamp)}</span></p>
-                <p id="displayName"><span class="bold pointer">@${review.displayName}</span> reviewed</p>
-                <p id="albumName">${review.albumName}</p>
-                <p id="artist">${review.artist}</p>
+                <div id="closeReview" class="pointer"></div>
+                <p id="timestampExpanded"><span>${timeConverter(firstLoopThroughReview.timestamp)}</span></p>
+                <p id="displayNameExpanded"><span class="bold pointer">@${firstLoopThroughReview.displayName}</span> reviewed</p>
+                <p id="albumNameExpanded">${firstLoopThroughReview.albumName}</p>
+                <p id="artistExpanded">${firstLoopThroughReview.artist}</p>
                 <div class="albumCoverContainer">
                     <img src="/media/icons/bookmark.png" id="bookmark" alt="Bookmark">
-                    <img src="../media/albumCovers/${review.albumCover}" alt="Album Cover" 
-                    
-                    id="albumCoverExpanded">
+                    <img src="../media/albumCovers/${firstLoopThroughReview.albumCover}" alt="Album Cover" id="albumCoverExpanded">
                 </div>
                 <div class="stars">
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
+                    <div class="star" class="starExpanded"></div>
+                    <div class="star" class="starExpanded"></div>
+                    <div class="star" class="starExpanded"></div>
+                    <div class="star" class="starExpanded"></div>
+                    <div class="star" class="starExpanded"></div>
                 </div>
-                <p id="reviewDescription">${review.reviewDescription}</p>
-                <p id="otherReviewsHead">Previous reviews</p>
-                <div id="otherReviewsContainer"></div>
+                <p id="reviewDescription">${firstLoopThroughReview.reviewDescription}</p>
+                <p id="otherReviewsHead">Other reviews of this album</p>
+                <div id="previousReviewsContainer"></div>
            
             `;
 
-            fillStars(review.rating);
+            fillStars(firstLoopThroughReview.rating);
 
-            document.querySelector("#displayName").dataset.userId = review.userId;
+            document.querySelector("#displayNameExpanded").dataset.userId = firstLoopThroughReview.userId;
 
-            document.querySelector(`#displayName`).addEventListener("click", renderProfileView);
+            document.querySelector(`#displayNameExpanded`).addEventListener("click", renderProfileView);
+            document.querySelector(`#closeReview`).addEventListener("click", e => renderDiscoverView());
+
+            // previous reviews
+            const users = await getAllUsers();
+
+            const allReviewsOfAlbum = [];
+            users.forEach(user => {
+                user.albumData.reviews.forEach(secondLoopThroughReview => {
+
+                    if (secondLoopThroughReview.albumId === firstLoopThroughReview.albumId) {
+
+                        secondLoopThroughReview.displayName = user.userIdentity.displayName;
+                        secondLoopThroughReview.userId = user.userIdentity.id;
+                        secondLoopThroughReview.profilePicture = user.userIdentity.profilePic;
+
+                        // se till så att den reviewn vi redan kollar på inte kommer upp under sig själv
+                        if (secondLoopThroughReview.reviewId === firstLoopThroughReview.reviewId) {
+                            return;
+                        }
+
+                        allReviewsOfAlbum.push(secondLoopThroughReview);
+                    }
+                });
+            })
+
+            //kolla om det inte finns några
+            if (allReviewsOfAlbum.length === 0) {
+                document.querySelector("#previousReviewsContainer").innerHTML = "<p>No other reviews yet...</p>";
+            }
+
+            allReviewsOfAlbum.forEach(review => {
+
+                // shorten comment if needed
+                let reviewDescription = review.reviewDescription;
+                if (reviewDescription.length > 70) {
+                    reviewDescription = reviewDescription.slice(0, 70) + "...";
+                }
+
+                // make html for new review
+                const newReview = `
+     
+                <div class="review" id="review_${review.reviewId}">
+                    <div id="userInfo">
+                        <div id="profilePictureInReview"></div>
+                        <div>
+                            <p id="who" class="bold">@${review.displayName}</p>
+                            <p id="when">${timeConverter(review.timestamp)}</p>
+                        </div>
+                    </div>
+                    <div id="albumDetails">
+                        <p id="albumName">${review.albumName}</p>
+                        <p id="artist">${review.artist}</p>
+                        <div id="stars_${review.reviewId}" class="stars">
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                        </div>
+                        <p id="reviewDescription">${reviewDescription}</p>
+                    </div>
+                </div>`;
+
+                // add new review to html
+                document.querySelector("#previousReviewsContainer").innerHTML += newReview;
+
+                const reviewElement = document.querySelector(`#review_${review.reviewId}`);
+
+                reviewElement.dataset.userId = review.userId;
+                reviewElement.dataset.reviewId = review.reviewId;
+
+                fillStars(review.rating, review.reviewId);
+
+                //profilbilderna funkar inte
+
+                reviewElement.addEventListener("click", e => expandReview(e));
+
+            })
+
         }
     })
 };

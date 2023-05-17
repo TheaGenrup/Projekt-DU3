@@ -1,3 +1,4 @@
+/* header */
 #profileHeader {
     display: flex;
     justify-content: space-between;
@@ -86,16 +87,7 @@
 }
 
 
-#boardOfBoards {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 20px;
-}
-
-.boardName {
-    text-align: center;
-}
-
+/* Boards */
 #boardAndReviewContainer p {
     cursor: pointer;
 }
@@ -103,17 +95,38 @@
 #boardAndReviewContainer {
     display: flex;
     flex-direction: column;
-    gap: 1vh;
     overflow: scroll;
     border-radius: 20px;
+    gap: 1.5vh;
 }
 
-.profileBoard img {
+#boardContainer {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.board {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.boardName {
+    text-align: center;
+}
+
+.boardCover {
     height: 30vw;
     width: 30vw;
     border-radius: 5%;
+    margin-bottom: 1vh;
 }
 
+
+/* inside board */
 #albumOverview {
     display: flex;
     margin-top: 10px;
@@ -203,6 +216,8 @@ p {
     font-weight: bold;
 }
 
-.boardTitle {
+#title {
     text-align: center;
+    font-size: 30px;
+    margin: 0 0 20px 0;
 }

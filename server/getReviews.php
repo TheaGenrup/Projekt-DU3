@@ -20,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 foreach ($user["albumData"]["reviews"] as $review) {
                     $reviewsToSend[] = [
                         "albumName" => $review["albumName"],
+                        "albumId" => $review["albumId"],
                         "timestamp" => $review["timestamp"],
                         "displayName" => $user["userIdentity"]["displayName"],
                         "userId" => $user["userIdentity"]["id"],
@@ -31,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     ];
                 };
 
-                
 
                 sendJSON($reviewsToSend);
             } 
