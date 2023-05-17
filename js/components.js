@@ -418,7 +418,7 @@ async function expandReview(event) {
      
                 <div class="review" id="review_${review.reviewId}">
                     <div id="userInfo">
-                        <div id="profilePictureInReview"></div>
+                        <div id="profilePictureInReview_${review.reviewId} class="profilePictureInReview"></div>
                         <div>
                             <p id="who" class="bold">@${review.displayName}</p>
                             <p id="when">${timeConverter(review.timestamp)}</p>
@@ -445,12 +445,17 @@ async function expandReview(event) {
 
                 reviewElement.dataset.userId = review.userId;
                 reviewElement.dataset.reviewId = review.reviewId;
+                console.log(document.querySelector("#review_685913"));
 
                 fillStars(review.rating, review.reviewId);
 
+                console.log(review);
+                console.log(newReview);
+
+                document.querySelector(`.profilePictureInReview_${review.reviewId}`).style.backgroundImage = `url(/media/profilePictures/${review.profilePicture})`;
                 //profilbilderna funkar inte
 
-                reviewElement.addEventListener("click", e => expandReview(e));
+                document.querySelector(`#review_${review.reviewId}`).addEventListener("click", e => expandReview(e));
 
             })
 
