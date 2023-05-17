@@ -94,6 +94,9 @@ function listAlbums(albumsFound) {
                     <p>${albumArtists[0]}</p>
                 </div>
             `;
+            if (albumUl) {
+                console.log(albumDomUl);
+            }
     
             albumDomUl.append(liDom)
         });
@@ -206,5 +209,7 @@ token.json information:
 function clearSearch() {
     const albumDomUl = document.querySelector("#albumUl");
     const searchField = document.querySelector("#searchField");
-    albumDomUl.innerHTML = "";
+    if (albumDomUl) {
+        albumDomUl.innerHTML = "";
+    }
 }

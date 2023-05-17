@@ -252,7 +252,7 @@ async function renderCreateReviewView() {
         `
         <div id="searchContainer">
             <input id="searchField" placeholder="search album..." autocomplete="off">
-            <ul id="albumUl"></ul>
+            <ul id="albumUl" data-set="chooseAlbum"></ul>
         </div>
         <form id="uploadWrapper" class="review">
             <div id="chooseBoardContainer">
@@ -295,6 +295,7 @@ async function renderCreateReviewView() {
         createContainer.classList.add("board");
         // consts
         const albumSearchField = document.querySelector("#searchField");
+        const albumUl = createContainer.querySelector("#albumUl");
         const selectBoard = document.querySelector("#selectBoard");
         const backButton = createContainer.querySelector("#goBackButton");
         const createButton = createContainer.querySelector("#createButton");
@@ -303,6 +304,10 @@ async function renderCreateReviewView() {
         // Prevent default for submitting forms
         createButton.addEventListener("click", (e)=>{ e.preventDefault()});
         backButton.addEventListener("click", (e)=>{ e.preventDefault()});
+        // Select album from ul 
+        albumUl.addEventListener("resize", ()=> {
+            console.log("test");
+        })
         //Add boards to list of options
         usersBoards.forEach(board => {
             const optionDom = document.createElement("option");
