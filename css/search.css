@@ -88,7 +88,7 @@
     display: none;
     flex-direction: column;
     position: absolute;
-    height: 90%;
+    height: 95%;
     width: 89%;
     border: 2px solid black;
     border-radius: 10px;
@@ -121,6 +121,7 @@
 #resultsWindow #albumInfo img{
     width: 50%;
     border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 #resultsWindow #addReviewButtonContainer{
     display: flex;

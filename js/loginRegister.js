@@ -66,7 +66,7 @@ async function attemptLogin(username, password, access, loginKey) {
     }
     if (loginKey) {
         const userData = await fetchLogin(username, password, access, loginKey);
-        if (!userData) {   renderLoginPage   };
+        if (!userData.userId) {   renderLoginPage   };
 
         loginUser(userData);
     }

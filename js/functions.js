@@ -120,7 +120,7 @@ function displayAlbum(albumData) {
                 <p id="averageRating"></p>
                 <p>Rating</p>
             </div>
-            <img id="searchNavigator" src="${albumCover}" alt="">
+            <img id="" src="${albumCover}" alt="">
         </div>
         <div id="artistInfo">
             <p id="albumName">${albumName}</p>
@@ -193,7 +193,12 @@ async function renderCreateReview(albumData) {
 
         <div id="chooseBoardContainer">
             <label for="chooseBoard">Choose board</label>
-            <select id="selectBoard"></select>
+            <div id="customSelect">
+                <div id="selectedValue">test</div>
+                <div id="selectArrow"></div>
+                <div id="dropdownSelector" class="hidden">
+                </div>
+            </div>
         </div>
 
         <div id="rateAlbumContainer" class="open">
@@ -221,28 +226,44 @@ async function renderCreateReview(albumData) {
     createContainer.innerHTML = html;
     createContainer.classList.add("board");
     // consts
-    const albumSearchField = document.querySelector("#searchField");
-    const albumUl = createContainer.querySelector("#albumUl");
-    const selectBoard = document.querySelector("#selectBoard");
     const backButton = createContainer.querySelector("#goBackButton");
     const createButton = createContainer.querySelector("#createButton");
     const starRatings = createContainer.querySelectorAll("#chooseRatingContainer div");
+    const customSelect = createContainer.querySelector("#customSelect");
+    const selectArrow = createContainer.querySelector("#selectArrow");
+    const dropdownSelector = createContainer.querySelector("#dropdownSelector");
+    const selectedValue = createContainer.querySelector("#selectedValue");
     // Event listener
     // Prevent default for submitting forms
     createButton.addEventListener("click", (e)=>{ e.preventDefault()});
     backButton.addEventListener("click", (e)=>{ e.preventDefault()});
-    createButton.addEventListener("click", addReview)
+    createButton.addEventListener("click", addReview);
     //Add boards to list of options
     usersBoards.forEach(board => {
-        const optionDom = document.createElement("option");
+        const optionDom = document.createElement("div");
         optionDom.value = board.boardName;
         optionDom.textContent = board.boardName;
         optionDom.id = board.boardId
-        selectBoard.dataset.boardId = usersBoards[0].boardId
-        optionDom.addEventListener("click", ()=>{
-            selectBoard.dataset.boardId = optionDom.id
+        optionDom.classList.add("option")
+        optionDom.addEventListener("click", (e)=>{
+            e.stopPropagation();
+            dropdownSelector.dataset.boardId = optionDom.id
+            selectedValue.textContent = optionDom.value;
+            dropdownSelector.classList.add("hidden");
+        });
+        document.addEventListener("click", (e)=>{
+            if (e.target != selectedValue) {
+                e.stopPropagation();
+                dropdownSelector.classList.add("hidden");
+            }
         })
-        selectBoard.append(optionDom);
+        dropdownSelector.append(optionDom);
+    });
+    customSelect.dataset.boardId = usersBoards[0].boardId
+    customSelect.value = usersBoards[0].boardName
+    customSelect.addEventListener("click", () => {
+        dropdownSelector.classList.toggle("hidden");
+        selectArrow.classList.toggle("spin");
     });
     //Star rating function
     starRatings.forEach(star => {
@@ -283,7 +304,7 @@ async function renderCreateReview(albumData) {
     function addReview() {
         const rating = document.querySelectorAll(".chosen").length
         const reviewDescription = document.querySelector("#reviewDescription").value
-        const boardId = parseInt(document.querySelector("#selectBoard").dataset.boardId);
+        const boardId = parseInt(document.querySelector("#customSelect").dataset.boardId);
         const reviewObject = {
             rating: rating,
             reviewDescription: reviewDescription,
@@ -302,3 +323,7 @@ async function renderCreateReview(albumData) {
     backButton.addEventListener("click", renderCreateReviewView);
     createButton.addEventListener("click", addReview);
 }
+
+
+// select functions
+
