@@ -11,12 +11,28 @@ async function fetchToken(params) {
         return token;
 })};
 
+function toggleSearchIcon(params) {
+    const searchNavigator = document.querySelector("#searchNavigator");
+    const input = document.querySelector("#searchField");
+    if (!searchNavigator) { return };
+    if (input.value === "") {
+        searchNavigator.src = "/media/icons/Search.png"
+    } else {
+        searchNavigator.src = "/media/icons/close_0.png"
+        searchNavigator.addEventListener("click", ()=>{
+            searchNavigator.src = "/media/icons/Search.png"
+            input.value = "";
+            clearSearch();
+        })
+    }
+}
+
                     // SEARCH SECTION
 function searchAlbums(e) {
     const list = e.target.id;
     let input = e.target.value;
+    toggleSearchIcon();
     if (!input) {
-        console.log(input);
         clearSearch();
     return}
     let albumSearchEndpoint = `https://api.spotify.com/v1/search?q=${input}&type=album&offset=0&limit=10`;
@@ -89,8 +105,10 @@ function listAlbums(albumsFound) {
             liDom.innerHTML = 
             `
                 <img class="albumPreviewImage" src="${albumImage}"></img>
+                <div class="albumListingInformation">
                     <p class="albumName">${albumName}</p>
                     <p class="artistName">${albumArtists[0]}</p>
+                </div>
             `;
             if (albumDomUl.dataset.choosealbum) {
                 liDom.addEventListener("click", chooseAlbumToReview)
@@ -152,8 +170,10 @@ function listAlbumsForNewReview(albums) {
     
             const html = `
                 <img class ="previewImage" src="${albumImage}" alt="${albumName}">
-                <p class="artistName">${artistName}</p>
-                <p class="albumName">${albumName}</p>
+                <div>
+                    <p class="artistName">${artistName}</p>
+                    <p class="albumName">${albumName}</p>
+                </div>
             `;
             const liDom = document.createElement("li");
             liDom.setAttribute("id", albumId);
@@ -212,10 +232,9 @@ function chooseAlbumToReview(e) {
 
 function clearSearch() {
     const albumDomUl = document.querySelector("#albumUl");
-    const searchField = document.querySelector("#searchField");
-    if (albumDomUl) {
-        albumDomUl.innerHTML = "";
-    }
+    const userDomUl = document.querySelector("#userUl");
+    if (albumDomUl) { albumDomUl.innerHTML = ""; };
+    //if (userDomUl) { userDomUl.innerHTML = ""; };
 }
 
 /*

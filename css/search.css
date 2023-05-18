@@ -9,8 +9,13 @@
 
 /* Search filed Section */
 
+#searchWindow #searchContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
 #searchWindow #searchField {
-    width: 100%;
+    width: 0%;
     height: 10vw;
     border-radius: 10px;
     padding: 0px 5px;
@@ -20,6 +25,12 @@
 
 #searchWindow #searchField:focus {
     outline: none;
+}
+#searchWindow #searchNavigator {
+    position: absolute;
+    right: 10px;
+    height: 20px;
+    cursor: pointer;
 }
 
 .albumInformation {
@@ -31,6 +42,7 @@
     padding: 0;
     overflow: scroll;
     overflow-x: none;
+    padding-right: 10px;
 }
 
 #searchWindow ul li {
@@ -40,12 +52,12 @@
     align-items: center;
     padding: 0px 5px;
     margin: 2px 0px;
-    background-color: rgb(112, 112, 112);
+    /*background-color: rgb(112, 112, 112);*/
     gap: 5px;
 }
 #searchWindow ul li  img{
-    height: 20px;
-    border-radius: 10px;
+    height: 35px;
+    border-radius: 50%;
 }
 
 #searchWindow ul li:hover {

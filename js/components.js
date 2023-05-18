@@ -117,16 +117,20 @@ async function renderSearchView(e) {
     const contentContainer = document.querySelector("#contentContainer");
     const html = `
     <div id="searchWindow">
-        <div>
+        <div id="searchContainer">
             <input type="text" id="searchField" placeholder="Album, Artist, user" autocomplete="off">
+            <img id="searchNavigator" src="/media/icons/Search.png" alt="">
         </div>
         <ul id=userUl> </ul>
         <ul id=albumUl> </ul>
     </div>
     `;
     contentContainer.innerHTML = html;
-    document.querySelector("#searchField").addEventListener("keyup", searchAlbums);
-    document.querySelector("#searchField").addEventListener("keyup", searchUsers);
+    const searchField = contentContainer.querySelector("#searchField")
+    searchField.addEventListener("keyup", searchAlbums);
+    searchField.addEventListener("keyup", searchUsers);
+
+    searchField.style.width = "100%";
 
     // CSS change
     document.querySelector("#css2").setAttribute("href", "/css/search.css");
@@ -230,13 +234,14 @@ async function renderCreateReviewView() {
     }
 
 
-    // Render create a new review section;
+            // Render create a new review section;
     async function renderCreateReview() {
         token = await fetchToken();
         html = 
         `
         <div id="searchContainer">
             <input id="searchField" placeholder="search album..." autocomplete="off">
+            <img id="searchNavigator" src="/media/icons/Search.png" alt="">
             <ul id="albumUl" data-chooseAlbum="chooseAlbum"></ul>
         </div>
         <form id="uploadWrapper" data-type="review">

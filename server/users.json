@@ -32,7 +32,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "LuTykvzsnZs7FubgwVf6PB33J",
+        "loginKey": "wKDecHneA0U2fgMMAdWAwrDHb",
         "userSocial": {
             "following": [],
             "followers": []
@@ -45,14 +45,9 @@
         "albumData": {
             "boards": [
                 {
-                    "boardName": "New board",
+                    "boardName": "Psychadelic acid rock",
                     "boardId": 0,
-                    "reviews": [
-                        0,
-                        1,
-                        2,
-                        3
-                    ],
+                    "reviews": [],
                     "thumbnail": "defaultBoardImage.jpg"
                 }
             ],
