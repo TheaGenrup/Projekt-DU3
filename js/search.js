@@ -50,17 +50,27 @@ async function renderSearchView(e) {
     contentContainer.innerHTML = html;
     const searchField = contentContainer.querySelector("#searchField");
     searchField.addEventListener("keyup", searchAlbums);
+    /* 
+    Check if search is being done directly from add board or review section
+        if the user is searching via the search icon then users will also be listed via the searchUsers function,
+        They will also see a showcase of the album with information such as:
+                * average rating
+                * other reviews of the album
+                * name of the artist and album
+        
+        if the user instead is searching from the add review section they will only be able to see albums when searching and will be directly directed to the review album section.
+    */
     if (originButton === "searchIcon") { searchField.addEventListener("keyup", searchUsers);}
-    searchField.style.width = "100%";
     // CSS change
     document.querySelector("#css2").setAttribute("href", "/css/search.css");
 
+    searchField.style.width = "100%";
 
+    // Search for albums functions
     function searchAlbums(e) {
         let input = e.target.value;
         toggleSearchIcon();
         if (!input) {
-            console.log("test");
             clearSearch();
         return}
         let albumSearchEndpoint = `https://api.spotify.com/v1/search?q=${input}&type=album&offset=0&limit=10`;
@@ -96,7 +106,7 @@ async function renderSearchView(e) {
     
         }
     };
-
+    // List albums function
     function listAlbums(albumsFound) {
         const albumDomUl = document.querySelector("#albumUl");
         if (albumsFound.length > 0) {
@@ -200,50 +210,6 @@ function listUsers(usersFound) {
     }
 }
 
-function chooseAlbumToReview(e) {
-    let liDom;
-    if (!e.target.id) { liDom = e.target.parentElement; } else { liDom = e.target; }
-    const artistName = liDom.querySelector(".artistName").textContent;
-    const albumName = liDom.querySelector(".albumName").textContent;
-    const albumCover = liDom.querySelector(".albumPreviewImage").src
-    const albumId = liDom.id;
-
-    const selectedAlbumContainer = document.querySelector("#selectedAlbumContainer");
-    const artistNameDom = selectedAlbumContainer.querySelector("#chosenArtist");
-    const albumNameDom = selectedAlbumContainer.querySelector("#chosenAlbum");
-    const albumCoverPreviewDom = selectedAlbumContainer.querySelector("#albumImagePreview");
-    const createReviewBtn = document.querySelector("#createButton");
-    const userId = localStorage.getItem("userId");
-
-
-    selectedAlbumContainer.dataset.id = albumId;
-    artistNameDom.textContent = artistName;
-    albumNameDom.textContent = albumName;
-    albumCoverPreviewDom.src = albumCover;
-
-    createReviewBtn.classList.remove("disabled");
-    createReviewBtn.addEventListener("click", addReview)
-
-    function addReview() {
-        const rating = document.querySelectorAll(".chosen").length
-        const reviewDescription = document.querySelector("#reviewDescription").value
-        const boardId = parseInt(document.querySelector("#selectBoard").dataset.boardId);
-        const reviewObject = {
-            rating: rating,
-            reviewDescription: reviewDescription,
-            boardId: boardId,
-            artistName: artistName,
-            albumName: albumName,
-            albumCover: albumCover,
-            albumId: albumId,
-            userId: userId,
-            review: "review"
-        }
-        addBoardOrReview(reviewObject);
-        
-    }
-}
-
 function clearSearch() {
     const albumDomUl = document.querySelector("#albumUl");
     const userDomUl = document.querySelector("#userUl");
@@ -267,4 +233,29 @@ token.json information:
     "expires_in": 3600,
     "timestamp": 1683221337
 }
+*/
+
+
+/*
+
+    function addReview() {
+        const rating = document.querySelectorAll(".chosen").length
+        const reviewDescription = document.querySelector("#reviewDescription").value
+        const boardId = parseInt(document.querySelector("#selectBoard").dataset.boardId);
+        const reviewObject = {
+            rating: rating,
+            reviewDescription: reviewDescription,
+            boardId: boardId,
+            artistName: artistName,
+            albumName: albumName,
+            albumCover: albumCover,
+            albumId: albumId,
+            userId: userId,
+            review: "review"
+        }
+        addBoardOrReview(reviewObject);
+        
+    }
+
+
 */

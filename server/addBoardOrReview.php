@@ -2,6 +2,7 @@
 ini_set("display_errors", 1);
 require_once("functions.php");
 // Check if uploaded data is the type of review or board
+
 if ($_POST) {
     // Check if input for board name was sent
     if (!isset($_POST["nameInput"]) && !isset($_POST["userId"])) {
@@ -28,10 +29,18 @@ if ($_POST) {
             
         }
 
+
         $userData = getFileData("users.json");
         foreach ($userData as $key => $user) {
             if ($user["userIdentity"]["id"] === $userId) {
                 $usersBoards = $user["albumData"]["boards"];
+                // Check if board name is already in use
+                foreach ($usersBoards as $board) {
+                    if ($board["boardName"] === $boardName) {
+                        $response = ["message" => "A board with that name already exists"];
+                        sendJSON($response, 200);
+                    }
+                }
                 $boardId = getBoardId($usersBoards, 0);
                 
                 $newBoardObject = [
@@ -74,6 +83,19 @@ if ($_POST) {
             $albumCover = $data["albumCover"];
             $reviewId = getReviewId($usersReviews, 0);
 
+            foreach ($usersReviews as $review) {
+                if ($review["albumId"] == $albumId) {
+                    $reviewsBoards = $review["boards"];
+                    foreach ($reviewsBoards as $IdForboard) {
+                        if ($IdForboard == $boardId) {
+                            $response = ["message" => "You've already reviewed this album in this board"];
+                            sendJSON($response, 200);
+                        }
+                    }
+                }
+            }
+
+
             $arrayWithBoards = [];
             $arrayWithBoards[] = $boardId;
 
@@ -92,7 +114,7 @@ if ($_POST) {
 
             foreach ($usersBoards as $keyBoard=> $board) {
                 if ($board["boardId"] == $boardId) {
-                     $userData[$key]["albumData"]["boards"][$keyBoard]["reviews"][] = $reviewId;
+                    $userData[$key]["albumData"]["boards"][$keyBoard]["reviews"][] = $reviewId;
                     $userData[$key]["albumData"]["reviews"][] = $newReviewObject;
                     saveFileData("users.json", $userData);
                     $response = ["message" => "Review added!"];

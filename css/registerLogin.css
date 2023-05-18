@@ -67,6 +67,7 @@ body {
 #loginMessageContainer #loginRegistermessage {
     opacity: 0%;
     color: rgb(202, 202, 202);
+    text-align: center;
 }
 
 

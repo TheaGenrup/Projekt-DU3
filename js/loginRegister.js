@@ -61,10 +61,13 @@ function loginRegister(e) {
 async function attemptLogin(username, password, access, loginKey) {
     if (!loginKey) {
         const userData = await fetchLogin(username, password, access);
-        loginUser(userData);
+        if (userData.message) { sendLoginPageMessage(userData.message); return }
+        else { loginUser(userData); }
     }
     if (loginKey) {
         const userData = await fetchLogin(username, password, access, loginKey);
+        if (!userData) {   renderLoginPage   };
+
         loginUser(userData);
     }
 
@@ -83,10 +86,7 @@ async function fetchLogin(username, password, access, loginKey) {
     }
     const response = await fetch(request, data);
     const resource = await response.json();
-    if (response.ok) {
-        return resource
-    }
-
+    return resource
 }
 
 function loginUser(userData) {
@@ -96,7 +96,6 @@ function loginUser(userData) {
     const profilePicture = userData.userIdentity.profilePic
 
     renderLoggedInView(profilePicture)
-    // renderDiscoverView(followingNewReviews);
     renderDiscoverView();
 }
 
@@ -131,12 +130,15 @@ function registerUser(username, password, displayname) {
 
 function sendLoginPageMessage(message) {
     const loginRegistermessageDom = document.querySelector("#loginRegistermessage");
+    loginRegistermessageDom.textContent = ""
+    loginRegistermessageDom.style.opacity = "0%"
+    loginRegistermessageDom.style.transition = "0s"
     loginRegistermessageDom.textContent = message
     loginRegistermessageDom.style.opacity = "100%"
     setTimeout(()=>{
         loginRegistermessageDom.style.transition = "1.5s"
         loginRegistermessageDom.style.opacity = "0%"
-    }, 4500);
+    }, 5500);
     loginRegistermessageDom.style.transition = "0s"
     return;
 }

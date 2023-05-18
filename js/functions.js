@@ -1,5 +1,4 @@
 "use strict";
-
 async function getReviews(followingUserId) {
 
     const allReviews = [];
@@ -118,14 +117,14 @@ function displayAlbum(albumData) {
         <button id="closeResultsButton"></button>
         <div id="albumInfo">
             <div id="averageRatingContainer">
-                <p id="averageRating">5/5</p>
+                <p id="averageRating"></p>
                 <p>Rating</p>
             </div>
             <img id="searchNavigator" src="${albumCover}" alt="">
         </div>
         <div id="artistInfo">
-            <p id="artistName">${artistName}</p>
             <p id="albumName">${albumName}</p>
+            <p id="artistName">${artistName}</p>
         </div>
         <div id="addReviewButtonContainer">
             <button id="reviewButton">Review Album?</button>
@@ -134,22 +133,32 @@ function displayAlbum(albumData) {
     `
     resultsWindow.innerHTML = html
     if (albumData.reviewDirectly) { renderCreateReviewView(albumData) }
+    const averageRatingContainer = resultsWindow.querySelector("#averageRatingContainer");
+    const averageRatingPDom = resultsWindow.querySelector("#averageRating");
     try {
-        fetch(`/server/getReviews.php?albumId=${albumId}`)
+        fetch(`/server/getReviews.php/?albumId=${albumId}`)
         .then(response => {
-            console.log(response);
+            if (response.status === 204) {
+                averageRatingContainer.innerHTML = `<p>No reviews yet</p>`;
+            }
             return response.json();
         })
-        .then(averageRatingData => console.log())
-    } catch (error) {
-        
-    }
+        .then(resource => {
+            if (averageRatingPDom) {
+                const averageRating = resource.message;
+                averageRatingPDom.textContent = `${averageRating}/5`;
+            }
+        })
+    } catch (error) { console.log(error);  };
+
     resultsWindow.dataset.albumId = albumId;
     resultsWindow.style.display = "flex";
     const closeButton       = resultsWindow.querySelector("#closeResultsButton");
     const ReviewAlbumButton = resultsWindow.querySelector("#reviewButton");
     // Event listers
+    // Closing the result window
     closeButton.addEventListener("click", ()=>{ resultsWindow.style.display = "none" });
+    document.addEventListener("keydown", (e)=>{ if (e.key === "Escape") { resultsWindow.style.display = "none";} })
 
     ReviewAlbumButton.addEventListener("click", sendAlbumData);
     function sendAlbumData() {
@@ -222,6 +231,7 @@ async function renderCreateReview(albumData) {
     // Prevent default for submitting forms
     createButton.addEventListener("click", (e)=>{ e.preventDefault()});
     backButton.addEventListener("click", (e)=>{ e.preventDefault()});
+    createButton.addEventListener("click", addReview)
     //Add boards to list of options
     usersBoards.forEach(board => {
         const optionDom = document.createElement("option");
@@ -270,12 +280,23 @@ async function renderCreateReview(albumData) {
         });
     });
 
-    function addReview(e) {
-        e.preventDefault();
-        const formData = {
-            
+    function addReview() {
+        const rating = document.querySelectorAll(".chosen").length
+        const reviewDescription = document.querySelector("#reviewDescription").value
+        const boardId = parseInt(document.querySelector("#selectBoard").dataset.boardId);
+        const reviewObject = {
+            rating: rating,
+            reviewDescription: reviewDescription,
+            boardId: boardId,
+            artistName: artistName,
+            albumName: albumName,
+            albumCover: albumCover,
+            albumId: albumId,
+            userId: userId,
+            review: "review"
         }
-        addBoardOrReview(formData);
+        addBoardOrReview(reviewObject);
+        
     }
 
     backButton.addEventListener("click", renderCreateReviewView);

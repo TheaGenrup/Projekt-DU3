@@ -32,7 +32,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "WjFIUl6aj7tyB3pR99h5TlYfY",
+        "loginKey": "MaMJnm8vZ27YdDaPAwG7Hcu9r",
         "userSocial": {
             "following": [],
             "followers": []
@@ -47,7 +47,26 @@
                 {
                     "boardName": "Psychadelic acid rock",
                     "boardId": 0,
-                    "reviews": [],
+                    "reviews": [
+                        4,
+                        6
+                    ],
+                    "thumbnail": "defaultBoardImage.jpg"
+                },
+                {
+                    "boardName": "Katy Perry's best albums (all of them)",
+                    "boardId": 1,
+                    "reviews": [
+                        5
+                    ],
+                    "thumbnail": "defaultBoardImage.jpg"
+                },
+                {
+                    "boardName": "test",
+                    "boardId": 2,
+                    "reviews": [
+                        7
+                    ],
                     "thumbnail": "defaultBoardImage.jpg"
                 }
             ],
@@ -103,6 +122,58 @@
                     ],
                     "timestamp": 1684339766,
                     "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02bb5cd06b0ca1899407e83d7e"
+                },
+                {
+                    "albumName": "Teenage Dream",
+                    "artist": "Katy Perry",
+                    "albumId": "2eQMC9nJE3f3hCNKlYYHL1",
+                    "reviewId": 4,
+                    "reviewDescription": "Best album ever <3",
+                    "rating": 5,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684414637,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02d20c38f295039520d688a888"
+                },
+                {
+                    "albumName": "The Money Store",
+                    "artist": "Death Grips",
+                    "albumId": "1PQDjdBpHPikAodJqjzm6a",
+                    "reviewId": 5,
+                    "reviewDescription": "Katy Perry really did a good job on this one",
+                    "rating": 5,
+                    "boards": [
+                        1
+                    ],
+                    "timestamp": 1684414698,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02b4f8459b0f719f8a97ee1c8c"
+                },
+                {
+                    "albumName": "TESTING",
+                    "artist": "A$AP Rocky",
+                    "albumId": "3MATDdrpHmQCmuOcozZjDa",
+                    "reviewId": 6,
+                    "reviewDescription": "",
+                    "rating": 1,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684418190,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029feadc48ab0661e9b3a9170b"
+                },
+                {
+                    "albumName": "TESTING",
+                    "artist": "A$AP Rocky",
+                    "albumId": "3MATDdrpHmQCmuOcozZjDa",
+                    "reviewId": 7,
+                    "reviewDescription": "",
+                    "rating": 1,
+                    "boards": [
+                        2
+                    ],
+                    "timestamp": 1684418860,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029feadc48ab0661e9b3a9170b"
                 }
             ],
             "favourites": []

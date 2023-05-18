@@ -111,34 +111,6 @@ async function renderDiscoverView() {
 
 };
 
-async function renderSearchView(e) {
-    clearSearch();
-    const originButton = e.target.id
-    // Get Spotify token
-    token = await fetchToken();
-    if (document.querySelector("#searchWindow")) { return };
-    const contentContainer = document.querySelector("#contentContainer");
-    const html = `
-    <div id="resultsWindow">
-    </div>
-    <div id="searchWindow">
-        <div id="searchContainer">
-            <input type="text" id="searchField" placeholder="Album, Artist, user" autocomplete="off">
-            <img id="searchNavigator" src="/media/icons/Search.png" alt="">
-        </div>
-        <ul id=userUl> </ul>
-        <ul id=albumUl> </ul>
-    </div>
-    `;
-    contentContainer.innerHTML = html;
-    const searchField = contentContainer.querySelector("#searchField");
-    searchField.addEventListener("keyup", searchAlbums);
-    if (originButton === "searchIcon") { searchField.addEventListener("keyup", searchUsers);}
-    searchField.style.width = "100%";
-    // CSS change
-    document.querySelector("#css2").setAttribute("href", "/css/search.css");
-};
-
 async function renderCreateReviewView(album) {
     // Get user boards
     const userId = localStorage.getItem("userId");
@@ -242,9 +214,9 @@ async function renderCreateReviewView(album) {
 
 // Add a new review or board function
 function addBoardOrReview(bodyData) {
-    console.log(bodyData);
-    return
-    if (uploadWrapper.dataset.type = "review"){
+    const uploadWrapper = document.querySelector("#uploadWrapper");
+    console.log(uploadWrapper.dataset.type);
+    if (uploadWrapper.dataset.type === "review"){
         const request = new Request("/server/addBoardOrReview.php",{
             header: "Content-Type: application/json",
             method:"POST",
@@ -258,7 +230,7 @@ function addBoardOrReview(bodyData) {
                 }
             })
             .then(resource => {
-                renderDiscoverView();
+                console.log(resource);
             })
             
         } catch (error) {
@@ -268,7 +240,7 @@ function addBoardOrReview(bodyData) {
     }
     
 
-    if (uploadWrapper.dataset.type = "board") {
+    if (uploadWrapper.dataset.type === "board") {
         const request = new Request("/server/addBoardOrReview.php",{
             header: "Content-Type: application/json",
             method:"POST",

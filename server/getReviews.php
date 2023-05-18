@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         foreach ($users as $user) {
             $usersReivews = $user["albumData"]["reviews"];
             foreach ($usersReivews as $review) {
-                if ($review["albumId" == $albumId]) {
+                if ($review["albumId"] == $albumId) {
                     $reviewRating = $review["rating"];
                     $reviewsCount++;
                     $reviewRatingTotal += $reviewRating;
@@ -54,8 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             }
         };
         if ($reviewsCount == 0) {
-            $response = ["message" => "No reviews yet"];
-            sendJSON($response, 201);
+            $response = ["message" => "No rating score yet"];
+            sendJSON($response, 204);
         }
         $averageRating = $reviewRatingTotal / $reviewsCount;
         $response = ["message" => $averageRating];
