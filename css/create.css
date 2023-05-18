@@ -66,18 +66,21 @@
 
 /* Image upload section*/
 #createContainer #imageUploaderContainer{
-    position: relative;
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    width: 45vw;
-    height: 45vw;
+    top: 30%;
+
+    width: 40vw;
+    height: 40vw;
     margin-top: 5vw;
 
     border-radius: 20px;
     background-color:rgba(109, 109, 109, 0.426);
-    /*border: 1.5px solid black;*/
+
+
 }
 #imagePreview{
     position: absolute;

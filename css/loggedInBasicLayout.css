@@ -5,7 +5,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: rgb(24, 24, 24);
-    padding-bottom: 5px;
+
     overflow: hidden;
     /* Ta bort? verkar finnas en onödig scroll annars? */
 }

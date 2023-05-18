@@ -114,17 +114,32 @@ function registerUser(username, password, displayname) {
         })
     }
 
-    fetch(request, data)
-        .then(r => {
-            console.log(r);
-            return r.json()
+    try {
+        fetch(request, data)
+        .then(response => {
+            return response.json();     
         })
         .then(r => {
             console.log(r);
+            sendLoginPageMessage(r.message);
         })
+    } catch (error) {
+        sendLoginPageMessage("whoopsie, an error occured, please try again another time")
+    }
 
 }
 
+function sendLoginPageMessage(message) {
+    const loginRegistermessageDom = document.querySelector("#loginRegistermessage");
+    loginRegistermessageDom.textContent = message
+    loginRegistermessageDom.style.opacity = "100%"
+    setTimeout(()=>{
+        loginRegistermessageDom.style.transition = "1.5s"
+        loginRegistermessageDom.style.opacity = "0%"
+    }, 4500);
+    loginRegistermessageDom.style.transition = "0s"
+    return;
+}
 
 
 

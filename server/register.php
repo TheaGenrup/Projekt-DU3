@@ -22,9 +22,9 @@ if (isset($data["username"], $data["password"], $data["displayName"])) {
     if (isset($data["acess"]) || $data["access"] == "Access-Register: Auth") {
         $sentUsername = $data["username"];
         $sentPassword = $data["password"];
-        $sentDisplayName = $data["password"];
-        if ($sentUsername == "" || $sentPassword == "") {
-            $error = ["message" => "Empty username or password"];
+        $sentDisplayName = $data["displayName"];
+        if ($sentUsername == "" || $sentPassword == "" || $sentDisplayName == "") {
+            $error = ["message" => "Please leave no field empty <3"];
             sendJSON($error, 400);
         }
 
@@ -86,7 +86,7 @@ if (isset($data["username"], $data["password"], $data["displayName"])) {
           
         $userData[] = $newUser;
         saveFileData("users.json", $userData);
-        $message = ["message" => "Registered"];
+        $message = ["message" => "Registered!"];
         sendJSON($message, 202);
 
     }

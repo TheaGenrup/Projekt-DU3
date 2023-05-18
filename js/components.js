@@ -157,7 +157,7 @@ async function renderCreateReviewView() {
                 </div>
                 <div class="verticalContainer alignCenter">
                     <button id="createReview" class="selectButton disabled"></button>
-                    <p>New board</p>
+                    <p>New review</p>
                 </div>
             </div>
         </div>
@@ -704,5 +704,14 @@ async function expandReview(event) {
     bild uppladdning
 
 
+
+    Loader
+        <div id="loadWrapper">
+            <div class="loader">
+                <div class="arrow-right"></div>
+                <div class="arrow-right" id="reflectionRight"></div>
+                <div class="innerCircle"></div>
+            </div>
+        </div>
 
 */
