@@ -11,7 +11,7 @@ function checkIfAlreadyLoggedIn() {
 };
 // Switch between log in and register Section
 function switchLoginRegsiter(e) {
-    const switchBtn = e.target
+    const switchBtn = document.querySelector("#switchBtn");
     const loginRegisterbtn = document.querySelector("#loginRegisterBtn");
     const loginRegisterSwitchcontainer = document.querySelector("#loginRegisterSwitch");
     const text = loginRegisterSwitchcontainer.querySelector(".signupText");
@@ -121,6 +121,10 @@ function registerUser(username, password, displayname) {
         .then(r => {
             console.log(r);
             sendLoginPageMessage(r.message);
+
+            if (r.message === "Registered!") {
+                setTimeout(switchLoginRegsiter, 3000)
+            }
         })
     } catch (error) {
         sendLoginPageMessage("whoopsie, an error occured, please try again another time")
@@ -138,7 +142,7 @@ function sendLoginPageMessage(message) {
     setTimeout(()=>{
         loginRegistermessageDom.style.transition = "1.5s"
         loginRegistermessageDom.style.opacity = "0%"
-    }, 5500);
+    }, 10000);
     loginRegistermessageDom.style.transition = "0s"
     return;
 }

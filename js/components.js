@@ -15,9 +15,9 @@ function renderLoginPage() {
                 </div>
                 <div id="loginAndRegisterFormContainer">
                     <form id="loginAndRegisterForm" class="loginForm">
-                        <input type="text" id="usernameInput" placeholder="username">
-                        <input type="password" id="passwordInput" placeholder="password">
-                        <input type="text" id="displaynameInput" placeholder="displayname">
+                        <input type="text" id="usernameInput" placeholder="username" maxlength="25">
+                        <input type="password" id="passwordInput" placeholder="password" maxlength="30">
+                        <input type="text" id="displaynameInput" placeholder="displayname" maxlength="25">
                     </form>
                 </div>
                 <div id="loginRegisterSwitch">
