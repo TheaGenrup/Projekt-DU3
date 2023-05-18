@@ -73,16 +73,19 @@ async function renderDiscoverView() {
 
     // fetch logged in user to get following ids
     const responseUser = await fetch(new Request(`../server/getUser.php/?id=${userId}`));
-
     const userData = await responseUser.json();
-
     const followingIds = userData.userSocial.following;
+
+    const titleElement = document.createElement("p");
+    titleElement.setAttribute('id', 'discoverTitle');
+    titleElement.textContent = "DISCOVER";
+    document.querySelector("#contentContainer").prepend(titleElement);
 
     // check if the user follows anyone
     if (followingIds.length === 0) {
         console.log("no following users");
 
-        document.querySelector("#contentContainer").innerHTML = `<p id="noFollowing">It seems like you're not following anyone...</p>`;
+        document.querySelector("#contentContainer").innerHTML = `<p id="message">It seems like you're not following anyone...</p>`;
     } else {
 
         const allFollowingUsersReviews = [];
@@ -92,21 +95,30 @@ async function renderDiscoverView() {
 
             const reviewsOneUser = await getReviews(followingUserId);
 
+            if (reviewsOneUser.length === 0) {
+                continue;
+            }
+
             reviewsOneUser.forEach(review => {
                 allFollowingUsersReviews.push(review);
             });
+        }
 
+        if (allFollowingUsersReviews.length === 0) {
+            document.querySelector("#contentContainer").innerHTML = `<p id="message">It seems like there are no reviews to show...</p>`;
+        } else {
+
+            allFollowingUsersReviews.sort((a, b) => b.timestamp - a.timestamp);
+
+            // go through all reviews to create them
+            allFollowingUsersReviews.forEach(review => {
+                makeReview(review, "#contentContainer");
+            });
+
+            document.querySelectorAll(`.review`).forEach(review => review.addEventListener("click", expandReview));
         }
 
 
-        allFollowingUsersReviews.sort((a, b) => b.timestamp - a.timestamp);
-
-        // go through all reviews to create them
-        allFollowingUsersReviews.forEach(review => {
-            makeReview(review, "#contentContainer");
-        });
-
-        document.querySelectorAll(`.review`).forEach(review => review.addEventListener("click", expandReview));
     }
 
 };
@@ -144,8 +156,9 @@ async function renderCreateReviewView(album) {
     createContainer = contentContainer.querySelector("#createContainer");
     const createBoardDom = contentContainer.querySelector("#createBoard");
     const createReviewDom = contentContainer.querySelector("#createReview");
-            // Check if user have a board to which to add reviews to else they must first create a board
-    if (usersBoards.length > 0) { createReviewDom.classList.remove("disabled");
+    // Check if user have a board to which to add reviews to else they must first create a board
+    if (usersBoards.length > 0) {
+        createReviewDom.classList.remove("disabled");
         createReviewDom.addEventListener("click", renderSearchView);
     };
     // Render create a new board section; Flytta till functions? men det är samtidigt en egen component
@@ -207,7 +220,7 @@ async function renderCreateReviewView(album) {
     }
 
 
-            // If album chosen then render create a new review section;
+    // If album chosen then render create a new review section;
     if (album.reviewDirectly) { renderCreateReview(album) }
 };
 
@@ -216,23 +229,23 @@ async function renderCreateReviewView(album) {
 function addBoardOrReview(bodyData) {
     const uploadWrapper = document.querySelector("#uploadWrapper");
     console.log(uploadWrapper.dataset.type);
-    if (uploadWrapper.dataset.type === "review"){
-        const request = new Request("/server/addBoardOrReview.php",{
+    if (uploadWrapper.dataset.type === "review") {
+        const request = new Request("/server/addBoardOrReview.php", {
             header: "Content-Type: application/json",
             method: "POST",
             body: JSON.stringify(bodyData),
         });
         try {
-            fetch (request)
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                }
-            })
-            .then(resource => {
-                console.log(resource);
-            })
-            
+            fetch(request)
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                })
+                .then(resource => {
+                    console.log(resource);
+                })
+
         } catch (error) {
             console.log(error);
         }
@@ -241,7 +254,7 @@ function addBoardOrReview(bodyData) {
 
 
     if (uploadWrapper.dataset.type === "board") {
-        const request = new Request("/server/addBoardOrReview.php",{
+        const request = new Request("/server/addBoardOrReview.php", {
             header: "Content-Type: application/json",
             method: "POST",
             body: bodyData,
@@ -250,11 +263,11 @@ function addBoardOrReview(bodyData) {
         try {
             fetch(request)
                 .then(response => {
-                    console.log(response);
+                    //   console.log(response);
                     return response.json();
                 })
                 .then(r => {
-                    console.log(r);
+                    //  console.log(r);
                 })
 
         } catch (error) {
@@ -375,29 +388,22 @@ function renderProfileView(event) {
                 <div id="favouritesIconContainer">
                     <img id="favouritesIcon" src="../media/icons/bookmark.png"></img>
                 </div>
-                <div id="favourites"></div>
-                `;
+                <div id="favourites"></div>`;
 
                 const arrayWithFavourites = user.albumData.favourites;
 
                 arrayWithFavourites.forEach(favourite => {
 
-                    const favouriteAlbum = favourite.albumName;
-                    const favouriteArtist = favourite.artist;
-                    const favouritePicture = favourite.thumbnail;
-
                     const newFavourite = `
                     <div class="favourite">
-                            <img class="favouriteCover" src="../media/albumCovers/${favouritePicture}"></img>
+                            <img class="favouriteCover" src="${favourite.thumbnail}"></img>
                         <div id="favouriteInfoContainer">
-                            <p class="favouriteAlbumName">${favouriteAlbum}</p>
-                            <p class="favouriteArtist">${favouriteArtist}</p>
+                            <p class="favouriteAlbumName">${favourite.albumName}</p>
+                            <p class="favouriteArtist">${favourite.artist}</p>
                         </div>
                     </div>
                     `
                     document.querySelector("#favourites").innerHTML += newFavourite;
-
-
                 })
 
 
@@ -412,7 +418,7 @@ function renderProfileView(event) {
 
                 const newBoard = `
                 <div id="board_${board.boardId}" class="board">
-                    <img class="boardCover" src="../media/${boardPicture}"></img>
+                    <img class="boardCover" src="../media/usersMedia/${user.userIdentity.id}/boards/${boardPicture}"></img>
                     <p class="boardName">${boardName}</p>
                 </div>
                 `
@@ -458,15 +464,10 @@ function renderProfileView(event) {
 
                 reviewsInBoard.sort((a, b) => b.timestamp - a.timestamp);
 
-
                 reviewsInBoard.forEach(review => {
-
                     makeReview(review, "#boardAndReviewContainer");
-
-
                     document.querySelector(`#review_${review.reviewId} > #who`).textContent = `@${review.displayName}`;
                 });
-
 
 
                 if (clickedUserId === loggedInUserId) {
@@ -481,8 +482,6 @@ function renderProfileView(event) {
                         newElement.dataset.reviewId = reviewId;
 
                     });
-
-
 
 
                     document.querySelectorAll(".deleteBtn").forEach(button => {
@@ -526,7 +525,7 @@ async function expandReview(event) {
                 <p id="artistExpanded">${firstLoopThroughReview.artist}</p>
                 <div class="albumCoverContainer">
                     <img src="/media/icons/bookmark.png" id="bookmark" alt="Bookmark">
-                    <img src="../media/albumCovers/${firstLoopThroughReview.albumCover}" alt="Album Cover" id="albumCoverExpanded">
+                    <img src="${firstLoopThroughReview.albumCover}" alt="Album Cover" id="albumCoverExpanded">
                 </div>
                 <div class="stars">
                     <div class="star" class="starExpanded"></div>

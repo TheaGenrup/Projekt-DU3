@@ -36,8 +36,8 @@ function makeReview(review, container) {
 
     // shorten comment if needed
     let reviewDescription = review.reviewDescription;
-    if (reviewDescription.length > 50) {
-        reviewDescription = reviewDescription.slice(0, 50) + "...";
+    if (reviewDescription.length > 45) {
+        reviewDescription = reviewDescription.slice(0, 45) + "...";
     }
 
     // make html for new review
@@ -78,7 +78,7 @@ function makeReview(review, container) {
         document.querySelector(`#albumCover_${review.reviewId}`).style.backgroundImage = "url(../media/icons/defaultCover.png)";
     } else {
 
-        document.querySelector(`#albumCover_${review.reviewId}`).style.backgroundImage = `url(../media/albumCovers/${review.albumCover})`;
+        document.querySelector(`#albumCover_${review.reviewId}`).style.backgroundImage = `url(${review.albumCover}`;
     }
 
     fillStars(review.rating, review.reviewId);

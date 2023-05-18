@@ -17,18 +17,25 @@ if (!$_SERVER["REQUEST_METHOD"] == "DELETE") {
 
     foreach ($users as $key => $user) {
         if ($inputData["userId"] == $user["userIdentity"]["id"]) {
-            
+   
             $arrayWithReviews = $user["albumData"]["reviews"];
-            
+
+
             foreach($arrayWithReviews as $index => $review) {
                 if ($review["reviewId"] == $inputData["reviewId"]) {
+                    echo "<pre>";
+                    var_dump($arrayWithReviews);
+                    echo "</pre>";
                     unset($arrayWithReviews[$index]);
-                    //sendJSON($review);
                 }
             }
 
             // $user["albumData"]["reviews"] = $arrayWithReviews;
             $users[$key]["albumData"]["reviews"] = $arrayWithReviews;
+
+                    echo "<pre>";
+                    var_dump($users[$key]["albumData"]["reviews"]);
+                    echo "</pre>";
         }
     }
 
