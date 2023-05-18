@@ -441,16 +441,61 @@ function renderProfileView(event) {
                         <div id="profileIconsOrFollowButton"></div>
                     </div>
                 </div>
-                <h2 id="title">BOARDS</h2>
                 <div id="boardAndReviewContainer">
+                    <h2 id="title">BOARDS</h2>
                     <div id="boardContainer"></div>
                 </div>`
 
+            function followUnfollow(event) {
+
+                const request = new Request("/server/follow.php", {
+                    headers: { "Content-type": "application/json" },
+                    method: "POST",
+                    body: JSON.stringify({
+                        id: user.userIdentity.id,
+                        currentUserId: localStorage.userId
+                    }),
+                });
+
+                try {
+                    fetch(request)
+                        .then(response => {
+                            console.log(response);
+                            return response.json();
+                        })
+                        .then(r => {
+                            console.log(r);
+                        })
+
+                } catch (error) {
+                    console.log(error);
+                }
+
+                if (event.target.textContent === "Follow") {
+                    event.target.textContent = "Following";
+                } else {
+                    event.target.textContent = "Follow";
+                }
+
+            }
 
             if (clickedUserId !== loggedInUserId) {
-                document.querySelector("#profileIconsOrFollowButton").innerHTML = `
-                <button id="followButton">Follow</button>
-                `;
+
+                console.log(user);
+                const followers = user.userSocial.followers;
+
+                if (followers.includes(loggedInUserId)) {
+
+                    document.querySelector("#profileIconsOrFollowButton").innerHTML = `
+                    <button id="followButton">Following</button>`;
+
+                } else {
+
+                    document.querySelector("#profileIconsOrFollowButton").innerHTML = `
+                    <button id="followButton">Follow</button>`;
+                }
+
+                document.querySelector("#profileIconsOrFollowButton").addEventListener("click", followUnfollow);
             } else {
                 document.querySelector("#profileIconsOrFollowButton").innerHTML = `
                 <div class="settingsDropdown">
@@ -531,14 +576,9 @@ function renderProfileView(event) {
 
             function openBoard(event) {
 
-                document.querySelector("#title").textContent = event.target.textContent;
-
-                document.querySelector("#boardAndReviewContainer").innerHTML = ``;
-
-                if (clickedUserId === loggedInUserId) {
-                    document.querySelector("#boardAndReviewContainer").innerHTML = `
-                    <div id="addReview" class="pointer">ADD REVIEW</div>`;
-                }
+                document.querySelector("#boardAndReviewContainer").innerHTML = `
+                <h2 id="title">${event.target.textContent}</h2>
+                <div id="addReview" class="pointer">ADD REVIEW</div>`;
 
                 const reviewsInBoard = [];
 
@@ -560,7 +600,6 @@ function renderProfileView(event) {
                                 }
                             })
                         })
-
 
                     }
                 });

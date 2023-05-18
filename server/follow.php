@@ -1,4 +1,4 @@
-<?php
+ <?php
 require_once("functions.php");
 $requestMethod = $_SERVER["REQUEST_METHOD"];
 //  Check if method is POST
@@ -31,6 +31,8 @@ $userData = getFileData("users.json");
 foreach ($userData as $key => $user) {
 
     if ($user["userIdentity"]["id"] == $currentUserId) {
+
+        // find the logged in user
         $usersFollowing = $user["userSocial"]["following"];
         if (in_array($sentId, $usersFollowing)) {
             foreach ($usersFollowing as $index => $followedId) {
@@ -39,15 +41,14 @@ foreach ($userData as $key => $user) {
                 }
             }
         } else {
-            $usersFollowing[] = $sentId;
+            $userdata[$key]["userSocial"]["following"][] = $sentId;
         }
-        $userData[$key]["userSocial"]["following"] = $usersFollowing;
         saveFileData("users.json", $userData);
     }
 
-
+        // find the viewed user
     if ($user["userIdentity"]["id"] == $sentId) {
-        $usersFollowers= $user["userSocial"]["followers"];
+        $usersFollowers = $user["userSocial"]["followers"];
         if (in_array($currentUserId, $usersFollowers)) {
             foreach ($usersFollowers as $index => $followedId) {
                 if ($followedId == $currentUserId) {

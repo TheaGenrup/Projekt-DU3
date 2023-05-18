@@ -4,14 +4,15 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "54fg6BIUjElf5Arva1oZz2gSZ",
+        "loginKey": "hPeZDBPRSWGxgRPSkeaezDKtV",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
-                "607133432034891031030642696328"
+                "507163198196757529667525417704"
             ],
             "followers": [
-                "317161457770161228256467772618"
+                "317161457770161228256467772618",
+                "507163198196757529667525417704"
             ]
         },
         "userIdentity": {
@@ -96,21 +97,6 @@
                         5
                     ],
                     "timestamp": 1681546325
-                },
-                {
-                    "albumName": "Abbey Road",
-                    "artist": "The Beatles",
-                    "albumCover": "beatles.jpg",
-                    "albumId": "g8f9q98",
-                    "reviewId": 49,
-                    "reviewDescription": "Once again, a perfect piece of music that fits its appropriate moods insanely well.",
-                    "rating": 3,
-                    "boards": [
-                        0,
-                        3,
-                        4
-                    ],
-                    "timestamp": 1682950505
                 }
             ],
             "favourites": [
@@ -138,8 +124,14 @@
         },
         "loginKey": "SK5Xg2WuolfDGVthQECU8gnnB",
         "userSocial": {
-            "following": [],
-            "followers": []
+            "following": [
+                "507163198196757529667525417704",
+                "607133432034891031030642696328"
+            ],
+            "followers": [
+                "507163198196757529667525417704",
+                "607133432034891031030642696328"
+            ]
         },
         "userIdentity": {
             "id": "317161457770161228256467772618",
@@ -235,7 +227,9 @@
         "loginKey": "qEuLkRRkEy50U6HPvGt57kJZi",
         "userSocial": {
             "following": [],
-            "followers": []
+            "followers": [
+                "317161457770161228256467772618"
+            ]
         },
         "userIdentity": {
             "id": "507163198196757529667525417704",
@@ -287,7 +281,8 @@
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
-                "607133432034891031030642696328"
+                "607133432034891031030642696328",
+                "507163198196757529667525417704"
             ],
             "followers": [
                 "317161457770161228256467772618"
