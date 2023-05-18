@@ -1,4 +1,5 @@
 "use strict";
+
 function renderLoginPage() {
     localStorage.clear();
     const html = `
@@ -111,11 +112,15 @@ async function renderDiscoverView() {
 };
 
 async function renderSearchView(e) {
+    clearSearch();
+    const originButton = e.target.id
     // Get Spotify token
     token = await fetchToken();
     if (document.querySelector("#searchWindow")) { return };
     const contentContainer = document.querySelector("#contentContainer");
     const html = `
+    <div id="resultsWindow">
+    </div>
     <div id="searchWindow">
         <div id="searchContainer">
             <input type="text" id="searchField" placeholder="Album, Artist, user" autocomplete="off">
@@ -126,27 +131,23 @@ async function renderSearchView(e) {
     </div>
     `;
     contentContainer.innerHTML = html;
-    const searchField = contentContainer.querySelector("#searchField")
+    const searchField = contentContainer.querySelector("#searchField");
     searchField.addEventListener("keyup", searchAlbums);
-    searchField.addEventListener("keyup", searchUsers);
-
+    if (originButton === "searchIcon") { searchField.addEventListener("keyup", searchUsers);}
     searchField.style.width = "100%";
-
     // CSS change
     document.querySelector("#css2").setAttribute("href", "/css/search.css");
 };
 
-async function renderCreateReviewView() {
+async function renderCreateReviewView(album) {
     // Get user boards
     const userId = localStorage.getItem("userId");
     const response = await fetch(`/server/getUser.php?id=${userId}`);
     const userData = await response.json();
     const usersBoards = userData.albumData.boards;
-    console.log(usersBoards);
 
     // CSS Change
     document.querySelector("#css2").setAttribute("href", "/css/create.css");
-
 
     const contentContainer = document.querySelector("#contentContainer");
     contentContainer.innerHTML ="";
@@ -173,7 +174,7 @@ async function renderCreateReviewView() {
     const createReviewDom = contentContainer.querySelector("#createReview");
             // Check if user have a board to which to add reviews to else they must first create a board
     if (usersBoards.length > 0) { createReviewDom.classList.remove("disabled");
-        createReviewDom.addEventListener("click", renderCreateReview);
+        createReviewDom.addEventListener("click", renderSearchView);
     };
             // Render create a new board section; Flytta till functions? men det är samtidigt en egen component
     createBoardDom.addEventListener("click", renderCreateBoard)
@@ -234,124 +235,8 @@ async function renderCreateReviewView() {
     }
 
 
-            // Render create a new review section;
-    async function renderCreateReview() {
-        token = await fetchToken();
-        html = 
-        `
-        <div id="searchContainer">
-            <input id="searchField" placeholder="search album..." autocomplete="off">
-            <img id="searchNavigator" src="/media/icons/Search.png" alt="">
-            <ul id="albumUl" data-chooseAlbum="chooseAlbum"></ul>
-        </div>
-        <form id="uploadWrapper" data-type="review">
-            <div id="chooseBoardContainer">
-                <label for="chooseBoard">Choose board</label>
-                <select id="selectBoard">
-                </select>
-            </div>
-
-            <div id="selectedAlbumContainer" class="horizontalContainer">
-                <div class="verticalContainer">
-                    <p id="chosenArtist">Artist:</p>
-                    <p id="chosenAlbum">Album:</p>
-                </div>
-                <img src="" id="albumImagePreview">
-            </div>
-
-            <div id="rateAlbumContainer" class="open">
-                <label for="">Album rating</label>
-                <div id="chooseRatingContainer">
-                    <div class="chosen" data-rating="1"></div>
-                    <div data-rating="2"></div>
-                    <div data-rating="3"></div>
-                    <div data-rating="4"></div>
-                    <div data-rating="5"></div>
-                </div>
-            </div>
-
-            <div class="open">
-                <label for="">ReviewDescription</label>
-                <textarea name="" id="reviewDescription" cols="30" rows="10"></textarea>
-            </div>
-        </form>
-
-        <div class="horizontalContainer">
-            <button id="goBackButton" class="navigationButton">Go back</button>
-            <button for="uploadWrapper" id="createButton" class="navigationButton disabled">Create</button>
-        </div>  
-        `;
-        createContainer.innerHTML = html;
-        createContainer.classList.add("board");
-        // consts
-        const albumSearchField = document.querySelector("#searchField");
-        const albumUl = createContainer.querySelector("#albumUl");
-        const selectBoard = document.querySelector("#selectBoard");
-        const backButton = createContainer.querySelector("#goBackButton");
-        const createButton = createContainer.querySelector("#createButton");
-        const starRatings = createContainer.querySelectorAll("#chooseRatingContainer div");
-        // Event listener
-        // Prevent default for submitting forms
-        createButton.addEventListener("click", (e)=>{ e.preventDefault()});
-        backButton.addEventListener("click", (e)=>{ e.preventDefault()});
-        //Add boards to list of options
-        usersBoards.forEach(board => {
-            const optionDom = document.createElement("option");
-            optionDom.value = board.boardName;
-            optionDom.textContent = board.boardName;
-            optionDom.id = board.boardId
-            selectBoard.dataset.boardId = usersBoards[0].boardId
-            optionDom.addEventListener("click", ()=>{
-                selectBoard.dataset.boardId = optionDom.id
-            })
-            selectBoard.append(optionDom);
-        });
-        //Star rating function
-        starRatings.forEach(star => {
-            //star.addEventListener("click", chooseRating)
-            star.addEventListener("mouseover", (e) => {
-                const index = parseInt(e.target.dataset.rating);
-                const starRatings = e.target.parentElement.querySelectorAll("div");
-                starRatings.forEach(star => {
-                    star.style.backgroundImage = "url(/media/icons/star-regular.svg)";
-                });
-                for (let i = 0; i < index; i++) {
-                    starRatings[i].style.backgroundImage = "url(/media/icons/star-solid.svg)";
-                    
-                }
-            });
-            star.addEventListener("mouseleave", (e) => {
-                const starRatings = e.target.parentElement.querySelectorAll("div");
-                starRatings.forEach(star => {
-                    if (!star.classList.contains("chosen")) {
-                        star.style.backgroundImage = "url(/media/icons/star-regular.svg)";
-                        starRatings[0].style.backgroundImage = "url(/media/icons/star-solid.svg)";
-                    }
-                });
-            });
-            star.addEventListener("click", (e) => {
-                const index = parseInt(e.target.dataset.rating);
-                const starRatings = e.target.parentElement.querySelectorAll("div");
-                starRatings.forEach(star => {
-                    star.classList.remove("chosen");
-                });
-                for (let i = 0; i < index; i++) {
-                    starRatings[i].style.backgroundImage = "url(/media/icons/star-solid.svg)";
-                    starRatings[i].classList.add("chosen");
-                }
-            });
-        });
-        albumSearchField.addEventListener("keyup", searchAlbums);
-        // Close search list when clicking outside it
-        document.addEventListener("click", (e)=>{
-            const searchContainer = document.querySelector("#searchContainer");
-            if (e.target.parentElement != searchContainer ) {
-                clearSearch();
-            }
-        });
-
-        backButton.addEventListener("click", renderCreateReviewView);
-    }
+            // If album chosen then render create a new review section;
+    if (album.reviewDirectly) { renderCreateReview(album) }
 };
 
 
@@ -702,21 +587,6 @@ async function expandReview(event) {
     })
 };
 
-
-/*
-    om ingen board redan finns så måste man skapa en
-    namn på board
-    bild uppladdning
-
-
-
-    Loader
-        <div id="loadWrapper">
-            <div class="loader">
-                <div class="arrow-right"></div>
-                <div class="arrow-right" id="reflectionRight"></div>
-                <div class="innerCircle"></div>
-            </div>
-        </div>
-
-*/
+function renderReviewDirectly(params) {
+    
+}

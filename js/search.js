@@ -28,55 +28,110 @@ function toggleSearchIcon(params) {
 }
 
                     // SEARCH SECTION
-function searchAlbums(e) {
-    const list = e.target.id;
-    let input = e.target.value;
-    toggleSearchIcon();
-    if (!input) {
-        clearSearch();
-    return}
-    let albumSearchEndpoint = `https://api.spotify.com/v1/search?q=${input}&type=album&offset=0&limit=10`;
+async function renderSearchView(e) {
+    clearSearch();
+    const originButton = e.target.id
+    // Get Spotify token
+    token = await fetchToken();
+    if (document.querySelector("#searchWindow")) { return };
+    const contentContainer = document.querySelector("#contentContainer");
+    const html = `
+    <div id="resultsWindow">
+    </div>
+    <div id="searchWindow">
+        <div id="searchContainer">
+            <input type="text" id="searchField" placeholder="Album, Artist, user" autocomplete="off">
+            <img id="searchNavigator" src="/media/icons/Search.png" alt="">
+        </div>
+        <ul id=userUl> </ul>
+        <ul id=albumUl> </ul>
+    </div>
+    `;
+    contentContainer.innerHTML = html;
+    const searchField = contentContainer.querySelector("#searchField");
+    searchField.addEventListener("keyup", searchAlbums);
+    if (originButton === "searchIcon") { searchField.addEventListener("keyup", searchUsers);}
+    searchField.style.width = "100%";
+    // CSS change
+    document.querySelector("#css2").setAttribute("href", "/css/search.css");
 
-    if (token.length > 0 || token != undefined) { 
-      fetch(albumSearchEndpoint, {
-          headers: {
-              "Authorization": "Bearer " + token
-          }
-      })
-      .then(response => {
-        return response.json()})
-      .then(albumResource => {
-        const albumsfetched = albumResource.albums.items;
-        const albumsFound = []
-        albumsfetched.forEach(album => {
-          const artistsInAlbum = []; 
-          album.artists.forEach(artist => {
-            artistsInAlbum.push(artist.name)
+
+    function searchAlbums(e) {
+        let input = e.target.value;
+        toggleSearchIcon();
+        if (!input) {
+            clearSearch();
+        return}
+        let albumSearchEndpoint = `https://api.spotify.com/v1/search?q=${input}&type=album&offset=0&limit=10`;
+    
+        if (token.length > 0 || token != undefined) { 
+          fetch(albumSearchEndpoint, {
+              headers: {
+                  "Authorization": "Bearer " + token
+              }
+          })
+          .then(response => {
+            return response.json()})
+          .then(albumResource => {
+            const albumsfetched = albumResource.albums.items;
+            const albumsFound = []
+            albumsfetched.forEach(album => {
+              const artistsInAlbum = []; 
+              album.artists.forEach(artist => {
+                artistsInAlbum.push(artist.name)
+              });
+              let albumInfo = {
+                albumArtists: artistsInAlbum,
+                albumName:  album.name,
+                albumId:    album.id,
+                albumImage: album.images[1].url,
+                albumType:  album.album_type,
+              }
+              albumsFound.push(albumInfo);
+            });
+            listAlbums(albumsFound);
           });
-          let albumInfo = {
-            albumArtists: artistsInAlbum,
-            albumName:  album.name,
-            albumId:    album.id,
-            albumImage: album.images[1].url,
-            albumType:  album.album_type,
-          }
-          albumsFound.push(albumInfo);
-        });
-        listAlbums(albumsFound);
-        /*
-        switch (list) {
-            case "searchField":
-                listAlbumsGeneralSearch(albumsFound);
-                break;
-            case "searchAlbumInput":
-                listAlbumsForNewReview(albumsFound);
-                break;
+    
         }
-        */
-      });
+    };
 
-    }
-}
+    function listAlbums(albumsFound) {
+        const albumDomUl = document.querySelector("#albumUl");
+        if (albumsFound.length > 0) {
+            albumsFound.forEach(album => {
+                // albums constants
+                const albumName     = album.albumName;
+                const albumArtists  = album.albumArtists;
+                const albumId       = album.albumId;
+                const albumImage    = album.albumImage;
+        
+                const liDom = document.createElement("li");
+                liDom.setAttribute("id", albumId)
+                liDom.innerHTML = 
+                `
+                    <img class="albumPreviewImage" src="${albumImage}"></img>
+                    <div class="albumListingInformation">
+                        <p class="albumName">${albumName}</p>
+                        <p class="artistName">${albumArtists[0]}</p>
+                    </div>
+                `;
+                if (albumDomUl.dataset.choosealbum) {
+                    liDom.addEventListener("click", chooseAlbumToReview)
+                }
+                // If searching via the search icon from navigation, showCase other reviews first else directly render review album
+                if (originButton === "searchIcon") { liDom.addEventListener("click", showCaseAlbum); }
+                if (originButton === "createReview") {
+                    liDom.dataset.reviewDirectly = "true";
+                    liDom.addEventListener("click", showCaseAlbum); }
+        
+                albumDomUl.append(liDom);
+            });
+        } else {
+            albumDomUl.innerHTML = "<li id='noResults'>No results found :(</li>";
+        }
+    };
+};
+
 function searchUsers(e) {
     let input = e.target.value;
     if (!input) {return}
@@ -87,38 +142,31 @@ function searchUsers(e) {
             listUsers(userResource);
         })
 }
-                    // List results
-    // List Albums
-function listAlbums(albumsFound) {
-    const albumDomUl = document.querySelector("#albumUl");
-    clearSearch();
-    if (albumsFound.length > 0) {
-        albumsFound.forEach(album => {
-            const albumName     = album.albumName;
-            const albumArtists  = album.albumArtists;
-            const albumId       = album.albumId;
-            const albumImage    = album.albumImage;
-            const albumType     = album.albumType;
-    
-            const liDom = document.createElement("li");
-            liDom.setAttribute("id", albumId)
-            liDom.innerHTML = 
-            `
-                <img class="albumPreviewImage" src="${albumImage}"></img>
-                <div class="albumListingInformation">
-                    <p class="albumName">${albumName}</p>
-                    <p class="artistName">${albumArtists[0]}</p>
-                </div>
-            `;
-            if (albumDomUl.dataset.choosealbum) {
-                liDom.addEventListener("click", chooseAlbumToReview)
-            }
-    
-            albumDomUl.append(liDom)
-        });
-    } else {
-        albumDomUl.innerHTML = "<li id='noResults'>No results found :(</li>";
+
+function showCaseAlbum(e) {
+    let liDom;
+    if (e.target.tagName === "P") { liDom = e.target.parentElement.parentElement };
+    if (e.target.tagName === "DIV") { liDom = e.target.parentElement };
+    if (e.target.tagName === "IMG") { liDom = e.target.parentElement };
+    if (e.target.tagName === "LI") { liDom = e.target };
+
+    const artistName = liDom.querySelector(".artistName").textContent;
+    const albumName = liDom.querySelector(".albumName").textContent;
+    const albumCover = liDom.querySelector(".albumPreviewImage").src
+    const albumId = liDom.id;
+
+    const albumData = {
+        artistName:artistName,
+        albumName:albumName,
+        albumCover:albumCover,
+        albumId:albumId,
+        
+    };
+    if (liDom.dataset.reviewDirectly) {
+        albumData.reviewDirectly = true;
     }
+
+    displayAlbum(albumData);
 }
     // List Users
 function listUsers(usersFound) {
@@ -146,43 +194,6 @@ function listUsers(usersFound) {
         });
     } else {
         UserDomul.innerHTML = "No users found";
-    }
-}
-
-
-function listAlbumsForNewReview(albums) {
-    const albumUl = document.querySelector("#selectAlbumSearchUl");
-    albumUl.classList.remove("closed");
-    albumUl.innerHTML = "";
-    if (albums.length === 0) {
-        const message = document.createElement("li");
-        message.classList.add("message")
-        message.textContent = "no albums found";
-        albumUl.append(message);
-    }
-    if (albums.length > 0) {
-        albums.forEach(album => {
-            const artistName = album.artistName;
-            const albumName = album.albumName;
-            const albumId = album.albumId;
-            const albumImage = album.albumImage;
-            const albumType = album.albumType;
-    
-            const html = `
-                <img class ="previewImage" src="${albumImage}" alt="${albumName}">
-                <div>
-                    <p class="artistName">${artistName}</p>
-                    <p class="albumName">${albumName}</p>
-                </div>
-            `;
-            const liDom = document.createElement("li");
-            liDom.setAttribute("id", albumId);
-            liDom.classList.add("albumPreview");
-            liDom.innerHTML = html;
-
-            liDom.addEventListener("click", chooseAlbumToReview)
-            albumUl.append(liDom);
-        });
     }
 }
 
@@ -234,7 +245,7 @@ function clearSearch() {
     const albumDomUl = document.querySelector("#albumUl");
     const userDomUl = document.querySelector("#userUl");
     if (albumDomUl) { albumDomUl.innerHTML = ""; };
-    //if (userDomUl) { userDomUl.innerHTML = ""; };
+    if (userDomUl) { userDomUl.innerHTML = ""; };
 }
 
 /*
