@@ -1,111 +1,388 @@
 [
     {
         "userCredentials": {
-            "username": "testFilip",
-            "password": "testFilip"
+            "username": "test",
+            "password": "test"
         },
-        "loginKey": "ptlgsv876cZ8rQ1zBp9lejz2w",
+        "loginKey": "54fg6BIUjElf5Arva1oZz2gSZ",
+        "userSocial": {
+            "following": [
+                "317161457770161228256467772618",
+                "607133432034891031030642696328"
+            ],
+            "followers": [
+                "317161457770161228256467772618"
+            ]
+        },
+        "userIdentity": {
+            "id": "607133432034891031030642696328",
+            "profilePic": "profile_picture.jpg",
+            "displayName": "Anthony Fantano"
+        },
+        "albumData": {
+            "boards": [
+                {
+                    "boardName": "Acid psychadelics",
+                    "boardId": 0,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "board_1.jpg"
+                },
+                {
+                    "boardName": "POP",
+                    "boardId": 1,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "tameImpala.jpg"
+                },
+                {
+                    "boardName": "FAVOURITES",
+                    "boardId": 3,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "Sunflower.jpg"
+                },
+                {
+                    "boardName": "Rock",
+                    "boardId": 4,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "rock.jpg"
+                },
+                {
+                    "boardName": "Soul",
+                    "boardId": 5,
+                    "reviews": [
+                        7,
+                        9
+                    ],
+                    "thumbnail": "soul.jpg"
+                }
+            ],
+            "reviews": [
+                {
+                    "albumName": "Infest the Rat's nest",
+                    "artist": "King Gizzard and the lizzard wizard",
+                    "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
+                    "reviewId": 7,
+                    "reviewDescription": "I like when the music is making noise",
+                    "rating": 4,
+                    "boards": [
+                        0,
+                        4
+                    ],
+                    "albumCover": "infest.jpg",
+                    "timestamp": 1681141145,
+                    "displayName": "Anthony Fantano"
+                },
+                {
+                    "albumName": "Rumours",
+                    "artist": "Fleetwood Mac",
+                    "albumId": "nfipqn029",
+                    "reviewId": 9,
+                    "albumCover": "rumours.jpg",
+                    "reviewDescription": "More or less for me, they are as wonderful as sculptures or paints, because Dreams goes absolutely beyond music. Their instruments are like brushes with which we paint such wonderful songs as Sara, Gypsy, Big Love, Rhiannon, thanks to which we can experience artistic understanding.",
+                    "rating": 4,
+                    "boards": [
+                        0,
+                        5
+                    ],
+                    "timestamp": 1681546325
+                },
+                {
+                    "albumName": "Abbey Road",
+                    "artist": "The Beatles",
+                    "albumCover": "beatles.jpg",
+                    "albumId": "g8f9q98",
+                    "reviewId": 49,
+                    "reviewDescription": "Once again, a perfect piece of music that fits its appropriate moods insanely well.",
+                    "rating": 3,
+                    "boards": [
+                        0,
+                        3,
+                        4
+                    ],
+                    "timestamp": 1682950505
+                }
+            ],
+            "favourites": [
+                {
+                    "albumName": "The microphones pt2",
+                    "artist": "Mount eire",
+                    "albumId": "8gt92bqf",
+                    "thumbnail": "board_1.jpg",
+                    "favouriteId": 0
+                },
+                {
+                    "albumName": "Och Stora Havet",
+                    "artist": "Jakob Hellman",
+                    "albumId": "biogq390wh",
+                    "thumbnail": "hellman.jpg",
+                    "favouriteId": 0
+                }
+            ]
+        }
+    },
+    {
+        "userCredentials": {
+            "username": "test2",
+            "password": "test2"
+        },
+        "loginKey": "SK5Xg2WuolfDGVthQECU8gnnB",
         "userSocial": {
             "following": [],
             "followers": []
         },
         "userIdentity": {
-            "id": "114876995925839643911061291607",
-            "profilePic": "media\/default.png",
-            "displayName": "testFilip"
+            "id": "317161457770161228256467772618",
+            "profilePic": "default.png",
+            "displayName": "Stevie Nicks"
         },
         "albumData": {
             "boards": [
                 {
-                    "boardName": "test",
+                    "boardName": "AVICII",
                     "boardId": 0,
-                    "reviews": [],
-                    "thumbnail": "defaultBoardImage.jpg"
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "avicii.jpg"
+                },
+                {
+                    "boardName": "MINE",
+                    "boardId": 0,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "stevieNicks.jpg"
                 }
             ],
+            "reviews": [
+                {
+                    "albumName": "Och Stora Havet",
+                    "artist": "Jakob Hellman",
+                    "albumId": "biogq390wh",
+                    "reviewId": 57,
+                    "reviewDescription": "SOOOO smooth sounding. even in its simplicity this album is SOOO amazing, and it's absolutely timeless. probably in my top 5 of all time.",
+                    "rating": 3,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1681312805,
+                    "albumCover": "hellman.jpg"
+                },
+                {
+                    "albumName": "The microphones pt2",
+                    "artist": "Mount eire",
+                    "albumId": "8gt92bqf",
+                    "reviewId": 100,
+                    "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
+                    "rating": 2,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1682832185,
+                    "albumCover": "beatles.jpg"
+                }
+            ],
+            "favourites": [
+                {
+                    "albumName": "The microphones pt2",
+                    "artist": "Mount eire",
+                    "albumId": "8gt92bqf",
+                    "thumbnail": "board_1.jpg",
+                    "favouriteId": 0
+                }
+            ]
+        }
+    },
+    {
+        "userCredentials": {
+            "username": "test5",
+            "password": "test5"
+        },
+        "loginKey": "5jxwtpjrWNkOze6qI5kvrUb4n",
+        "userSocial": {
+            "following": [],
+            "followers": []
+        },
+        "userIdentity": {
+            "id": "716916262583862677799694090077",
+            "profilePic": "default.png",
+            "displayName": "test5"
+        },
+        "albumData": {
+            "boards": [],
             "reviews": [],
             "favourites": []
         }
     },
     {
         "userCredentials": {
-            "username": "test",
-            "password": "test"
+            "username": "thea",
+            "password": "thea"
         },
-        "loginKey": "wKDecHneA0U2fgMMAdWAwrDHb",
+        "loginKey": "qEuLkRRkEy50U6HPvGt57kJZi",
         "userSocial": {
             "following": [],
             "followers": []
         },
         "userIdentity": {
-            "id": "107748312064071063361388211387",
-            "profilePic": "media\/default.png",
-            "displayName": "test"
+            "id": "507163198196757529667525417704",
+            "profilePic": "default.png",
+            "displayName": "thea"
+        },
+        "albumData": {
+            "boards": [],
+            "reviews": [
+                {
+                    "albumName": "Abbey Road",
+                    "artist": "The Beatles",
+                    "albumCover": "beatles.jpg",
+                    "albumId": "g8f9q98",
+                    "reviewId": 46,
+                    "reviewDescription": "This is the album that opened the door for younger generation to the greatest music ever made, and especially great for the millennials, the instant gratification people of today. Never a song under 5 stars here. ",
+                    "rating": 4,
+                    "boards": [
+                        0,
+                        3,
+                        4
+                    ],
+                    "timestamp": 1682950505
+                },
+                {
+                    "albumName": "Rumours",
+                    "artist": "Fleetwood Mac",
+                    "albumId": "nfipqn029",
+                    "reviewId": 5290,
+                    "albumCover": "rumours.jpg",
+                    "reviewDescription": "More or less for me, they are as wonderful as sculptures or paints, because Dreams goes absolutely beyond music. Their instruments are like brushes with which we paint such wonderful songs as Sara, Gypsy, Big Love, Rhiannon, thanks to which we can experience artistic understanding.",
+                    "rating": 3,
+                    "boards": [
+                        0,
+                        5
+                    ],
+                    "timestamp": 1681546325
+                }
+            ],
+            "favourites": []
+        }
+    },
+    {
+        "userCredentials": {
+            "username": "elin",
+            "password": "elin"
+        },
+        "loginKey": "h3Z1GtxSJUj7EtGqKpVwkFmuV",
+        "userSocial": {
+            "following": [
+                "317161457770161228256467772618",
+                "607133432034891031030642696328"
+            ],
+            "followers": [
+                "317161457770161228256467772618"
+            ]
+        },
+        "userIdentity": {
+            "id": "7950179031790531",
+            "profilePic": "profile_picture.jpg",
+            "displayName": "Elin Sauer"
         },
         "albumData": {
             "boards": [
                 {
-                    "boardName": "Psychadelic acid rock",
+                    "boardName": "Acid psychadelics",
                     "boardId": 0,
-                    "reviews": [],
-                    "thumbnail": "defaultBoardImage.jpg"
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "board_1.jpg"
+                },
+                {
+                    "boardName": "POP",
+                    "boardId": 1,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "tameImpala.jpg"
+                },
+                {
+                    "boardName": "FAVOURITES",
+                    "boardId": 3,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "Sunflower.jpg"
+                },
+                {
+                    "boardName": "Rock",
+                    "boardId": 4,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "rock.jpg"
+                },
+                {
+                    "boardName": "Soul",
+                    "boardId": 5,
+                    "reviews": [
+                        7,
+                        9
+                    ],
+                    "thumbnail": "soul.jpg"
                 }
             ],
             "reviews": [
                 {
-                    "albumName": "Fleetwood Mac",
-                    "artist": "Fleetwood Mac",
-                    "albumId": "5VIQ3VaAoRKOEpJ0fewdvo",
-                    "reviewId": 0,
-                    "reviewDescription": "shits lit",
+                    "albumName": "Och Stora Havet",
+                    "artist": "Jakob Hellman",
+                    "albumId": "biogq390wh",
+                    "reviewId": 795031,
+                    "reviewDescription": "SOOOO smooth sounding. even in its simplicity this album is SOOO amazing, and it's absolutely timeless. probably in my top 5 of all time.",
                     "rating": 3,
                     "boards": [
                         0
                     ],
-                    "timestamp": 1684339541,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e024fb043195e8d07e72edc7226"
+                    "timestamp": 1681312805,
+                    "albumCover": "hellman.jpg"
                 },
                 {
-                    "albumName": "Fleetwood Mac",
-                    "artist": "Fleetwood Mac",
-                    "albumId": "5VIQ3VaAoRKOEpJ0fewdvo",
-                    "reviewId": 1,
-                    "reviewDescription": "Wow This is a great album! really good, I like the way the guitar goes woeh woeh waaa floooow ski skiskiskisis tjup. You should all listen to this guitar. It keeps going and then it's like sweeee waaaaa, okerwreri, ping. ",
-                    "rating": 3,
+                    "albumName": "The microphones pt2",
+                    "artist": "Mount eire",
+                    "albumId": "8gt92bqf",
+                    "reviewId": 685913,
+                    "reviewDescription": "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
+                    "rating": 4,
                     "boards": [
-                        0
+                        0,
+                        4
                     ],
-                    "timestamp": 1684339628,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e024fb043195e8d07e72edc7226"
-                },
-                {
-                    "albumName": "A Laughing Death in Meatspace",
-                    "artist": "Tropical Fuck Storm",
-                    "albumId": "2Gbrm63qKXR2aaYEU80Rzs",
-                    "reviewId": 2,
-                    "reviewDescription": "Wow This is a great album! really good, I like the way the guitar goes woeh woeh waaa floooow ski skiskiskisis tjup. You should all listen to this guitar. It keeps going and then it's like sweeee waaaaa, okerwreri, ping. ",
-                    "rating": 3,
-                    "boards": [
-                        0
-                    ],
-                    "timestamp": 1684339629,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02253634cd0b2b001a4b1681e6"
-                },
-                {
-                    "albumName": "Response Test",
-                    "artist": "Recharge",
-                    "albumId": "2WKZI9Lq2TtVBqD5RiukS8",
-                    "reviewId": 3,
-                    "reviewDescription": "Response test",
-                    "rating": 3,
-                    "boards": [
-                        0
-                    ],
-                    "timestamp": 1684339766,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02bb5cd06b0ca1899407e83d7e"
+                    "timestamp": 1681586723,
+                    "albumCover": "hellman.jpg"
                 }
             ],
-            "favourites": []
+            "favourites": [
+                {
+                    "albumName": "The microphones pt2",
+                    "artist": "Mount eire",
+                    "albumId": "8gt92bqf",
+                    "favouriteId": 0
+                }
+            ]
         }
     }
 ]

@@ -149,9 +149,9 @@ async function renderCreateReviewView() {
 
 
     const contentContainer = document.querySelector("#contentContainer");
-    contentContainer.innerHTML ="";
+    contentContainer.innerHTML = "";
     let html =
-    `
+        `
         <div id="createContainer" class="">
             <h3>Add new review</h3>
             <div class="horizontalContainer">
@@ -171,15 +171,16 @@ async function renderCreateReviewView() {
     createContainer = contentContainer.querySelector("#createContainer");
     const createBoardDom = contentContainer.querySelector("#createBoard");
     const createReviewDom = contentContainer.querySelector("#createReview");
-            // Check if user have a board to which to add reviews to else they must first create a board
-    if (usersBoards.length > 0) { createReviewDom.classList.remove("disabled");
+    // Check if user have a board to which to add reviews to else they must first create a board
+    if (usersBoards.length > 0) {
+        createReviewDom.classList.remove("disabled");
         createReviewDom.addEventListener("click", renderCreateReview);
     };
-            // Render create a new board section; Flytta till functions? men det är samtidigt en egen component
+    // Render create a new board section; Flytta till functions? men det är samtidigt en egen component
     createBoardDom.addEventListener("click", renderCreateBoard)
     function renderCreateBoard() {
-        html = 
-        `
+        html =
+            `
             <form id="uploadWrapper" data-type="board">
             <input type="text" id="searchField" name="nameInput" placeholder="Name your board queen yas..." autocomplete="off">
             <input name="userId" style="display:none" value="${userId}">
@@ -202,8 +203,8 @@ async function renderCreateReviewView() {
         const boardNameInput = createContainer.querySelector("#searchField");
         const backButton = createContainer.querySelector("#goBackButton");
         const createButton = createContainer.querySelector("#createButton");
-        createButton.addEventListener("click", (e)=>{ e.preventDefault()});
-        backButton.addEventListener("click", (e)=>{ e.preventDefault()});
+        createButton.addEventListener("click", (e) => { e.preventDefault() });
+        backButton.addEventListener("click", (e) => { e.preventDefault() });
         // Show image preview
         imageUploader.onchange = evt => {
             const [file] = imageUploader.files;
@@ -213,7 +214,7 @@ async function renderCreateReviewView() {
             }
         };
         // allow create if inputfield is not empy
-        boardNameInput.addEventListener("keyup", (e)=>{
+        boardNameInput.addEventListener("keyup", (e) => {
             const input = e.target.value;
             if (!input) {
                 createButton.classList.add("disabled");
@@ -234,11 +235,11 @@ async function renderCreateReviewView() {
     }
 
 
-            // Render create a new review section;
+    // Render create a new review section;
     async function renderCreateReview() {
         token = await fetchToken();
-        html = 
-        `
+        html =
+            `
         <div id="searchContainer">
             <input id="searchField" placeholder="search album..." autocomplete="off">
             <img id="searchNavigator" src="/media/icons/Search.png" alt="">
@@ -292,8 +293,8 @@ async function renderCreateReviewView() {
         const starRatings = createContainer.querySelectorAll("#chooseRatingContainer div");
         // Event listener
         // Prevent default for submitting forms
-        createButton.addEventListener("click", (e)=>{ e.preventDefault()});
-        backButton.addEventListener("click", (e)=>{ e.preventDefault()});
+        createButton.addEventListener("click", (e) => { e.preventDefault() });
+        backButton.addEventListener("click", (e) => { e.preventDefault() });
         //Add boards to list of options
         usersBoards.forEach(board => {
             const optionDom = document.createElement("option");
@@ -301,7 +302,7 @@ async function renderCreateReviewView() {
             optionDom.textContent = board.boardName;
             optionDom.id = board.boardId
             selectBoard.dataset.boardId = usersBoards[0].boardId
-            optionDom.addEventListener("click", ()=>{
+            optionDom.addEventListener("click", () => {
                 selectBoard.dataset.boardId = optionDom.id
             })
             selectBoard.append(optionDom);
@@ -317,7 +318,7 @@ async function renderCreateReviewView() {
                 });
                 for (let i = 0; i < index; i++) {
                     starRatings[i].style.backgroundImage = "url(/media/icons/star-solid.svg)";
-                    
+
                 }
             });
             star.addEventListener("mouseleave", (e) => {
@@ -343,9 +344,9 @@ async function renderCreateReviewView() {
         });
         albumSearchField.addEventListener("keyup", searchAlbums);
         // Close search list when clicking outside it
-        document.addEventListener("click", (e)=>{
+        document.addEventListener("click", (e) => {
             const searchContainer = document.querySelector("#searchContainer");
-            if (e.target.parentElement != searchContainer ) {
+            if (e.target.parentElement != searchContainer) {
                 clearSearch();
             }
         });
@@ -357,47 +358,47 @@ async function renderCreateReviewView() {
 
 // Add a new review or board function
 function addBoardOrReview(bodyData) {
-    if (uploadWrapper.dataset.type = "review"){
-        const request = new Request("/server/addBoardOrReview.php",{
+    if (uploadWrapper.dataset.type = "review") {
+        const request = new Request("/server/addBoardOrReview.php", {
             header: "Content-Type: application/json",
-            method:"POST",
+            method: "POST",
             body: JSON.stringify(bodyData),
         });
         try {
-            fetch (request)
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                }
-            })
-            .then(resource => {
-                renderDiscoverView();
-            })
-            
+            fetch(request)
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                })
+                .then(resource => {
+                    renderDiscoverView();
+                })
+
         } catch (error) {
             console.log(error);
         }
 
     }
-    
+
 
     if (uploadWrapper.dataset.type = "board") {
-        const request = new Request("/server/addBoardOrReview.php",{
+        const request = new Request("/server/addBoardOrReview.php", {
             header: "Content-Type: application/json",
-            method:"POST",
+            method: "POST",
             body: bodyData,
         });
 
         try {
-            fetch (request)
-            .then(response => {
-                console.log(response);
-                return response.json();
-            })
-            .then(r => {
-                console.log(r);
-            })
-            
+            fetch(request)
+                .then(response => {
+                    console.log(response);
+                    return response.json();
+                })
+                .then(r => {
+                    console.log(r);
+                })
+
         } catch (error) {
             console.log(error);
         }
@@ -565,6 +566,9 @@ function renderProfileView(event) {
                 reviewsInBoard.forEach(review => {
 
                     makeReview(review, "#boardAndReviewContainer");
+
+
+                    document.querySelector(`#review_${review.reviewId} > #who`).textContent = `@${review.displayName}`;
                 });
 
 
