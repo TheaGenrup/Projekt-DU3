@@ -242,6 +242,8 @@ async function renderCreateReviewView(album) {
 
 // Add a new review or board function
 function addBoardOrReview(bodyData) {
+    console.log(bodyData);
+    return
     if (uploadWrapper.dataset.type = "review"){
         const request = new Request("/server/addBoardOrReview.php",{
             header: "Content-Type: application/json",

@@ -60,6 +60,7 @@ async function renderSearchView(e) {
         let input = e.target.value;
         toggleSearchIcon();
         if (!input) {
+            console.log("test");
             clearSearch();
         return}
         let albumSearchEndpoint = `https://api.spotify.com/v1/search?q=${input}&type=album&offset=0&limit=10`;
@@ -89,6 +90,7 @@ async function renderSearchView(e) {
               }
               albumsFound.push(albumInfo);
             });
+            clearSearchAlbums();
             listAlbums(albumsFound);
           });
     
@@ -139,6 +141,7 @@ function searchUsers(e) {
     fetch(request)
         .then(r=>r.json())
         .then(userResource => {
+            clearSearchUsers();
             listUsers(userResource);
         })
 }
@@ -245,6 +248,14 @@ function clearSearch() {
     const albumDomUl = document.querySelector("#albumUl");
     const userDomUl = document.querySelector("#userUl");
     if (albumDomUl) { albumDomUl.innerHTML = ""; };
+    if (userDomUl) { userDomUl.innerHTML = ""; };
+}
+function clearSearchAlbums() {
+    const albumDomUl = document.querySelector("#albumUl");
+    if (albumDomUl) { albumDomUl.innerHTML = ""; };
+}
+function clearSearchUsers() {
+    const userDomUl = document.querySelector("#albumUl");
     if (userDomUl) { userDomUl.innerHTML = ""; };
 }
 

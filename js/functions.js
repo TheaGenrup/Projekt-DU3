@@ -134,6 +134,16 @@ function displayAlbum(albumData) {
     `
     resultsWindow.innerHTML = html
     if (albumData.reviewDirectly) { renderCreateReviewView(albumData) }
+    try {
+        fetch(`/server/getReviews.php?albumId=${albumId}`)
+        .then(response => {
+            console.log(response);
+            return response.json();
+        })
+        .then(averageRatingData => console.log())
+    } catch (error) {
+        
+    }
     resultsWindow.dataset.albumId = albumId;
     resultsWindow.style.display = "flex";
     const closeButton       = resultsWindow.querySelector("#closeResultsButton");
@@ -196,7 +206,7 @@ async function renderCreateReview(albumData) {
 
     <div class="horizontalContainer">
         <button id="goBackButton" class="navigationButton">Go back</button>
-        <button for="uploadWrapper" id="createButton" class="navigationButton disabled">Create</button>
+        <button for="uploadWrapper" id="createButton" class="navigationButton">Create</button>
     </div>  
     `;
     createContainer.innerHTML = html;
@@ -260,5 +270,14 @@ async function renderCreateReview(albumData) {
         });
     });
 
+    function addReview(e) {
+        e.preventDefault();
+        const formData = {
+            
+        }
+        addBoardOrReview(formData);
+    }
+
     backButton.addEventListener("click", renderCreateReviewView);
+    createButton.addEventListener("click", addReview);
 }
