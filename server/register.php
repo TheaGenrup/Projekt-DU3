@@ -27,6 +27,23 @@ if (isset($data["username"], $data["password"], $data["displayName"])) {
             $error = ["message" => "Please leave no field empty <3"];
             sendJSON($error, 400);
         }
+        if (str_contains($sentUsername, " ") || str_contains($sentPassword, " ")) {
+            $error = ["message" => "Username and Password may not contain spaces"];
+            sendJSON($error, 400);
+        }
+
+        if (strlen($sentUsername) > 25) {
+            $error = ["message" => "Username may not be longer than 25 characters"];
+            sendJSON($error, 400);
+        }
+        if (strlen($sentPassword) > 30) {
+            $error = ["message" => "Password may not be longer than 30 characters"];
+            sendJSON($error, 400);
+        }
+        if (strlen($sentDisplayName) > 25) {
+            $error = ["message" => "DisplayName may not be longer than 25 characters"];
+            sendJSON($error, 400);
+        }
 
         $userData = getFileData("users.json");
         // Check if user credentials are already in use;

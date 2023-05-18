@@ -11,7 +11,7 @@ function checkIfAlreadyLoggedIn() {
 };
 // Switch between log in and register Section
 function switchLoginRegsiter(e) {
-    const switchBtn = e.target
+    const switchBtn = document.querySelector("#switchBtn");
     const loginRegisterbtn = document.querySelector("#loginRegisterBtn");
     const loginRegisterSwitchcontainer = document.querySelector("#loginRegisterSwitch");
     const text = loginRegisterSwitchcontainer.querySelector(".signupText");
@@ -61,10 +61,13 @@ function loginRegister(e) {
 async function attemptLogin(username, password, access, loginKey) {
     if (!loginKey) {
         const userData = await fetchLogin(username, password, access);
-        loginUser(userData);
+        if (userData.message) { sendLoginPageMessage(userData.message); return }
+        else { loginUser(userData); }
     }
     if (loginKey) {
         const userData = await fetchLogin(username, password, access, loginKey);
+        if (!userData) {   renderLoginPage   };
+
         loginUser(userData);
     }
 
@@ -83,10 +86,7 @@ async function fetchLogin(username, password, access, loginKey) {
     }
     const response = await fetch(request, data);
     const resource = await response.json();
-    if (response.ok) {
-        return resource
-    }
-
+    return resource
 }
 
 function loginUser(userData) {
@@ -96,7 +96,6 @@ function loginUser(userData) {
     const profilePicture = userData.userIdentity.profilePic
 
     renderLoggedInView(profilePicture)
-    // renderDiscoverView(followingNewReviews);
     renderDiscoverView();
 }
 
@@ -122,6 +121,10 @@ function registerUser(username, password, displayname) {
         .then(r => {
             console.log(r);
             sendLoginPageMessage(r.message);
+
+            if (r.message === "Registered!") {
+                setTimeout(switchLoginRegsiter, 3000)
+            }
         })
     } catch (error) {
         sendLoginPageMessage("whoopsie, an error occured, please try again another time")
@@ -131,12 +134,15 @@ function registerUser(username, password, displayname) {
 
 function sendLoginPageMessage(message) {
     const loginRegistermessageDom = document.querySelector("#loginRegistermessage");
+    loginRegistermessageDom.textContent = ""
+    loginRegistermessageDom.style.opacity = "0%"
+    loginRegistermessageDom.style.transition = "0s"
     loginRegistermessageDom.textContent = message
     loginRegistermessageDom.style.opacity = "100%"
     setTimeout(()=>{
         loginRegistermessageDom.style.transition = "1.5s"
         loginRegistermessageDom.style.opacity = "0%"
-    }, 4500);
+    }, 10000);
     loginRegistermessageDom.style.transition = "0s"
     return;
 }

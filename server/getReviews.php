@@ -5,7 +5,7 @@ require_once "functions.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
-    $users = json_decode(file_get_contents("users.json"), true);
+    $users = getFileData("users.json");
 
     if (isset($_GET["id"])) {
         $userId = $_GET["id"];
@@ -38,6 +38,31 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         } 
         sendJSON(["message" => "User Not Found"], 404);
     }
+    if (isset($_GET["albumId"])) {
+        $albumId = $_GET["albumId"];
+        $users = getFileData("users.json");
+        $reviewsCount = 0;
+        $reviewRatingTotal = 0;
+        foreach ($users as $user) {
+            $usersReivews = $user["albumData"]["reviews"];
+            foreach ($usersReivews as $review) {
+                if ($review["albumId"] == $albumId) {
+                    $reviewRating = $review["rating"];
+                    $reviewsCount++;
+                    $reviewRatingTotal += $reviewRating;
+                }
+            }
+        };
+        if ($reviewsCount == 0) {
+            $response = ["message" => "No rating score yet"];
+            sendJSON($response, 204);
+        }
+        $averageRating = $reviewRatingTotal / $reviewsCount;
+        $response = ["message" => $averageRating];
+        sendJSON($response, 200);
+    };
+    $response = ["message" => "Missing get input"];
+    sendJSON($response, 405);
 
 } 
 sendJSON(["message" => "You need to use the GET method"], 405);
