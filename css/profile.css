@@ -13,6 +13,18 @@
     border-radius: 50%;
 }
 
+#followButton {
+    height: 5vh;
+    width: 35vw;
+    background-color: gray;
+    border: none;
+    display: block;
+}
+
+#followButton:hover {
+    background-color: rgb(119, 119, 119);
+}
+
 #bookmarkIcon,
 #settingsIcon,
 #addBoardIcon {

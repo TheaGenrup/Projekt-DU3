@@ -48,3 +48,10 @@ nav * {
     box-sizing: border-box;
     padding: 10px;
 }
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

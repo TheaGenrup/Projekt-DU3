@@ -1,25 +1,32 @@
 async function deleteReview(event) {
 
+
     event.stopPropagation();
 
-    const loggedInUserId = localStorage.getItem("userId");
-    const reviewId = event.target.dataset.reviewId;
+    //    const confirm = confirm("Are you sure you want to delete this review?\nEither OK or Cancel.");
 
-    const bodyDelete = {
-        userId: loggedInUserId,
-        reviewId: reviewId
-    };
+    if (confirm("Are you sure you want to delete this review?\nEither OK or Cancel.")) {
+        const loggedInUserId = localStorage.getItem("userId");
+        const reviewId = event.target.dataset.reviewId;
 
-    const requestDelete = new Request(`../server/deleteReview.php`, {
-        method: "DELETE",
-        body: JSON.stringify(bodyDelete),
-        headers: { "Content-type": "application/json; charset=UTF-8" }
-    });
+        const bodyDelete = {
+            userId: loggedInUserId,
+            reviewId: reviewId
+        };
 
-    const response = await fetch(requestDelete);
-    // const resource = await response.json();
+        const requestDelete = new Request(`../server/deleteReview.php`, {
+            method: "DELETE",
+            body: JSON.stringify(bodyDelete),
+            headers: { "Content-type": "application/json; charset=UTF-8" }
+        });
 
-    document.querySelector(`#review_${reviewId}`).remove();
+        const response = await fetch(requestDelete);
+        // const resource = await response.json();
+
+        document.querySelector(`#review_${reviewId}`).remove();
+
+    }
+
 
 
 };

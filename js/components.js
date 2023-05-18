@@ -431,7 +431,7 @@ function renderProfileView(event) {
                         <img id="profilePictureTop" src="../media/${profilePicture}"></img>
                         <p>@${displayName}</p>
                     </div> 
-                    <div>
+                    <div class="center">
                         <div id="followingFollowers">
                             <div>Followers</div>
                             <div>${userFollowers}</div>
@@ -460,11 +460,7 @@ function renderProfileView(event) {
                 try {
                     fetch(request)
                         .then(response => {
-                            console.log(response);
                             return response.json();
-                        })
-                        .then(r => {
-                            console.log(r);
                         })
 
                 } catch (error) {
@@ -481,7 +477,6 @@ function renderProfileView(event) {
 
             if (clickedUserId !== loggedInUserId) {
 
-                console.log(user);
                 const followers = user.userSocial.followers;
 
                 if (followers.includes(loggedInUserId)) {
@@ -577,8 +572,7 @@ function renderProfileView(event) {
             function openBoard(event) {
 
                 document.querySelector("#boardAndReviewContainer").innerHTML = `
-                <h2 id="title">${event.target.textContent}</h2>
-                <div id="addReview" class="pointer">ADD REVIEW</div>`;
+                <h2 id="title">${event.target.textContent}</h2>`;
 
                 const reviewsInBoard = [];
 
@@ -629,6 +623,8 @@ function renderProfileView(event) {
                         newElement.dataset.reviewId = reviewId;
 
                     });
+
+
 
 
                     document.querySelectorAll(".deleteBtn").forEach(button => {
