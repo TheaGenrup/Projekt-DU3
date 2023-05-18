@@ -300,8 +300,6 @@ function renderProfileView(event) {
                         const boardId = board.boardId;
                         const arrayWithReviews = user.albumData.reviews;
 
-                        console.log(arrayWithReviews);
-
                         arrayWithReviews.forEach(review => {
 
                             review.boards.forEach(board => {
