@@ -153,6 +153,7 @@
     background-color: rgb(212, 212, 212);
     box-sizing: border-box;
     padding: 10px;
+    position: relative;
 }
 
 p {
@@ -220,4 +221,15 @@ p {
     text-align: center;
     font-size: 30px;
     margin: 0 0 20px 0;
+}
+
+.deleteBtn {
+    background-image: url(../media/icons/close_0.png);
+    background-position: center;
+    background-size: cover;
+    height: 4vw;
+    width: 4vw;
+    position: absolute;
+    top: 10px;
+    right: 15px;
 }
