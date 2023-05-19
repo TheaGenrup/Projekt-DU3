@@ -45,9 +45,9 @@ function renderLoggedInView(profilePic) {
         <div id="contentContainer"></div>
     </main>
     <nav>
-        <img class="viewIcon" id="discoverIcon" src="/media/icons/discover.png" alt="Discover"></img>
-        <img class="viewIcon" id="searchIcon" src="/media/icons/search.png" alt="Search"></img>
-        <img class="viewIcon" id="addIcon" src="/media/icons/add.png" alt="Add"></img>
+        <button class="viewIcon" id="discoverIcon"></button>
+        <button class="viewIcon" id="searchIcon"></button>
+        <button class="viewIcon" id="addIcon"></button>
         <img class="viewIcon" id="profilePicture" src="/media/${profilePic}" alt="Profile"></img>
     </nav>
     `;

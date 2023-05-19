@@ -49,7 +49,7 @@ body main #contentCOntainer #noResults{
     font-size: 2vh;
     box-sizing: border-box;
     padding: 5vw;
-    height: 97%;
+    height: 100%;
     width: 90vw;
     background-color: rgb(68, 68, 68);
     border-radius: 20px;
@@ -58,7 +58,7 @@ body main #contentCOntainer #noResults{
     display: flex;
     flex-direction: column;
     position: relative;
-    bottom: -1vh;
+    /* bottom: -1vh;*/ 
     overflow: scroll;
 }
 
@@ -79,19 +79,48 @@ nav {
     color: white;
     height: 8%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     box-sizing: border-box;
-    padding: 30px 40px 30px 40px;
+    /*    padding: 30px 40px 30px 40px;*/
 
 }
 
 .viewIcon {
     background-position: center;
     background-size: cover;
-    height: 8vw;
-    width: 8vw;
+    background-repeat: no-repeat;
+    min-height: 0;
+    min-width: 0;
+    height: 5vh;
+    width: 5vh;
     cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
+
+}
+button.viewIcon {
+    border: none;
+    transition: 0.2s;
+}
+
+#discoverIcon{
+    background-image: url(/media/icons/home-svgrepo-com.svg);
+}
+#searchIcon{
+    background-image: url(/media/icons/search-svgrepo-com.svg);
+}
+#addIcon{
+    background-image: url(/media/icons/plus-svgrepo-com.svg);
+}
+
+button.viewIcon{
+    filter: invert(43%) sepia(0%) saturate(3065%) hue-rotate(172deg) brightness(98%) contrast(67%);
+}
+button.viewIcon:hover{
+    filter: invert(95%) sepia(0%) saturate(147%) hue-rotate(196deg) brightness(92%) contrast(95%);
+}
+#profilePicture{
+    border: 1px solid rgb(29, 29, 29);
 }
 
 #logoutBtn {
@@ -160,29 +189,4 @@ textarea {
 .createBox:focus {
     background-color: rgb(87, 87, 87);
     outline: none;
-}
-
-#closeModalBtn {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    background-color: none;
-    background: none;
-    cursor: pointer;
-
-    width: 4vw;
-    height: 4vw;
-}
-
-#closeModalBtn:focus {
-    border: none;
-}
-
-#closeModalBtn img {
-    width: 4vw;
-    height: 4vw;
 }
