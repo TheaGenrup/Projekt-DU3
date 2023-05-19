@@ -31,6 +31,7 @@ function toggleSearchIcon(params) {
 async function renderSearchView(e) {
     clearSearch();
     const originButton = e.target.id
+    console.log(originButton);
     // Get Spotify token
     token = await fetchToken();
     if (document.querySelector("#searchWindow")) { return };
@@ -60,7 +61,10 @@ async function renderSearchView(e) {
         
         if the user instead is searching from the add review section they will only be able to see albums when searching and will be directly directed to the review album section.
     */
-    if (originButton === "searchIcon") { searchField.addEventListener("keyup", searchUsers);}
+    if (originButton === "searchIcon") {
+        console.log("test");
+        
+        searchField.addEventListener("keyup", searchUsers);}
     // CSS change
     document.querySelector("#css2").setAttribute("href", "/css/search.css");
 

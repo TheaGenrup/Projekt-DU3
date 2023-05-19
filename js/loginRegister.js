@@ -61,7 +61,7 @@ function loginRegister(e) {
 async function attemptLogin(username, password, access, loginKey) {
     if (!loginKey) {
         const userData = await fetchLogin(username, password, access);
-        if (userData.message) { sendLoginPageMessage(userData.message); return }
+        if (userData.message) { sendMessageToUser(document.querySelector("#loginRegistermessage"),userData.message); return }
         else { loginUser(userData); }
     }
     if (loginKey) {
@@ -120,30 +120,29 @@ function registerUser(username, password, displayname) {
         })
         .then(r => {
             console.log(r);
-            sendLoginPageMessage(r.message);
+            sendMessageToUser(document.querySelector("#loginRegistermessage"),r.message);
 
             if (r.message === "Registered!") {
                 setTimeout(switchLoginRegsiter, 3000)
             }
         })
     } catch (error) {
-        sendLoginPageMessage("whoopsie, an error occured, please try again another time")
+        sendMessageToUser(document.querySelector("#loginRegistermessage"), "whoopsie, an error occured, please try again another time")
     }
 
 }
 
-function sendLoginPageMessage(message) {
-    const loginRegistermessageDom = document.querySelector("#loginRegistermessage");
-    loginRegistermessageDom.textContent = ""
-    loginRegistermessageDom.style.opacity = "0%"
-    loginRegistermessageDom.style.transition = "0s"
-    loginRegistermessageDom.textContent = message
-    loginRegistermessageDom.style.opacity = "100%"
+function sendMessageToUser(DomElement, message) {
+    DomElement.textContent = ""
+    DomElement.style.opacity = "0%"
+    DomElement.style.transition = "0s"
+    DomElement.textContent = message
+    DomElement.style.opacity = "100%"
     setTimeout(()=>{
-        loginRegistermessageDom.style.transition = "1.5s"
-        loginRegistermessageDom.style.opacity = "0%"
+        DomElement.style.transition = "1.5s"
+        DomElement.style.opacity = "0%"
     }, 10000);
-    loginRegistermessageDom.style.transition = "0s"
+    DomElement.style.transition = "0s"
     return;
 }
 

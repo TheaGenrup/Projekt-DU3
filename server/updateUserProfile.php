@@ -1,13 +1,53 @@
 <?php
 require_once("functions.php");
 $requestMethod = $_SERVER["REQUEST_METHOD"];
-//  Check if method is POST
-if (!isset($_POST["userId"])) {
+
+$json = file_get_contents("php://input");
+$data = json_decode($json, true);
+if (!isset($data["id"])) {
     $response = ["message"=>"Id needed"];
     sendJson($response, 405);
 }
+$userId = $data["id"];
+// Update users display name
+if ($requestMethod == "PATCH") {
+    if (!isset($data["newDisplayName"])) { $response = ["message"=>"missing new name input"];    sendJson($response, 400);}
 
-$userId = $_POST["userId"];
+
+    $newDisplayName = $data["newDisplayName"];
+    $userData = getFileData("users.json");
+
+    foreach ($userData as $user) {
+        if ($user["userIdentity"]["displayName"] == $newDisplayName) {
+            $response = ["message" => "Display already in used!"];
+            sendJson($response, 200);
+        }
+    }
+
+    foreach ($userData as $key => $user) {
+        if ($user["userIdentity"]["id"] == $userId) {
+            
+            $userData[$key]["userIdentity"]["displayName"] = $newDisplayName;
+            saveFileData("users.json", $userData);
+            $response = ["message"=>"Display name changed! "];
+            sendJson($response, 200);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// Update profile picture
+
 $imageName;
 
 if (isset($_FILES["imageInput"]) && $_FILES["imageInput"]["tmp_name"] != "") {
@@ -31,6 +71,9 @@ if (isset($_FILES["imageInput"]) && $_FILES["imageInput"]["tmp_name"] != "") {
         }
     }
 
+
+$response = ["message"=> "Wrong Method noob"];
+sendJson($response, 405);
 
     
 }

@@ -248,26 +248,34 @@ p {
 
 /* Upload image section */
 
+#displayNameContainer{
+    width: 100%;
+}
+#displayNameContainer label{
+    height: 10px;
+}
+
 #contentContainer #uploadWrapper{
     display: flex;
     flex-direction: column;
     align-items: center;
 
     width: 100%;
-    height: 35%;
+    height: 45%;
+}
+#contentContainer #uploadWrapper *{
+    margin-bottom: 10px;
 }
 
 /* Image upload section*/
 #contentContainer #imageUploaderContainer{
-    position: absolute;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    top: 10%;
-
-    width: 30vw;
-    height: 30vw;
+    width: 20vh;
+    height: 20vh;
     margin-top: 5vw;
 
     border-radius: 50%;

@@ -7,24 +7,30 @@ async function editAccount(e) {
     console.log(user);
     editAccountContainer.innerHTML = "";
     let html = `
+    <div>Edit profile</div>
         <form id="uploadWrapper">
-        <div>Change profile picture</div>
             <div id="imageUploaderContainer">
                 <img id="imagePreview" src=""></img>
                 <input type="file" id="imageUploader" accept="image/jpeg" name="imageInput">
                 <input name="userId" style="display:none" value="${userId}">
+            </div>
+            <div id="displayNameContainer">
+                <label for="displayNameInput"></label>
+                <input type="text" id="searchField" name="displayNameInput" placeholder="Display Name" autocomplete="off">
             </div>
         </form>
 
         <div class="horizontalContainer">
         <button id="goBackButton" class="navigationButton">Cancel</button>
         <button for="uploadWrapper" id="createButton" class="navigationButton disabled">Save</button>
+        </div>
     `
     editAccountContainer.innerHTML = html
     const imageUploader = document.querySelector("#imageUploader");
     const imagePreview = document.querySelector("#imagePreview");
     const backButton = document.querySelector("#goBackButton");
     const createButton = document.querySelector("#createButton");
+    const displayNameInput = document.querySelector("#searchField");
     const usersCurrentProfielPicture = user.userIdentity.profilePic;
     createButton.addEventListener("click", (e) => { e.preventDefault() });
     backButton.addEventListener("click", (e) => { e.preventDefault() });
@@ -40,16 +46,28 @@ async function editAccount(e) {
             imagePreview.classList.add("imageUploaded");
             imagePreview.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
             createButton.classList.remove("disabled");
-            createButton.addEventListener("click", UploadPhoto)
+            createButton.addEventListener("click", editProfile);
         }
+    };
+    displayNameInput.addEventListener("keyup", (e)=>{
+        if (!displayNameInput.value && !imagePreview.classList.contains("imageUploaded")) {
+            createButton.classList.add("disabled");
+            createButton.removeEventListener("click", editProfile);
+        } else {
+            createButton.classList.remove("disabled");
+            createButton.addEventListener("click", editProfile);
+        }
+    })
+    
 
-        function UploadPhoto(e) {
-            e.preventDefault();
+    async function editProfile(e) {
+        e.preventDefault();
+        if (imagePreview.classList.contains("imageUploaded")) {
             const formWrapper = editAccountContainer.querySelector("form");
             const formData = new FormData(formWrapper);
             const request = new Request("/server/updateUserProfile.php",{
             header: "Content-Type: application/json",
-            method: "PATCH",
+            method: "POST",
             body: formData,
             });
 
@@ -68,62 +86,30 @@ async function editAccount(e) {
             }
         }
 
-    };
-}
+        if (displayNameInput.value) {
+            if (displayNameInput.value === user.userIdentity.displayName) {    sendMessageToUser(document.querySelector("label"), "that's already your name you ear of a bat");   return};
+            if (displayNameInput.value.length > 25) {    sendMessageToUser(document.querySelector("label"), "Display name too long king :/");   return};
+            const request = new Request("/server/updateUserProfile.php", {
+                headers: {"Content-type": "application/json"},
+                method: "PATCH",
+                body: JSON.stringify({
+                    id: userId,
+                    newDisplayName: displayNameInput.value
+                })
+            })
 
-/*
+            fetch(request)
+                .then(r=>{
+                    console.log(r);
+                    return r.json()
+                })
+                .then(r=>{
+                    sendMessageToUser(document.querySelector("label"), r.message)
+                })
 
-        imageUploader.onchange = evt => {
-            const [file] = imageUploader.files;
-            if (file) {
-                imagePreview.classList.add("imageUploaded");
-                imagePreview.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
-            }
-        };
-        // allow create if inputfield is not empy
-        boardNameInput.addEventListener("keyup", (e) => {
-            const input = e.target.value;
-            if (!input) {
-                createButton.classList.add("disabled");
-                createButton.removeEventListener("click", addBoard);
-                return
-            }
-            createButton.classList.remove("disabled");
-            createButton.addEventListener("click", addBoard)
 
-        })
-        function addBoard(e) {
-            e.preventDefault();
-            const formWrapper = createContainer.querySelector("form");
-            const formData = new FormData(formWrapper);
-            addBoardOrReview(formData);
+
+
         }
-
-
-                    <form id="uploadWrapper" data-type="board">
-            <input type="text" id="searchField" name="nameInput" placeholder="Name your board queen yas..." autocomplete="off">
-            <input name="userId" style="display:none" value="${userId}">
-
-            <div id="imageUploaderContainer">
-                <img id="imagePreview" src=""></img>
-                <input type="file" id="imageUploader" accept="image/*" name="imageInput">
-            </div>
-            </form>
-            <div class="horizontalContainer">
-            <button id="goBackButton" class="navigationButton">Go back</button>
-            <button for="uploadWrapper" id="createButton" class="navigationButton disabled">Create</button>
-        </div>
-        `;
-        createContainer.innerHTML = html;
-        createContainer.classList.add("board");
-        // consts
-        const imageUploader = createContainer.querySelector("#imageUploader");
-        const imagePreview = createContainer.querySelector("#imagePreview");
-        const boardNameInput = createContainer.querySelector("#searchField");
-        const backButton = createContainer.querySelector("#goBackButton");
-        const createButton = createContainer.querySelector("#createButton");
-        createButton.addEventListener("click", (e) => { e.preventDefault() });
-        backButton.addEventListener("click", (e) => { e.preventDefault() });
-
-
-*/
+    }
+}

@@ -14,18 +14,7 @@
     display: flex;
     align-items: center;
 }
-#searchWindow #searchField {
-    width: 0%;
-    height: 10vw;
-    border-radius: 10px;
-    padding: 0px 5px;
-    border: none;
-    box-sizing: border-box;
-}
 
-#searchWindow #searchField:focus {
-    outline: none;
-}
 #searchWindow #searchNavigator {
     position: absolute;
     right: 10px;
