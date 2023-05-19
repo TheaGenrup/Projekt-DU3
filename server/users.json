@@ -176,7 +176,7 @@
             "username": "thea",
             "password": "thea"
         },
-        "loginKey": "8WBLHAYpeZNmmrUqLlEC6AGY4",
+        "loginKey": "QyAoncY0rAG5aoX7VXJzrCQTA",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -195,28 +195,33 @@
         "albumData": {
             "boards": [
                 {
-                    "boardName": "Psychadelic acid rock",
+                    "boardName": "Assorted",
                     "boardId": 0,
                     "reviews": [
                         4,
-                        6
+                        6,
+                        1
                     ],
                     "thumbnail": "defaultBoardImage.jpg"
                 },
                 {
-                    "boardName": "Katy Perry's best albums (all of them)",
+                    "boardName": "Sobral's best albums (all of them)",
                     "boardId": 1,
                     "reviews": [
-                        5
+                        3,
+                        4,
+                        1
                     ],
                     "thumbnail": "defaultBoardImage.jpg"
                 },
                 {
-                    "boardName": "test",
+                    "boardName": "Others",
                     "boardId": 2,
                     "reviews": [
                         7,
-                        0
+                        0,
+                        2,
+                        5290
                     ],
                     "thumbnail": "defaultBoardImage.jpg"
                 }
@@ -230,8 +235,7 @@
                     "reviewDescription": "More or less for me, they are as wonderful as sculptures or paints, because Dreams goes absolutely beyond music. Their instruments are like brushes with which we paint such wonderful songs as Sara, Gypsy, Big Love, Rhiannon, thanks to which we can experience artistic understanding.",
                     "rating": 3,
                     "boards": [
-                        0,
-                        5
+                        2
                     ],
                     "timestamp": 1684339541,
                     "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e024fb043195e8d07e72edc7226"
@@ -266,7 +270,7 @@
                     "albumName": "Response Test",
                     "artist": "Recharge",
                     "albumId": "2WKZI9Lq2TtVBqD5RiukS8",
-                    "reviewId": 3,
+                    "reviewId": 10,
                     "reviewDescription": "Response test",
                     "rating": 3,
                     "boards": [
@@ -279,40 +283,14 @@
                     "albumName": "Teenage Dream",
                     "artist": "Katy Perry",
                     "albumId": "2eQMC9nJE3f3hCNKlYYHL1",
-                    "reviewId": 4,
-                    "reviewDescription": "Best album ever <3",
+                    "reviewId": 3,
+                    "reviewDescription": "nope.",
                     "rating": 5,
                     "boards": [
                         0
                     ],
                     "timestamp": 1684414637,
                     "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02d20c38f295039520d688a888"
-                },
-                {
-                    "albumName": "The Money Store",
-                    "artist": "Death Grips",
-                    "albumId": "1PQDjdBpHPikAodJqjzm6a",
-                    "reviewId": 5,
-                    "reviewDescription": "Katy Perry really did a good job on this one",
-                    "rating": 5,
-                    "boards": [
-                        1
-                    ],
-                    "timestamp": 1684414698,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02b4f8459b0f719f8a97ee1c8c"
-                },
-                {
-                    "albumName": "TESTING",
-                    "artist": "A$AP Rocky",
-                    "albumId": "3MATDdrpHmQCmuOcozZjDa",
-                    "reviewId": 6,
-                    "reviewDescription": "",
-                    "rating": 1,
-                    "boards": [
-                        0
-                    ],
-                    "timestamp": 1684418190,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029feadc48ab0661e9b3a9170b"
                 },
                 {
                     "albumName": "True",
@@ -326,6 +304,71 @@
                     ],
                     "timestamp": 1684433723,
                     "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02e14f11f796cef9f9a82691a7"
+                },
+                {
+                    "albumName": "The Very Best Of Fleetwood Mac",
+                    "artist": "Fleetwood Mac",
+                    "albumId": "600CiKJo7zfaBJKnkThbyD",
+                    "reviewId": 11,
+                    "reviewDescription": "xxxx",
+                    "rating": 4,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684514397,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e027d26138bad83453cdf7d13c3"
+                },
+                {
+                    "albumName": "Native",
+                    "artist": "OneRepublic",
+                    "albumId": "2bbhW5ifCwOYM8DMkqoYBF",
+                    "reviewId": 12,
+                    "reviewDescription": "s\u00e5 mycket barndom",
+                    "rating": 4,
+                    "boards": [
+                        2
+                    ],
+                    "timestamp": 1684514727,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02e80e7dbce3996a1ae5967751"
+                },
+                {
+                    "albumName": "Camomila",
+                    "artist": "Luisa Sobral",
+                    "albumId": "20mX674gWxPjpWNfpFo9ot",
+                    "reviewId": 14,
+                    "reviewDescription": "xxxxx",
+                    "rating": 5,
+                    "boards": [
+                        1
+                    ],
+                    "timestamp": 1684515056,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0236dc2812b046bc8e171bd753"
+                },
+                {
+                    "albumName": "bpm",
+                    "artist": "Salvador Sobral",
+                    "albumId": "2hkR2iRFbnUUp8XRu3KXzh",
+                    "reviewId": 4,
+                    "reviewDescription": "great",
+                    "rating": 5,
+                    "boards": [
+                        1
+                    ],
+                    "timestamp": 1684515527,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02cdc8ff5e6bbc8e62f377b8f0"
+                },
+                {
+                    "albumName": "Excuse Me",
+                    "artist": "Salvador Sobral",
+                    "albumId": "34dhAL1UrzyryxcjuVOt5E",
+                    "reviewId": 1,
+                    "reviewDescription": "xxxx",
+                    "rating": 5,
+                    "boards": [
+                        1
+                    ],
+                    "timestamp": 1684515758,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0209213622877432141542bdae"
                 }
             ],
             "favourites": []

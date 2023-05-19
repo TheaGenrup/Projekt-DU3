@@ -4,12 +4,13 @@ let tokenTimer;
 
 async function fetchToken(params) {
     fetch("/server/spotifyApi/tokenAccess.php")
-    .then(r=>r.json())
-    .then(r => {
-        token = r.token;
-        tokenTimer = r.tokenTimeLeft;
-        return token;
-})};
+        .then(r => r.json())
+        .then(r => {
+            token = r.token;
+            tokenTimer = r.tokenTimeLeft;
+            return token;
+        })
+};
 
 function toggleSearchIcon(params) {
     const searchNavigator = document.querySelector("#searchNavigator");
@@ -19,7 +20,7 @@ function toggleSearchIcon(params) {
         searchNavigator.src = "/media/icons/Search.png"
     } else {
         searchNavigator.src = "/media/icons/close_0.png"
-        searchNavigator.addEventListener("click", ()=>{
+        searchNavigator.addEventListener("click", () => {
             searchNavigator.src = "/media/icons/Search.png"
             input.value = "";
             clearSearch();
@@ -27,7 +28,7 @@ function toggleSearchIcon(params) {
     }
 }
 
-                    // SEARCH SECTION
+// SEARCH SECTION
 async function renderSearchView(e) {
     clearSearch();
     const originButton = e.target.id
@@ -60,7 +61,7 @@ async function renderSearchView(e) {
         
         if the user instead is searching from the add review section they will only be able to see albums when searching and will be directly directed to the review album section.
     */
-    if (originButton === "searchIcon") { searchField.addEventListener("keyup", searchUsers);}
+    if (originButton === "searchIcon") { searchField.addEventListener("keyup", searchUsers); }
     // CSS change
     document.querySelector("#css2").setAttribute("href", "/css/search.css");
 
@@ -72,38 +73,40 @@ async function renderSearchView(e) {
         toggleSearchIcon();
         if (!input) {
             clearSearch();
-        return}
+            return
+        }
         let albumSearchEndpoint = `https://api.spotify.com/v1/search?q=${input}&type=album&offset=0&limit=10`;
-    
-        if (token.length > 0 || token != undefined) { 
-          fetch(albumSearchEndpoint, {
-              headers: {
-                  "Authorization": "Bearer " + token
-              }
-          })
-          .then(response => {
-            return response.json()})
-          .then(albumResource => {
-            const albumsfetched = albumResource.albums.items;
-            const albumsFound = []
-            albumsfetched.forEach(album => {
-              const artistsInAlbum = []; 
-              album.artists.forEach(artist => {
-                artistsInAlbum.push(artist.name)
-              });
-              let albumInfo = {
-                albumArtists: artistsInAlbum,
-                albumName:  album.name,
-                albumId:    album.id,
-                albumImage: album.images[1].url,
-                albumType:  album.album_type,
-              }
-              albumsFound.push(albumInfo);
-            });
-            clearSearchAlbums();
-            listAlbums(albumsFound);
-          });
-    
+
+        if (token.length > 0 || token != undefined) {
+            fetch(albumSearchEndpoint, {
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            })
+                .then(response => {
+                    return response.json()
+                })
+                .then(albumResource => {
+                    const albumsfetched = albumResource.albums.items;
+                    const albumsFound = []
+                    albumsfetched.forEach(album => {
+                        const artistsInAlbum = [];
+                        album.artists.forEach(artist => {
+                            artistsInAlbum.push(artist.name)
+                        });
+                        let albumInfo = {
+                            albumArtists: artistsInAlbum,
+                            albumName: album.name,
+                            albumId: album.id,
+                            albumImage: album.images[1].url,
+                            albumType: album.album_type,
+                        }
+                        albumsFound.push(albumInfo);
+                    });
+                    clearSearchAlbums();
+                    listAlbums(albumsFound);
+                });
+
         }
     };
     // List albums function
@@ -112,15 +115,15 @@ async function renderSearchView(e) {
         if (albumsFound.length > 0) {
             albumsFound.forEach(album => {
                 // albums constants
-                const albumName     = album.albumName;
-                const albumArtists  = album.albumArtists;
-                const albumId       = album.albumId;
-                const albumImage    = album.albumImage;
-        
+                const albumName = album.albumName;
+                const albumArtists = album.albumArtists;
+                const albumId = album.albumId;
+                const albumImage = album.albumImage;
+
                 const liDom = document.createElement("li");
                 liDom.setAttribute("id", albumId)
-                liDom.innerHTML = 
-                `
+                liDom.innerHTML =
+                    `
                     <img class="albumPreviewImage" src="${albumImage}"></img>
                     <div class="albumListingInformation">
                         <p class="albumName">${albumName}</p>
@@ -134,8 +137,9 @@ async function renderSearchView(e) {
                 if (originButton === "searchIcon") { liDom.addEventListener("click", showCaseAlbum); }
                 if (originButton === "createReview") {
                     liDom.dataset.reviewDirectly = "true";
-                    liDom.addEventListener("click", showCaseAlbum); }
-        
+                    liDom.addEventListener("click", showCaseAlbum);
+                }
+
                 albumDomUl.append(liDom);
             });
         } else {
@@ -146,10 +150,10 @@ async function renderSearchView(e) {
 
 function searchUsers(e) {
     let input = e.target.value;
-    if (!input) {return}
+    if (!input) { return }
     const request = new Request(`/server/searchUsers.php?search=${input}`);
     fetch(request)
-        .then(r=>r.json())
+        .then(r => r.json())
         .then(userResource => {
             clearSearchUsers();
             listUsers(userResource);
@@ -169,11 +173,11 @@ function showCaseAlbum(e) {
     const albumId = liDom.id;
 
     const albumData = {
-        artistName:artistName,
-        albumName:albumName,
-        albumCover:albumCover,
-        albumId:albumId,
-        
+        artistName: artistName,
+        albumName: albumName,
+        albumCover: albumCover,
+        albumId: albumId,
+
     };
     if (liDom.dataset.reviewDirectly) {
         albumData.reviewDirectly = true;
@@ -181,28 +185,27 @@ function showCaseAlbum(e) {
 
     displayAlbum(albumData);
 }
-    // List Users
+// List Users
 function listUsers(usersFound) {
     const UserDomul = document.querySelector("#userUl");
     UserDomul.innerHTML = "";
     if (usersFound.length > 0) {
         usersFound.forEach(user => {
-            const UserDisplayName = user.displayName;
-            const Userid = user.id;
-            const UserprofilePicture = user.profilePicture;
-    
-    
-    
+            const userDisplayName = user.displayName;
+            const userId = user.id;
+            const userProfilePicture = user.profilePicture;
+
+
             const liDom = document.createElement("li");
-            liDom.setAttribute("id", Userid);
-            liDom.innerHTML = 
-            `
-                <img src="${UserprofilePicture}"></img>
+            liDom.setAttribute("id", userId);
+            liDom.innerHTML =
+                `
+                <div class="liProfilePicture" src="/media/usersMedia/${userId}/${userProfilePicture}"></div>
                 <div class="albumInformation">
-                    <p>${UserDisplayName}</p>
+                    <p>${userDisplayName}</p>
                 </div>
             `;
-    
+
             UserDomul.append(liDom)
         });
     } else {

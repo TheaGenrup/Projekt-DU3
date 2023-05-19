@@ -524,6 +524,7 @@ async function expandReview(event) {
 
     reviewsOfClickedUser.forEach(async (firstLoopThroughReview) => {
 
+        // find the right review
         if (clickedReviewId == firstLoopThroughReview.reviewId) {
 
             document.querySelector("#contentContainer").innerHTML = `
