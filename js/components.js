@@ -144,8 +144,9 @@ async function renderCreateReviewView(album) {
     createContainer = contentContainer.querySelector("#createContainer");
     const createBoardDom = contentContainer.querySelector("#createBoard");
     const createReviewDom = contentContainer.querySelector("#createReview");
-            // Check if user have a board to which to add reviews to else they must first create a board
-    if (usersBoards.length > 0) { createReviewDom.classList.remove("disabled");
+    // Check if user have a board to which to add reviews to else they must first create a board
+    if (usersBoards.length > 0) {
+        createReviewDom.classList.remove("disabled");
         createReviewDom.addEventListener("click", renderSearchView);
     };
     // Render create a new board section; Flytta till functions? men det är samtidigt en egen component
@@ -207,7 +208,7 @@ async function renderCreateReviewView(album) {
     }
 
 
-            // If album chosen then render create a new review section;
+    // If album chosen then render create a new review section;
     if (album.reviewDirectly) { renderCreateReview(album) }
 };
 
@@ -216,23 +217,23 @@ async function renderCreateReviewView(album) {
 function addBoardOrReview(bodyData) {
     const uploadWrapper = document.querySelector("#uploadWrapper");
     console.log(uploadWrapper.dataset.type);
-    if (uploadWrapper.dataset.type === "review"){
-        const request = new Request("/server/addBoardOrReview.php",{
+    if (uploadWrapper.dataset.type === "review") {
+        const request = new Request("/server/addBoardOrReview.php", {
             header: "Content-Type: application/json",
             method: "POST",
             body: JSON.stringify(bodyData),
         });
         try {
-            fetch (request)
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                }
-            })
-            .then(resource => {
-                console.log(resource);
-            })
-            
+            fetch(request)
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                })
+                .then(resource => {
+                    console.log(resource);
+                })
+
         } catch (error) {
             console.log(error);
         }
@@ -241,7 +242,7 @@ function addBoardOrReview(bodyData) {
 
 
     if (uploadWrapper.dataset.type === "board") {
-        const request = new Request("/server/addBoardOrReview.php",{
+        const request = new Request("/server/addBoardOrReview.php", {
             header: "Content-Type: application/json",
             method: "POST",
             body: bodyData,
@@ -281,6 +282,7 @@ function renderProfileView(event) {
             const profilePicture = user.userIdentity.profilePic;
             const userFollowers = user.userSocial.followers.length;
             const userFollowing = user.userSocial.following.length;
+            const userReviews = user.albumData.reviews.length;
             const displayName = user.userIdentity.displayName;
 
             document.querySelector("#contentContainer").innerHTML = `
@@ -290,11 +292,13 @@ function renderProfileView(event) {
                         <p>@${displayName}</p>
                     </div> 
                     <div class="center">
-                        <div id="followingFollowers">
-                            <div>Followers</div>
-                            <div>${userFollowers}</div>
-                            <div>Following</div>
-                            <div>${userFollowing}</div>
+                    <div id="followingFollowersReviews">
+                        <div>Reviews</div>
+                        <div>${userReviews}</div>
+                        <div>Followers</div>
+                        <div>${userFollowers}</div>
+                        <div>Following</div>
+                        <div>${userFollowing}</div>
                         </div>
                         <div id="profileIconsOrFollowButton"></div>
                     </div>
