@@ -302,3 +302,10 @@ async function renderCreateReview(albumData) {
     backButton.addEventListener("click", renderCreateReviewView);
     createButton.addEventListener("click", addReview);
 }
+
+
+async function getUserData(usersId) {
+    const response = await fetch(`/server/getUser.php/?id=${usersId}`)
+    const userData = await response.json();
+    return userData;
+}

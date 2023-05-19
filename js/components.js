@@ -362,11 +362,21 @@ function renderProfileView(event) {
                 <div id="addBoardIcon" class="pointer"></div>
                 `;
 
-                document.querySelector("#settingsIcon").addEventListener("click", e => document.querySelector("#dropdownContent").classList.toggle("closed"));
+                document.querySelector("#settingsIcon").addEventListener("click", openCloseSettings);
                 document.querySelector("#logOutBtn").addEventListener("click", e => {
                     renderLoginPage();
                 })
                 document.querySelector("#bookmarkIcon").addEventListener("click", showFavourites);
+                const editAccountBtn = document.querySelector("#editAccountBtn");
+                editAccountBtn.addEventListener("click", editAccount);
+                
+                document.addEventListener("click", (e)=>{
+                    if (document.querySelector("#settingsIcon")) {
+                        if (e.target != document.querySelector("#settingsIcon")) {
+                             document.querySelector("#dropdownContent").classList.add("closed") };
+                    }
+                })
+                function openCloseSettings(e) { document.querySelector("#dropdownContent").classList.toggle("closed")};
             }
 
             function showFavourites(event) {
@@ -428,7 +438,6 @@ function renderProfileView(event) {
 
 
             function openBoard(event) {
-
                 document.querySelector("#boardAndReviewContainer").innerHTML = `
                 <h2 id="title">${event.target.textContent}</h2>`;
 
@@ -500,6 +509,8 @@ function renderProfileView(event) {
                 })
             }
         });
+
+
 };
 
 async function expandReview(event) {

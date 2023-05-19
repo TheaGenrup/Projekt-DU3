@@ -2,7 +2,7 @@
 ini_set("display_errors", 1);
 require_once("functions.php");
 // Check if uploaded data is the type of review or board
-
+// PHP mapp 1
 if ($_POST) {
     // Check if input for board name was sent
     if (!isset($_POST["nameInput"]) && !isset($_POST["userId"])) {
@@ -13,7 +13,7 @@ if ($_POST) {
 
         $boardName = $_POST["nameInput"];
         $userId = $_POST["userId"];
-        $imageName = "defaultBoardImage.jpg";
+        $imageName;
 
         if (isset($_FILES["imageInput"]) && $_FILES["imageInput"]["tmp_name"] != "") {
             $source = $_FILES["imageInput"]["tmp_name"];

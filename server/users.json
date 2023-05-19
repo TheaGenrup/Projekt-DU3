@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "b4xp9HfMuaHa8MJYkoXmmmOLF",
+        "loginKey": "evrBxv9VIOO2luFXpGQjpWy72",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -17,7 +17,7 @@
         },
         "userIdentity": {
             "id": "607133432034891031030642696328",
-            "profilePic": "profile_picture.jpg",
+            "profilePic": "cat.jpeg",
             "displayName": "Anthony Fantano"
         },
         "albumData": {
@@ -26,6 +26,8 @@
                     "boardName": "Acid psychadelics",
                     "boardId": 0,
                     "reviews": [
+                        0,
+                        1,
                         0,
                         1
                     ],
@@ -66,6 +68,12 @@
                         9
                     ],
                     "thumbnail": "soul.jpg"
+                },
+                {
+                    "boardName": "test",
+                    "boardId": 2,
+                    "reviews": [],
+                    "thumbnail": ""
                 }
             ],
             "reviews": [
@@ -97,6 +105,32 @@
                         5
                     ],
                     "timestamp": 1681546325
+                },
+                {
+                    "albumName": "folklore",
+                    "artist": "Taylor Swift",
+                    "albumId": "2fenSS68JI1h4Fo296JfGr",
+                    "reviewId": 0,
+                    "reviewDescription": "test",
+                    "rating": 1,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684487230,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0295f754318336a07e85ec59bc"
+                },
+                {
+                    "albumName": "Dad's Old Tapes",
+                    "artist": "North Downs",
+                    "albumId": "4qrjeTgHr22oG9piwLhsxA",
+                    "reviewId": 1,
+                    "reviewDescription": "sfsf",
+                    "rating": 1,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684503226,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02c38620424891f922e4c21ed7"
                 }
             ],
             "favourites": [
@@ -284,15 +318,14 @@
                     "artist": "Fleetwood Mac",
                     "albumId": "nfipqn029",
                     "reviewId": 5290,
-                    "albumCover": "rumours.jpg",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e024fb043195e8d07e72edc7226",
                     "reviewDescription": "More or less for me, they are as wonderful as sculptures or paints, because Dreams goes absolutely beyond music. Their instruments are like brushes with which we paint such wonderful songs as Sara, Gypsy, Big Love, Rhiannon, thanks to which we can experience artistic understanding.",
                     "rating": 3,
                     "boards": [
                         0,
                         5
                     ],
-                    "timestamp": 1684339541,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e024fb043195e8d07e72edc7226"
+                    "timestamp": 1684339541
                 },
                 {
                     "albumName": "Fleetwood Mac",
