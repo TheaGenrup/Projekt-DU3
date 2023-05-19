@@ -294,6 +294,7 @@ function renderProfileView(event) {
             const profilePicture = user.userIdentity.profilePic;
             const userFollowers = user.userSocial.followers.length;
             const userFollowing = user.userSocial.following.length;
+            const userReviews = user.albumData.reviews.length;
             const displayName = user.userIdentity.displayName;
 
             document.querySelector("#contentContainer").innerHTML = `
@@ -303,11 +304,13 @@ function renderProfileView(event) {
                         <p>@${displayName}</p>
                     </div> 
                     <div class="center">
-                        <div id="followingFollowers">
-                            <div>Followers</div>
-                            <div>${userFollowers}</div>
-                            <div>Following</div>
-                            <div>${userFollowing}</div>
+                    <div id="followingFollowersReviews">
+                        <div>Reviews</div>
+                        <div>${userReviews}</div>
+                        <div>Followers</div>
+                        <div>${userFollowers}</div>
+                        <div>Following</div>
+                        <div>${userFollowing}</div>
                         </div>
                         <div id="profileIconsOrFollowButton"></div>
                     </div>
