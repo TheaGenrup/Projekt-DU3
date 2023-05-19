@@ -132,6 +132,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .boardName {
@@ -143,6 +144,8 @@
     width: 37vw;
     border-radius: 5%;
     margin-bottom: 1vh;
+    background-position: center;
+    background-size: cover;
 }
 
 

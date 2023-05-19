@@ -416,22 +416,27 @@ function renderProfileView(event) {
 
             boards.forEach(board => {
 
-                const boardName = board.boardName;
-                const boardPicture = board.thumbnail;
+                const newBoard = document.createElement("div");
+                newBoard.classList.add("board");
+                newBoard.dataset.boardId = board.boardId;
+                newBoard.dataset.boardName = board.boardName;
 
-                const newBoard = `
-                <div id="board_${board.boardId}" class="board">
-                    <img class="boardCover" src="../media/usersMedia/${user.userIdentity.id}/boards/${boardPicture}"></img>
-                    <p class="boardName">${boardName}</p>
-                </div>
-                `
-                document.querySelector("#boardContainer").innerHTML += newBoard;
+                newBoard.innerHTML = `
+                    <div class="boardCover"></div>
+                    <p class="boardName">${board.boardName}</p>`;
 
+                document.querySelector("#boardContainer").append(newBoard);
 
-            });
+                // set board thumbnail
+                if (board.thumbnail === "" || board.thumbnail === undefined || board.thumbnail === null || board.thumbnail === "defaultBoardImage.jpg") {
 
-            document.querySelectorAll(".boardName").forEach(board => {
-                board.addEventListener("click", openBoard);
+                    newBoard.querySelector(".boardCover").style.backgroundImage = "url(../media/icons/board.svg)";
+                } else {
+
+                    newBoard.querySelector(".boardCover").style.backgroundImage = `url(/media/usersMedia/${user.userIdentity.id}/boards/${board.thumbnail}`;
+                }
+
+                newBoard.addEventListener("click", openBoard);
             });
 
 
@@ -439,13 +444,13 @@ function renderProfileView(event) {
             function openBoard(event) {
 
                 document.querySelector("#boardAndReviewContainer").innerHTML = `
-                <h2 id="title">${event.target.textContent}</h2>`;
+                <h2 id="title">${event.currentTarget.dataset.boardName}</h2>`;
 
                 const reviewsInBoard = [];
 
                 user.albumData.boards.forEach(board => {
 
-                    if (board.boardName === event.target.textContent) {
+                    if (board.boardId == event.currentTarget.dataset.boardId) {
 
                         const boardId = board.boardId;
                         const arrayWithReviews = user.albumData.reviews;
