@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "lUJKn8ZovDzaMP10rYulIYMLM",
+        "loginKey": "Kn3rOKOJ10mfaDdAOEZ5r2ET5",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -23,79 +23,35 @@
         "albumData": {
             "boards": [
                 {
-                    "boardName": "Acid psychadelics",
+                    "boardName": "test",
                     "boardId": 0,
                     "reviews": [
-                        0,
-                        1
+                        0
                     ],
-                    "thumbnail": "board_1.jpg"
+                    "thumbnail": "defaultBoardImage.jpg"
                 },
                 {
-                    "boardName": "POP",
+                    "boardName": "Pop",
                     "boardId": 1,
                     "reviews": [
-                        0,
-                        1,
-                        0,
-                        1
+                        0
                     ],
-                    "thumbnail": "tameImpala.jpg"
-                },
-                {
-                    "boardName": "FAVOURITES",
-                    "boardId": 3,
-                    "reviews": [
-                        0,
-                        1
-                    ],
-                    "thumbnail": "Sunflower.jpg"
-                },
-                {
-                    "boardName": "Rock",
-                    "boardId": 4,
-                    "reviews": [
-                        0,
-                        1
-                    ],
-                    "thumbnail": "rock.jpg"
-                },
-                {
-                    "boardName": "Soul",
-                    "boardId": 5,
-                    "reviews": [
-                        7,
-                        9
-                    ],
-                    "thumbnail": "soul.jpg"
+                    "thumbnail": "defaultBoardImage.jpg"
                 }
             ],
             "reviews": [
                 {
-                    "albumName": "Rumours",
-                    "artist": "Fleetwood Mac",
-                    "albumId": "1bt6q2SruMsBtcerNVtpZB",
+                    "albumName": "Hollywood's Bleeding",
+                    "artist": "Post Malone",
+                    "albumId": "4g1ZRSobMefqF6nelkgibi",
                     "reviewId": 0,
-                    "reviewDescription": "test",
-                    "rating": 4,
-                    "boards": [
-                        1
-                    ],
-                    "timestamp": 1684433898,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e020001af4f80be77069fc8fd41"
-                },
-                {
-                    "albumName": "True",
-                    "artist": "Avicii",
-                    "albumId": "2H6i2CrWgXE1HookLu8Au0",
-                    "reviewId": 1,
-                    "reviewDescription": "test",
+                    "reviewDescription": "xxxx",
                     "rating": 2,
                     "boards": [
                         1
                     ],
-                    "timestamp": 1684433921,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02e14f11f796cef9f9a82691a7"
+                    "timestamp": 1684487119,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029478c87599550dd73bfa7e02"
                 }
             ],
             "favourites": []
@@ -232,7 +188,7 @@
             "username": "thea",
             "password": "thea"
         },
-        "loginKey": "8I3YqLAswEYwJN82aGBUGv48M",
+        "loginKey": "mKmT89DyHk94ePqkKVSfYLZ8B",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",

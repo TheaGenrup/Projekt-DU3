@@ -32,7 +32,11 @@ function timeConverter(UNIX_timestamp) {
     return time;
 }
 
-function makeReview(review, container) {
+function makeDiscoverBoards(params) {
+
+}
+
+function makeReview(review, container, displayNameLine) {
 
     // shorten comment if needed
     let reviewDescription = review.reviewDescription;
@@ -137,28 +141,28 @@ function displayAlbum(albumData) {
     const averageRatingPDom = resultsWindow.querySelector("#averageRating");
     try {
         fetch(`/server/getReviews.php/?albumId=${albumId}`)
-        .then(response => {
-            if (response.status === 204) {
-                averageRatingContainer.innerHTML = `<p>No reviews yet</p>`;
-            }
-            return response.json();
-        })
-        .then(resource => {
-            if (averageRatingPDom) {
-                const averageRating = resource.message;
-                averageRatingPDom.textContent = `${averageRating}/5`;
-            }
-        })
-    } catch (error) { console.log(error);  };
+            .then(response => {
+                if (response.status === 204) {
+                    averageRatingContainer.innerHTML = `<p>No reviews yet</p>`;
+                }
+                return response.json();
+            })
+            .then(resource => {
+                if (averageRatingPDom) {
+                    const averageRating = resource.message;
+                    averageRatingPDom.textContent = `${averageRating}/5`;
+                }
+            })
+    } catch (error) { console.log(error); };
 
     resultsWindow.dataset.albumId = albumId;
     resultsWindow.style.display = "flex";
-    const closeButton       = resultsWindow.querySelector("#closeResultsButton");
+    const closeButton = resultsWindow.querySelector("#closeResultsButton");
     const ReviewAlbumButton = resultsWindow.querySelector("#reviewButton");
     // Event listers
     // Closing the result window
-    closeButton.addEventListener("click", ()=>{ resultsWindow.style.display = "none" });
-    document.addEventListener("keydown", (e)=>{ if (e.key === "Escape") { resultsWindow.style.display = "none";} })
+    closeButton.addEventListener("click", () => { resultsWindow.style.display = "none" });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") { resultsWindow.style.display = "none"; } })
 
     ReviewAlbumButton.addEventListener("click", sendAlbumData);
     function sendAlbumData() {
@@ -180,8 +184,8 @@ async function renderCreateReview(albumData) {
     const albumId = albumData.albumId
 
     const createContainer = document.querySelector("#createContainer");
-    let html = 
-    `
+    let html =
+        `
     <form id="uploadWrapper" data-type="review">
         <div id="selectedAlbumContainer" class="horizontalContainer">
             <div class="verticalContainer">
@@ -229,8 +233,8 @@ async function renderCreateReview(albumData) {
     const starRatings = createContainer.querySelectorAll("#chooseRatingContainer div");
     // Event listener
     // Prevent default for submitting forms
-    createButton.addEventListener("click", (e)=>{ e.preventDefault()});
-    backButton.addEventListener("click", (e)=>{ e.preventDefault()});
+    createButton.addEventListener("click", (e) => { e.preventDefault() });
+    backButton.addEventListener("click", (e) => { e.preventDefault() });
     createButton.addEventListener("click", addReview)
     //Add boards to list of options
     usersBoards.forEach(board => {
@@ -239,7 +243,7 @@ async function renderCreateReview(albumData) {
         optionDom.textContent = board.boardName;
         optionDom.id = board.boardId
         selectBoard.dataset.boardId = usersBoards[0].boardId
-        optionDom.addEventListener("click", ()=>{
+        optionDom.addEventListener("click", () => {
             selectBoard.dataset.boardId = optionDom.id
         })
         selectBoard.append(optionDom);
@@ -255,7 +259,7 @@ async function renderCreateReview(albumData) {
             });
             for (let i = 0; i < index; i++) {
                 starRatings[i].style.backgroundImage = "url(/media/icons/star-solid.svg)";
-                
+
             }
         });
         star.addEventListener("mouseleave", (e) => {
@@ -296,7 +300,7 @@ async function renderCreateReview(albumData) {
             review: "review"
         }
         addBoardOrReview(reviewObject);
-        
+
     }
 
     backButton.addEventListener("click", renderCreateReviewView);
