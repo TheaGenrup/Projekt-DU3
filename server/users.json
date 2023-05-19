@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "Kn3rOKOJ10mfaDdAOEZ5r2ET5",
+        "loginKey": "9zTB6H2EB57XRGFen9ShIGD5B",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -26,6 +26,8 @@
                     "boardName": "test",
                     "boardId": 0,
                     "reviews": [
+                        0,
+                        0,
                         0
                     ],
                     "thumbnail": "defaultBoardImage.jpg"
@@ -39,21 +41,7 @@
                     "thumbnail": "defaultBoardImage.jpg"
                 }
             ],
-            "reviews": [
-                {
-                    "albumName": "Hollywood's Bleeding",
-                    "artist": "Post Malone",
-                    "albumId": "4g1ZRSobMefqF6nelkgibi",
-                    "reviewId": 0,
-                    "reviewDescription": "xxxx",
-                    "rating": 2,
-                    "boards": [
-                        1
-                    ],
-                    "timestamp": 1684487119,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029478c87599550dd73bfa7e02"
-                }
-            ],
+            "reviews": [],
             "favourites": []
         }
     },

@@ -45,61 +45,52 @@ function makeReview(review, container, displayNameLine) {
     }
 
     // make html for new review
-    const newReview = `
+
+    const newReview = document.createElement("div");
+    newReview.classList.add("review");
+    newReview.innerHTML = `
      
-            <div class="review" id="review_${review.reviewId}">
-                <p id="who" class="bold">@${review.displayName} added a review</p>
-                <p id="when">${timeConverter(review.timestamp)}</p>
-                <div id="albumOverview">
-                    <div id="albumCover_${review.reviewId}" class="albumCover"></div>
-                        <div id="albumDetails">
-    
-                            <p id="albumName">${review.albumName}</p>
-                            <p id="artist">${review.artist}</p>
-                            <div id="stars_${review.reviewId}" class="stars">
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                            </div>
-                            <p id="reviewDescription">${reviewDescription}</p>
+        <p id="who" class="bold">@${review.displayName} added a review</p>
+        <p id="when">${timeConverter(review.timestamp)}</p>
+        <div id="albumOverview">
+            <div class="albumCover"></div>
+                <div id="albumDetails">
+
+                    <p id="albumName">${review.albumName}</p>
+                    <p id="artist">${review.artist}</p>
+                    <div id="stars_${review.reviewId}" class="stars">
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
                     </div>
-                </div>
-            </div>`;
+                    <p id="reviewDescription">${reviewDescription}</p>
+            </div>
+        </div>`;
 
     // add new review to html
-    document.querySelector(container).innerHTML += newReview;
+    document.querySelector(container).append(newReview);
 
-    const reviewElement = document.querySelector(`#review_${review.reviewId}`);
-
-    reviewElement.dataset.userId = review.userId;
-    reviewElement.dataset.reviewId = review.reviewId;
+    newReview.dataset.userId = review.userId;
+    newReview.dataset.reviewId = review.reviewId;
 
     // add album cover
     if (review.albumCover === "" || review.albumCover === undefined || review.albumCover === null) {
 
-        document.querySelector(`#albumCover_${review.reviewId}`).style.backgroundImage = "url(../media/icons/defaultCover.png)";
+        newReview.querySelector(".albumCover").style.backgroundImage = "url(../media/icons/defaultCover.png)";
     } else {
 
-        document.querySelector(`#albumCover_${review.reviewId}`).style.backgroundImage = `url(${review.albumCover}`;
+        newReview.querySelector(".albumCover").style.backgroundImage = `url(${review.albumCover}`;
     }
 
-    fillStars(review.rating, review.reviewId);
+    fillStars(review.rating, newReview);
 
 }
 
-function fillStars(rating, reviewId) {
+function fillStars(rating, reviewContainer) {
 
-    let stars;
-
-    if (reviewId == undefined) {
-        // if the function is called in expandReview
-        stars = document.querySelectorAll(`.stars > div`);
-    } else {
-        // if the function is called in renderDiscoverView
-        stars = document.querySelectorAll(`#stars_${reviewId} > div`);
-    }
+    const stars = reviewContainer.querySelectorAll(`.stars > div`);
 
     for (let i = 0; i < stars.length; i++) {
 

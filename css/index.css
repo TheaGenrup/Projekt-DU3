@@ -42,11 +42,16 @@ nav * {
     right: 4.5vw;
 }
 
+#previousReviewsContainer {
+    width: 100%;
+}
+
 .review {
     border-radius: 20px;
     background-color: rgb(212, 212, 212);
     box-sizing: border-box;
     padding: 10px;
+    width: 100%;
 }
 
 .center {

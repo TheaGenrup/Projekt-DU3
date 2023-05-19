@@ -23,7 +23,7 @@ async function deleteReview(event) {
         const response = await fetch(requestDelete);
         // const resource = await response.json();
 
-        document.querySelector(`#review_${reviewId}`).remove();
+        event.target.parentElement.remove();
 
     }
 

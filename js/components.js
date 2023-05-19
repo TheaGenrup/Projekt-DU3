@@ -469,8 +469,9 @@ function renderProfileView(event) {
 
                 reviewsInBoard.forEach(review => {
                     makeReview(review, "#boardAndReviewContainer");
-                    document.querySelector(`#review_${review.reviewId} > #who`).textContent = `@${review.displayName}`;
+                    //    document.querySelector(`#review_${review.reviewId} > #who`).textContent = `@${review.displayName}`;
                 });
+                document.querySelectorAll(".review > who").forEach(element => element.textContent = `@${review.displayName}`);
 
 
                 if (clickedUserId === loggedInUserId) {
@@ -480,7 +481,8 @@ function renderProfileView(event) {
 
                         const newElement = document.createElement("div");
                         newElement.classList.add("deleteBtn");
-                        document.querySelector(`#review_${reviewId}`).prepend(newElement);
+                        review.prepend(newElement);
+
 
                         newElement.dataset.reviewId = reviewId;
 
@@ -539,11 +541,9 @@ async function expandReview(event) {
                 </div>
                 <p id="reviewDescription">${firstLoopThroughReview.reviewDescription}</p>
                 <p id="otherReviewsHead">Other reviews of this album</p>
-                <div id="previousReviewsContainer"></div>
-           
-            `;
+                <div id="previousReviewsContainer"></div>`;
 
-            fillStars(firstLoopThroughReview.rating);
+            fillStars(firstLoopThroughReview.rating, document.querySelector("#contentContainer"));
 
             document.querySelector("#displayNameExpanded").dataset.userId = firstLoopThroughReview.userId;
 
@@ -587,9 +587,9 @@ async function expandReview(event) {
                 }
 
                 // make html for new review
-                const newReview = `
-     
-                <div class="review" id="review_${review.reviewId}">
+                const newReview = document.createElement("div");
+                newReview.id = review.reviewId
+                newReview.innerHTML = `
                     <div id="userInfo">
                         <div id="profilePictureInReview"></div>
                         <div>
@@ -609,21 +609,20 @@ async function expandReview(event) {
                         </div>
                         <p id="reviewDescription">${reviewDescription}</p>
                     </div>
-                </div>`;
+                `;
 
                 // add new review to html
-                document.querySelector("#previousReviewsContainer").innerHTML += newReview;
+                document.querySelector("#previousReviewsContainer").append(newReview);
 
-                const reviewElement = document.querySelector(`#review_${review.reviewId}`);
+                newReview.dataset.userId = review.userId;
+                newReview.dataset.reviewId = review.reviewId;
+                newReview.classList.add("review");
 
-                reviewElement.dataset.userId = review.userId;
-                reviewElement.dataset.reviewId = review.reviewId;
-
-                fillStars(review.rating, review.reviewId);
+                fillStars(review.rating, newReview);
 
                 //profilbilderna funkar inte
 
-                reviewElement.addEventListener("click", e => expandReview(e));
+                newReview.addEventListener("click", e => expandReview(e));
 
             })
 
