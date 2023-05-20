@@ -1,0 +1,188 @@
+body{
+    height: 100vh;
+
+    background-color: #9da1a5;
+}
+
+.loader {
+    margin: auto;
+
+    border-radius: 50%;
+
+    height: 200px;
+    width: 200px;
+
+    border: 20px solid #EAF0F6;
+    border-top: 20px solid #FF7A59;
+
+    animation: spinner 4s linear infinite;
+}
+
+@keyframes spinner{
+    0% {transform: rotate(0deg);}
+    0% {transform: rotate(360deg);}
+}
+
+.loaderContainer {
+    display: flex;
+    justify-content: space-evenly;
+
+    height: 200px;
+}
+
+
+.loadingStick {
+    height: 0px;
+    width: 50px;
+
+    background-color: #FF7A59;
+}
+.loadingStick1 {
+    animation: upDown1 3s linear infinite;
+}
+
+@keyframes upDown1 {
+    0% {height: 200px;}
+    25% {height: 100px;}
+    50% {height: 0px;}
+    75% {height: 100px;}
+    100% {height: 200px;}
+}
+
+.loadingStick2 {    animation: upDown2 3s linear infinite; } @keyframes upDown2 {
+    0% {height: 50px;}
+    12.5% {height: 100px;}
+    25% {height: 150px;}
+    37.5% {height: 200px;}
+    50% {height: 150px;}
+    62.5% {height: 100px;}
+    75% {height: 50px;}
+    87.5% {height: 0px;}
+    100% {height: 50px;}
+}
+.loadingStick3 {    animation: upDown3 3s linear infinite; } @keyframes upDown3 {
+    0% {height: 100px;}
+    25% {height: 200px;}
+    50% {height: 100px;}
+    75% {height: 0px;}
+    100% {height: 100px;}
+}   
+.loadingStick4 {    animation: upDown4 3s linear infinite; } @keyframes upDown4 {
+    0% {height: 150px;}
+    12.5% {height: 200px;}
+    25% {height: 150px;}
+    37.5% {height: 100px;}
+    50% {height: 50px;}
+    62.5% {height: 0px;}
+    75% {height: 50px;}
+    87.5% {height: 100px;}
+    100% {height: 150px;}
+}
+.loadingStick5 {    animation: upDown5 3s linear infinite; } @keyframes upDown5 {
+    0% {height: 0px;}
+    25% {height: 100px;}
+    50% {height: 200px;}
+    75% {height: 100px;}
+    100% {height: 0px;}
+}
+
+
+
+
+.vinylloaderC{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.circleContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 40vw;
+    width: 40vw;
+    border-radius: 50%;
+    border: 5px solid black;
+    background-color: #262626;
+    animation: spinVinyl 4s linear infinite;
+}
+.vinylShadow{
+    position: absolute;
+    height: 41vw;
+    width: 41vw;
+    border-radius: 50%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+.circleContainer div{
+    position: absolute;
+    border-radius: 50%;
+}
+.innerCircle1{
+    height: 5%;
+    width: 5%;
+    background-color: aliceblue;
+    z-index: 20;
+
+}
+.innerCircle2{
+    height: 6%;
+    width: 6%;
+    background-color: #7d7f81;
+    z-index: 19;
+
+}
+.albumCircle {
+    height: 20%;
+    width: 20%;
+    background-color: #1f65ab;
+    z-index: 18;
+    border: 4px solid #131313;
+}
+.etchCircle{
+    background-color: #00000000;
+    border: 1px solid #515151;
+}
+.etchCircle1 {
+    height: 25%;
+    width: 25%;
+    z-index: 19;
+    border: 1px solid #3e3e3e;
+}
+.etchCircle2 {
+    height: 35%;
+    width: 35%;
+    z-index: 19;
+}
+.etchCircle3 {
+    height: 45%;
+    width: 45%;
+    z-index: 19;
+}
+.etchCircle4 {
+    height: 65%;
+    width: 65%;
+    z-index: 19;
+}
+.etchCircle5 {
+    height: 85%;
+    width: 85%;
+    z-index: 19;
+}
+
+.vinylReflection{
+    border-radius: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #ECECEC1F;
+    z-index: 20;
+    box-shadow: 0px 0px 30px white;
+    
+}
+
+@keyframes spinVinyl {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}

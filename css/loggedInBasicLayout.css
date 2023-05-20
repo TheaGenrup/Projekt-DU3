@@ -52,7 +52,7 @@ body main #contentCOntainer #noResults{
     height: 100%;
     width: 90vw;
     background-color: rgb(68, 68, 68);
-    border-radius: 20px;
+    /* border-radius: 20px; */
     box-shadow: 0px 0px 11px 4px rgb(15, 15, 15);
 
     display: flex;
