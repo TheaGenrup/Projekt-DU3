@@ -162,27 +162,6 @@ textarea {
     outline: none;
 }
 
-#closeModalBtn {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    background-color: none;
-    background: none;
-    cursor: pointer;
-
-    width: 4vw;
-    height: 4vw;
-}
-
-#closeModalBtn:focus {
-    border: none;
-}
-
-#closeModalBtn img {
-    width: 4vw;
-    height: 4vw;
+.hidden {
+    display: none;
 }

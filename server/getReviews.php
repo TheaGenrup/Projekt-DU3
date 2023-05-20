@@ -43,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $users = getFileData("users.json");
         $reviewsCount = 0;
         $reviewRatingTotal = 0;
+        $reviews = [];
         foreach ($users as $user) {
             $usersReivews = $user["albumData"]["reviews"];
             foreach ($usersReivews as $review) {
@@ -50,6 +51,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     $reviewRating = $review["rating"];
                     $reviewsCount++;
                     $reviewRatingTotal += $reviewRating;
+                    $review["displayName"] = $user["userIdentity"]["displayName"];
+                    $reviews [] = $review;
                 }
             }
         };
@@ -58,7 +61,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             sendJSON($response, 204);
         }
         $averageRating = $reviewRatingTotal / $reviewsCount;
-        $response = ["message" => $averageRating];
+        $response = [
+            "message" => $averageRating,
+            "reviews" => $reviews
+        ];
         sendJSON($response, 200);
     };
     $response = ["message" => "Missing get input"];

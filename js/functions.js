@@ -45,7 +45,6 @@ function makeReview(review, container, displayNameLine) {
     }
 
     // make html for new review
-
     const newReview = document.createElement("div");
     newReview.classList.add("review");
     newReview.innerHTML = `
@@ -69,8 +68,10 @@ function makeReview(review, container, displayNameLine) {
             </div>
         </div>`;
 
+
     // add new review to html
     document.querySelector(container).append(newReview);
+    if (displayNameLine === "test") { newReview.querySelector(".bold").textContent = review.displayName  }
 
     newReview.dataset.userId = review.userId;
     newReview.dataset.reviewId = review.reviewId;
@@ -130,19 +131,72 @@ function displayAlbum(albumData) {
     if (albumData.reviewDirectly) { renderCreateReviewView(albumData) }
     const averageRatingContainer = resultsWindow.querySelector("#averageRatingContainer");
     const averageRatingPDom = resultsWindow.querySelector("#averageRating");
+    const reviewsUl = resultsWindow.querySelector("#reviewsContainer");
+    const searchwWindow = document.querySelector("#searchWindow");
     try {
         fetch(`/server/getReviews.php/?albumId=${albumId}`)
             .then(response => {
                 if (response.status === 204) {
-                    averageRatingContainer.innerHTML = `<p>No reviews yet</p>`;
+                    averageRatingContainer.innerHTML = `<p>Unrated, be the first!</p>`;
+                    reviewsUl.innerHTML = "<p>No reviews yet<p>"
+                    console.log(response);
                 }
                 return response.json();
             })
             .then(resource => {
-                if (averageRatingPDom) {
-                    const averageRating = resource.message;
-                    averageRatingPDom.textContent = `${averageRating}/5`;
+                console.log(resource);
+                const averageRating = resource.message;
+                const reviews = resource.reviews;
+                reviews.sort((a, b) => b.timestamp - a.timestamp);
+                averageRatingPDom.textContent = `${averageRating}/5`;
+                if (reviews.length > 0) {
+                    reviews.forEach(review => {
+                        console.log(review);
+                        console.log(reviewsUl);
+                        // makeReview(review, "#reviewsContainer", "test")
+                        listReview(review)
+                    });
                 }
+
+                function listReview(review) {
+                    // shorten comment if needed
+                    let reviewDescription = review.reviewDescription;
+                    if (reviewDescription.length > 45) {
+                        reviewDescription = reviewDescription.slice(0, 45) + "...";
+                    }
+
+                    // make html for new review
+                    const newReview = document.createElement("div");
+                    newReview.classList.add("review");
+                    newReview.innerHTML = `
+                    
+                        <p id="who" class="bold">@${review.displayName}</p>
+                        <p id="when">${timeConverter(review.timestamp)}</p>
+                        <div id="albumOverview">
+                                <div id="albumDetails">
+
+                                    <p id="albumName">${review.albumName}</p>
+                                    <p id="artist">${review.artist}</p>
+                                    <div id="stars_${review.reviewId}" class="stars">
+                                        <div class="star"></div>
+                                        <div class="star"></div>
+                                        <div class="star"></div>
+                                        <div class="star"></div>
+                                        <div class="star"></div>
+                                    </div>
+                                    <p id="reviewDescription">${reviewDescription}</p>
+                            </div>
+                        </div>`;
+
+                    newReview.dataset.userId = review.userId;
+                    newReview.dataset.reviewId = review.reviewId;
+
+                    fillStars(review.rating, newReview);
+
+                    reviewsUl.append(newReview)
+                }
+
+                
             })
     } catch (error) { console.log(error); };
 
@@ -152,8 +206,10 @@ function displayAlbum(albumData) {
     const ReviewAlbumButton = resultsWindow.querySelector("#reviewButton");
     // Event listers
     // Closing the result window
-    closeButton.addEventListener("click", () => { resultsWindow.style.display = "none" });
+    closeButton.addEventListener("click", () => { resultsWindow.style.display = "none"; searchwWindow.classList.remove("hidden") });
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") { resultsWindow.style.display = "none"; } })
+
+    document.querySelector("#searchWindow").classList.add("hidden");
 
     ReviewAlbumButton.addEventListener("click", sendAlbumData);
     function sendAlbumData() {
@@ -296,4 +352,32 @@ async function renderCreateReview(albumData) {
 
     backButton.addEventListener("click", renderCreateReviewView);
     createButton.addEventListener("click", addReview);
+}
+
+function addToListenList(album, saveButton) {
+    const userId = localStorage.getItem("userId")
+    const bodyData = {
+        album: album,
+        userId: userId
+    }
+
+    const request = new Request("/server/addToListenList.php",{
+        header: "Content-Type: application/json",
+        method: "POST",
+        body: JSON.stringify(bodyData)
+    });
+
+    try {
+        fetch(request)
+            .then(r=>r.json())
+            .then(r=> console.log(r))
+        
+    } catch (error) {
+        
+    }
+
+
+    saveButton.classList.remove("saveButton");
+    saveButton.classList.add("savedButton");
+    
 }

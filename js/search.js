@@ -107,8 +107,10 @@ async function renderSearchView(e) {
         }
     };
     // List albums function
-    function listAlbums(albumsFound) {
+    async function listAlbums(albumsFound) {
         const albumDomUl = document.querySelector("#albumUl");
+        const usersReviews = await getReviews(localStorage.getItem("userId"));
+        console.log(usersReviews);
         if (albumsFound.length > 0) {
             albumsFound.forEach(album => {
                 // albums constants
@@ -126,15 +128,25 @@ async function renderSearchView(e) {
                         <p class="albumName">${albumName}</p>
                         <p class="artistName">${albumArtists[0]}</p>
                     </div>
+                    <button class="saveButton"></button>
                 `;
-                if (albumDomUl.dataset.choosealbum) {
-                    liDom.addEventListener("click", chooseAlbumToReview)
-                }
+                const saveButton = liDom.querySelector("button");
+                saveButton.addEventListener("click", (e)=>{e.stopPropagation()})
+                usersReviews.forEach(review => {
+                    if (review.albumId != albumId) {
+                        saveButton.addEventListener("click", (e)=>{ const results = addToListenList(album, saveButton) });
+                    } else {
+                        saveButton.classList.remove("saveButton");
+                        saveButton.classList.add("savedButton");
+                    }
+                });
+
                 // If searching via the search icon from navigation, showCase other reviews first else directly render review album
                 if (originButton === "searchIcon") { liDom.addEventListener("click", showCaseAlbum); }
                 if (originButton === "createReview") {
                     liDom.dataset.reviewDirectly = "true";
                     liDom.addEventListener("click", showCaseAlbum); }
+                // Add album to listen list
         
                 albumDomUl.append(liDom);
             });
@@ -161,6 +173,7 @@ function showCaseAlbum(e) {
     if (e.target.tagName === "P") { liDom = e.target.parentElement.parentElement };
     if (e.target.tagName === "DIV") { liDom = e.target.parentElement };
     if (e.target.tagName === "IMG") { liDom = e.target.parentElement };
+    if (e.target.tagName === "BUTTON") { return };
     if (e.target.tagName === "LI") { liDom = e.target };
 
     const artistName = liDom.querySelector(".artistName").textContent;

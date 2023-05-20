@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "MBSXeI6uxBf0CdyRosCvi05Dl",
+        "loginKey": "r3QfLJ2CdVH8CGz9cb7UvdAcQ",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -28,6 +28,7 @@
                     "reviews": [
                         0,
                         0,
+                        0,
                         0
                     ],
                     "thumbnail": "defaultBoardImage.jpg"
@@ -36,13 +37,49 @@
                     "boardName": "Pop",
                     "boardId": 1,
                     "reviews": [
-                        0
+                        0,
+                        1
                     ],
                     "thumbnail": "defaultBoardImage.jpg"
                 }
             ],
-            "reviews": [],
-            "favourites": []
+            "reviews": [
+                {
+                    "albumName": "The Beginning: Cupid",
+                    "artist": "FIFTY FIFTY",
+                    "albumId": "5letLUZIFsQikJYShfGNs4",
+                    "reviewId": 0,
+                    "reviewDescription": "tse",
+                    "rating": 1,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684595824,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0237c0b3670236c067c8e8bbcb"
+                },
+                {
+                    "albumName": "TESTING",
+                    "artist": "A$AP Rocky",
+                    "albumId": "3MATDdrpHmQCmuOcozZjDa",
+                    "reviewId": 1,
+                    "reviewDescription": "sdfasfaksj faoisfkf jsdfasfaksj faoisfkf jsdfasfaksj faoisfkf jsdfasfaksj faoisfkf jsdfasfaksj faoisfkf jsdfasfaksj faoisfkf jsdfasfaksj faoisfkf jsdfasfaksj faoisfkf jsdfasfaksj faoisfkf jsdfasfaksj faoisfkf jsdfasfaksj faoisfkf jsdfasfaksj faoisfkf jsdfasfaksj faoisfkf jsdfasfaksj faoisfkf jsdfasfaksj faoisfkf jsdfasfaksj faoisfkf jsdfasfaksj faoisfkf jsdfasfaksj faoisfkf jsdfasfaksj faoisfkf jsdfasfaksj faoisfkf j",
+                    "rating": 1,
+                    "boards": [
+                        1
+                    ],
+                    "timestamp": 1684597993,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029feadc48ab0661e9b3a9170b"
+                }
+            ],
+            "favourites": [
+                {
+                    "albumName": "Teenage Dream",
+                    "artist": "Katy Perry",
+                    "albumId": "2eQMC9nJE3f3hCNKlYYHL1",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02d20c38f295039520d688a888",
+                    "favouriteId": null
+                }
+            ]
         }
     },
     {
