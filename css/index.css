@@ -12,7 +12,15 @@ nav * {
     background-position: center;
     background-size: cover;
     background-image: url(../media/icons/empty_star.png);
+    height: 3vh;
+    width: 3vh;
 }
+
+.starExpanded .star {
+    height: 4vh;
+    width: 4vh;
+}
+
 
 .bold {
     font-weight: bold;

@@ -36,7 +36,7 @@ function makeDiscoverBoards(params) {
 
 }
 
-function makeReview(review, container, displayNameLine) {
+function makeReview(review, container) {
 
     // shorten comment if needed
     let reviewDescription = review.reviewDescription;
@@ -50,7 +50,7 @@ function makeReview(review, container, displayNameLine) {
     newReview.classList.add("review");
     newReview.innerHTML = `
      
-        <p id="who" class="bold">@${review.displayName} added a review</p>
+        <p id="who" class="bold">@${review.displayName}</p>
         <p id="when">${timeConverter(review.timestamp)}</p>
         <div id="albumOverview">
             <div class="albumCover"></div>
@@ -86,6 +86,67 @@ function makeReview(review, container, displayNameLine) {
 
     fillStars(review.rating, newReview);
 
+}
+
+async function renderOtherReviews(reviewOfClickedUser) {
+
+    // find previous reviews of the same album
+
+    const response = await fetch(new Request(`../server/getReviewsOfAlbum.php/?albumId=${reviewOfClickedUser.albumId}&reviewId=${reviewOfClickedUser.reviewId}`));
+    const allReviewsOfAlbum = await response.json();
+
+    //kolla om det inte finns några
+    if (allReviewsOfAlbum.length === 0) {
+        document.querySelector("#previousReviewsContainer").innerHTML = "<p>No other reviews yet...</p>";
+    }
+
+    allReviewsOfAlbum.forEach(review => {
+
+        // shorten comment if needed
+        let reviewDescription = review.reviewDescription;
+        if (reviewDescription.length > 70) {
+            reviewDescription = reviewDescription.slice(0, 70) + "...";
+        }
+
+        // make html for new review
+        const newReview = document.createElement("div");
+        newReview.id = review.reviewId
+        newReview.innerHTML = `
+                        <div id="userInfo">
+                            <div id="profilePictureInReview"></div>
+                            <div>
+                                <p id="who" class="bold">@${review.displayName}</p>
+                                <p id="when">${timeConverter(review.timestamp)}</p>
+                            </div>
+                        </div>
+                        <div id="albumDetails">
+                            <p id="albumName">${review.albumName}</p>
+                            <p id="artist">${review.artist}</p>
+                            <div id="stars_${review.reviewId}" class="stars">
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                            </div>
+                            <p id="reviewDescription">${reviewDescription}</p>
+                        </div>
+                    `;
+
+        // add new review to html
+        document.querySelector("#previousReviewsContainer").append(newReview);
+
+        newReview.dataset.userId = review.userId;
+        newReview.dataset.reviewId = review.reviewId;
+        newReview.classList.add("review");
+
+        fillStars(review.rating, newReview);
+
+        //profilbilderna funkar inte
+
+        newReview.addEventListener("click", e => expandReview(e));
+
+    })
 }
 
 function fillStars(rating, reviewContainer) {

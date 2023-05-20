@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "MBSXeI6uxBf0CdyRosCvi05Dl",
+        "loginKey": "m5Eg5YUdRBjjaYsycUGLPYN3h",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -28,6 +28,7 @@
                     "reviews": [
                         0,
                         0,
+                        0,
                         0
                     ],
                     "thumbnail": "defaultBoardImage.jpg"
@@ -41,7 +42,21 @@
                     "thumbnail": "defaultBoardImage.jpg"
                 }
             ],
-            "reviews": [],
+            "reviews": [
+                {
+                    "albumName": "One Wayne G",
+                    "artist": "Mac DeMarco",
+                    "albumId": "70hX7IYqmUGV97OXs2v848",
+                    "reviewId": 0,
+                    "reviewDescription": "cwql",
+                    "rating": 4,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684566265,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0240461e96808378ae2787a7e4"
+                }
+            ],
             "favourites": []
         }
     },
