@@ -1,6 +1,7 @@
 #searchWindow {
     overflow: scroll;
     overflow-x: hidden;
+    position: relative;
 }
 
 #searchWindow div {
@@ -50,19 +51,24 @@
     list-style-type: none;
     display: flex;
     align-items: center;
-    padding: 0px 5px;
+    padding: 10px;
     margin: 2px 0px;
-    /*background-color: rgb(112, 112, 112);*/
+    background-color: rgb(112, 112, 112);
     gap: 5px;
 }
 #searchWindow ul li  img{
-    height: 35px;
+    height: 55px;
     border-radius: 50%;
 }
 
 #searchWindow ul li:hover {
     background-color: rgb(83, 82, 82);
     cursor: pointer;
+}
+
+#searchWindow ul li p{
+    margin: 5px;
+
 }
 
 #searchWindow ul li .saveButton {

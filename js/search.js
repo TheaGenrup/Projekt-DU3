@@ -70,9 +70,8 @@ async function renderSearchView(e) {
     function searchAlbums(e) {
         let input = e.target.value;
         toggleSearchIcon();
-        if (!input) {
-            clearSearch();
-        return}
+        if (!input) {  clearSearch();   return}
+        startLoadingScreen(document.querySelector("main"));
         let albumSearchEndpoint = `https://api.spotify.com/v1/search?q=${input}&type=album&offset=0&limit=10`;
     
         if (token.length > 0 || token != undefined) { 
@@ -138,8 +137,10 @@ async function renderSearchView(e) {
         
                 albumDomUl.append(liDom);
             });
+            stopLoadingScreen();
         } else {
             albumDomUl.innerHTML = "<li id='noResults'>No results found :(</li>";
+            stopLoadingScreen();
         }
     };
 };

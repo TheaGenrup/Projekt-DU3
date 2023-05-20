@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "8oPqZmV4XRCljhD76vEVdEf5A",
+        "loginKey": "6jMlm8BvM8MC35uPoJ3DNY8NO",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -27,7 +27,8 @@
                     "boardId": 0,
                     "reviews": [
                         0,
-                        1
+                        1,
+                        0
                     ],
                     "thumbnail": "board_1.jpg"
                 },
@@ -68,7 +69,21 @@
                     "thumbnail": "soul.jpg"
                 }
             ],
-            "reviews": [],
+            "reviews": [
+                {
+                    "albumName": "folklore (deluxe version)",
+                    "artist": "Taylor Swift",
+                    "albumId": "1pzvBxYgT6OVwJLtHkrdQK",
+                    "reviewId": 0,
+                    "reviewDescription": "",
+                    "rating": 1,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684594596,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02c288028c2592f400dd0b9233"
+                }
+            ],
             "favourites": [
                 {
                     "albumName": "The microphones pt2",

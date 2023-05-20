@@ -70,12 +70,11 @@ async function renderDiscoverView() {
     // switch css files
     document.querySelector("#css1").setAttribute("href", "../css/loggedInBasicLayout.css");
     document.querySelector("#css2").setAttribute("href", "../css/discover.css");
-
+    startLoadingScreen(document.querySelector("main"));
     // fetch logged in user to get following ids
     const responseUser = await fetch(new Request(`../server/getUser.php/?id=${userId}`));
 
     const userData = await responseUser.json();
-
     const followingIds = userData.userSocial.following;
 
     // check if the user follows anyone
@@ -107,6 +106,7 @@ async function renderDiscoverView() {
         });
 
         document.querySelectorAll(`.review`).forEach(review => review.addEventListener("click", expandReview));
+        stopLoadingScreen();
     }
 
 };
@@ -265,6 +265,7 @@ function addBoardOrReview(bodyData) {
 
 
 function renderProfileView(event) {
+    startLoadingScreen(document.querySelector("main"));
 
     const clickedUserId = event.currentTarget.dataset.userId;
     const loggedInUserId = localStorage.getItem("userId");
@@ -498,7 +499,9 @@ function renderProfileView(event) {
                 document.querySelectorAll(".review").forEach(review => {
                     review.addEventListener("click", expandReview);
                 })
+
             }
+            stopLoadingScreen(document.querySelector("main"));
         });
 };
 

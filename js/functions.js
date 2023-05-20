@@ -324,6 +324,33 @@ async function renderCreateReview(albumData) {
     createButton.addEventListener("click", addReview);
 }
 
+function startLoadingScreen(elementToAddTo) {
+    const VinylHtml =`
+    <div class="vinylShadow"></div>
+    <div class="circleContainer">
+        <div class="vinylReflection"></div>
+        <div class="innerCircle1"></div>
+        <div class="innerCircle2"></div>
+        <div class="albumCircle"></div>
+        <div class="etchCircle1 etchCircle"></div>
+        <div class="etchCircle2 etchCircle"></div>
+        <div class="etchCircle3 etchCircle"></div>
+        <div class="etchCircle4 etchCircle"></div>
+        <div class="etchCircle5 etchCircle"></div>
+        <div class="outerCircle etchCircle"></div>
+    </div>
+    `
+    const loaderContainer = document.createElement("div");
+    loaderContainer.classList.add("vinylloaderC");
+    loaderContainer.innerHTML = VinylHtml;
+    elementToAddTo.append(loaderContainer);
+    //loaderContainer.querySelector("#circleContainer").style.opacity = 0;
 
+}
+
+function stopLoadingScreen() {
+    const loaderDom = document.querySelector(".vinylloaderC");
+    loaderDom.remove();
+}
 // select functions
 
