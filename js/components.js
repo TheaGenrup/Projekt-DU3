@@ -262,7 +262,33 @@ function addBoardOrReview(bodyData) {
         }
     }
 }
+async function renderProfileView2(userId) {
 
+
+
+    const user = await getUserData(userId)
+    document.querySelector("#contentContainer").innerHTML = `
+    <div id="profileHeader">
+        <div>
+            <img id="profilePictureTop" src="../media/${profilePicture}"></img>
+            <p>@${displayName}</p>
+        </div> 
+        <div class="center">
+            <div id="followingFollowers">
+                <div>Followers</div>
+                <div>${userFollowers}</div>
+                <div>Following</div>
+                <div>${userFollowing}</div>
+            </div>
+            <div id="profileIconsOrFollowButton"></div>
+        </div>
+    </div>
+    <div id="boardAndReviewContainer">
+        <h2 id="title">BOARDS</h2>
+        <div id="boardContainer"></div>
+    </div>`
+
+}
 
 function renderProfileView(event) {
     startLoadingScreen(document.querySelector("main"));
