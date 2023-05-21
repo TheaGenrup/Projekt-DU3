@@ -131,11 +131,11 @@ async function renderSearchView(e) {
                     <button class="saveButton"></button>
                 `;
                 const saveButton = liDom.querySelector("button");
-                saveButton.addEventListener("click", (e)=>{e.stopPropagation()})
+                saveButton.addEventListener("click", (e)=>{e.stopPropagation()});
+                saveButton.addEventListener("click", (e)=>{ const results = addToListenList(album, saveButton,) });
                 usersReviews.forEach(review => {
-                    if (review.albumId != albumId) {
-                        saveButton.addEventListener("click", (e)=>{ const results = addToListenList(album, saveButton) });
-                    } else {
+                    if (review.albumId === albumId) {
+                        saveButton.addEventListener("click", (e)=>{ const results = addToListenList(album, saveButton,) });
                         saveButton.classList.remove("saveButton");
                         saveButton.classList.add("savedButton");
                     }

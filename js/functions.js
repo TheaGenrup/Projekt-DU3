@@ -377,7 +377,7 @@ function addToListenList(album, saveButton) {
     }
 
 
-    saveButton.classList.remove("saveButton");
-    saveButton.classList.add("savedButton");
+    saveButton.classList.toggle("saveButton");
+    saveButton.classList.toggle("savedButton");
     
 }

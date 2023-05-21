@@ -65,6 +65,9 @@
     background-color: rgb(83, 82, 82);
     cursor: pointer;
 }
+#searchWindow ul li .albumListingInformation {
+    width: 75%;
+}
 
 #searchWindow ul li .saveButton {
     position: absolute;
@@ -72,8 +75,8 @@
     margin: 0px 5px;
     border: none;
     padding: 0;
-    width: 20px;
-    height: 20px;
+    width: 5vw;
+    height: 5vw;
     border-radius: 0px;
     right: 10px;
     background-image: url(/media/icons/bookmark.png);

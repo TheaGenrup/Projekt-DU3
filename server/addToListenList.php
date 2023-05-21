@@ -19,8 +19,18 @@ foreach ($userData as $key => $user) {
         $artist =   $album["albumArtists"][0];
         $albumId =  $album["albumId"];
         $albumCover = $album["albumImage"];
-        
 
+        
+        foreach ($usersfavourites as $listKey => $favourite) {
+            if ($favourite["albumId"] == $albumId) {
+                unset($userData[$key]["albumData"]["favourites"][$listKey]);
+                saveFileData("users.json", $userData);
+                $response = ["message" => "Removed from list"];
+                sendJSON($response, 202);
+            }
+        }
+
+        $favouriteId = getFavouritesId($usersfavourites, 0);
         $newFavouritesObject = [
             "albumName" => $albumName,
             "artist" => $artist,
@@ -29,17 +39,9 @@ foreach ($userData as $key => $user) {
             "favouriteId" => $favouriteId
         ];
 
-        
-        foreach ($usersfavourites as $key => $favourites) {
-            if ($favourites["albumId"] == $albumId) {
-                $response = ["message" => "Favorites already added"];
-                sendJSON($response, 202);
-            }
-        }
-
         $userData[$key]["albumData"]["favourites"][] = $newFavouritesObject;
         saveFileData("users.json", $userData);
-        $response = ["message" => "Favorites added"];
+        $response = ["message" => "Added to list"];
         sendJSON($response, 200);
 
     }
@@ -48,7 +50,6 @@ foreach ($userData as $key => $user) {
 }
 
 function getFavouritesId($usersfavourites, $id){
-    if (count($usersfavourites) == 0) {    return $id; }
     foreach ($usersfavourites as $key => $favourite) {
         if ($favourite["favouriteId"] == $id) {
             $id++;
