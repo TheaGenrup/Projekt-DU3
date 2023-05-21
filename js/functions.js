@@ -358,22 +358,24 @@ async function renderCreateReview(albumData) {
     createButton.addEventListener("click", addReview);
 }
 
-function renderPopUp(textContent, ifContinue) {
+function renderPopUp(textContent, reviewId) {
 
     const popUp = document.createElement("div");
 
     popUp.id = "popUp";
+
     popUp.innerHTML = ` 
         <p>${textContent}</p>
         <div>
             <div id="cancelBtn">Cancel</div>
-            <div d="continueBtn">Continue</div>
+            <div id="continueBtn">Continue</div>
         </div>`;
-    console.log(popUp);
+
     document.querySelector("#contentContainer").prepend(popUp);
 
     document.querySelector("#cancelBtn").addEventListener("click", hidePopUp);
-    document.querySelector("#continueBtn").addEventListener("click", ifContinue);
+    document.querySelector("#continueBtn").addEventListener("click", deleteReview);
+    document.querySelector("#continueBtn").dataset.reviewId = reviewId;
 
 }
 

@@ -119,7 +119,7 @@ async function renderDiscoverView() {
             document.querySelectorAll(`.review`).forEach(review => review.addEventListener("click", expandReview));
         }
 
-        renderPopUp()
+        renderPopUp("confirm", "renderProfileView");
 
     }
 
