@@ -90,12 +90,11 @@ function makeReview(review, container) {
 
 async function renderOtherReviews(reviewOfClickedUser) {
 
-    // find previous reviews of the same album
-
+    // find previous reviews of the same album, minus the one we're already looking at
     const response = await fetch(new Request(`../server/getReviewsOfAlbum.php/?albumId=${reviewOfClickedUser.albumId}&reviewId=${reviewOfClickedUser.reviewId}`));
     const allReviewsOfAlbum = await response.json();
 
-    //kolla om det inte finns några
+    // check if there are no other reviews
     if (allReviewsOfAlbum.length === 0) {
         document.querySelector("#previousReviewsContainer").innerHTML = "<p>No other reviews yet...</p>";
     }
@@ -357,4 +356,27 @@ async function renderCreateReview(albumData) {
 
     backButton.addEventListener("click", renderCreateReviewView);
     createButton.addEventListener("click", addReview);
+}
+
+function renderPopUp(textContent, ifContinue) {
+
+    const popUp = document.createElement("div");
+
+    popUp.id = "popUp";
+    popUp.innerHTML = ` 
+        <p>${textContent}</p>
+        <div>
+            <div id="cancelBtn">Cancel</div>
+            <div d="continueBtn">Continue</div>
+        </div>`;
+    console.log(popUp);
+    document.querySelector("#contentContainer").prepend(popUp);
+
+    document.querySelector("#cancelBtn").addEventListener("click", hidePopUp);
+    document.querySelector("#continueBtn").addEventListener("click", ifContinue);
+
+}
+
+function hidePopUp() {
+    document.querySelector("#popUp").classList.add("closed");
 }

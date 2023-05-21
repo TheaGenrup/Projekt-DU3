@@ -61,6 +61,7 @@ function renderLoggedInView(profilePic) {
     return;
 }
 
+
 async function renderDiscoverView() {
 
     document.querySelector("#contentContainer").innerHTML = "";
@@ -118,6 +119,7 @@ async function renderDiscoverView() {
             document.querySelectorAll(`.review`).forEach(review => review.addEventListener("click", expandReview));
         }
 
+        renderPopUp()
 
     }
 
