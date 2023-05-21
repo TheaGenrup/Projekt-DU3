@@ -66,4 +66,14 @@ function clog($data) {
     var_dump($data);
     echo "</pre>";
 }
+
+function removeItemfromArray($oldArray, $idToRemove, $idName){
+    $updatedArray = [];
+    foreach ($oldArray as $key => $item) {
+        if ($item[$idName] != $idToRemove) 
+
+        {  $updatedArray[] = $item;  }
+    }
+    return $updatedArray;
+}
 ?>

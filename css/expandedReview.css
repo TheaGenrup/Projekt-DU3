@@ -30,13 +30,40 @@
 }
 
 #bookmark {
+    position: absolute;
+    top: 4vw;
+    right: 6vw;
+
     height: 3.5vh;
     width: 3.5vh;
-    position: absolute;
-
 }
 
+button.saveButton{
+    background-image: url(/media/icons/bookmark.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    min-height: 0;
+    min-width: 0;
+    
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+}
+button.savedbutton{
+    background-image: url(/media/icons/board.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    min-height: 0;
+    min-width: 0;
+
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+}
+
+
 .albumCoverContainer {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;

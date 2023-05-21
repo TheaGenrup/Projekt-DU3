@@ -534,7 +534,7 @@ async function expandReview(event) {
                 <p id="albumNameExpanded">${firstLoopThroughReview.albumName}</p>
                 <p id="artistExpanded">${firstLoopThroughReview.artist}</p>
                 <div class="albumCoverContainer">
-                    <img src="/media/icons/bookmark.png" id="bookmark" alt="Bookmark">
+                    <button id="bookmark" class="saveButton" alt="Bookmark"></button>
                     <img src="${firstLoopThroughReview.albumCover}" alt="Album Cover" id="albumCoverExpanded">
                 </div>
                 <div class="stars">
@@ -554,6 +554,11 @@ async function expandReview(event) {
 
             document.querySelector(`#displayNameExpanded`).addEventListener("click", renderProfileView);
             document.querySelector(`#closeReview`).addEventListener("click", e => renderDiscoverView());
+            const saveButton = document.querySelector("#bookmark");
+            saveButton.addEventListener("click", ()=>{
+                console.log(firstLoopThroughReview);
+                //addToListenList(saveButton);
+            })
 
             // previous reviews
             const users = await getAllUsers();

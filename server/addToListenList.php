@@ -18,7 +18,7 @@ foreach ($userData as $key => $user) {
         $albumName = $album["albumName"];
         $artist =   $album["albumArtists"][0];
         $albumId =  $album["albumId"];
-        $albumCover = $album["albumImage"];
+        $albumCover = $album["albumCover"];
 
         
         
@@ -27,14 +27,7 @@ foreach ($userData as $key => $user) {
                 $updatedList = removeItemfromArray($usersfavourites, $albumId, "albumId");
                 $userData[$key]["albumData"]["favourites"] = $updatedList;
                 saveFileData("users.json", $userData);
-                $response = ["message" => $updatedList];
-                sendJSON($response, 202);
-
-
-
-                unset($userData[$key]["albumData"]["favourites"][$listKey]);
-                saveFileData("users.json", $userData);
-                $response = ["message" => "Removed from list"];
+                $response = ["message" => "success"];
                 sendJSON($response, 202);
             }
         }
@@ -50,13 +43,13 @@ foreach ($userData as $key => $user) {
 
         $userData[$key]["albumData"]["favourites"][] = $newFavouritesObject;
         saveFileData("users.json", $userData);
-        $response = ["message" => "Added to list"];
+        $response = ["message" => "success"];
         sendJSON($response, 200);
 
     }
-    $error = ["message" => "Internal error: Issues with users"];
-    sendJSON($error, 200);
 }
+$error = ["message" => "Internal error: Issues with users"];
+sendJSON($error, 200);
 
 function getFavouritesId($usersfavourites, $id){
     foreach ($usersfavourites as $key => $favourite) {
@@ -66,16 +59,6 @@ function getFavouritesId($usersfavourites, $id){
         }
     }
     return $id;
-}
-
-function removeItemfromArray($oldArray, $idToRemove, $idName){
-    $updatedArray = [];
-    foreach ($oldArray as $key => $item) {
-        if ($item[$idName] != $idToRemove) 
-
-        {  $updatedArray[] = $item;  }
-    }
-    return $updatedArray;
 }
 
 

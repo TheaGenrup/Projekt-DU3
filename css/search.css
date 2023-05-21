@@ -127,6 +127,7 @@
     display: flex;
 }
 #resultsWindow #albumInfo #averageRatingContainer{
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -136,6 +137,11 @@
 }
 #resultsWindow #albumInfo #averageRatingContainer p {
     margin: 0px;
+}
+#resultsWindow #albumInfo #averageRatingContainer #totalReviews {
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 #resultsWindow #albumInfo #averageRatingContainer #averageRating {
     font-size: 9vw;
@@ -169,6 +175,8 @@ button{
     width: 25px;
     background-color: rgba(0, 0, 0, 0);
     border: none;
+
+    z-index: 10;
 }
 #resultsWindow #reviewsContainer{
     display: flex;

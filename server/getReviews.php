@@ -62,7 +62,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         }
         $averageRating = $reviewRatingTotal / $reviewsCount;
         $response = [
-            "message" => $averageRating,
+            "averageRating" => $averageRating,
+            "totalReviews" => $reviewRatingTotal,
             "reviews" => $reviews
         ];
         sendJSON($response, 200);

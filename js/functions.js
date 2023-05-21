@@ -103,7 +103,7 @@ function fillStars(rating, reviewContainer) {
 }
 
 
-function displayAlbum(albumData) {
+async function displayAlbum(albumData) {
     const resultsWindow = document.querySelector("#resultsWindow");
     const artistName = albumData.artistName
     const albumName = albumData.albumName
@@ -115,6 +115,7 @@ function displayAlbum(albumData) {
             <div id="averageRatingContainer">
                 <p id="averageRating"></p>
                 <p>Rating</p>
+                <p id="totalReviews"></p>
             </div>
             <img id="searchNavigator" src="${albumCover}" alt="">
         </div>
@@ -131,6 +132,7 @@ function displayAlbum(albumData) {
     if (albumData.reviewDirectly) { renderCreateReviewView(albumData) }
     const averageRatingContainer = resultsWindow.querySelector("#averageRatingContainer");
     const averageRatingPDom = resultsWindow.querySelector("#averageRating");
+    const totalReviewsPDom = resultsWindow.querySelector("#totalReviews");
     const reviewsUl = resultsWindow.querySelector("#reviewsContainer");
     const searchwWindow = document.querySelector("#searchWindow");
     try {
@@ -145,15 +147,14 @@ function displayAlbum(albumData) {
             })
             .then(resource => {
                 console.log(resource);
-                const averageRating = resource.message;
+                const averageRating = resource.averageRating;
+                const totalReviews = resource.totalReviews;
                 const reviews = resource.reviews;
                 reviews.sort((a, b) => b.timestamp - a.timestamp);
                 averageRatingPDom.textContent = `${averageRating}/5`;
+                totalReviewsPDom.textContent = `Total reviews: ${averageRating}`;
                 if (reviews.length > 0) {
                     reviews.forEach(review => {
-                        console.log(review);
-                        console.log(reviewsUl);
-                        // makeReview(review, "#reviewsContainer", "test")
                         listReview(review)
                     });
                 }
@@ -210,11 +211,15 @@ function displayAlbum(albumData) {
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") { resultsWindow.style.display = "none"; } })
 
     document.querySelector("#searchWindow").classList.add("hidden");
-
-    ReviewAlbumButton.addEventListener("click", sendAlbumData);
-    function sendAlbumData() {
-        albumData.reviewDirectly = true;
-        renderCreateReviewView(albumData);
+    const userData = await getUserData(localStorage.getItem("userId"));
+    if (userData.albumData.boards.length > 0) {
+        ReviewAlbumButton.addEventListener("click", ()=> {
+            albumData.reviewDirectly = true;
+            renderCreateReviewView(albumData);
+        });
+    } else {
+        ReviewAlbumButton.textContent = "Wish to review this album? Start by creating a board!"
+        ReviewAlbumButton.addEventListener("click", renderCreateReviewView)
     }
 }
 
@@ -356,6 +361,7 @@ async function renderCreateReview(albumData) {
 
 function addToListenList(album, saveButton) {
     const userId = localStorage.getItem("userId")
+    console.log(userId);
     const bodyData = {
         album: album,
         userId: userId
@@ -370,15 +376,16 @@ function addToListenList(album, saveButton) {
     try {
         fetch(request)
             .then(r=>r.json())
-            .then(r=> console.log(r))
+            .then(responseData=> {
+            console.log(responseData);
+                
+                if (responseData.message = "success") {
+                saveButton.classList.toggle("saveButton");
+                saveButton.classList.toggle("savedButton");
+            }
+            })
         
-    } catch (error) {
-        
-    }
-
-
-    saveButton.classList.toggle("saveButton");
-    saveButton.classList.toggle("savedButton");
+    } catch (error) { }
     
 }
 

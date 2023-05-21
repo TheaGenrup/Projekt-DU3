@@ -4,10 +4,14 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "i9pHLLIx8UXuQ5kyAKYbbIB1v",
+        "loginKey": "jImA7oGmo6bmh1s3KDyJMKKGU",
         "userSocial": {
-            "following": [],
-            "followers": []
+            "following": [
+                "848402422005626697163776521185"
+            ],
+            "followers": [
+                "848402422005626697163776521185"
+            ]
         },
         "userIdentity": {
             "id": "791309749149589133382556525575",
@@ -15,16 +19,60 @@
             "displayName": "test"
         },
         "albumData": {
-            "boards": [],
-            "reviews": [],
-            "favourites": [
+            "boards": [
                 {
-                    "albumName": "Test & Recognise (Remixes)",
-                    "artist": "Seekae",
-                    "albumId": "6ViDQATM3uoaXqjBS2h7pO",
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02a0084d69f43f8dc944e930b7",
-                    "favouriteId": 2
+                    "boardName": "test",
+                    "boardId": 0,
+                    "reviews": [
+                        0,
+                        1,
+                        2
+                    ],
+                    "thumbnail": "defaultBoardImage.jpg"
+                }
+            ],
+            "reviews": [
+                {
+                    "albumName": "TESTING",
+                    "artist": "A$AP Rocky",
+                    "albumId": "3MATDdrpHmQCmuOcozZjDa",
+                    "reviewId": 0,
+                    "reviewDescription": "",
+                    "rating": 1,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684677823,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029feadc48ab0661e9b3a9170b"
                 },
+                {
+                    "albumName": "Fleetwood Mac",
+                    "artist": "Fleetwood Mac",
+                    "albumId": "5VIQ3VaAoRKOEpJ0fewdvo",
+                    "reviewId": 1,
+                    "reviewDescription": "Shit slaps yo, Stevie Nicks making a grown man cry is pretty wonderful",
+                    "rating": 5,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684677858,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e024fb043195e8d07e72edc7226"
+                },
+                {
+                    "albumName": "The Family Business",
+                    "artist": "Jonas Brothers",
+                    "albumId": "75Z0joBRz5WMZqKXW7VhnL",
+                    "reviewId": 2,
+                    "reviewDescription": "fkjasdflasf jnskfsal fjsnflasf jsfnafsffkjasdflasf jnskfsal fjsnflasf jsfnafsffkjasdflasf jnskfsal fjsnflasf jsfnafsffkjasdflasf jnskfsal fjsnflasf jsfnafsffkjasdflasf jnskfsal fjsnflasf jsfnafsffkjasdflasf jnskfsal fjsnflasf jsfnafsffkjasdflasf jnskfsal fjsnflasf jsfnafsffkjasdflasf jnskfsal fjsnflasf jsfnafsf",
+                    "rating": 1,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684680537,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02454bc3dd1bdc4a62ce9cf8db"
+                }
+            ],
+            "favourites": [
                 {
                     "albumName": "Time's Makin' Changes: The Best Of Tesla",
                     "artist": "Tesla",
@@ -33,25 +81,88 @@
                     "favouriteId": 3
                 },
                 {
-                    "albumName": "Pergola Freestyle (Live)",
-                    "artist": "LaRussell",
-                    "albumId": "5n0I34vVj4iBwaLeZmtogS",
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e027de16d02ac2cb9cc16bf2691",
-                    "favouriteId": 4
-                },
-                {
-                    "albumName": "Testimony (Deluxe)",
-                    "artist": "August Alsina",
-                    "albumId": "3FHEN0yaab8BxVHXHyaYkk",
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02a131750f4f01507ad2a4d3af",
+                    "albumName": "Teen Beach Movie",
+                    "artist": "Various Artists",
+                    "albumId": "5ANe5AfOnYydm3lXELfiHF",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e028f9a38eaef72352da716ccdb",
                     "favouriteId": 0
-                },
+                }
+            ]
+        }
+    },
+    {
+        "userCredentials": {
+            "username": "test2",
+            "password": "test2"
+        },
+        "loginKey": "OcjBAVLVmu0Yc5DHeaDyqO5jK",
+        "userSocial": {
+            "following": [
+                "791309749149589133382556525575"
+            ],
+            "followers": [
+                "791309749149589133382556525575"
+            ]
+        },
+        "userIdentity": {
+            "id": "848402422005626697163776521185",
+            "profilePic": "media\/default.png",
+            "displayName": "test2"
+        },
+        "albumData": {
+            "boards": [
                 {
-                    "albumName": "After School EP",
-                    "artist": "Melanie Martinez",
-                    "albumId": "75sm9IEmN01J5MsyZr4Cw1",
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e022c9355acbb7a39b25c84c559",
-                    "favouriteId": 1
+                    "boardName": "test2",
+                    "boardId": 0,
+                    "reviews": [
+                        0
+                    ],
+                    "thumbnail": "defaultBoardImage.jpg"
+                }
+            ],
+            "reviews": [
+                {
+                    "albumName": "Teenage Dream",
+                    "artist": "Katy Perry",
+                    "albumId": "2eQMC9nJE3f3hCNKlYYHL1",
+                    "reviewId": 0,
+                    "reviewDescription": "",
+                    "rating": 1,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684677761,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02d20c38f295039520d688a888"
+                }
+            ],
+            "favourites": []
+        }
+    },
+    {
+        "userCredentials": {
+            "username": "test3",
+            "password": "test3"
+        },
+        "loginKey": "gGA0lHrb4OhJcYwlZraYX7ouc",
+        "userSocial": {
+            "following": [],
+            "followers": []
+        },
+        "userIdentity": {
+            "id": "326360324142055184478592662997",
+            "profilePic": "media\/default.png",
+            "displayName": "test3"
+        },
+        "albumData": {
+            "boards": [],
+            "reviews": [],
+            "favourites": [
+                {
+                    "albumName": "TESTING",
+                    "artist": "A$AP Rocky",
+                    "albumId": "3MATDdrpHmQCmuOcozZjDa",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029feadc48ab0661e9b3a9170b",
+                    "favouriteId": 0
                 }
             ]
         }

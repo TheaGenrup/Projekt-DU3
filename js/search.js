@@ -95,7 +95,7 @@ async function renderSearchView(e) {
                 albumArtists: artistsInAlbum,
                 albumName:  album.name,
                 albumId:    album.id,
-                albumImage: album.images[1].url,
+                albumCover: album.images[1].url,
                 albumType:  album.album_type,
               }
               albumsFound.push(albumInfo);
@@ -117,13 +117,13 @@ async function renderSearchView(e) {
                 const albumName     = album.albumName;
                 const albumArtists  = album.albumArtists;
                 const albumId       = album.albumId;
-                const albumImage    = album.albumImage;
+                const albumCover    = album.albumCover;
         
                 const liDom = document.createElement("li");
                 liDom.setAttribute("id", albumId)
                 liDom.innerHTML = 
                 `
-                    <img class="albumPreviewImage" src="${albumImage}"></img>
+                    <img class="albumPreviewImage" src="${albumCover}"></img>
                     <div class="albumListingInformation">
                         <p class="albumName">${albumName}</p>
                         <p class="artistName">${albumArtists[0]}</p>
@@ -132,7 +132,7 @@ async function renderSearchView(e) {
                 `;
                 const saveButton = liDom.querySelector("button");
                 saveButton.addEventListener("click", (e)=>{e.stopPropagation()});
-                saveButton.addEventListener("click", (e)=>{ const results = addToListenList(album, saveButton,) }); 
+                saveButton.addEventListener("click", (e)=>{ const results = addToListenList(album, saveButton) }); 
                 usersAlbumList.forEach(listItem => {
                     if (listItem.albumId === albumId) {
                         saveButton.classList.remove("saveButton");
