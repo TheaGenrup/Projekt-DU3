@@ -1,14 +1,17 @@
 "use strict";
+
 checkIfAlreadyLoggedIn();
+
 function checkIfAlreadyLoggedIn() {
     const key = localStorage.getItem("logInKey");
     if (key === undefined || key === null) {
-        renderLoginPage(); 
+        renderLoginPage();
         return
     } else {
         attemptLogin("", "", "Access-Key: Auth", key);
     }
-};
+}
+
 // Switch between log in and register Section
 function switchLoginRegsiter(e) {
     const switchBtn = document.querySelector("#switchBtn");
@@ -43,7 +46,7 @@ function switchLoginRegsiter(e) {
 //login and register button
 function loginRegister(e) {
     e.preventDefault();
-    const loginOrRegister = e.target.textContent
+    const loginOrRegister = e.target.textContent;
     if (loginOrRegister === "Log in") {
         const usernameInput = document.querySelector("#usernameInput").value;
         const passwordInput = document.querySelector("#passwordInput").value;
@@ -66,12 +69,13 @@ async function attemptLogin(username, password, access, loginKey) {
     }
     if (loginKey) {
         const userData = await fetchLogin(username, password, access, loginKey);
-        if (!userData) {   renderLoginPage   };
+        if (!userData) { renderLoginPage };
 
         loginUser(userData);
     }
 
 }
+
 async function fetchLogin(username, password, access, loginKey) {
     const request = new Request(`/server/login.php`);
     const data = {
@@ -115,17 +119,17 @@ function registerUser(username, password, displayname) {
 
     try {
         fetch(request, data)
-        .then(response => {
-            return response.json();     
-        })
-        .then(r => {
-            console.log(r);
-            sendLoginPageMessage(r.message);
+            .then(response => {
+                return response.json();
+            })
+            .then(r => {
+                console.log(r);
+                sendLoginPageMessage(r.message);
 
-            if (r.message === "Registered!") {
-                setTimeout(switchLoginRegsiter, 3000)
-            }
-        })
+                if (r.message === "Registered!") {
+                    setTimeout(switchLoginRegsiter, 3000)
+                }
+            })
     } catch (error) {
         sendLoginPageMessage("whoopsie, an error occured, please try again another time")
     }
@@ -139,7 +143,7 @@ function sendLoginPageMessage(message) {
     loginRegistermessageDom.style.transition = "0s"
     loginRegistermessageDom.textContent = message
     loginRegistermessageDom.style.opacity = "100%"
-    setTimeout(()=>{
+    setTimeout(() => {
         loginRegistermessageDom.style.transition = "1.5s"
         loginRegistermessageDom.style.opacity = "0%"
     }, 10000);

@@ -176,7 +176,7 @@
             "username": "thea",
             "password": "thea"
         },
-        "loginKey": "ZzgSttTH7icLddmk6K1oQfCx2",
+        "loginKey": "1BKEIPtwNzacqaS41BcXksXcj",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -195,7 +195,7 @@
         "albumData": {
             "boards": [
                 {
-                    "boardName": "Psychadelic acid rock",
+                    "boardName": "Favourites",
                     "boardId": 0,
                     "reviews": [
                         4,
@@ -204,7 +204,7 @@
                     "thumbnail": "defaultBoardImage.jpg"
                 },
                 {
-                    "boardName": "Katy Perry's best albums (all of them)",
+                    "boardName": "Sobral's best albums (all of them)",
                     "boardId": 1,
                     "reviews": [
                         5

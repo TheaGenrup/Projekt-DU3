@@ -32,10 +32,6 @@ function timeConverter(UNIX_timestamp) {
     return time;
 }
 
-function makeDiscoverBoards(params) {
-
-}
-
 function makeReview(review, container, displayNameLine) {
 
     // shorten comment if needed
@@ -50,7 +46,7 @@ function makeReview(review, container, displayNameLine) {
     newReview.classList.add("review");
     newReview.innerHTML = `
      
-        <p id="who" class="bold">@${review.displayName} added a review</p>
+        <p id="who" class="bold">@${review.displayName}</p>
         <p id="when">${timeConverter(review.timestamp)}</p>
         <div id="albumOverview">
             <div class="albumCover"></div>
@@ -100,7 +96,6 @@ function fillStars(rating, reviewContainer) {
         }
     }
 }
-
 
 function displayAlbum(albumData) {
     const resultsWindow = document.querySelector("#resultsWindow");
@@ -296,4 +291,10 @@ async function renderCreateReview(albumData) {
 
     backButton.addEventListener("click", renderCreateReviewView);
     createButton.addEventListener("click", addReview);
+}
+
+async function fetchReview(userId) {
+    const response = await fetch(new Request(`../server/getReviews.php/?id=${userId}`));
+    const reviews = await response.json();
+    return reviews;
 }
