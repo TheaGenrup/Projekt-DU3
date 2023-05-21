@@ -43,6 +43,7 @@ function makeReview(review, container, displayNameLine) {
     if (reviewDescription.length > 45) {
         reviewDescription = reviewDescription.slice(0, 45) + "...";
     }
+    console.log(review);
 
     // make html for new review
     const newReview = document.createElement("div");
@@ -67,8 +68,7 @@ function makeReview(review, container, displayNameLine) {
                     <p id="reviewDescription">${reviewDescription}</p>
             </div>
         </div>`;
-
-
+    newReview.dataset.albumId = review.albumId
     // add new review to html
     document.querySelector(container).append(newReview);
     if (displayNameLine === "test") { newReview.querySelector(".bold").textContent = review.displayName  }

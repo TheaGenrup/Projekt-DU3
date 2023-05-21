@@ -49,7 +49,7 @@ button.saveButton{
     background-color: rgba(255, 255, 255, 0);
     border: none;
 }
-button.savedbutton{
+button.savedButton{
     background-image: url(/media/icons/board.svg);
     background-repeat: no-repeat;
     background-size: contain;

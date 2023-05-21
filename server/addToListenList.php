@@ -16,7 +16,7 @@ foreach ($userData as $key => $user) {
         $usersfavourites = $user["albumData"]["favourites"];
         $album = $data["album"];
         $albumName = $album["albumName"];
-        $artist =   $album["artist"][0];
+        $artist =   $album["artist"];
         $albumId =  $album["albumId"];
         $albumCover = $album["albumCover"];
 

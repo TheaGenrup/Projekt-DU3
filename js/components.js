@@ -519,6 +519,7 @@ async function expandReview(event) {
 
     const clickedUserId = event.currentTarget.dataset.userId;
     const clickedReviewId = event.currentTarget.dataset.reviewId;
+    const albumId = event.currentTarget.dataset.albumId;
 
     const reviewsOfClickedUser = await fetchReview(clickedUserId);
 
@@ -555,6 +556,14 @@ async function expandReview(event) {
             document.querySelector(`#displayNameExpanded`).addEventListener("click", renderProfileView);
             document.querySelector(`#closeReview`).addEventListener("click", e => renderDiscoverView());
             const saveButton = document.querySelector("#bookmark");
+            const userData = await getUserData(localStorage.getItem("userId"));
+            const usersAlbumList = userData.albumData.favourites;
+            usersAlbumList.forEach(listItem => {
+                if (listItem.albumId === albumId) {
+                    saveButton.classList.remove("saveButton");
+                    saveButton.classList.add("savedButton");
+                }
+            });
             saveButton.addEventListener("click", ()=>{
                 addToListenList(firstLoopThroughReview, saveButton);
             })

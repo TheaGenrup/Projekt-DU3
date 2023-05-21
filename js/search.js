@@ -108,6 +108,8 @@ async function renderSearchView(e) {
         const albumDomUl = document.querySelector("#albumUl");
         const userData = await getUserData(localStorage.getItem("userId"));
         const usersAlbumList = userData.albumData.favourites;
+        
+        
         if (albumsFound.length > 0) {
             albumsFound.forEach(album => {
                 // albums constants
