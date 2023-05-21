@@ -191,7 +191,7 @@
             "username": "thea",
             "password": "thea"
         },
-        "loginKey": "ys65YOP3z4oEraO629KOq4eml",
+        "loginKey": "f53fMMqzGhe2H6SLV0R0BwE2O",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -265,19 +265,6 @@
                     "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e024fb043195e8d07e72edc7226"
                 },
                 {
-                    "albumName": "A Laughing Death in Meatspace",
-                    "artist": "Tropical Fuck Storm",
-                    "albumId": "2Gbrm63qKXR2aaYEU80Rzs",
-                    "reviewId": 2,
-                    "reviewDescription": "Wow This is a great album! really good, I like the way the guitar goes woeh woeh waaa floooow ski skiskiskisis tjup. You should all listen to this guitar. It keeps going and then it's like sweeee waaaaa, okerwreri, ping. ",
-                    "rating": 3,
-                    "boards": [
-                        0
-                    ],
-                    "timestamp": 1684339629,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02253634cd0b2b001a4b1681e6"
-                },
-                {
                     "albumName": "Response Test",
                     "artist": "Recharge",
                     "albumId": "2WKZI9Lq2TtVBqD5RiukS8",
@@ -295,8 +282,8 @@
                     "artist": "Katy Perry",
                     "albumId": "2eQMC9nJE3f3hCNKlYYHL1",
                     "reviewId": 4,
-                    "reviewDescription": "Best album ever <3",
-                    "rating": 5,
+                    "reviewDescription": "No, thanks",
+                    "rating": 2,
                     "boards": [
                         0
                     ],

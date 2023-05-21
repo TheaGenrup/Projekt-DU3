@@ -23,9 +23,9 @@ if (!$_SERVER["REQUEST_METHOD"] == "DELETE") {
 
             foreach($arrayWithReviews as $index => $review) {
                 if ($review["reviewId"] == $inputData["reviewId"]) {
-                    echo "<pre>";
+                    /* echo "<pre>";
                     var_dump($arrayWithReviews);
-                    echo "</pre>";
+                    echo "</pre>"; */
                     unset($arrayWithReviews[$index]);
                 }
             }
@@ -33,9 +33,11 @@ if (!$_SERVER["REQUEST_METHOD"] == "DELETE") {
             // $user["albumData"]["reviews"] = $arrayWithReviews;
             $users[$key]["albumData"]["reviews"] = $arrayWithReviews;
 
-                    echo "<pre>";
+                    /* echo "<pre>";
                     var_dump($users[$key]["albumData"]["reviews"]);
-                    echo "</pre>";
+                    echo "</pre>"; */
+
+            sendJSON(["message" => "The review was successfully removed"]);
         }
     }
 

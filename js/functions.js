@@ -32,10 +32,6 @@ function timeConverter(UNIX_timestamp) {
     return time;
 }
 
-function makeDiscoverBoards(params) {
-
-}
-
 function makeReview(review, container) {
 
     // shorten comment if needed
@@ -358,14 +354,15 @@ async function renderCreateReview(albumData) {
     createButton.addEventListener("click", addReview);
 }
 
-function renderPopUp(textContent, reviewId) {
+function renderPopUp(event) {
+    event.stopPropagation();
 
     const popUp = document.createElement("div");
 
     popUp.id = "popUp";
 
     popUp.innerHTML = ` 
-        <p>${textContent}</p>
+        <p>Are you sure you want to delete this review?</p>
         <div>
             <div id="cancelBtn">Cancel</div>
             <div id="continueBtn">Continue</div>
@@ -374,8 +371,11 @@ function renderPopUp(textContent, reviewId) {
     document.querySelector("#contentContainer").prepend(popUp);
 
     document.querySelector("#cancelBtn").addEventListener("click", hidePopUp);
-    document.querySelector("#continueBtn").addEventListener("click", deleteReview);
-    document.querySelector("#continueBtn").dataset.reviewId = reviewId;
+    document.querySelector("#continueBtn").addEventListener("click", event => {
+        event.target.parentElement.remove();
+        deleteReview(event.target.dataset.reviewId);
+    });
+    document.querySelector("#continueBtn").dataset.reviewId = event.currentTarget.dataset.reviewId;
 
 }
 

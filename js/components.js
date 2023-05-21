@@ -119,8 +119,6 @@ async function renderDiscoverView() {
             document.querySelectorAll(`.review`).forEach(review => review.addEventListener("click", expandReview));
         }
 
-        renderPopUp("confirm", "renderProfileView");
-
     }
 
 };
@@ -498,7 +496,7 @@ function renderProfileView(event) {
 
                     document.querySelectorAll(".deleteBtn").forEach(button => {
 
-                        button.addEventListener("click", deleteReview);
+                        button.addEventListener("click", renderPopUp);
 
                     });
 
