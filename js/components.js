@@ -48,11 +48,21 @@ function renderLoggedInView(profilePic) {
         <img class="viewIcon" id="discoverIcon" src="/media/icons/discover.png" alt="Discover"></img>
         <img class="viewIcon" id="searchIcon" src="/media/icons/search.png" alt="Search"></img>
         <img class="viewIcon" id="addIcon" src="/media/icons/add.png" alt="Add"></img>
-        <img class="viewIcon" id="profilePicture" src="/media/${profilePic}" alt="Profile"></img>
+        <div class="viewIcon" id="profilePicture"></div>
     </nav>
     `;
 
     document.querySelector(`#profilePicture`).dataset.userId = localStorage.getItem("userId");
+
+    if (profilePic === "" || profilePic === undefined || profilePic === null) {
+
+        document.querySelector(`#profilePicture`).style.backgroundImage = `url(/media/default.png)`;
+    } else {
+
+        document.querySelector(`#profilePicture`).style.backgroundImage = `url(/media/usersMedia/${localStorage.userId}/${profilePic})`;
+    }
+
+
     // DOM Event listeners
     document.querySelector("#discoverIcon").addEventListener("click", renderDiscoverView);
     document.querySelector("#profilePicture").addEventListener("click", renderProfileView);
@@ -300,7 +310,7 @@ function renderProfileView(event) {
             document.querySelector("#contentContainer").innerHTML = `
                 <div id="profileHeader">
                     <div>
-                        <img id="profilePictureTop" src="../media/${profilePicture}"></img>
+                        <div id="profilePictureTop"></div>
                         <p>@${displayName}</p>
                     </div> 
                     <div class="center">
@@ -320,35 +330,16 @@ function renderProfileView(event) {
                     <div id="boardContainer"></div>
                 </div>`
 
-            function followUnfollow(event) {
+            // add profile picture
+            if (profilePicture === "" || profilePicture === undefined || profilePicture === null) {
 
-                const request = new Request("/server/follow.php", {
-                    headers: { "Content-type": "application/json" },
-                    method: "POST",
-                    body: JSON.stringify({
-                        id: user.userIdentity.id,
-                        currentUserId: localStorage.userId
-                    }),
-                });
+                document.querySelector(`#profilePictureTop`).style.backgroundImage = `url(/media/default.png)`;
+            } else {
 
-                try {
-                    fetch(request)
-                        .then(response => {
-                            return response.json();
-                        })
-
-                } catch (error) {
-                    console.log(error);
-                }
-
-                if (event.target.textContent === "Follow") {
-                    event.target.textContent = "Following";
-                } else {
-                    event.target.textContent = "Follow";
-                }
-
+                document.querySelector(`#profilePictureTop`).style.backgroundImage = `url(/media/usersMedia/${localStorage.userId}/${profilePicture})`;
             }
 
+            // check if logged in: follow button or icons
             if (clickedUserId !== loggedInUserId) {
 
                 const followers = user.userSocial.followers;
