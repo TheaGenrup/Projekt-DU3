@@ -32,10 +32,6 @@ function timeConverter(UNIX_timestamp) {
     return time;
 }
 
-function makeDiscoverBoards(params) {
-
-}
-
 function makeReview(review, container, displayNameLine) {
 
     // shorten comment if needed
@@ -43,7 +39,6 @@ function makeReview(review, container, displayNameLine) {
     if (reviewDescription.length > 45) {
         reviewDescription = reviewDescription.slice(0, 45) + "...";
     }
-    console.log(review);
 
     // make html for new review
     const newReview = document.createElement("div");
@@ -71,7 +66,7 @@ function makeReview(review, container, displayNameLine) {
     newReview.dataset.albumId = review.albumId
     // add new review to html
     document.querySelector(container).append(newReview);
-    if (displayNameLine === "test") { newReview.querySelector(".bold").textContent = review.displayName  }
+    if (displayNameLine === "test") { newReview.querySelector(".bold").textContent = review.displayName }
 
     newReview.dataset.userId = review.userId;
     newReview.dataset.reviewId = review.reviewId;
@@ -197,7 +192,7 @@ async function displayAlbum(albumData) {
                     reviewsUl.append(newReview)
                 }
 
-                
+
             })
     } catch (error) { console.log(error); };
 
@@ -213,7 +208,7 @@ async function displayAlbum(albumData) {
     document.querySelector("#searchWindow").classList.add("hidden");
     const userData = await getUserData(localStorage.getItem("userId"));
     if (userData.albumData.boards.length > 0) {
-        ReviewAlbumButton.addEventListener("click", ()=> {
+        ReviewAlbumButton.addEventListener("click", () => {
             albumData.reviewDirectly = true;
             renderCreateReviewView(albumData);
         });
@@ -367,7 +362,7 @@ function addToListenList(album, saveButton) {
         userId: userId
     }
 
-    const request = new Request("/server/addToListenList.php",{
+    const request = new Request("/server/addToListenList.php", {
         header: "Content-Type: application/json",
         method: "POST",
         body: JSON.stringify(bodyData)
@@ -375,22 +370,51 @@ function addToListenList(album, saveButton) {
 
     try {
         fetch(request)
-            .then(r=>r.json())
-            .then(responseData=> {
-            console.log(responseData);
-                
+            .then(r => r.json())
+            .then(responseData => {
+                console.log(responseData);
+
                 if (responseData.message = "success") {
-                saveButton.classList.toggle("saveButton");
-                saveButton.classList.toggle("savedButton");
-            }
+                    saveButton.classList.toggle("saveButton");
+                    saveButton.classList.toggle("savedButton");
+                }
             })
-        
+
     } catch (error) { }
-    
+
 }
 
 async function getUserData(userId) {
     const response = await fetch(`/server/getUser.php/?id=${userId}`)
     const userData = await response.json();
     return userData
+}
+
+function renderPopUp(event) {
+    event.stopPropagation();
+
+    const popUp = document.createElement("div");
+
+    popUp.id = "popUp";
+
+    popUp.innerHTML = ` 
+        <p>Are you sure you want to delete this review?</p>
+        <div>
+            <div id="cancelBtn">Cancel</div>
+            <div id="continueBtn">Continue</div>
+        </div>`;
+
+    document.querySelector("#contentContainer").prepend(popUp);
+
+    document.querySelector("#cancelBtn").addEventListener("click", hidePopUp);
+    document.querySelector("#continueBtn").addEventListener("click", event => {
+        event.target.parentElement.remove();
+        deleteReview(event.target.dataset.reviewId);
+    });
+    document.querySelector("#continueBtn").dataset.reviewId = event.currentTarget.dataset.reviewId;
+
+}
+
+function hidePopUp() {
+    document.querySelector("#popUp").classList.add("closed");
 }

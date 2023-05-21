@@ -496,7 +496,7 @@ function renderProfileView(event) {
 
                     document.querySelectorAll(".deleteBtn").forEach(button => {
 
-                        button.addEventListener("click", deleteReview);
+                        button.addEventListener("click", renderPopUp);
 
                     });
 
@@ -564,7 +564,7 @@ async function expandReview(event) {
                     saveButton.classList.add("savedButton");
                 }
             });
-            saveButton.addEventListener("click", ()=>{
+            saveButton.addEventListener("click", () => {
                 addToListenList(firstLoopThroughReview, saveButton);
             })
 
