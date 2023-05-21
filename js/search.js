@@ -109,8 +109,8 @@ async function renderSearchView(e) {
     // List albums function
     async function listAlbums(albumsFound) {
         const albumDomUl = document.querySelector("#albumUl");
-        const usersReviews = await getReviews(localStorage.getItem("userId"));
-        console.log(usersReviews);
+        const userData = await getUserData(localStorage.getItem("userId"));
+        const usersAlbumList = userData.albumData.favourites;
         if (albumsFound.length > 0) {
             albumsFound.forEach(album => {
                 // albums constants
@@ -132,10 +132,9 @@ async function renderSearchView(e) {
                 `;
                 const saveButton = liDom.querySelector("button");
                 saveButton.addEventListener("click", (e)=>{e.stopPropagation()});
-                saveButton.addEventListener("click", (e)=>{ const results = addToListenList(album, saveButton,) });
-                usersReviews.forEach(review => {
-                    if (review.albumId === albumId) {
-                        saveButton.addEventListener("click", (e)=>{ const results = addToListenList(album, saveButton,) });
+                saveButton.addEventListener("click", (e)=>{ const results = addToListenList(album, saveButton,) }); 
+                usersAlbumList.forEach(listItem => {
+                    if (listItem.albumId === albumId) {
                         saveButton.classList.remove("saveButton");
                         saveButton.classList.add("savedButton");
                     }

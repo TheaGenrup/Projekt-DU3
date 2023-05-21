@@ -21,8 +21,17 @@ foreach ($userData as $key => $user) {
         $albumCover = $album["albumImage"];
 
         
+        
         foreach ($usersfavourites as $listKey => $favourite) {
             if ($favourite["albumId"] == $albumId) {
+                $updatedList = removeItemfromArray($usersfavourites, $albumId, "albumId");
+                $userData[$key]["albumData"]["favourites"] = $updatedList;
+                saveFileData("users.json", $userData);
+                $response = ["message" => $updatedList];
+                sendJSON($response, 202);
+
+
+
                 unset($userData[$key]["albumData"]["favourites"][$listKey]);
                 saveFileData("users.json", $userData);
                 $response = ["message" => "Removed from list"];
@@ -59,6 +68,15 @@ function getFavouritesId($usersfavourites, $id){
     return $id;
 }
 
+function removeItemfromArray($oldArray, $idToRemove, $idName){
+    $updatedArray = [];
+    foreach ($oldArray as $key => $item) {
+        if ($item[$idName] != $idToRemove) 
+
+        {  $updatedArray[] = $item;  }
+    }
+    return $updatedArray;
+}
 
 
 ?>

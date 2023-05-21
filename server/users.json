@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "p7og5glewMguTUHHFKaY5it3T",
+        "loginKey": "i9pHLLIx8UXuQ5kyAKYbbIB1v",
         "userSocial": {
             "following": [],
             "followers": []
@@ -17,7 +17,43 @@
         "albumData": {
             "boards": [],
             "reviews": [],
-            "favourites": []
+            "favourites": [
+                {
+                    "albumName": "Test & Recognise (Remixes)",
+                    "artist": "Seekae",
+                    "albumId": "6ViDQATM3uoaXqjBS2h7pO",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02a0084d69f43f8dc944e930b7",
+                    "favouriteId": 2
+                },
+                {
+                    "albumName": "Time's Makin' Changes: The Best Of Tesla",
+                    "artist": "Tesla",
+                    "albumId": "2FJ0CYfIvogvi1gV6dH8Gl",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02ad793cbca8b57778625573fb",
+                    "favouriteId": 3
+                },
+                {
+                    "albumName": "Pergola Freestyle (Live)",
+                    "artist": "LaRussell",
+                    "albumId": "5n0I34vVj4iBwaLeZmtogS",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e027de16d02ac2cb9cc16bf2691",
+                    "favouriteId": 4
+                },
+                {
+                    "albumName": "Testimony (Deluxe)",
+                    "artist": "August Alsina",
+                    "albumId": "3FHEN0yaab8BxVHXHyaYkk",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02a131750f4f01507ad2a4d3af",
+                    "favouriteId": 0
+                },
+                {
+                    "albumName": "After School EP",
+                    "artist": "Melanie Martinez",
+                    "albumId": "75sm9IEmN01J5MsyZr4Cw1",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e022c9355acbb7a39b25c84c559",
+                    "favouriteId": 1
+                }
+            ]
         }
     }
 ]

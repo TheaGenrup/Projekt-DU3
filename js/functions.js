@@ -381,3 +381,9 @@ function addToListenList(album, saveButton) {
     saveButton.classList.toggle("savedButton");
     
 }
+
+async function getUserData(userId) {
+    const response = await fetch(`/server/getUser.php/?id=${userId}`)
+    const userData = await response.json();
+    return userData
+}

@@ -18,7 +18,7 @@ if (!$_SERVER["REQUEST_METHOD"] == "GET") {
 
     foreach ($users as $user) {
         if($userID == $user["userIdentity"]["id"]) {
-            unset($user["userCredentials"]["password"]);
+            unset($user["userCredentials"]);
             sendJSON($user);
         }
     }
