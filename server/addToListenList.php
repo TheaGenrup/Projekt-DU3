@@ -16,7 +16,7 @@ foreach ($userData as $key => $user) {
         $usersfavourites = $user["albumData"]["favourites"];
         $album = $data["album"];
         $albumName = $album["albumName"];
-        $artist =   $album["albumArtists"][0];
+        $artist =   $album["artist"][0];
         $albumId =  $album["albumId"];
         $albumCover = $album["albumCover"];
 
@@ -38,7 +38,8 @@ foreach ($userData as $key => $user) {
             "artist" => $artist,
             "albumId" => $albumId,
             "albumCover" => $albumCover,
-            "favouriteId" => $favouriteId
+            "favouriteId" => $favouriteId,
+            "timestamp" => time()
         ];
 
         $userData[$key]["albumData"]["favourites"][] = $newFavouritesObject;

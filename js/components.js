@@ -556,8 +556,7 @@ async function expandReview(event) {
             document.querySelector(`#closeReview`).addEventListener("click", e => renderDiscoverView());
             const saveButton = document.querySelector("#bookmark");
             saveButton.addEventListener("click", ()=>{
-                console.log(firstLoopThroughReview);
-                //addToListenList(saveButton);
+                addToListenList(firstLoopThroughReview, saveButton);
             })
 
             // previous reviews

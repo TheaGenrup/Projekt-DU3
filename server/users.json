@@ -95,7 +95,7 @@
             "username": "test2",
             "password": "test2"
         },
-        "loginKey": "OcjBAVLVmu0Yc5DHeaDyqO5jK",
+        "loginKey": "cXZIJJxf8ybNZCxWFC1qKl2aO",
         "userSocial": {
             "following": [
                 "791309749149589133382556525575"
@@ -135,7 +135,16 @@
                     "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02d20c38f295039520d688a888"
                 }
             ],
-            "favourites": []
+            "favourites": [
+                {
+                    "albumName": "The Family Business",
+                    "artist": null,
+                    "albumId": "75Z0joBRz5WMZqKXW7VhnL",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02454bc3dd1bdc4a62ce9cf8db",
+                    "favouriteId": 0,
+                    "timestamp": 1684683075
+                }
+            ]
         }
     },
     {

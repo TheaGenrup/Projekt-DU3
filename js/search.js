@@ -87,12 +87,9 @@ async function renderSearchView(e) {
             const albumsfetched = albumResource.albums.items;
             const albumsFound = []
             albumsfetched.forEach(album => {
-              const artistsInAlbum = []; 
-              album.artists.forEach(artist => {
-                artistsInAlbum.push(artist.name)
-              });
+                console.log(album);
               let albumInfo = {
-                albumArtists: artistsInAlbum,
+                artist:     album.artists[0].name,
                 albumName:  album.name,
                 albumId:    album.id,
                 albumCover: album.images[1].url,
@@ -115,7 +112,7 @@ async function renderSearchView(e) {
             albumsFound.forEach(album => {
                 // albums constants
                 const albumName     = album.albumName;
-                const albumArtists  = album.albumArtists;
+                const artist        = album.artist;
                 const albumId       = album.albumId;
                 const albumCover    = album.albumCover;
         
@@ -126,7 +123,7 @@ async function renderSearchView(e) {
                     <img class="albumPreviewImage" src="${albumCover}"></img>
                     <div class="albumListingInformation">
                         <p class="albumName">${albumName}</p>
-                        <p class="artistName">${albumArtists[0]}</p>
+                        <p class="artistName">${artist}</p>
                     </div>
                     <button class="saveButton"></button>
                 `;
@@ -214,8 +211,9 @@ function listUsers(usersFound) {
                     <p>${UserDisplayName}</p>
                 </div>
             `;
-    
-            UserDomul.append(liDom)
+            liDom.dataset.userId = localStorage.getItem("userId");
+            UserDomul.append(liDom);
+            liDom.addEventListener("click", renderProfileView)
         });
     } else {
         UserDomul.innerHTML = "No users found";
