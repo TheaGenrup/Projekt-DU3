@@ -50,7 +50,7 @@
             "username": "test2",
             "password": "test2"
         },
-        "loginKey": "weGKLDpN7Bn10v2U3QneKrtnr",
+        "loginKey": "udsFzQ73xqKmA2hNy9lSo5BSE",
         "userSocial": {
             "following": [
                 "507163198196757529667525417704",
@@ -62,7 +62,7 @@
         },
         "userIdentity": {
             "id": "317161457770161228256467772618",
-            "profilePic": "default.png",
+            "profilePic": "",
             "displayName": "Stevie Nicks"
         },
         "albumData": {
@@ -162,7 +162,7 @@
         },
         "userIdentity": {
             "id": "716916262583862677799694090077",
-            "profilePic": "default.png",
+            "profilePic": "",
             "displayName": "test5"
         },
         "albumData": {
