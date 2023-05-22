@@ -31,7 +31,6 @@ async function editAccount(e) {
     const userId = localStorage.getItem("userId");
     const editAccountContainer = document.querySelector("#contentContainer");
     const user = await getUserData(userId);
-    console.log(user);
     editAccountContainer.innerHTML = "";
     let html = `
     <div>Edit profile</div>

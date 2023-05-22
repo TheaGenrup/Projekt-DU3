@@ -300,8 +300,6 @@ function renderProfileView(event) {
         });
     }
 
-    console.log(event.currentTarget);
-
     startLoadingScreen(document.querySelector("main"));
 
     const clickedUserId = event.currentTarget.dataset.userId;
@@ -393,6 +391,17 @@ function renderProfileView(event) {
                 document.querySelector("#bookmarkIcon").addEventListener("click", (e) => {
                     showFavourites(user);
                 });
+                document.querySelector("#bookmarkIcon").addEventListener("click", showFavourites);
+                const editAccountBtn = document.querySelector("#editAccountBtn");
+                editAccountBtn.addEventListener("click", editAccount);
+                
+                document.addEventListener("click", (e)=>{
+                    if (document.querySelector("#settingsIcon")) {
+                        if (e.target != document.querySelector("#settingsIcon")) {
+                             document.querySelector("#dropdownContent").classList.add("closed") };
+                    }
+                })
+                function openCloseSettings(e) { document.querySelector("#dropdownContent").classList.toggle("closed")};
 
             }
 
