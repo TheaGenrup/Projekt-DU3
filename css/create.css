@@ -207,22 +207,103 @@
 #chooseBoardContainer{
     margin: 5px 0px;
 }
-#selectBoard{
+#customSelect{
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    height: 29px;
+    border: 1px solid black;
+    border-radius: 7px;
+    height: 29px;
+
+    cursor: pointer;
+    z-index: 3;
+}
+#customSelect #selectedValue{
+    position: absolute;
     width: 100%;
-    background-color: white;
-    border: none;
-    padding: 5px;
-    border-radius: 10px;
+    height: 100%;
+    box-sizing: border-box;
+    top: 0px;
+    background-color: #858585;
+    z-index: 1;
+    padding: 4px;
+    border-radius: 7px;
 }
-#selectBoard option{
+#customSelect #selectedValue:hover{
+    background-color: #cec9c9;
 }
+#customSelect #selectArrow{
+    position: absolute;
+
+    background-image: url(/media/icons/arrow-up-340-svgrepo-com.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    height: 10px;
+    width: 10px ;
+
+    right: 10px;
+    top: 10px;
+
+    transition: 1s;
+    z-index: 2;
+}
+#customSelect #selectArrow.spin{
+    transform: rotate(180deg);
+}
+#customSelect #dropdownSelector{
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    top: 30px;
+    border: 1px solid black;
+    border-top: none;
+    border-radius: 0px 0px 7px 7px;
+}
+#customSelect #dropdownSelector .option{
+    background-color: rgb(118, 118, 118);
+    height: 35px;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    padding: 0px 5px;
+    box-sizing: border-box;
+}
+#customSelect #dropdownSelector .option:hover{
+    background-color: rgb(74, 74, 74);
+    cursor: pointer;
+}
+#customSelect #dropdownSelector .option:last-child{
+    border-radius: 0px 0px 7px 7px;
+}
+
 /* Chosen ablumb section */
 #selectedAlbumContainer{
     height: 25%;
 
 }
 #selectedAlbumContainer img{
+    box-shadow: rgba(0, 0, 0, 0.15) 5.4px 4.4px 25.2px;
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 110%;
+}
 
+#reviewDescription{
+    resize: none;
+    width: 100%;
+    padding: 0;
+    border-radius: 10px;
+    background-color: #1c1c1c;
+    box-sizing: border-box;
+    padding: 7px;
+    border: 1px solid gray;
+    color: #bbb;
+}
+#reviewDescription:focus-within{
+    outline: rgb(211, 211, 211);
 }
 
 /* JS classes*/
@@ -233,4 +314,8 @@
 #createContainer .disabled:hover{
     background-color: #393939;
     cursor:auto;
+}
+
+#dropdownSelector.hidden{
+    display: none;
 }

@@ -117,7 +117,7 @@ async function displayAlbum(albumData) {
                 <p>Rating</p>
                 <p id="totalReviews"></p>
             </div>
-            <img id="searchNavigator" src="${albumCover}" alt="">
+            <img id="" src="${albumCover}" alt="">
         </div>
         <div id="artistInfo">
             <p id="albumName">${albumName}</p>
@@ -249,7 +249,12 @@ async function renderCreateReview(albumData) {
 
         <div id="chooseBoardContainer">
             <label for="chooseBoard">Choose board</label>
-            <select id="selectBoard"></select>
+            <div id="customSelect">
+                <div id="selectedValue">test</div>
+                <div id="selectArrow"></div>
+                <div id="dropdownSelector" class="hidden">
+                </div>
+            </div>
         </div>
 
         <div id="rateAlbumContainer" class="open">
@@ -277,12 +282,13 @@ async function renderCreateReview(albumData) {
     createContainer.innerHTML = html;
     createContainer.classList.add("board");
     // consts
-    const albumSearchField = document.querySelector("#searchField");
-    const albumUl = createContainer.querySelector("#albumUl");
-    const selectBoard = document.querySelector("#selectBoard");
     const backButton = createContainer.querySelector("#goBackButton");
     const createButton = createContainer.querySelector("#createButton");
     const starRatings = createContainer.querySelectorAll("#chooseRatingContainer div");
+    const customSelect = createContainer.querySelector("#customSelect");
+    const selectArrow = createContainer.querySelector("#selectArrow");
+    const dropdownSelector = createContainer.querySelector("#dropdownSelector");
+    const selectedValue = createContainer.querySelector("#selectedValue");
     // Event listener
     // Prevent default for submitting forms
     createButton.addEventListener("click", (e) => { e.preventDefault() });
@@ -290,15 +296,35 @@ async function renderCreateReview(albumData) {
     createButton.addEventListener("click", addReview)
     //Add boards to list of options
     usersBoards.forEach(board => {
-        const optionDom = document.createElement("option");
+        const optionDom = document.createElement("div");
         optionDom.value = board.boardName;
         optionDom.textContent = board.boardName;
         optionDom.id = board.boardId
         selectBoard.dataset.boardId = usersBoards[0].boardId
-        optionDom.addEventListener("click", () => {
+        optionDom.addEventListener("click", (e) =>{
             selectBoard.dataset.boardId = optionDom.id
+            optionDom.classList.add("option")
+            e.stopPropagation();
+            dropdownSelector.dataset.boardId = optionDom.id
+            selectedValue.textContent = optionDom.value;
+            dropdownSelector.classList.add("hidden");
         })
-        selectBoard.append(optionDom);
+
+        document.addEventListener("click", (e)=>{
+            if (e.target != selectedValue) {
+                e.stopPropagation();
+                dropdownSelector.classList.add("hidden");
+            }
+        })
+        dropdownSelector.append(optionDom);
+        
+    });
+
+    customSelect.dataset.boardId = usersBoards[0].boardId
+    customSelect.value = usersBoards[0].boardName
+    customSelect.addEventListener("click", () => {
+        dropdownSelector.classList.toggle("hidden");
+        selectArrow.classList.toggle("spin");
     });
     //Star rating function
     starRatings.forEach(star => {
@@ -339,7 +365,7 @@ async function renderCreateReview(albumData) {
     function addReview() {
         const rating = document.querySelectorAll(".chosen").length
         const reviewDescription = document.querySelector("#reviewDescription").value
-        const boardId = parseInt(document.querySelector("#selectBoard").dataset.boardId);
+        const boardId = parseInt(document.querySelector("#customSelect").dataset.boardId);
         const reviewObject = {
             rating: rating,
             reviewDescription: reviewDescription,
@@ -354,10 +380,10 @@ async function renderCreateReview(albumData) {
         addBoardOrReview(reviewObject);
 
     }
-
     backButton.addEventListener("click", renderCreateReviewView);
     createButton.addEventListener("click", addReview);
 }
+
 
 function addToListenList(album, saveButton) {
     const userId = localStorage.getItem("userId")
@@ -390,7 +416,39 @@ function addToListenList(album, saveButton) {
 }
 
 async function getUserData(userId) {
-    const response = await fetch(`/server/getUser.php/?id=${userId}`)
+    const response = await fetch(`/server/getUser.php/?id=${userId}`);
     const userData = await response.json();
-    return userData
+    return userData;
+}
+function startLoadingScreen(elementToAddTo) {
+    const VinylHtml =`
+    <div class="vinylShadow"></div>
+    <div class="circleContainer">
+        <div class="vinylReflection"></div>
+        <div class="innerCircle1"></div>
+        <div class="innerCircle2"></div>
+        <div class="albumCircle"></div>
+        <div class="etchCircle1 etchCircle"></div>
+        <div class="etchCircle2 etchCircle"></div>
+        <div class="etchCircle3 etchCircle"></div>
+        <div class="etchCircle4 etchCircle"></div>
+        <div class="etchCircle5 etchCircle"></div>
+        <div class="outerCircle etchCircle"></div>
+    </div>
+    `
+    const loaderContainer = document.createElement("div");
+    loaderContainer.classList.add("vinylloaderC");
+    loaderContainer.innerHTML = VinylHtml;
+    elementToAddTo.append(loaderContainer);
+    //loaderContainer.querySelector("#circleContainer").style.opacity = 0;
+
+}
+
+function stopLoadingScreen() {
+    const loaderDom = document.querySelector(".vinylloaderC");
+    loaderDom.remove();
+}
+
+function name(params) {
+    
 }

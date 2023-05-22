@@ -1,6 +1,7 @@
 #searchWindow {
     overflow: scroll;
     overflow-x: hidden;
+    position: relative;
 }
 
 #searchWindow div {
@@ -51,13 +52,13 @@
     list-style-type: none;
     display: flex;
     align-items: center;
-    padding: 0px 5px;
+    padding: 10px;
     margin: 2px 0px;
-    /*background-color: rgb(112, 112, 112);*/
+    background-color: rgb(112, 112, 112);
     gap: 5px;
 }
 #searchWindow ul li  img{
-    height: 35px;
+    height: 55px;
     border-radius: 50%;
 }
 
@@ -67,6 +68,11 @@
 }
 #searchWindow ul li .albumListingInformation {
     width: 75%;
+}
+
+#searchWindow ul li p{
+    margin: 5px;
+
 }
 
 #searchWindow ul li .saveButton {
@@ -110,7 +116,7 @@
     display: none;
     flex-direction: column;
     position: absolute;
-    height: 90%;
+    height: 95%;
     width: 89%;
     border: 2px solid black;
     border-radius: 10px;
@@ -149,6 +155,7 @@
 #resultsWindow #albumInfo img{
     width: 50%;
     border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 #resultsWindow #addReviewButtonContainer{
     display: flex;

@@ -183,5 +183,88 @@
                 }
             ]
         }
+    },
+    {
+        "userCredentials": {
+            "username": "wa",
+            "password": "wa"
+        },
+        "loginKey": "7CH5IgfTKZodaLc2v3AG4Fzcx",
+        "userSocial": {
+            "following": [],
+            "followers": []
+        },
+        "userIdentity": {
+            "id": "810971995587792364855956146316",
+            "profilePic": "media\/default.png",
+            "displayName": "wa"
+        },
+        "albumData": {
+            "boards": [
+                {
+                    "boardName": "test",
+                    "boardId": 0,
+                    "reviews": [
+                        0,
+                        1,
+                        1
+                    ],
+                    "thumbnail": "defaultBoardImage.jpg"
+                },
+                {
+                    "boardName": "etate",
+                    "boardId": 1,
+                    "reviews": [],
+                    "thumbnail": "defaultBoardImage.jpg"
+                },
+                {
+                    "boardName": "eaestast",
+                    "boardId": 2,
+                    "reviews": [],
+                    "thumbnail": "defaultBoardImage.jpg"
+                },
+                {
+                    "boardName": "ascaseec",
+                    "boardId": 3,
+                    "reviews": [],
+                    "thumbnail": "defaultBoardImage.jpg"
+                },
+                {
+                    "boardName": "aeraerer",
+                    "boardId": 4,
+                    "reviews": [],
+                    "thumbnail": "defaultBoardImage.jpg"
+                }
+            ],
+            "reviews": [
+                {
+                    "albumName": "Victory",
+                    "artist": "DJ Khaled",
+                    "albumId": "1yX1ZzW6TBvQ1qeNpbiONH",
+                    "reviewId": 0,
+                    "reviewDescription": "Shit sucks ass",
+                    "rating": 1,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684424607,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e025de048eb9ca94916178afb20"
+                },
+                {
+                    "albumName": "TESTING",
+                    "artist": "A$AP Rocky",
+                    "albumId": "3MATDdrpHmQCmuOcozZjDa",
+                    "reviewId": 1,
+                    "reviewDescription": "fsfsd",
+                    "rating": 1,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684429744,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029feadc48ab0661e9b3a9170b"
+                }
+            ],
+            "favourites": []
+        }
     }
 ]
