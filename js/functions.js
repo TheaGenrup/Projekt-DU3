@@ -32,8 +32,7 @@ function timeConverter(UNIX_timestamp) {
     return time;
 }
 
-function makeReview(review, container, displayNameLine) {
-
+function makeReview(review, container, inProfile) {
     // shorten comment if needed
     let reviewDescription = review.reviewDescription;
     if (reviewDescription.length > 45) {
@@ -45,7 +44,7 @@ function makeReview(review, container, displayNameLine) {
     newReview.classList.add("review");
     newReview.innerHTML = `
      
-        <p id="who" class="bold">@${review.displayName} added a review</p>
+        <p id="who" class="bold">@${review.displayName}</p>
         <p id="when">${timeConverter(review.timestamp)}</p>
         <div id="albumOverview">
             <div class="albumCover"></div>
@@ -64,12 +63,15 @@ function makeReview(review, container, displayNameLine) {
             </div>
         </div>`;
     newReview.dataset.albumId = review.albumId
-    // add new review to html
-    document.querySelector(container).append(newReview);
-    if (displayNameLine === "test") { newReview.querySelector(".bold").textContent = review.displayName }
-
     newReview.dataset.userId = review.userId;
     newReview.dataset.reviewId = review.reviewId;
+
+    // add new review to html
+    document.querySelector(container).append(newReview);
+
+    if (inProfile) {
+        newReview.id = `review_${review.reviewId}`;
+    }
 
     // add album cover
     if (review.albumCover === "" || review.albumCover === undefined || review.albumCover === null) {

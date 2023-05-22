@@ -473,7 +473,8 @@ function renderProfileView(event) {
                 reviewsInBoard.sort((a, b) => b.timestamp - a.timestamp);
 
                 reviewsInBoard.forEach(review => {
-                    makeReview(review, "#boardAndReviewContainer");
+
+                    makeReview(review, "#boardAndReviewContainer", true);
                     //    document.querySelector(`#review_${review.reviewId} > #who`).textContent = `@${review.displayName}`;
                 });
                 document.querySelectorAll(".review > who").forEach(element => element.textContent = `@${review.displayName}`);
@@ -496,11 +497,34 @@ function renderProfileView(event) {
 
                     document.querySelectorAll(".deleteBtn").forEach(button => {
 
-                        button.addEventListener("click", renderPopUp);
+
+                        button.addEventListener("click", event => {
+                            event.stopPropagation();
+
+                            const popUp = document.createElement("div");
+
+                            popUp.id = "popUp";
+
+                            popUp.innerHTML = ` 
+                                <p>Are you sure you want to delete this review?</p>
+                                <div>
+                                    <div id="cancelBtn">Cancel</div>
+                                    <div id="continueBtn">Continue</div>
+                                </div>`;
+
+                            document.querySelector("#contentContainer").prepend(popUp);
+
+                            document.querySelector("#cancelBtn").addEventListener("click", hidePopUp);
+                            document.querySelector("#continueBtn").addEventListener("click", event => {
+                                console.log(event.target);
+                                document.querySelector(`#review_${event.target.dataset.reviewId}`).remove();
+                                deleteReview(event.target.dataset.reviewId);
+                            });
+                            document.querySelector("#continueBtn").dataset.reviewId = event.currentTarget.dataset.reviewId;
+
+                        });
 
                     });
-
-
 
                 }
 
