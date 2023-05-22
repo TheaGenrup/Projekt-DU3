@@ -19,8 +19,8 @@ button {
     cursor: pointer;
     border: 1.5px solid black;
     border-radius: 10px;
-    min-height: 6vw;
-    min-width: 20vw;
+    height: 6vw;
+    width: 20vw;
 }
 
 body main #contentCOntainer #noResults {

@@ -29,9 +29,11 @@ function followUnfollow(event) {
 }
 async function editAccount(e) {
     const userId = localStorage.getItem("userId");
-    const editAccountContainer = document.querySelector("#contentContainer");
     const user = await getUserData(userId);
-    editAccountContainer.innerHTML = "";
+    const overlay = document.createElement("div");
+    overlay.classList.add("overlayReview");
+    overlay.classList.add("editContainer");
+    overlay.innerHTML = "";
     let html = `
     <div>Edit profile</div>
         <form id="uploadWrapper">
@@ -51,7 +53,8 @@ async function editAccount(e) {
         <button for="uploadWrapper" id="createButton" class="navigationButton disabled">Save</button>
         </div>
     `
-    editAccountContainer.innerHTML = html
+    overlay.innerHTML = html
+    document.querySelector("main").append(overlay);
     const imageUploader = document.querySelector("#imageUploader");
     const imagePreview = document.querySelector("#imagePreview");
     const backButton = document.querySelector("#goBackButton");
@@ -59,7 +62,9 @@ async function editAccount(e) {
     const displayNameInput = document.querySelector("#searchField");
     const usersCurrentProfielPicture = user.userIdentity.profilePic;
     createButton.addEventListener("click", (e) => { e.preventDefault() });
-    backButton.addEventListener("click", (e) => { e.preventDefault() });
+    backButton.addEventListener("click", () =>{
+        overlay.remove();
+    })
 
     if (user.userIdentity.profilePic = "") {
         imagePreview.style.backgroundImage = `url(/media/default.png)`;

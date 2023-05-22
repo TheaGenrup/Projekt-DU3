@@ -86,43 +86,6 @@
 
 }
 
-#searchWindow ul li .saveButton {
-    position: absolute;
-    background: none;
-    margin: 0px 5px;
-    border: none;
-    padding: 0;
-    width: 5vw;
-    height: 5vw;
-    border-radius: 0px;
-    right: 10px;
-    background-image: url(/media/icons/bookmark.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-#searchWindow ul li .savedButton {
-    position: absolute;
-    background: none;
-    margin: 0px 5px;
-    border: none;
-    padding: 0;
-    width: 20px;
-    height: 20px;
-    border-radius: 0px;
-    right: 10px;
-    background-image: url(/media/icons/vinyl.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-#searchWindow ul li .saveButton:hover {
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
-    transition: 0.5s;
-}
-
 /* Results window */
 #resultsWindow {
     display: none;

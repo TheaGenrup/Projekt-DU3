@@ -99,7 +99,25 @@ if (isset($data["username"], $data["password"], $data["displayName"])) {
                 "reviews" => [],
                 "favourites" => [] 
             ]
-         ]; 
+        ]; 
+        if (!file_exists("../media/usersMedia/$id")) {
+            if (!mkdir("../media/usersMedia/$id", 0777, true)) {
+                $response = [
+                    "message" => "failed to register",
+                    "error" => "User dir"
+                ];
+                sendJSON($response, 400);
+            }
+            if (!mkdir("../media/usersMedia/$id/boards", 0777, true)) {
+                $response = [
+                    "message" => "failed to register",
+                    "error" => "User boards"
+                ];
+                sendJSON($response, 400);
+            }
+        }
+
+
           
         $userData[] = $newUser;
         saveFileData("users.json", $userData);

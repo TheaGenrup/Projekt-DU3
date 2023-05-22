@@ -485,10 +485,15 @@ async function showFavourites() {
             <div id="favouriteInfoContainer">
                 <p class="favouriteAlbumName">${favourite.albumName}</p>
                 <p class="favouriteArtist">${favourite.artist}</p>
-            </div>`;
+            </div>
+            <button class="savedButton"></button>`;
 
         document.querySelector("#favourites").append(newFavourite);
         newFavourite.querySelector(".favouriteCover").style.backgroundImage = `url(${favourite.albumCover})`;
+        const saveButton = newFavourite.querySelector(".savedButton");
+        saveButton.addEventListener("click", () => {
+            addToListenList(favourite, saveButton)
+        })
     });
 
 

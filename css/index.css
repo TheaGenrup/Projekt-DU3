@@ -103,3 +103,58 @@ nav * {
     justify-content: center;
     align-items: center;
 }
+
+/* book mark button styling */
+
+.saveButton {
+    position: absolute;
+    background: none;
+    border: none;
+    padding: 0;
+    width: 5vw;
+    height: 5vw;
+    border-radius: 0px;
+    right: 15px;
+    background-image: url(/media/icons/bookmark.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.savedButton {
+    position: absolute;
+    background: none;
+    border: none;
+    padding: 0;
+    width: 5vw;
+    height: 5vw;
+    border-radius: 0px;
+    right: 15px;
+    background-image: url(/media/icons/vinyl.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.saveButton:hover {
+    width: 5.2vw;
+    height: 5.2vw;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.savedButton:hover{
+    background-image: url(/media/icons/close_0.png);
+}
+
+/* overlay */
+.overlayReview{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    height: 92%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5vw;
+    overflow-x: scroll;
+    background-color: rgb(153, 153, 153);
+}

@@ -54,15 +54,16 @@ if ($requestMethod == "PATCH") {
     $userData = getFileData("users.json");
 
     foreach ($userData as $key => $user) {
-        if ($user["userIdentity"]["displayName"] == $newDisplayName) {    $response = ["message" => "Display already in used!"];    sendJson($response, 200);    };
-        $userData[$key]["userIdentity"]["displayName"] = $newDisplayName;
-        saveFileData("users.json", $userData);
-        $response = ["message"=>"Display name changed! "];
-        sendJson($response, 200);
+        if ($user["userIdentity"]["id"] === $userId) {
+            if ($user["userIdentity"]["displayName"] == $newDisplayName) {    $response = ["message" => "Display already in use!"];    sendJson($response, 200);    };
+                $userData[$key]["userIdentity"]["displayName"] = $newDisplayName;
+                saveFileData("users.json", $userData);
+                $response = ["message"=>"Display name changed! "];
+                sendJson($response, 202);
+        }
     }
 
 }
-
 
 
 

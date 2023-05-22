@@ -2,19 +2,6 @@
     margin: 0;
 }
 
-.overlayReview{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    height: 92%;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 5vw;
-    overflow-x: scroll;
-    background-color: rgb(153, 153, 153);
-}
-
 #reviewDescription {
     font-style: italic;
 }
