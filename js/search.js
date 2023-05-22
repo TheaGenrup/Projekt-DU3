@@ -4,12 +4,13 @@ let tokenTimer;
 
 async function fetchToken(params) {
     fetch("/server/spotifyApi/tokenAccess.php")
-    .then(r=>r.json())
-    .then(r => {
-        token = r.token;
-        tokenTimer = r.tokenTimeLeft;
-        return token;
-})};
+        .then(r => r.json())
+        .then(r => {
+            token = r.token;
+            tokenTimer = r.tokenTimeLeft;
+            return token;
+        })
+};
 
 function toggleSearchIcon(params) {
     const searchNavigator = document.querySelector("#searchNavigator");
@@ -19,7 +20,7 @@ function toggleSearchIcon(params) {
         searchNavigator.src = "/media/icons/Search.png"
     } else {
         searchNavigator.src = "/media/icons/close_0.png"
-        searchNavigator.addEventListener("click", ()=>{
+        searchNavigator.addEventListener("click", () => {
             searchNavigator.src = "/media/icons/Search.png"
             input.value = "";
             clearSearch();
@@ -27,7 +28,7 @@ function toggleSearchIcon(params) {
     }
 }
 
-                    // SEARCH SECTION
+// SEARCH SECTION
 async function renderSearchView(e) {
     clearSearch();
     const originButton = e.target.id
@@ -40,7 +41,7 @@ async function renderSearchView(e) {
     </div>
     <div id="searchWindow">
         <div id="searchContainer">
-            <input type="text" id="searchField" placeholder="Album, Artist, user" autocomplete="off">
+            <input type="text" id="searchField" placeholder="Find a album, artist or user" autocomplete="off">
             <img id="searchNavigator" src="/media/icons/Search.png" alt="">
         </div>
         <ul id=userUl> </ul>
@@ -60,7 +61,7 @@ async function renderSearchView(e) {
         
         if the user instead is searching from the add review section they will only be able to see albums when searching and will be directly directed to the review album section.
     */
-    if (originButton === "searchIcon") { searchField.addEventListener("keyup", searchUsers);}
+    if (originButton === "searchIcon") { searchField.addEventListener("keyup", searchUsers); }
     // CSS change
     document.querySelector("#css2").setAttribute("href", "/css/search.css");
 
@@ -70,35 +71,36 @@ async function renderSearchView(e) {
     function searchAlbums(e) {
         let input = e.target.value;
         toggleSearchIcon();
-        if (!input) {  clearSearch();   return}
+        if (!input) { clearSearch(); return }
         startLoadingScreen(document.querySelector("main"));
         let albumSearchEndpoint = `https://api.spotify.com/v1/search?q=${input}&type=album&offset=0&limit=10`;
-    
-        if (token.length > 0 || token != undefined) { 
-          fetch(albumSearchEndpoint, {
-              headers: {
-                  "Authorization": "Bearer " + token
-              }
-          })
-          .then(response => {
-            return response.json()})
-          .then(albumResource => {
-            const albumsfetched = albumResource.albums.items;
-            const albumsFound = []
-            albumsfetched.forEach(album => {
-              let albumInfo = {
-                artist:     album.artists[0].name,
-                albumName:  album.name,
-                albumId:    album.id,
-                albumCover: album.images[1].url,
-                albumType:  album.album_type,
-              }
-              albumsFound.push(albumInfo);
-            });
-            clearSearchAlbums();
-            listAlbums(albumsFound);
-          });
-    
+
+        if (token.length > 0 || token != undefined) {
+            fetch(albumSearchEndpoint, {
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            })
+                .then(response => {
+                    return response.json()
+                })
+                .then(albumResource => {
+                    const albumsfetched = albumResource.albums.items;
+                    const albumsFound = []
+                    albumsfetched.forEach(album => {
+                        let albumInfo = {
+                            artist: album.artists[0].name,
+                            albumName: album.name,
+                            albumId: album.id,
+                            albumCover: album.images[1].url,
+                            albumType: album.album_type,
+                        }
+                        albumsFound.push(albumInfo);
+                    });
+                    clearSearchAlbums();
+                    listAlbums(albumsFound);
+                });
+
         }
     };
     // List albums function
@@ -106,20 +108,20 @@ async function renderSearchView(e) {
         const albumDomUl = document.querySelector("#albumUl");
         const userData = await getUserData(localStorage.getItem("userId"));
         const usersAlbumList = userData.albumData.favourites;
-        
-        
+
+
         if (albumsFound.length > 0) {
             albumsFound.forEach(album => {
                 // albums constants
-                const albumName     = album.albumName;
-                const artist        = album.artist;
-                const albumId       = album.albumId;
-                const albumCover    = album.albumCover;
-        
+                const albumName = album.albumName;
+                const artist = album.artist;
+                const albumId = album.albumId;
+                const albumCover = album.albumCover;
+
                 const liDom = document.createElement("li");
                 liDom.setAttribute("id", albumId)
-                liDom.innerHTML = 
-                `
+                liDom.innerHTML =
+                    `
                     <img class="albumPreviewImage" src="${albumCover}"></img>
                     <div class="albumListingInformation">
                         <p class="albumName">${albumName}</p>
@@ -128,8 +130,8 @@ async function renderSearchView(e) {
                     <button class="saveButton"></button>
                 `;
                 const saveButton = liDom.querySelector("button");
-                saveButton.addEventListener("click", (e)=>{e.stopPropagation()});
-                saveButton.addEventListener("click", (e)=>{ const results = addToListenList(album, saveButton) }); 
+                saveButton.addEventListener("click", (e) => { e.stopPropagation() });
+                saveButton.addEventListener("click", (e) => { const results = addToListenList(album, saveButton) });
                 usersAlbumList.forEach(listItem => {
                     if (listItem.albumId === albumId) {
                         saveButton.classList.remove("saveButton");
@@ -141,9 +143,10 @@ async function renderSearchView(e) {
                 if (originButton === "searchIcon") { liDom.addEventListener("click", showCaseAlbum); }
                 if (originButton === "createReview") {
                     liDom.dataset.reviewDirectly = "true";
-                    liDom.addEventListener("click", showCaseAlbum); }
+                    liDom.addEventListener("click", showCaseAlbum);
+                }
                 // Add album to listen list
-        
+
                 albumDomUl.append(liDom);
             });
             stopLoadingScreen();
@@ -156,10 +159,10 @@ async function renderSearchView(e) {
 
 function searchUsers(e) {
     let input = e.target.value;
-    if (!input) {return}
+    if (!input) { return }
     const request = new Request(`/server/searchUsers.php?search=${input}`);
     fetch(request)
-        .then(r=>r.json())
+        .then(r => r.json())
         .then(userResource => {
             clearSearchUsers();
             listUsers(userResource);
@@ -180,11 +183,11 @@ function showCaseAlbum(e) {
     const albumId = liDom.id;
 
     const albumData = {
-        artistName:artistName,
-        albumName:albumName,
-        albumCover:albumCover,
-        albumId:albumId,
-        
+        artistName: artistName,
+        albumName: albumName,
+        albumCover: albumCover,
+        albumId: albumId,
+
     };
     if (liDom.dataset.reviewDirectly) {
         albumData.reviewDirectly = true;
@@ -192,7 +195,7 @@ function showCaseAlbum(e) {
 
     displayAlbum(albumData);
 }
-    // List Users
+// List Users
 function listUsers(usersFound) {
     const UserDomul = document.querySelector("#userUl");
     UserDomul.innerHTML = "";
@@ -201,13 +204,13 @@ function listUsers(usersFound) {
             const UserDisplayName = user.displayName;
             const Userid = user.id;
             const UserprofilePicture = user.profilePicture;
-    
-    
-    
+
+
+
             const liDom = document.createElement("li");
             liDom.setAttribute("id", Userid);
-            liDom.innerHTML = 
-            `
+            liDom.innerHTML =
+                `
                 <img src="${UserprofilePicture}"></img>
                 <div class="albumInformation">
                     <p>${UserDisplayName}</p>
@@ -228,10 +231,12 @@ function clearSearch() {
     if (albumDomUl) { albumDomUl.innerHTML = ""; };
     if (userDomUl) { userDomUl.innerHTML = ""; };
 }
+
 function clearSearchAlbums() {
     const albumDomUl = document.querySelector("#albumUl");
     if (albumDomUl) { albumDomUl.innerHTML = ""; };
 }
+
 function clearSearchUsers() {
     const userDomUl = document.querySelector("#albumUl");
     if (userDomUl) { userDomUl.innerHTML = ""; };

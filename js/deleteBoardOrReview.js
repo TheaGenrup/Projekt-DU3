@@ -1,5 +1,6 @@
-async function deleteReview(event) {
+"use strict";
 
+async function deleteReview(event) {
 
     event.stopPropagation();
 

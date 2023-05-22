@@ -9,11 +9,13 @@ body {
     overflow: hidden;
     /* Ta bort? verkar finnas en onödig scroll annars? */
 }
-ul{
+
+ul {
     scroll-behavior: smooth;
 }
+
 /* General styling */
-button{
+button {
     cursor: pointer;
     border: 1.5px solid black;
     border-radius: 10px;
@@ -21,7 +23,7 @@ button{
     min-width: 20vw;
 }
 
-body main #contentCOntainer #noResults{
+body main #contentCOntainer #noResults {
     padding: 10px 0px;
 }
 
@@ -42,7 +44,7 @@ body main #contentCOntainer #noResults{
     width: 100%;
 }
 
-.alignCenter{
+.alignCenter {
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -53,7 +55,7 @@ body main #contentCOntainer #noResults{
     box-sizing: border-box;
     padding: 5vw;
     height: 100%;
-    width: 90vw;
+    width: 100vw;
     background-color: rgb(68, 68, 68);
     /* border-radius: 20px; */
     box-shadow: 0px 0px 11px 4px rgb(15, 15, 15);
@@ -61,7 +63,7 @@ body main #contentCOntainer #noResults{
     display: flex;
     flex-direction: column;
     position: relative;
-    /* bottom: -1vh;*/ 
+    /* bottom: -1vh;*/
     overflow: scroll;
 }
 
@@ -103,28 +105,33 @@ nav {
     background-color: rgba(0, 0, 0, 0);
 
 }
+
 button.viewIcon {
     border: none;
     transition: 0.2s;
 }
 
-#discoverIcon{
+#discoverIcon {
     background-image: url(/media/icons/home-svgrepo-com.svg);
 }
-#searchIcon{
+
+#searchIcon {
     background-image: url(/media/icons/search-svgrepo-com.svg);
 }
-#addIcon{
+
+#addIcon {
     background-image: url(/media/icons/plus-svgrepo-com.svg);
 }
 
-button.viewIcon{
+button.viewIcon {
     filter: invert(43%) sepia(0%) saturate(3065%) hue-rotate(172deg) brightness(98%) contrast(67%);
 }
-button.viewIcon:hover{
+
+button.viewIcon:hover {
     filter: invert(95%) sepia(0%) saturate(147%) hue-rotate(196deg) brightness(92%) contrast(95%);
 }
-#profilePicture{
+
+#profilePicture {
     border: 1px solid rgb(29, 29, 29);
 }
 
@@ -148,8 +155,9 @@ button.viewIcon:hover{
 #overlayContentContainer {
     height: 85%;
 }
+
 /* Search field */
-#searchFieldContainer{
+#searchFieldContainer {
     display: none;
     justify-content: center;
     align-items: center;
@@ -159,17 +167,19 @@ button.viewIcon:hover{
     height: 0%;
     background-color: rgb(24, 24, 24);
 }
+
 #searchField {
     z-index: 2;
 }
 
-#closeSearch{
+#closeSearch {
     display: none;
     height: 4.5vw;
     width: 4.5vw;
     margin-right: 10px;
     cursor: pointer;
 }
+
 textarea {
     resize: none;
     width: 100%;
@@ -205,7 +215,7 @@ textarea {
 }
 
 /* Loader */
-.vinylloaderC{
+.vinylloaderC {
     position: absolute;
     background-color: rgba(68, 68, 68, 0.444);
     display: flex;
@@ -216,7 +226,7 @@ textarea {
     z-index: 1;
 }
 
-.circleContainer{
+.circleContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -229,31 +239,36 @@ textarea {
     animation: spinVinyl 2s linear infinite;
     overflow: hidden;
 }
-.vinylShadow{
+
+.vinylShadow {
     position: absolute;
     height: 31vw;
     width: 31vw;
     border-radius: 50%;
     box-shadow: 6px 5px #756a6a2b;
 }
-.circleContainer div{
+
+.circleContainer div {
     position: absolute;
     border-radius: 50%;
 }
-.innerCircle1{
+
+.innerCircle1 {
     height: 5%;
     width: 5%;
     background-color: aliceblue;
     z-index: 20;
 
 }
-.innerCircle2{
+
+.innerCircle2 {
     height: 6%;
     width: 6%;
     background-color: #7d7f81;
     z-index: 19;
 
 }
+
 .albumCircle {
     height: 20%;
     width: 20%;
@@ -261,48 +276,59 @@ textarea {
     z-index: 18;
     border: 4px solid #131313;
 }
-.etchCircle{
+
+.etchCircle {
     background-color: #00000000;
     border: 1px solid #515151;
 }
+
 .etchCircle1 {
     height: 25%;
     width: 25%;
     z-index: 19;
     border: 1px solid #3e3e3e;
 }
+
 .etchCircle2 {
     height: 35%;
     width: 35%;
     z-index: 19;
 }
+
 .etchCircle3 {
     height: 45%;
     width: 45%;
     z-index: 19;
 }
+
 .etchCircle4 {
     height: 65%;
     width: 65%;
     z-index: 19;
 }
+
 .etchCircle5 {
     height: 85%;
     width: 85%;
     z-index: 19;
 }
 
-.vinylReflection{
+.vinylReflection {
     border-radius: 0;
     height: 5px;
     width: 150%;
     background-color: #DFDFDF1F;
     z-index: 20;
     box-shadow: 0px 0px 30px #f9f9f9;
-    
+
 }
 
 @keyframes spinVinyl {
-    0% {transform: rotate(0deg);}
-    100% {transform: rotate(360deg);}
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
