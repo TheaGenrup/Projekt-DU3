@@ -17,8 +17,8 @@
         },
         "userIdentity": {
             "id": "607133432034891031030642696328",
-            "profilePic": "profile_picture.jpg",
-            "displayName": "Anthony Fantano"
+            "profilePic": "test.jpeg",
+            "displayName": "test"
         },
         "albumData": {
             "boards": [
@@ -210,8 +210,7 @@
                         0,
                         5
                     ],
-                    "timestamp": 1684339541,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e024fb043195e8d07e72edc7226"
+                    "timestamp": 1684339541
                 },
                 {
                     "albumName": "Fleetwood Mac",

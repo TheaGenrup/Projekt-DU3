@@ -64,7 +64,7 @@ function loginRegister(e) {
 async function attemptLogin(username, password, access, loginKey) {
     if (!loginKey) {
         const userData = await fetchLogin(username, password, access);
-        if (userData.message) { sendLoginPageMessage(userData.message); return }
+        if (userData.message) { sendMessageToUser(document.querySelector("#loginRegistermessage"),userData.message); return }
         else { loginUser(userData); }
     }
     if (loginKey) {
@@ -131,7 +131,7 @@ function registerUser(username, password, displayname) {
                 }
             })
     } catch (error) {
-        sendLoginPageMessage("whoopsie, an error occured, please try again another time")
+        sendMessageToUser(document.querySelector("#loginRegistermessage"), "whoopsie, an error occured, please try again another time")
     }
 
 }
@@ -146,8 +146,19 @@ function sendLoginPageMessage(message) {
     setTimeout(() => {
         loginRegistermessageDom.style.transition = "1.5s"
         loginRegistermessageDom.style.opacity = "0%"
+    }
+}
+function sendMessageToUser(DomElement, message) {
+    DomElement.textContent = ""
+    DomElement.style.opacity = "0%"
+    DomElement.style.transition = "0s"
+    DomElement.textContent = message
+    DomElement.style.opacity = "100%"
+    setTimeout(()=>{
+        DomElement.style.transition = "1.5s"
+        DomElement.style.opacity = "0%"
     }, 10000);
-    loginRegistermessageDom.style.transition = "0s"
+    DomElement.style.transition = "0s"
     return;
 }
 

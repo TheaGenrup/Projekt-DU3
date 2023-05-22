@@ -325,7 +325,7 @@ function renderProfileView(event) {
             document.querySelector("#contentContainer").innerHTML = `
                 <div id="profileHeader">
                     <div>
-                        <div id="profilePictureTop"></div>
+                        <img id="profilePictureTop" src="/media/usersMedia/${clickedUserId}/${profilePicture}"></img>
                         <p>@${displayName}</p>
                     </div> 
                     <div class="center">
@@ -386,7 +386,7 @@ function renderProfileView(event) {
                 <div id="boardIcon" class="pointer"></div>
                 `;
 
-                document.querySelector("#settingsIcon").addEventListener("click", e => document.querySelector("#dropdownContent").classList.toggle("closed"));
+                document.querySelector("#settingsIcon").addEventListener("click", openCloseSettings);
                 document.querySelector("#logOutBtn").addEventListener("click", e => {
                     renderLoginPage();
                 })
@@ -428,6 +428,8 @@ function renderProfileView(event) {
             stopLoadingScreen(document.querySelector("main"));
 
         });
+
+
 };
 
 function followUnfollow(user, eventTarget) {
