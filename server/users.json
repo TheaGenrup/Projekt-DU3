@@ -184,56 +184,96 @@
             "boards": [],
             "reviews": [
                 {
-                    "albumName": "Bella Donna (2016 Remastered)",
-                    "artist": "Stevie Nicks",
-                    "albumId": "0IomjU2bXFng4LQBYn7Het",
-                    "reviewId": 0,
-                    "reviewDescription": "Well, this is obviously amazing... it's me",
-                    "rating": 5,
-                    "boards": [
-                        1
-                    ],
-                    "timestamp": 1684433242,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02af14d74d5e308ce2f3ec22f8"
-                },
-                {
                     "albumName": "Rumours",
                     "artist": "Fleetwood Mac",
-                    "albumId": "1bt6q2SruMsBtcerNVtpZB",
+                    "albumId": "nfipqn029",
+                    "reviewId": 5290,
+                    "reviewDescription": "More or less for me, they are as wonderful as sculptures or paints, because Dreams goes absolutely beyond music. Their instruments are like brushes with which we paint such wonderful songs as Sara, Gypsy, Big Love, Rhiannon, thanks to which we can experience artistic understanding.",
+                    "rating": 3,
+                    "boards": [
+                        0,
+                        5
+                    ],
+                    "timestamp": 1684339541,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e024fb043195e8d07e72edc7226"
+                },
+                {
+                    "albumName": "Fleetwood Mac",
+                    "artist": "Fleetwood Mac",
+                    "albumId": "5VIQ3VaAoRKOEpJ0fewdvo",
                     "reviewId": 1,
-                    "reviewDescription": "Just, yes, five stars",
+                    "reviewDescription": "Wow This is a great album! really good, I like the way the guitar goes woeh woeh waaa floooow ski skiskiskisis tjup. You should all listen to this guitar. It keeps going and then it's like sweeee waaaaa, okerwreri, ping. ",
+                    "rating": 3,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684339628,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e024fb043195e8d07e72edc7226"
+                },
+                {
+                    "albumName": "Response Test",
+                    "artist": "Recharge",
+                    "albumId": "2WKZI9Lq2TtVBqD5RiukS8",
+                    "reviewId": 3,
+                    "reviewDescription": "Response test",
+                    "rating": 3,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684339766,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02bb5cd06b0ca1899407e83d7e"
+                },
+                {
+                    "albumName": "Teenage Dream",
+                    "artist": "Katy Perry",
+                    "albumId": "2eQMC9nJE3f3hCNKlYYHL1",
+                    "reviewId": 4,
+                    "reviewDescription": "No, thanks",
+                    "rating": 2,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684414637,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02d20c38f295039520d688a888"
+                },
+                {
+                    "albumName": "The Money Store",
+                    "artist": "Death Grips",
+                    "albumId": "1PQDjdBpHPikAodJqjzm6a",
+                    "reviewId": 5,
+                    "reviewDescription": "Katy Perry really did a good job on this one",
                     "rating": 5,
                     "boards": [
                         1
                     ],
-                    "timestamp": 1684433297,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e020001af4f80be77069fc8fd41"
+                    "timestamp": 1684414698,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02b4f8459b0f719f8a97ee1c8c"
+                },
+                {
+                    "albumName": "TESTING",
+                    "artist": "A$AP Rocky",
+                    "albumId": "3MATDdrpHmQCmuOcozZjDa",
+                    "reviewId": 6,
+                    "reviewDescription": "",
+                    "rating": 1,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684418190,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029feadc48ab0661e9b3a9170b"
                 },
                 {
                     "albumName": "True",
                     "artist": "Avicii",
                     "albumId": "2H6i2CrWgXE1HookLu8Au0",
-                    "reviewId": 2,
-                    "reviewDescription": "Okay",
-                    "rating": 3,
-                    "boards": [
-                        0
-                    ],
-                    "timestamp": 1684433337,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02e14f11f796cef9f9a82691a7"
-                },
-                {
-                    "albumName": "Ladies And Gentlemen... The Best Of George Michael",
-                    "artist": "George Michael",
-                    "albumId": "3coLNlyStg9h7f8CZ103Rl",
-                    "reviewId": 3,
-                    "reviewDescription": "Well done, George",
+                    "reviewId": 0,
+                    "reviewDescription": "hejhej",
                     "rating": 4,
                     "boards": [
                         2
                     ],
-                    "timestamp": 1684433567,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0264c19b24ce947ffa363f8f96"
+                    "timestamp": 1684433723,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02e14f11f796cef9f9a82691a7"
                 }
             ],
             "favourites": []
@@ -244,7 +284,7 @@
             "username": "thea",
             "password": "thea"
         },
-        "loginKey": "Rw3X24P14D6ykQe2zpSqxnnPf",
+        "loginKey": "XK1MfebC7ya6ScJL8RnyseZPW",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",

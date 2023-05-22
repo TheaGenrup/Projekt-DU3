@@ -12,6 +12,5 @@ async function deleteReview(reviewId) {
     await fetch(requestDelete);
     // const resource = await response.json();
 
-    hidePopUp();
 
 };
