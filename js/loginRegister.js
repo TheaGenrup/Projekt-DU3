@@ -146,7 +146,8 @@ function sendLoginPageMessage(message) {
     setTimeout(() => {
         loginRegistermessageDom.style.transition = "1.5s"
         loginRegistermessageDom.style.opacity = "0%"
-    }
+    })
+
 }
 function sendMessageToUser(DomElement, message) {
     DomElement.textContent = ""
