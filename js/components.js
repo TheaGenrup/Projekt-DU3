@@ -351,7 +351,7 @@ function renderProfileView(event) {
                 document.querySelector(`#profilePictureTop`).style.backgroundImage = `url(/media/default.png)`;
             } else {
 
-                document.querySelector(`#profilePictureTop`).style.backgroundImage = `url(/media/usersMedia/${localStorage.userId}/${profilePicture})`;
+                document.querySelector(`#profilePictureTop`).style.backgroundImage = `url(/media/usersMedia/${user.userIdentity.id}/${profilePicture})`;
             }
 
             // check if logged in: follow button or icons

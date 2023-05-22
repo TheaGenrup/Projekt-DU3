@@ -204,6 +204,7 @@ function listUsers(usersFound) {
             const userDisplayName = user.displayName;
             const userId = user.id;
             const userProfilePicture = user.profilePicture;
+            console.log(userId);
 
 
 
@@ -211,13 +212,21 @@ function listUsers(usersFound) {
             liDom.setAttribute("id", userId);
             liDom.innerHTML =
                 `
-                <img src="${userProfilePicture}"></img>
+                <div class="searchProfilePicture"></div>
                 <div class="albumInformation">
                     <p>${userDisplayName}</p>
                 </div>
             `;
             liDom.dataset.userId = userId;
             userDomUl.append(liDom);
+
+            if (userProfilePicture === "" || userProfilePicture === undefined || userProfilePicture === null) {
+
+                liDom.querySelector(`.searchProfilePicture`).style.backgroundImage = `url(/media/default.png)`;
+            } else {
+
+                liDom.querySelector(`.searchProfilePicture`).style.backgroundImage = `url(/media/usersMedia/${userId}/${userProfilePicture})`;
+            }
             liDom.addEventListener("click", renderProfileView)
         });
     } else {

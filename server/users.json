@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "l8aaPCa9YkiboDS6ZioMI9E0N",
+        "loginKey": "0Iw1W0k4Xv3ntJHZhPCfjdzs4",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -106,7 +106,7 @@
         },
         "userIdentity": {
             "id": "317161457770161228256467772618",
-            "profilePic": "default.png",
+            "profilePic": "profile_picture.jpg",
             "displayName": "Stevie Nicks"
         },
         "albumData": {
@@ -193,7 +193,7 @@
         },
         "userIdentity": {
             "id": "716916262583862677799694090077",
-            "profilePic": "default.png",
+            "profilePic": "",
             "displayName": "test5"
         },
         "albumData": {
@@ -313,7 +313,7 @@
         },
         "userIdentity": {
             "id": "507163198196757529667525417704",
-            "profilePic": "default.png",
+            "profilePic": "",
             "displayName": "thea"
         },
         "albumData": {
@@ -460,7 +460,7 @@
         },
         "userIdentity": {
             "id": "7950179031790531",
-            "profilePic": "profile_picture.jpg",
+            "profilePic": "",
             "displayName": "Elin Sauer"
         },
         "albumData": {
@@ -534,7 +534,7 @@
         },
         "userIdentity": {
             "id": "810971995587792364855956146316",
-            "profilePic": "media\/default.png",
+            "profilePic": "",
             "displayName": "wa"
         },
         "albumData": {
