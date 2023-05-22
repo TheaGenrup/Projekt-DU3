@@ -45,9 +45,9 @@ function renderLoggedInView(profilePic) {
         <div id="contentContainer"></div>
     </main>
     <nav>
-        <img class="viewIcon" id="discoverIcon" src="/media/icons/discover.png" alt="Discover"></img>
-        <img class="viewIcon" id="searchIcon" src="/media/icons/search.png" alt="Search"></img>
-        <img class="viewIcon" id="addIcon" src="/media/icons/add.png" alt="Add"></img>
+        <button class="viewIcon" id="discoverIcon"></button>
+        <button class="viewIcon" id="searchIcon"></button>
+        <button class="viewIcon" id="addIcon"></button>
         <div class="viewIcon" id="profilePicture"></div>
     </nav>
     `;
@@ -120,23 +120,14 @@ async function renderDiscoverView() {
 
             // go through all reviews to create them
             allFollowingUsersReviews.forEach(review => {
+                console.log(review);
                 makeReview(review, "#contentContainer");
             });
 
             document.querySelectorAll(`.review`).forEach(review => review.addEventListener("click", expandReview));
         }
-
-
-        allFollowingUsersReviews.sort((a, b) => b.timestamp - a.timestamp);
-
-        // go through all reviews to create them
-        allFollowingUsersReviews.forEach(review => {
-            makeReview(review, "#contentContainer");
-        });
-
-        document.querySelectorAll(`.review`).forEach(review => review.addEventListener("click", expandReview));
-        stopLoadingScreen();
     }
+    stopLoadingScreen();
 
 };
 
@@ -323,7 +314,7 @@ function renderProfileView(event) {
             document.querySelector("#contentContainer").innerHTML = `
                 <div id="profileHeader">
                     <div>
-                        <img id="profilePictureTop" src="/media/usersMedia/${clickedUserId}/${profilePicture}"></img>
+                        <div id="profilePictureTop""></div>
                         <p>@${displayName}</p>
                     </div> 
                     <div class="center">
@@ -388,9 +379,7 @@ function renderProfileView(event) {
                 document.querySelector("#logOutBtn").addEventListener("click", e => {
                     renderLoginPage();
                 })
-                document.querySelector("#bookmarkIcon").addEventListener("click", (e) => {
-                    showFavourites(user);
-                });
+                document.querySelector("#bookmarkIcon").addEventListener("click", (e) => showFavourites);
                 document.querySelector("#bookmarkIcon").addEventListener("click", showFavourites);
                 const editAccountBtn = document.querySelector("#editAccountBtn");
                 editAccountBtn.addEventListener("click", editAccount);
@@ -399,7 +388,7 @@ function renderProfileView(event) {
                     if (document.querySelector("#settingsIcon")) {
                         if (e.target != document.querySelector("#settingsIcon")) {
                              document.querySelector("#dropdownContent").classList.add("closed") };
-                    }
+                        }
                 })
                 function openCloseSettings(e) { document.querySelector("#dropdownContent").classList.toggle("closed")};
 
@@ -476,7 +465,8 @@ function followUnfollow(user, eventTarget) {
 
 };
 
-function showFavourites(user) {
+async function showFavourites() {
+    const user = await getUserData(localStorage.getItem("userId"));
 
     document.querySelector("#boardAndReviewContainer").innerHTML = `
     <div id="favouritesIconContainer">
@@ -640,7 +630,7 @@ async function expandReview(event) {
                 <p id="otherReviewsHead">Other reviews of this album</p>
                 <div id="previousReviewsContainer"></div>`;
 
-            fillStars(firstLoopThroughReview.rating, document.querySelector("#contentContainer"));
+            fillStars(firstLoopThroughReview.rating, overlayContainer);
 
             document.querySelector("#displayNameExpanded").dataset.userId = firstLoopThroughReview.userId;
 
