@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "BjHdJEULyqXbClrJ5cKTxbMYk",
+        "loginKey": "l8aaPCa9YkiboDS6ZioMI9E0N",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -25,12 +25,7 @@
                 {
                     "boardName": "test",
                     "boardId": 0,
-                    "reviews": [
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
+                    "reviews": [],
                     "thumbnail": "defaultBoardImage.jpg"
                 },
                 {
@@ -44,20 +39,53 @@
             ],
             "reviews": [
                 {
-                    "albumName": "One Wayne G",
-                    "artist": "Mac DeMarco",
-                    "albumId": "70hX7IYqmUGV97OXs2v848",
+                    "albumName": "Mr. Morale & The Big Steppers",
+                    "artist": "Kendrick Lamar",
+                    "albumId": "79ONNoS4M9tfIA1mYLBYVX",
                     "reviewId": 0,
-                    "reviewDescription": "cwql",
-                    "rating": 4,
+                    "reviewDescription": "Beautiful album",
+                    "rating": 3,
                     "boards": [
-                        0
+                        1
                     ],
-                    "timestamp": 1684566265,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0240461e96808378ae2787a7e4"
+                    "timestamp": 1684754691,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e022e02117d76426a08ac7c174f"
                 }
             ],
-            "favourites": []
+            "favourites": [
+                {
+                    "albumName": "Rumours",
+                    "artist": "Fleetwood Mac",
+                    "albumId": "1bt6q2SruMsBtcerNVtpZB",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e020001af4f80be77069fc8fd41",
+                    "favouriteId": 1,
+                    "timestamp": 1684754108
+                },
+                {
+                    "albumName": "Oas",
+                    "artist": "Dina \u00d6gon",
+                    "albumId": "4bLJmyoH2k2IQGDas2hd0c",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0247f29db19cce35a81aa12888",
+                    "favouriteId": 0,
+                    "timestamp": 1684754156
+                },
+                {
+                    "albumName": "Dina \u00d6gon",
+                    "artist": "Dina \u00d6gon",
+                    "albumId": "1fO48uPVulHutVi6MeDTxF",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02b5374c34458364346ef8df0f",
+                    "favouriteId": 1,
+                    "timestamp": 1684754157
+                },
+                {
+                    "albumName": "Mormor",
+                    "artist": "Dina \u00d6gon",
+                    "albumId": "6KhdFdT5IkcD2F5YBA5lVN",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02f43f4a5d9eebbf6e1ff0297d",
+                    "favouriteId": 2,
+                    "timestamp": 1684754159
+                }
+            ]
         }
     },
     {
@@ -72,7 +100,8 @@
                 "607133432034891031030642696328"
             ],
             "followers": [
-                "507163198196757529667525417704"
+                "507163198196757529667525417704",
+                "607133432034891031030642696328"
             ]
         },
         "userIdentity": {

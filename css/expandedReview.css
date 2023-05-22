@@ -10,6 +10,10 @@
     background-color: rgb(153, 153, 153);
 }
 
+#reviewDescription {
+    font-style: italic;
+}
+
 #timestampExpanded {
     margin-top: 4vh;
 }
@@ -38,18 +42,19 @@
     width: 3.5vh;
 }
 
-button.saveButton{
+button.saveButton {
     background-image: url(/media/icons/bookmark.png);
     background-repeat: no-repeat;
     background-size: contain;
 
     min-height: 0;
     min-width: 0;
-    
+
     background-color: rgba(255, 255, 255, 0);
     border: none;
 }
-button.savedButton{
+
+button.savedButton {
     background-image: url(/media/icons/board.svg);
     background-repeat: no-repeat;
     background-size: contain;

@@ -284,6 +284,8 @@ function addBoardOrReview(bodyData) {
 
 function renderProfileView(event) {
 
+    console.log(event.currentTarget);
+
     startLoadingScreen(document.querySelector("main"));
 
     const clickedUserId = event.currentTarget.dataset.userId;
@@ -355,7 +357,7 @@ function renderProfileView(event) {
                     </div>
                 </div>                            
                 <div id="bookmarkIcon" class="pointer"></div>
-                <div id="addBoardIcon" class="pointer"></div>
+                <div id="boardIcon" class="pointer"></div>
                 `;
 
                 document.querySelector("#settingsIcon").addEventListener("click", e => document.querySelector("#dropdownContent").classList.toggle("closed"));
@@ -365,6 +367,7 @@ function renderProfileView(event) {
                 document.querySelector("#bookmarkIcon").addEventListener("click", (e) => {
                     showFavourites(user);
                 });
+
             }
 
             const boards = user.albumData.boards;

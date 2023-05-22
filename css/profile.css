@@ -37,7 +37,7 @@
 
 #bookmarkIcon,
 #settingsIcon,
-#addBoardIcon {
+#boardIcon {
     background-position: center;
     background-size: cover;
     height: 8vw;
@@ -52,8 +52,11 @@
     background-image: url(/media/icons/settings.png);
 }
 
-#addBoardIcon {
-    background-image: url(/media/icons/Add.png);
+#boardIcon {
+    background-image: url(/media/icons/board.svg);
+    filter: invert(75%) sepia(73%) saturate(1%) hue-rotate(34deg) brightness(110%) contrast(78%);
+    height: 7vw;
+    width: 9vw;
 }
 
 #settingsDropdown {
@@ -255,4 +258,8 @@ p {
     position: absolute;
     top: 10px;
     right: 15px;
+}
+
+#reviewDescription {
+    font-style: italic;
 }

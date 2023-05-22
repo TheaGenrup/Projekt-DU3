@@ -197,31 +197,31 @@ function showCaseAlbum(e) {
 }
 // List Users
 function listUsers(usersFound) {
-    const UserDomul = document.querySelector("#userUl");
-    UserDomul.innerHTML = "";
+    const userDomUl = document.querySelector("#userUl");
+    userDomUl.innerHTML = "";
     if (usersFound.length > 0) {
         usersFound.forEach(user => {
-            const UserDisplayName = user.displayName;
-            const Userid = user.id;
-            const UserprofilePicture = user.profilePicture;
+            const userDisplayName = user.displayName;
+            const userId = user.id;
+            const userProfilePicture = user.profilePicture;
 
 
 
             const liDom = document.createElement("li");
-            liDom.setAttribute("id", Userid);
+            liDom.setAttribute("id", userId);
             liDom.innerHTML =
                 `
-                <img src="${UserprofilePicture}"></img>
+                <img src="${userProfilePicture}"></img>
                 <div class="albumInformation">
-                    <p>${UserDisplayName}</p>
+                    <p>${userDisplayName}</p>
                 </div>
             `;
-            liDom.dataset.userId = localStorage.getItem("userId");
-            UserDomul.append(liDom);
+            liDom.dataset.userId = userId;
+            userDomUl.append(liDom);
             liDom.addEventListener("click", renderProfileView)
         });
     } else {
-        UserDomul.innerHTML = "No users found";
+        userDomUl.innerHTML = "No users found";
     }
 }
 
