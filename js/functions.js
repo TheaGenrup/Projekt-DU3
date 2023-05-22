@@ -45,7 +45,7 @@ function makeReview(review, container, displayNameLine) {
     newReview.classList.add("review");
     newReview.innerHTML = `
      
-        <p id="who" class="bold">@${review.displayName}</p>
+        <p id="who" class="bold">@${review.displayName} added a review</p>
         <p id="when">${timeConverter(review.timestamp)}</p>
         <div id="albumOverview">
             <div class="albumCover"></div>
@@ -390,7 +390,8 @@ async function getUserData(userId) {
     return userData
 }
 
-function renderPopUp(reviewId, parentElement) {
+function renderPopUp(event) {
+    event.stopPropagation();
 
     const popUp = document.createElement("div");
 
@@ -407,8 +408,8 @@ function renderPopUp(reviewId, parentElement) {
 
     document.querySelector("#cancelBtn").addEventListener("click", hidePopUp);
     document.querySelector("#continueBtn").addEventListener("click", event => {
-        parentElement.remove();
-        deleteReview(reviewId, parentElement);
+        event.target.parentElement.remove();
+        deleteReview(event.target.dataset.reviewId);
     });
     document.querySelector("#continueBtn").dataset.reviewId = event.currentTarget.dataset.reviewId;
 
