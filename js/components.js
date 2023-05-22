@@ -315,9 +315,9 @@ function renderProfileView(event) {
                         <div>Reviews</div>
                         <div>${userReviews}</div>
                         <div>Followers</div>
-                        <div>${userFollowers}</div>
+                        <div id="followers">${userFollowers}</div>
                         <div>Following</div>
-                        <div>${userFollowing}</div>
+                        <div id="following">${userFollowing}</div>
                         </div>
                         <div id="profileIconsOrFollowButton"></div>
                     </div>
@@ -423,8 +423,14 @@ function followUnfollow(user, eventTarget) {
 
     if (eventTarget.textContent === "Follow") {
         eventTarget.textContent = "Following";
+        const followers = parseInt(document.querySelector("#followers").textContent);
+        const newFollowersNumber = followers + 1;
+        document.querySelector("#followers").textContent = newFollowersNumber;
     } else {
         eventTarget.textContent = "Follow";
+        const followers = parseInt(document.querySelector("#following").textContent);
+        const newFollowersNumber = followers - 1;
+        document.querySelector("#followers").textContent = newFollowersNumber;
     }
 
 };
