@@ -286,7 +286,7 @@ function renderProfileView(event) {
             document.querySelector("#contentContainer").innerHTML = `
                 <div id="profileHeader">
                     <div>
-                        <img id="profilePictureTop" src="../media/${profilePicture}"></img>
+                        <img id="profilePictureTop" src="/media/usersMedia/${clickedUserId}/${profilePicture}"></img>
                         <p>@${displayName}</p>
                     </div> 
                     <div class="center">

@@ -4,6 +4,7 @@ async function editAccount(e) {
     const userId = localStorage.getItem("userId");
     const editAccountContainer = document.querySelector("#contentContainer");
     const user = await getUserData(userId);
+    console.log(user);
     editAccountContainer.innerHTML = "";
     let html = `
     <div>Edit profile</div>
@@ -61,29 +62,59 @@ async function editAccount(e) {
 
     async function editProfile(e) {
         e.preventDefault();
+        if (imagePreview.classList.contains("imageUploaded")) {
 
-        const formWrapper = editAccountContainer.querySelector("form");
-        const formData = new FormData(formWrapper);
-        console.log(formData);
-        const request = new Request("/server/updateUserProfile.php",{
-        header: "Content-Type: application/json",
-        method: "POST",
-        body: formData,
-        });
-
-        try {
-            fetch(request)
-                .then(response => {
-                    console.log(response);
-                    return response.json();
-                })
-                .then(r => {
-                    console.log(r);
-                })
-
-        } catch (error) {
-            console.log(error);
+            const formWrapper = editAccountContainer.querySelector("form");
+            const formData = new FormData(formWrapper);
+            const request = new Request("/server/updateUserProfile.php",{
+            header: "Content-Type: application/json",
+            method: "POST",
+            body: formData,
+            });
+            const response = await fetch(request);
+            const responseMessage = await response.json();
+            console.log(responseMessage);
         }
-        
+
+        if (displayNameInput.value) {
+            const request = new Request("/server/updateUserProfile.php",{
+            header: "Content-Type: application/json",
+            method: "PATCH",
+            body: JSON.stringify({
+                userId: userId,
+                newDisplayName: displayNameInput.value
+            }),
+            });
+            const response = await fetch(request);
+            const responseMessage = await response.json();
+            console.log(responseMessage);
+        }
+        /*
+        if (displayNameInput.value) {
+            if (displayNameInput.value === user.userIdentity.displayName) {    sendMessageToUser(document.querySelector("label"), "that's already your name you ear of a bat");   return};
+            if (displayNameInput.value.length > 25) {    sendMessageToUser(document.querySelector("label"), "Display name too long king :/");   return};
+            const request = new Request("/server/updateUserProfile.php", {
+                headers: {"Content-type": "application/json"},
+                method: "PATCH",
+                body: JSON.stringify({
+                    id: userId,
+                    newDisplayName: displayNameInput.value
+                })
+            })
+
+            fetch(request)
+                .then(r=>{
+                    console.log(r);
+                    return r.json()
+                })
+                .then(r=>{
+                    sendMessageToUser(document.querySelector("label"), r.message)
+                })
+
+
+
+
+        }
+        */
     }
 }

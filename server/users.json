@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "ijFyCZqRVt7s9sEVdZo2VOnhw",
+        "loginKey": "4ZTtVCiEg6GqLCPGlTFnIWW7M",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -17,8 +17,8 @@
         },
         "userIdentity": {
             "id": "607133432034891031030642696328",
-            "profilePic": "cat.jpeg",
-            "displayName": "fef"
+            "profilePic": "test.jpeg",
+            "displayName": "test"
         },
         "albumData": {
             "boards": [
@@ -156,7 +156,7 @@
             "username": "test2",
             "password": "test2"
         },
-        "loginKey": "SK5Xg2WuolfDGVthQECU8gnnB",
+        "loginKey": "ODSsluQaOeOajKukQuADeKJum",
         "userSocial": {
             "following": [
                 "507163198196757529667525417704",
@@ -168,7 +168,7 @@
         },
         "userIdentity": {
             "id": "317161457770161228256467772618",
-            "profilePic": "default.png",
+            "profilePic": "test2.jpeg",
             "displayName": "Stevie Nicks"
         },
         "albumData": {
