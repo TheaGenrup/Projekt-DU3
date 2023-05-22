@@ -354,3 +354,8 @@ function stopLoadingScreen() {
 }
 // select functions
 
+async function getUserData(userId) {
+    const response = await fetch(`/server/getUser.php/?id=${userId}`)
+    const userData = await response.json();
+    return userData
+}

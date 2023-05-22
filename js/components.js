@@ -265,20 +265,21 @@ function addBoardOrReview(bodyData) {
 async function renderProfileView2(userId) {
 
 
-
+    document.querySelector("#css1").setAttribute("href", "../css/loggedInBasicLayout.css");
+    document.querySelector("#css2").setAttribute("href", "../css/profile.css");
     const user = await getUserData(userId)
     document.querySelector("#contentContainer").innerHTML = `
     <div id="profileHeader">
         <div>
-            <img id="profilePictureTop" src="../media/${profilePicture}"></img>
-            <p>@${displayName}</p>
+            <img id="profilePictureTop" src="../media/${user.userIdentity.profilePic}"></img>
+            <p>@${user.userIdentity.displayName}</p>
         </div> 
         <div class="center">
             <div id="followingFollowers">
                 <div>Followers</div>
-                <div>${userFollowers}</div>
+                <div>${user.userSocial.userFollowers}</div>
                 <div>Following</div>
-                <div>${userFollowing}</div>
+                <div>${user.userSocial.userFollowing}</div>
             </div>
             <div id="profileIconsOrFollowButton"></div>
         </div>
