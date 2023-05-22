@@ -68,7 +68,7 @@
             "username": "test2",
             "password": "test2"
         },
-        "loginKey": "udsFzQ73xqKmA2hNy9lSo5BSE",
+        "loginKey": "otT4yBmX219R18ZWTkhqaRYuU",
         "userSocial": {
             "following": [
                 "507163198196757529667525417704",
@@ -152,7 +152,24 @@
                     "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0264c19b24ce947ffa363f8f96"
                 }
             ],
-            "favourites": []
+            "favourites": [
+                {
+                    "albumName": "True",
+                    "artist": "Avicii",
+                    "albumId": "2H6i2CrWgXE1HookLu8Au0",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02e14f11f796cef9f9a82691a7",
+                    "favouriteId": 0,
+                    "timestamp": 1684754960
+                },
+                {
+                    "albumName": "Djupet",
+                    "artist": "Owen Meyers",
+                    "albumId": "7heZwQ3Yua1lr3XCYJzhbK",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029a3655dac2e8ec11f6ab419f",
+                    "favouriteId": 1,
+                    "timestamp": 1684755937
+                }
+            ]
         }
     },
     {

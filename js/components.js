@@ -474,16 +474,17 @@ function showFavourites(user) {
 
     arrayWithFavourites.forEach(favourite => {
 
-        const newFavourite = `
-        <div class="favourite">
-                <img class="favouriteCover" src="${favourite.thumbnail}"></img>
+        const newFavourite = document.createElement("div");
+        newFavourite.classList.add("favourite");
+        newFavourite.innerHTML = `
+                <img class="favouriteCover"></img>
             <div id="favouriteInfoContainer">
                 <p class="favouriteAlbumName">${favourite.albumName}</p>
                 <p class="favouriteArtist">${favourite.artist}</p>
-            </div>
-        </div>
-        `
-        document.querySelector("#favourites").innerHTML += newFavourite;
+            </div>`;
+
+        document.querySelector("#favourites").append(newFavourite);
+        newFavourite.querySelector(".favouriteCover").style.backgroundImage = `url(${favourite.albumCover})`;
     });
 
 
