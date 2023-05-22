@@ -442,3 +442,7 @@ function stopLoadingScreen() {
     const loaderDom = document.querySelector(".vinylloaderC");
     loaderDom.remove();
 }
+
+function name(params) {
+    
+}

@@ -224,11 +224,16 @@ async function renderCreateReviewView(album) {
             addBoardOrReview(formData);
         }
         backButton.addEventListener("click", renderCreateReviewView);
+
+        const cssTest = document.createElement("div");
+        cssTest.id = "responseContainer";
+        document.body.prepend(cssTest);
     }
 
 
     // If album chosen then render create a new review section;
     if (album.reviewDirectly) { renderCreateReview(album) }
+
 };
 
 
