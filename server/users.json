@@ -4,19 +4,21 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "IfYt7rE6QZeHa5206ZVPrrqQr",
+        "loginKey": "m5Eg5YUdRBjjaYsycUGLPYN3h",
         "userSocial": {
             "following": [
-                "848402422005626697163776521185"
+                "317161457770161228256467772618",
+                "507163198196757529667525417704"
             ],
             "followers": [
-                "848402422005626697163776521185"
+                "317161457770161228256467772618",
+                "507163198196757529667525417704"
             ]
         },
         "userIdentity": {
-            "id": "791309749149589133382556525575",
-            "profilePic": "media\/default.png",
-            "displayName": "test"
+            "id": "607133432034891031030642696328",
+            "profilePic": "profile_picture.jpg",
+            "displayName": "Anthony Fantano"
         },
         "albumData": {
             "boards": [
@@ -25,115 +27,15 @@
                     "boardId": 0,
                     "reviews": [
                         0,
-                        1,
-                        2,
-                        3
+                        0,
+                        0,
+                        0
                     ],
                     "thumbnail": "defaultBoardImage.jpg"
                 },
                 {
-                    "boardName": "tet",
+                    "boardName": "Pop",
                     "boardId": 1,
-                    "reviews": [],
-                    "thumbnail": "defaultBoardImage.jpg"
-                }
-            ],
-            "reviews": [
-                {
-                    "albumName": "TESTING",
-                    "artist": "A$AP Rocky",
-                    "albumId": "3MATDdrpHmQCmuOcozZjDa",
-                    "reviewId": 0,
-                    "reviewDescription": "",
-                    "rating": 1,
-                    "boards": [
-                        0
-                    ],
-                    "timestamp": 1684677823,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029feadc48ab0661e9b3a9170b"
-                },
-                {
-                    "albumName": "Fleetwood Mac",
-                    "artist": "Fleetwood Mac",
-                    "albumId": "5VIQ3VaAoRKOEpJ0fewdvo",
-                    "reviewId": 1,
-                    "reviewDescription": "Shit slaps yo, Stevie Nicks making a grown man cry is pretty wonderful",
-                    "rating": 5,
-                    "boards": [
-                        0
-                    ],
-                    "timestamp": 1684677858,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e024fb043195e8d07e72edc7226"
-                },
-                {
-                    "albumName": "The Family Business",
-                    "artist": "Jonas Brothers",
-                    "albumId": "75Z0joBRz5WMZqKXW7VhnL",
-                    "reviewId": 2,
-                    "reviewDescription": "fkjasdflasf jnskfsal fjsnflasf jsfnafsffkjasdflasf jnskfsal fjsnflasf jsfnafsffkjasdflasf jnskfsal fjsnflasf jsfnafsffkjasdflasf jnskfsal fjsnflasf jsfnafsffkjasdflasf jnskfsal fjsnflasf jsfnafsffkjasdflasf jnskfsal fjsnflasf jsfnafsffkjasdflasf jnskfsal fjsnflasf jsfnafsffkjasdflasf jnskfsal fjsnflasf jsfnafsf",
-                    "rating": 1,
-                    "boards": [
-                        0
-                    ],
-                    "timestamp": 1684680537,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02454bc3dd1bdc4a62ce9cf8db"
-                },
-                {
-                    "albumName": "SOUR",
-                    "artist": "Olivia Rodrigo",
-                    "albumId": "6s84u2TUpR3wdUv4NgKA2j",
-                    "reviewId": 3,
-                    "reviewDescription": "test",
-                    "rating": 3,
-                    "boards": [
-                        0
-                    ],
-                    "timestamp": 1684741486,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02a91c10fe9472d9bd89802e5a"
-                }
-            ],
-            "favourites": [
-                {
-                    "albumName": "Time's Makin' Changes: The Best Of Tesla",
-                    "artist": "Tesla",
-                    "albumId": "2FJ0CYfIvogvi1gV6dH8Gl",
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02ad793cbca8b57778625573fb",
-                    "favouriteId": 3
-                },
-                {
-                    "albumName": "Teen Beach Movie",
-                    "artist": "Various Artists",
-                    "albumId": "5ANe5AfOnYydm3lXELfiHF",
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e028f9a38eaef72352da716ccdb",
-                    "favouriteId": 0
-                }
-            ]
-        }
-    },
-    {
-        "userCredentials": {
-            "username": "test2",
-            "password": "test2"
-        },
-        "loginKey": "QjQa7SWM3lmuTjSRYQ3m9LIep",
-        "userSocial": {
-            "following": [
-                "791309749149589133382556525575"
-            ],
-            "followers": [
-                "791309749149589133382556525575"
-            ]
-        },
-        "userIdentity": {
-            "id": "848402422005626697163776521185",
-            "profilePic": "media\/default.png",
-            "displayName": "test2"
-        },
-        "albumData": {
-            "boards": [
-                {
-                    "boardName": "test2",
-                    "boardId": 0,
                     "reviews": [
                         0
                     ],
@@ -142,63 +44,423 @@
             ],
             "reviews": [
                 {
-                    "albumName": "Teenage Dream",
-                    "artist": "Katy Perry",
-                    "albumId": "2eQMC9nJE3f3hCNKlYYHL1",
+                    "albumName": "One Wayne G",
+                    "artist": "Mac DeMarco",
+                    "albumId": "70hX7IYqmUGV97OXs2v848",
                     "reviewId": 0,
-                    "reviewDescription": "",
-                    "rating": 1,
+                    "reviewDescription": "cwql",
+                    "rating": 4,
                     "boards": [
                         0
                     ],
-                    "timestamp": 1684677761,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02d20c38f295039520d688a888"
+                    "timestamp": 1684566265,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0240461e96808378ae2787a7e4"
                 }
             ],
-            "favourites": [
-                {
-                    "albumName": "TESTING",
-                    "artist": "A$AP Rocky",
-                    "albumId": "3MATDdrpHmQCmuOcozZjDa",
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029feadc48ab0661e9b3a9170b",
-                    "favouriteId": 0,
-                    "timestamp": 1684684026
-                },
-                {
-                    "albumName": "The Family Business",
-                    "artist": "Jonas Brothers",
-                    "albumId": "75Z0joBRz5WMZqKXW7VhnL",
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02454bc3dd1bdc4a62ce9cf8db",
-                    "favouriteId": 1,
-                    "timestamp": 1684685312
-                }
-            ]
+            "favourites": []
         }
     },
     {
         "userCredentials": {
-            "username": "test3",
-            "password": "test3"
+            "username": "test2",
+            "password": "test2"
         },
-        "loginKey": "gGA0lHrb4OhJcYwlZraYX7ouc",
+        "loginKey": "OHtFg48VKk53GheUAab93zVKh",
+        "userSocial": {
+            "following": [
+                "507163198196757529667525417704",
+                "607133432034891031030642696328"
+            ],
+            "followers": [
+                "507163198196757529667525417704"
+            ]
+        },
+        "userIdentity": {
+            "id": "317161457770161228256467772618",
+            "profilePic": "default.png",
+            "displayName": "Stevie Nicks"
+        },
+        "albumData": {
+            "boards": [
+                {
+                    "boardName": "AVICII",
+                    "boardId": 0,
+                    "reviews": [
+                        2
+                    ],
+                    "thumbnail": "avicii.jpg"
+                },
+                {
+                    "boardName": "MINE",
+                    "boardId": 1,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "stevieNicks.jpg"
+                },
+                {
+                    "boardName": "Assorted",
+                    "boardId": 2,
+                    "reviews": [
+                        3
+                    ],
+                    "thumbnail": "defaultBoardImage.jpg"
+                }
+            ],
+            "reviews": [
+                {
+                    "albumName": "Bella Donna (2016 Remastered)",
+                    "artist": "Stevie Nicks",
+                    "albumId": "0IomjU2bXFng4LQBYn7Het",
+                    "reviewId": 0,
+                    "reviewDescription": "Well, this is obviously amazing... it's me",
+                    "rating": 5,
+                    "boards": [
+                        1
+                    ],
+                    "timestamp": 1684433242,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02af14d74d5e308ce2f3ec22f8"
+                },
+                {
+                    "albumName": "Rumours",
+                    "artist": "Fleetwood Mac",
+                    "albumId": "1bt6q2SruMsBtcerNVtpZB",
+                    "reviewId": 1,
+                    "reviewDescription": "Just, yes, five stars",
+                    "rating": 5,
+                    "boards": [
+                        1
+                    ],
+                    "timestamp": 1684433297,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e020001af4f80be77069fc8fd41"
+                },
+                {
+                    "albumName": "True",
+                    "artist": "Avicii",
+                    "albumId": "2H6i2CrWgXE1HookLu8Au0",
+                    "reviewId": 2,
+                    "reviewDescription": "Okay",
+                    "rating": 3,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684433337,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02e14f11f796cef9f9a82691a7"
+                },
+                {
+                    "albumName": "Ladies And Gentlemen... The Best Of George Michael",
+                    "artist": "George Michael",
+                    "albumId": "3coLNlyStg9h7f8CZ103Rl",
+                    "reviewId": 3,
+                    "reviewDescription": "Well done, George",
+                    "rating": 4,
+                    "boards": [
+                        2
+                    ],
+                    "timestamp": 1684433567,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0264c19b24ce947ffa363f8f96"
+                }
+            ],
+            "favourites": []
+        }
+    },
+    {
+        "userCredentials": {
+            "username": "test5",
+            "password": "test5"
+        },
+        "loginKey": "5jxwtpjrWNkOze6qI5kvrUb4n",
         "userSocial": {
             "following": [],
             "followers": []
         },
         "userIdentity": {
-            "id": "326360324142055184478592662997",
-            "profilePic": "media\/default.png",
-            "displayName": "test3"
+            "id": "716916262583862677799694090077",
+            "profilePic": "default.png",
+            "displayName": "test5"
         },
         "albumData": {
             "boards": [],
-            "reviews": [],
-            "favourites": [
+            "reviews": [
+                {
+                    "albumName": "Bella Donna (2016 Remastered)",
+                    "artist": "Stevie Nicks",
+                    "albumId": "0IomjU2bXFng4LQBYn7Het",
+                    "reviewId": 0,
+                    "reviewDescription": "Well, this is obviously amazing... it's me",
+                    "rating": 5,
+                    "boards": [
+                        1
+                    ],
+                    "timestamp": 1684433242,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02af14d74d5e308ce2f3ec22f8"
+                },
+                {
+                    "albumName": "Rumours",
+                    "artist": "Fleetwood Mac",
+                    "albumId": "1bt6q2SruMsBtcerNVtpZB",
+                    "reviewId": 1,
+                    "reviewDescription": "Just, yes, five stars",
+                    "rating": 5,
+                    "boards": [
+                        1
+                    ],
+                    "timestamp": 1684433297,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e020001af4f80be77069fc8fd41"
+                },
+                {
+                    "albumName": "True",
+                    "artist": "Avicii",
+                    "albumId": "2H6i2CrWgXE1HookLu8Au0",
+                    "reviewId": 2,
+                    "reviewDescription": "Okay",
+                    "rating": 3,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684433337,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02e14f11f796cef9f9a82691a7"
+                },
+                {
+                    "albumName": "Ladies And Gentlemen... The Best Of George Michael",
+                    "artist": "George Michael",
+                    "albumId": "3coLNlyStg9h7f8CZ103Rl",
+                    "reviewId": 3,
+                    "reviewDescription": "Well done, George",
+                    "rating": 4,
+                    "boards": [
+                        2
+                    ],
+                    "timestamp": 1684433567,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0264c19b24ce947ffa363f8f96"
+                }
+            ],
+            "favourites": []
+        }
+    },
+    {
+        "userCredentials": {
+            "username": "thea",
+            "password": "thea"
+        },
+        "loginKey": "Rw3X24P14D6ykQe2zpSqxnnPf",
+        "userSocial": {
+            "following": [
+                "317161457770161228256467772618",
+                "507163198196757529667525417704",
+                "607133432034891031030642696328"
+            ],
+            "followers": [
+                "317161457770161228256467772618"
+            ]
+        },
+        "userIdentity": {
+            "id": "507163198196757529667525417704",
+            "profilePic": "default.png",
+            "displayName": "thea"
+        },
+        "albumData": {
+            "boards": [
+                {
+                    "boardName": "Psychadelic acid rock",
+                    "boardId": 0,
+                    "reviews": [
+                        4,
+                        6
+                    ],
+                    "thumbnail": "defaultBoardImage.jpg"
+                },
+                {
+                    "boardName": "Katy Perry's best albums (all of them)",
+                    "boardId": 1,
+                    "reviews": [
+                        5
+                    ],
+                    "thumbnail": "defaultBoardImage.jpg"
+                },
+                {
+                    "boardName": "test",
+                    "boardId": 2,
+                    "reviews": [
+                        7,
+                        0
+                    ],
+                    "thumbnail": "defaultBoardImage.jpg"
+                }
+            ],
+            "reviews": [
+                {
+                    "albumName": "Rumours",
+                    "artist": "Fleetwood Mac",
+                    "albumId": "nfipqn029",
+                    "reviewId": 5290,
+                    "reviewDescription": "More or less for me, they are as wonderful as sculptures or paints, because Dreams goes absolutely beyond music. Their instruments are like brushes with which we paint such wonderful songs as Sara, Gypsy, Big Love, Rhiannon, thanks to which we can experience artistic understanding.",
+                    "rating": 3,
+                    "boards": [
+                        0,
+                        5
+                    ],
+                    "timestamp": 1684339541,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e024fb043195e8d07e72edc7226"
+                },
+                {
+                    "albumName": "Fleetwood Mac",
+                    "artist": "Fleetwood Mac",
+                    "albumId": "5VIQ3VaAoRKOEpJ0fewdvo",
+                    "reviewId": 1,
+                    "reviewDescription": "Wow This is a great album! really good, I like the way the guitar goes woeh woeh waaa floooow ski skiskiskisis tjup. You should all listen to this guitar. It keeps going and then it's like sweeee waaaaa, okerwreri, ping. ",
+                    "rating": 3,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684339628,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e024fb043195e8d07e72edc7226"
+                },
+                {
+                    "albumName": "Response Test",
+                    "artist": "Recharge",
+                    "albumId": "2WKZI9Lq2TtVBqD5RiukS8",
+                    "reviewId": 3,
+                    "reviewDescription": "Response test",
+                    "rating": 3,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684339766,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02bb5cd06b0ca1899407e83d7e"
+                },
+                {
+                    "albumName": "Teenage Dream",
+                    "artist": "Katy Perry",
+                    "albumId": "2eQMC9nJE3f3hCNKlYYHL1",
+                    "reviewId": 4,
+                    "reviewDescription": "No, thanks",
+                    "rating": 2,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684414637,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02d20c38f295039520d688a888"
+                },
+                {
+                    "albumName": "The Money Store",
+                    "artist": "Death Grips",
+                    "albumId": "1PQDjdBpHPikAodJqjzm6a",
+                    "reviewId": 5,
+                    "reviewDescription": "Katy Perry really did a good job on this one",
+                    "rating": 5,
+                    "boards": [
+                        1
+                    ],
+                    "timestamp": 1684414698,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02b4f8459b0f719f8a97ee1c8c"
+                },
                 {
                     "albumName": "TESTING",
                     "artist": "A$AP Rocky",
                     "albumId": "3MATDdrpHmQCmuOcozZjDa",
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029feadc48ab0661e9b3a9170b",
+                    "reviewId": 6,
+                    "reviewDescription": "",
+                    "rating": 1,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684418190,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029feadc48ab0661e9b3a9170b"
+                },
+                {
+                    "albumName": "True",
+                    "artist": "Avicii",
+                    "albumId": "2H6i2CrWgXE1HookLu8Au0",
+                    "reviewId": 0,
+                    "reviewDescription": "hejhej",
+                    "rating": 4,
+                    "boards": [
+                        2
+                    ],
+                    "timestamp": 1684433723,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02e14f11f796cef9f9a82691a7"
+                }
+            ],
+            "favourites": []
+        }
+    },
+    {
+        "userCredentials": {
+            "username": "elin",
+            "password": "elin"
+        },
+        "loginKey": "h3Z1GtxSJUj7EtGqKpVwkFmuV",
+        "userSocial": {
+            "following": [
+                "317161457770161228256467772618",
+                "607133432034891031030642696328",
+                "507163198196757529667525417704"
+            ],
+            "followers": [
+                "317161457770161228256467772618"
+            ]
+        },
+        "userIdentity": {
+            "id": "7950179031790531",
+            "profilePic": "profile_picture.jpg",
+            "displayName": "Elin Sauer"
+        },
+        "albumData": {
+            "boards": [
+                {
+                    "boardName": "Acid psychadelics",
+                    "boardId": 0,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "board_1.jpg"
+                },
+                {
+                    "boardName": "POP",
+                    "boardId": 1,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "tameImpala.jpg"
+                },
+                {
+                    "boardName": "FAVOURITES",
+                    "boardId": 3,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "Sunflower.jpg"
+                },
+                {
+                    "boardName": "Rock",
+                    "boardId": 4,
+                    "reviews": [
+                        0,
+                        1
+                    ],
+                    "thumbnail": "rock.jpg"
+                },
+                {
+                    "boardName": "Soul",
+                    "boardId": 5,
+                    "reviews": [
+                        7,
+                        9
+                    ],
+                    "thumbnail": "soul.jpg"
+                }
+            ],
+            "reviews": [],
+            "favourites": [
+                {
+                    "albumName": "The microphones pt2",
+                    "artist": "Mount eire",
+                    "albumId": "8gt92bqf",
                     "favouriteId": 0
                 }
             ]

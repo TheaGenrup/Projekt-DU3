@@ -397,6 +397,99 @@ function renderProfileView(event) {
             });
 
             stopLoadingScreen(document.querySelector("main"));
+
+
+            function openBoard(event) {
+
+                document.querySelector("#boardAndReviewContainer").innerHTML = `
+                <h2 id="title">${event.currentTarget.dataset.boardName}</h2>`;
+
+                const reviewsInBoard = [];
+
+                user.albumData.boards.forEach(board => {
+
+                    if (board.boardId == event.currentTarget.dataset.boardId) {
+
+                        const boardId = board.boardId;
+                        const arrayWithReviews = user.albumData.reviews;
+
+                        arrayWithReviews.forEach(review => {
+
+                            review.boards.forEach(board => {
+
+                                if (board === boardId) {
+                                    review.userId = user.userIdentity.id;
+                                    review.displayName = user.userIdentity.displayName;
+                                    reviewsInBoard.push(review);
+                                }
+                            })
+                        })
+
+                    }
+                });
+
+                reviewsInBoard.sort((a, b) => b.timestamp - a.timestamp);
+
+                reviewsInBoard.forEach(review => {
+
+                    makeReview(review, "#boardAndReviewContainer", true);
+                    //    document.querySelector(`#review_${review.reviewId} > #who`).textContent = `@${review.displayName}`;
+                });
+                document.querySelectorAll(".review > who").forEach(element => element.textContent = `@${review.displayName}`);
+
+
+                if (clickedUserId === loggedInUserId) {
+                    document.querySelectorAll(".review").forEach(review => {
+
+                        const reviewId = review.dataset.reviewId;
+
+                        const newElement = document.createElement("div");
+                        newElement.classList.add("deleteBtn");
+                        review.prepend(newElement);
+
+
+                        newElement.dataset.reviewId = reviewId;
+
+                    });
+
+
+                    document.querySelectorAll(".deleteBtn").forEach(button => {
+
+
+                        button.addEventListener("click", event => {
+                            event.stopPropagation();
+
+                            const popUp = document.createElement("div");
+
+                            popUp.id = "popUp";
+
+                            popUp.innerHTML = ` 
+                                <p>Are you sure you want to delete this review?</p>
+                                <div>
+                                    <div id="cancelBtn">Cancel</div>
+                                    <div id="continueBtn">Continue</div>
+                                </div>`;
+
+                            document.querySelector("#contentContainer").prepend(popUp);
+
+                            document.querySelector("#cancelBtn").addEventListener("click", hidePopUp);
+                            document.querySelector("#continueBtn").addEventListener("click", event => {
+                                console.log(event.target);
+                                document.querySelector(`#review_${event.target.dataset.reviewId}`).remove();
+                                deleteReview(event.target.dataset.reviewId);
+                            });
+                            document.querySelector("#continueBtn").dataset.reviewId = event.currentTarget.dataset.reviewId;
+
+                        });
+
+                    });
+
+                }
+
+                document.querySelectorAll(".review").forEach(review => {
+                    review.addEventListener("click", expandReview);
+                })
+            }
         });
 };
 

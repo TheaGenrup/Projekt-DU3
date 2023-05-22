@@ -11,31 +11,26 @@ if (!$_SERVER["REQUEST_METHOD"] == "DELETE") {
 
     $inputData = getFileData("php://input");
 
-    //hämtar alla users
-
+    //hämta alla users
     $users = getFileData("users.json");
 
     foreach ($users as $key => $user) {
         if ($inputData["userId"] == $user["userIdentity"]["id"]) {
    
             $arrayWithReviews = $user["albumData"]["reviews"];
+            removeItemFromArray($arrayWithReviews, $inputData["reviewId"], "reviewId");
 
-
-            foreach($arrayWithReviews as $index => $review) {
-                if ($review["reviewId"] == $inputData["reviewId"]) {
-                    echo "<pre>";
-                    var_dump($arrayWithReviews);
-                    echo "</pre>";
-                    unset($arrayWithReviews[$index]);
-                }
+            
+            foreach ($user["albumData"]["boards"] as $key => $board) {
+                removeItemFromArray($board["reviews"], $inputData["reviewId"], "$key");
             }
+
+              
 
             // $user["albumData"]["reviews"] = $arrayWithReviews;
             $users[$key]["albumData"]["reviews"] = $arrayWithReviews;
 
-                    echo "<pre>";
-                    var_dump($users[$key]["albumData"]["reviews"]);
-                    echo "</pre>";
+
         }
     }
 
