@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "BjHdJEULyqXbClrJ5cKTxbMYk",
+        "loginKey": "Zlu2srLRt4w8TSFnPRE6n2OX6",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -40,6 +40,12 @@
                         0
                     ],
                     "thumbnail": "defaultBoardImage.jpg"
+                },
+                {
+                    "boardName": "gxdg",
+                    "boardId": 2,
+                    "reviews": [],
+                    "thumbnail": "1684753652.jpeg"
                 }
             ],
             "reviews": [

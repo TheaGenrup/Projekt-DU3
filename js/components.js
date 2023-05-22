@@ -283,6 +283,12 @@ function addBoardOrReview(bodyData) {
 }
 
 function renderProfileView(event) {
+    const allReviewsOpen = document.querySelectorAll(".overlayReview");
+    if (allReviewsOpen.length > 0 ) {
+        allReviewsOpen.forEach(review => {
+            review.remove();
+        });
+    }
 
     startLoadingScreen(document.querySelector("main"));
 
@@ -560,8 +566,12 @@ function openBoard(user, eventCurrentTarget, clickedUserId) {
 async function expandReview(event) {
 
     document.querySelector("#css1").setAttribute("href", "../css/loggedInBasicLayout.css");
-    document.querySelector("#css2").setAttribute("href", "../css/expandedReview.css");
-    document.querySelector("#contentContainer").innerHTML = "";
+    document.querySelector("#css3").setAttribute("href", "../css/expandedReview.css");
+    const overlayContainer = document.createElement("div");
+    overlayContainer.classList.add("overlayReview");
+
+    document.querySelector("main").append(overlayContainer);
+    
 
     const clickedUserId = event.currentTarget.dataset.userId;
     const clickedReviewId = event.currentTarget.dataset.reviewId;
@@ -573,7 +583,7 @@ async function expandReview(event) {
 
         if (clickedReviewId == firstLoopThroughReview.reviewId) {
 
-            document.querySelector("#contentContainer").innerHTML = `
+            overlayContainer.innerHTML = `
                 
                 <div id="closeReview" class="pointer"></div>
                 <p id="timestampExpanded"><span>${timeConverter(firstLoopThroughReview.timestamp)}</span></p>
@@ -600,7 +610,13 @@ async function expandReview(event) {
             document.querySelector("#displayNameExpanded").dataset.userId = firstLoopThroughReview.userId;
 
             document.querySelector(`#displayNameExpanded`).addEventListener("click", renderProfileView);
-            document.querySelector(`#closeReview`).addEventListener("click", e => renderDiscoverView());
+            overlayContainer.querySelector(`#closeReview`).addEventListener("click", (e) => {
+                const allReviewsOpen = document.querySelectorAll(".overlayReview");
+                if (allReviewsOpen.length === 1) {
+                    document.querySelector("#css3").setAttribute("href", "");
+                }
+                overlayContainer.remove();
+            });
             const saveButton = document.querySelector("#bookmark");
             const userData = await getUserData(localStorage.getItem("userId"));
             const usersAlbumList = userData.albumData.favourites;
@@ -692,5 +708,6 @@ async function expandReview(event) {
 
         }
     })
+    
 };
 

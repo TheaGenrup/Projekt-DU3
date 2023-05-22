@@ -51,6 +51,7 @@ body main #contentCOntainer #noResults {
 }
 
 #contentContainer {
+    position: relative;
     font-size: 2vh;
     box-sizing: border-box;
     padding: 5vw;
@@ -332,3 +333,4 @@ textarea {
         transform: rotate(360deg);
     }
 }
+
