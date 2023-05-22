@@ -83,8 +83,6 @@ async function renderDiscoverView() {
 
     // check if the user follows anyone
     if (followingIds.length === 0) {
-        console.log("no following users");
-
         document.querySelector("#contentContainer").innerHTML = `<p id="message">It seems like you're not following anyone...</p>`;
     } else {
 

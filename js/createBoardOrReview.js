@@ -161,7 +161,6 @@ async function createBoardOrReview() {
     }
     function chooseRating(e) {
         const rating = parseInt(e.target.dataset.rating);
-        console.log(rating);
     }
 }
 

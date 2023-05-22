@@ -86,7 +86,6 @@ async function renderSearchView(e) {
             const albumsfetched = albumResource.albums.items;
             const albumsFound = []
             albumsfetched.forEach(album => {
-                console.log(album);
               let albumInfo = {
                 artist:     album.artists[0].name,
                 albumName:  album.name,

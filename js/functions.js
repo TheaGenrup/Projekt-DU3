@@ -43,7 +43,6 @@ function makeReview(review, container, displayNameLine) {
     if (reviewDescription.length > 45) {
         reviewDescription = reviewDescription.slice(0, 45) + "...";
     }
-    console.log(review);
 
     // make html for new review
     const newReview = document.createElement("div");
@@ -141,12 +140,10 @@ async function displayAlbum(albumData) {
                 if (response.status === 204) {
                     averageRatingContainer.innerHTML = `<p>Unrated, be the first!</p>`;
                     reviewsUl.innerHTML = "<p>No reviews yet<p>"
-                    console.log(response);
                 }
                 return response.json();
             })
             .then(resource => {
-                console.log(resource);
                 const averageRating = resource.averageRating;
                 const totalReviews = resource.totalReviews;
                 const reviews = resource.reviews;
@@ -293,19 +290,19 @@ async function renderCreateReview(albumData) {
     // Prevent default for submitting forms
     createButton.addEventListener("click", (e) => { e.preventDefault() });
     backButton.addEventListener("click", (e) => { e.preventDefault() });
+    backButton.addEventListener("click", renderCreateReviewView)
     createButton.addEventListener("click", addReview)
     //Add boards to list of options
     usersBoards.forEach(board => {
         const optionDom = document.createElement("div");
         optionDom.value = board.boardName;
         optionDom.textContent = board.boardName;
-        optionDom.id = board.boardId
-        selectBoard.dataset.boardId = usersBoards[0].boardId
+        optionDom.id = board.boardId;
+        optionDom.classList.add("option");
         optionDom.addEventListener("click", (e) =>{
-            selectBoard.dataset.boardId = optionDom.id
-            optionDom.classList.add("option")
             e.stopPropagation();
-            dropdownSelector.dataset.boardId = optionDom.id
+            customSelect.dataset.boardId = optionDom.id;
+            dropdownSelector.dataset.boardId = optionDom.id;
             selectedValue.textContent = optionDom.value;
             dropdownSelector.classList.add("hidden");
         })
@@ -387,7 +384,6 @@ async function renderCreateReview(albumData) {
 
 function addToListenList(album, saveButton) {
     const userId = localStorage.getItem("userId")
-    console.log(userId);
     const bodyData = {
         album: album,
         userId: userId
@@ -403,8 +399,6 @@ function addToListenList(album, saveButton) {
         fetch(request)
             .then(r=>r.json())
             .then(responseData=> {
-            console.log(responseData);
-                
                 if (responseData.message = "success") {
                 saveButton.classList.toggle("saveButton");
                 saveButton.classList.toggle("savedButton");
@@ -447,8 +441,4 @@ function startLoadingScreen(elementToAddTo) {
 function stopLoadingScreen() {
     const loaderDom = document.querySelector(".vinylloaderC");
     loaderDom.remove();
-}
-
-function name(params) {
-    
 }
