@@ -19,15 +19,18 @@ if ($_POST) {
             $source = $_FILES["imageInput"]["tmp_name"];
             $imageType = $_FILES["imageInput"]["type"];
             $uniqueImageName = time();
-            $imageName = "$uniqueImageName";
-            $destination = (__DIR__) . "/media/usersMedia/$userId/boards/" . "$uniqueImageName";
+            $ending = str_replace("image/", ".", $imageType);
+            $imageName = "$uniqueImageName" . $ending;
+            // $destination = (__DIR__) . "/media/usersMedia/$userId/boards/" . $imageName;
+            $destination = "../media/usersMedia/$userId/boards/$imageName";
             // Fråga Sebbe wtf mannen
-            if (!move_uploaded_file($source,$destination)) {
+            if (!move_uploaded_file($source, $destination)) {
                 $response = ["error" => "Failed to upload file"];
                 sendJSON($response, 400);
             }
             
         }
+
 
 
         

@@ -2,11 +2,16 @@
     margin: 0;
 }
 
-#contentContainer {
+.overlayReview{
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-x: hidden;
+    position: absolute;
+    height: 92%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5vw;
+    overflow-x: scroll;
     background-color: rgb(153, 153, 153);
 }
 

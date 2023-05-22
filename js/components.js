@@ -45,14 +45,24 @@ function renderLoggedInView(profilePic) {
         <div id="contentContainer"></div>
     </main>
     <nav>
-        <button class="viewIcon" id="discoverIcon"></button>
-        <button class="viewIcon" id="searchIcon"></button>
-        <button class="viewIcon" id="addIcon"></button>
-        <img class="viewIcon" id="profilePicture" src="/media/${profilePic}" alt="Profile"></img>
+        <img class="viewIcon" id="discoverIcon" src="/media/icons/discover.png" alt="Discover"></img>
+        <img class="viewIcon" id="searchIcon" src="/media/icons/search.png" alt="Search"></img>
+        <img class="viewIcon" id="addIcon" src="/media/icons/add.png" alt="Add"></img>
+        <div class="viewIcon" id="profilePicture"></div>
     </nav>
     `;
 
     document.querySelector(`#profilePicture`).dataset.userId = localStorage.getItem("userId");
+
+    if (profilePic === "" || profilePic === undefined || profilePic === null) {
+
+        document.querySelector(`#profilePicture`).style.backgroundImage = `url(/media/default.png)`;
+    } else {
+
+        document.querySelector(`#profilePicture`).style.backgroundImage = `url(/media/usersMedia/${localStorage.userId}/${profilePic})`;
+    }
+
+
     // DOM Event listeners
     document.querySelector("#discoverIcon").addEventListener("click", renderDiscoverView);
     document.querySelector("#profilePicture").addEventListener("click", renderProfileView);
@@ -283,6 +293,12 @@ function addBoardOrReview(bodyData) {
 }
 
 function renderProfileView(event) {
+    const allReviewsOpen = document.querySelectorAll(".overlayReview");
+    if (allReviewsOpen.length > 0) {
+        allReviewsOpen.forEach(review => {
+            review.remove();
+        });
+    }
 
     console.log(event.currentTarget);
 
@@ -309,7 +325,7 @@ function renderProfileView(event) {
             document.querySelector("#contentContainer").innerHTML = `
                 <div id="profileHeader">
                     <div>
-                        <img id="profilePictureTop" src="../media/${profilePicture}"></img>
+                        <div id="profilePictureTop"></div>
                         <p>@${displayName}</p>
                     </div> 
                     <div class="center">
@@ -329,6 +345,16 @@ function renderProfileView(event) {
                     <div id="boardContainer"></div>
                 </div>`
 
+            // add profile picture
+            if (profilePicture === "" || profilePicture === undefined || profilePicture === null) {
+
+                document.querySelector(`#profilePictureTop`).style.backgroundImage = `url(/media/default.png)`;
+            } else {
+
+                document.querySelector(`#profilePictureTop`).style.backgroundImage = `url(/media/usersMedia/${localStorage.userId}/${profilePicture})`;
+            }
+
+            // check if logged in: follow button or icons
             if (clickedUserId !== loggedInUserId) {
 
                 const followers = user.userSocial.followers;
@@ -451,16 +477,17 @@ function showFavourites(user) {
 
     arrayWithFavourites.forEach(favourite => {
 
-        const newFavourite = `
-        <div class="favourite">
-                <img class="favouriteCover" src="${favourite.thumbnail}"></img>
+        const newFavourite = document.createElement("div");
+        newFavourite.classList.add("favourite");
+        newFavourite.innerHTML = `
+                <img class="favouriteCover"></img>
             <div id="favouriteInfoContainer">
                 <p class="favouriteAlbumName">${favourite.albumName}</p>
                 <p class="favouriteArtist">${favourite.artist}</p>
-            </div>
-        </div>
-        `
-        document.querySelector("#favourites").innerHTML += newFavourite;
+            </div>`;
+
+        document.querySelector("#favourites").append(newFavourite);
+        newFavourite.querySelector(".favouriteCover").style.backgroundImage = `url(${favourite.albumCover})`;
     });
 
 
@@ -563,8 +590,12 @@ function openBoard(user, eventCurrentTarget, clickedUserId) {
 async function expandReview(event) {
 
     document.querySelector("#css1").setAttribute("href", "../css/loggedInBasicLayout.css");
-    document.querySelector("#css2").setAttribute("href", "../css/expandedReview.css");
-    document.querySelector("#contentContainer").innerHTML = "";
+    document.querySelector("#css3").setAttribute("href", "../css/expandedReview.css");
+    const overlayContainer = document.createElement("div");
+    overlayContainer.classList.add("overlayReview");
+
+    document.querySelector("main").append(overlayContainer);
+
 
     const clickedUserId = event.currentTarget.dataset.userId;
     const clickedReviewId = event.currentTarget.dataset.reviewId;
@@ -576,7 +607,7 @@ async function expandReview(event) {
 
         if (clickedReviewId == firstLoopThroughReview.reviewId) {
 
-            document.querySelector("#contentContainer").innerHTML = `
+            overlayContainer.innerHTML = `
                 
                 <div id="closeReview" class="pointer"></div>
                 <p id="timestampExpanded"><span>${timeConverter(firstLoopThroughReview.timestamp)}</span></p>
@@ -603,7 +634,13 @@ async function expandReview(event) {
             document.querySelector("#displayNameExpanded").dataset.userId = firstLoopThroughReview.userId;
 
             document.querySelector(`#displayNameExpanded`).addEventListener("click", renderProfileView);
-            document.querySelector(`#closeReview`).addEventListener("click", e => renderDiscoverView());
+            overlayContainer.querySelector(`#closeReview`).addEventListener("click", (e) => {
+                const allReviewsOpen = document.querySelectorAll(".overlayReview");
+                if (allReviewsOpen.length === 1) {
+                    document.querySelector("#css3").setAttribute("href", "");
+                }
+                overlayContainer.remove();
+            });
             const saveButton = document.querySelector("#bookmark");
             const userData = await getUserData(localStorage.getItem("userId"));
             const usersAlbumList = userData.albumData.favourites;
@@ -695,5 +732,6 @@ async function expandReview(event) {
 
         }
     })
+
 };
 
