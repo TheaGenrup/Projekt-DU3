@@ -233,7 +233,6 @@ async function renderCreateReviewView(album) {
     if (album.reviewDirectly) { renderCreateReview(album) }
 };
 
-
 // Add a new review or board function
 function addBoardOrReview(bodyData) {
     const uploadWrapper = document.querySelector("#uploadWrapper");
@@ -285,8 +284,8 @@ function addBoardOrReview(bodyData) {
     }
 }
 
-
 function renderProfileView(event) {
+
     startLoadingScreen(document.querySelector("main"));
 
     const clickedUserId = event.currentTarget.dataset.userId;
@@ -330,35 +329,6 @@ function renderProfileView(event) {
                     <div id="boardContainer"></div>
                 </div>`
 
-            function followUnfollow(event) {
-
-                const request = new Request("/server/follow.php", {
-                    headers: { "Content-type": "application/json" },
-                    method: "POST",
-                    body: JSON.stringify({
-                        id: user.userIdentity.id,
-                        currentUserId: localStorage.userId
-                    }),
-                });
-
-                try {
-                    fetch(request)
-                        .then(response => {
-                            return response.json();
-                        })
-
-                } catch (error) {
-                    console.log(error);
-                }
-
-                if (event.target.textContent === "Follow") {
-                    event.target.textContent = "Following";
-                } else {
-                    event.target.textContent = "Follow";
-                }
-
-            }
-
             if (clickedUserId !== loggedInUserId) {
 
                 const followers = user.userSocial.followers;
@@ -374,7 +344,9 @@ function renderProfileView(event) {
                     <button id="followButton">Follow</button>`;
                 }
 
-                document.querySelector("#profileIconsOrFollowButton").addEventListener("click", followUnfollow);
+                document.querySelector("#profileIconsOrFollowButton").addEventListener("click", (e) => {
+                    followUnfollow(user, e.target);
+                });
             } else {
                 document.querySelector("#profileIconsOrFollowButton").innerHTML = `
                 <div class="settingsDropdown">
@@ -392,34 +364,9 @@ function renderProfileView(event) {
                 document.querySelector("#logOutBtn").addEventListener("click", e => {
                     renderLoginPage();
                 })
-                document.querySelector("#bookmarkIcon").addEventListener("click", showFavourites);
-            }
-
-            function showFavourites(event) {
-
-                document.querySelector("#boardAndReviewContainer").innerHTML = `
-                <div id="favouritesIconContainer">
-                    <img id="favouritesIcon" src="../media/icons/bookmark.png"></img>
-                </div>
-                <div id="favourites"></div>`;
-
-                const arrayWithFavourites = user.albumData.favourites;
-
-                arrayWithFavourites.forEach(favourite => {
-
-                    const newFavourite = `
-                    <div class="favourite">
-                            <img class="favouriteCover" src="${favourite.thumbnail}"></img>
-                        <div id="favouriteInfoContainer">
-                            <p class="favouriteAlbumName">${favourite.albumName}</p>
-                            <p class="favouriteArtist">${favourite.artist}</p>
-                        </div>
-                    </div>
-                    `
-                    document.querySelector("#favourites").innerHTML += newFavourite;
-                })
-
-
+                document.querySelector("#bookmarkIcon").addEventListener("click", (e) => {
+                    showFavourites(user);
+                });
             }
 
             const boards = user.albumData.boards;
@@ -446,82 +393,141 @@ function renderProfileView(event) {
                     newBoard.querySelector(".boardCover").style.backgroundImage = `url(/media/usersMedia/${user.userIdentity.id}/boards/${board.thumbnail}`;
                 }
 
-                newBoard.addEventListener("click", openBoard);
+                newBoard.addEventListener("click", (e) => {
+                    openBoard(user, e.currentTarget, clickedUserId);
+                });
             });
 
-
-
-            function openBoard(event) {
-
-                document.querySelector("#boardAndReviewContainer").innerHTML = `
-                <h2 id="title">${event.currentTarget.dataset.boardName}</h2>`;
-
-                const reviewsInBoard = [];
-
-                user.albumData.boards.forEach(board => {
-
-                    if (board.boardId == event.currentTarget.dataset.boardId) {
-
-                        const boardId = board.boardId;
-                        const arrayWithReviews = user.albumData.reviews;
-
-                        arrayWithReviews.forEach(review => {
-
-                            review.boards.forEach(board => {
-
-                                if (board === boardId) {
-                                    review.userId = user.userIdentity.id;
-                                    review.displayName = user.userIdentity.displayName;
-                                    reviewsInBoard.push(review);
-                                }
-                            })
-                        })
-
-                    }
-                });
-
-                reviewsInBoard.sort((a, b) => b.timestamp - a.timestamp);
-
-                reviewsInBoard.forEach(review => {
-                    makeReview(review, "#boardAndReviewContainer");
-                    //    document.querySelector(`#review_${review.reviewId} > #who`).textContent = `@${review.displayName}`;
-                });
-                document.querySelectorAll(".review > who").forEach(element => element.textContent = `@${review.displayName}`);
-
-
-                if (clickedUserId === loggedInUserId) {
-                    document.querySelectorAll(".review").forEach(review => {
-
-                        const reviewId = review.dataset.reviewId;
-
-                        const newElement = document.createElement("div");
-                        newElement.classList.add("deleteBtn");
-                        review.prepend(newElement);
-
-
-                        newElement.dataset.reviewId = reviewId;
-
-                    });
-
-
-                    document.querySelectorAll(".deleteBtn").forEach(button => {
-
-                        button.addEventListener("click", deleteReview);
-
-                    });
-
-
-
-                }
-
-                document.querySelectorAll(".review").forEach(review => {
-                    review.addEventListener("click", expandReview);
-                })
-
-            }
             stopLoadingScreen(document.querySelector("main"));
         });
 };
+
+function followUnfollow(user, eventTarget) {
+
+    const request = new Request("/server/follow.php", {
+        headers: { "Content-type": "application/json" },
+        method: "POST",
+        body: JSON.stringify({
+            id: user.userIdentity.id,
+            currentUserId: localStorage.userId
+        }),
+    });
+
+    try {
+        fetch(request)
+            .then(response => {
+                return response.json();
+            })
+
+    } catch (error) {
+        console.log(error);
+    }
+
+    if (eventTarget.textContent === "Follow") {
+        eventTarget.textContent = "Following";
+    } else {
+        eventTarget.textContent = "Follow";
+    }
+
+};
+
+function showFavourites(user) {
+
+    document.querySelector("#boardAndReviewContainer").innerHTML = `
+    <div id="favouritesIconContainer">
+        <img id="favouritesIcon" src="../media/icons/bookmark.png"></img>
+    </div>
+    <div id="favourites"></div>`;
+
+    const arrayWithFavourites = user.albumData.favourites;
+
+    arrayWithFavourites.forEach(favourite => {
+
+        const newFavourite = `
+        <div class="favourite">
+                <img class="favouriteCover" src="${favourite.thumbnail}"></img>
+            <div id="favouriteInfoContainer">
+                <p class="favouriteAlbumName">${favourite.albumName}</p>
+                <p class="favouriteArtist">${favourite.artist}</p>
+            </div>
+        </div>
+        `
+        document.querySelector("#favourites").innerHTML += newFavourite;
+    });
+
+
+};
+
+function openBoard(user, eventCurrentTarget, clickedUserId) {
+
+    const loggedInUserId = localStorage.getItem("userId");
+
+    document.querySelector("#boardAndReviewContainer").innerHTML = `
+    <h2 id="title">${eventCurrentTarget.dataset.boardName}</h2>`;
+
+    const reviewsInBoard = [];
+
+    user.albumData.boards.forEach(board => {
+
+        if (board.boardId == eventCurrentTarget.dataset.boardId) {
+
+            const boardId = board.boardId;
+            const arrayWithReviews = user.albumData.reviews;
+
+            arrayWithReviews.forEach(review => {
+
+                review.boards.forEach(board => {
+
+                    if (board === boardId) {
+                        review.userId = user.userIdentity.id;
+                        review.displayName = user.userIdentity.displayName;
+                        reviewsInBoard.push(review);
+                    }
+                })
+            })
+
+        }
+    });
+
+    reviewsInBoard.sort((a, b) => b.timestamp - a.timestamp);
+
+    reviewsInBoard.forEach(review => {
+        makeReview(review, "#boardAndReviewContainer");
+    });
+    document.querySelectorAll(".review > who").forEach(element => element.textContent = `@${review.displayName}`);
+
+
+
+    if (clickedUserId === loggedInUserId) {
+        document.querySelectorAll(".review").forEach(review => {
+
+            const reviewId = review.dataset.reviewId;
+
+            const newElement = document.createElement("div");
+            newElement.classList.add("deleteBtn");
+            review.prepend(newElement);
+
+
+            newElement.dataset.reviewId = reviewId;
+
+        });
+
+
+        document.querySelectorAll(".deleteBtn").forEach(button => {
+
+            button.addEventListener("click", deleteReview);
+
+        });
+
+
+
+    }
+
+    document.querySelectorAll(".review").forEach(review => {
+        review.addEventListener("click", expandReview);
+    })
+
+}
 
 async function expandReview(event) {
 
@@ -576,7 +582,7 @@ async function expandReview(event) {
                     saveButton.classList.add("savedButton");
                 }
             });
-            saveButton.addEventListener("click", ()=>{
+            saveButton.addEventListener("click", () => {
                 addToListenList(firstLoopThroughReview, saveButton);
             })
 
