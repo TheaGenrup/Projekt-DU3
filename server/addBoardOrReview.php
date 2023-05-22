@@ -16,6 +16,10 @@ if ($_POST) {
         $imageName;
 
         if (isset($_FILES["imageInput"]) && $_FILES["imageInput"]["tmp_name"] != "") {
+            if ($_FILES["imageInput"]["size"] > 50000) {
+                $response = ["message" => "Photo size too large king"];
+                sendJSON($response, 200);
+            }
             $source = $_FILES["imageInput"]["tmp_name"];
             $imageType = $_FILES["imageInput"]["type"];
             $uniqueImageName = time();

@@ -124,11 +124,11 @@ button.viewIcon {
     background-image: url(/media/icons/plus-svgrepo-com.svg);
 }
 
-button.viewIcon {
+button.iconHover {
     filter: invert(43%) sepia(0%) saturate(3065%) hue-rotate(172deg) brightness(98%) contrast(67%);
 }
 
-button.viewIcon:hover {
+button.iconHover:hover {
     filter: invert(95%) sepia(0%) saturate(147%) hue-rotate(196deg) brightness(92%) contrast(95%);
 }
 

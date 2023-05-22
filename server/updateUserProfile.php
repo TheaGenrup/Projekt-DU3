@@ -10,6 +10,10 @@ if ($requestMethod == "POST") {
 
         foreach ($userData as $key => $user) {
             if ($user["userIdentity"]["id"] === $userId) {
+                if ($_FILES["imageInput"]["size"] > 50000) {
+                    $response = ["message" => "Photo size too large king"];
+                    sendJSON($response, 200);
+                }
                 $source = $_FILES["imageInput"]["tmp_name"];
                 $imageType = $_FILES["imageInput"]["type"];
                 $ending = str_replace("image/", ".", $imageType);

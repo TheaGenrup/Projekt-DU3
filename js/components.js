@@ -45,10 +45,10 @@ function renderLoggedInView(profilePic) {
         <div id="contentContainer"></div>
     </main>
     <nav>
-        <button class="viewIcon" id="discoverIcon"></button>
-        <button class="viewIcon" id="searchIcon"></button>
-        <button class="viewIcon" id="addIcon"></button>
-        <div class="viewIcon" id="profilePicture"></div>
+        <button class="viewIcon iconHover" id="discoverIcon"></button>
+        <button class="viewIcon iconHover" id="searchIcon"></button>
+        <button class="viewIcon iconHover" id="addIcon"></button>
+        <button class="viewIcon" id="profilePicture"></button>
     </nav>
     `;
 
