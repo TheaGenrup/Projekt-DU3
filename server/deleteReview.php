@@ -14,21 +14,34 @@ if (!$_SERVER["REQUEST_METHOD"] == "DELETE") {
     //hämta alla users
     $users = getFileData("users.json");
 
-    foreach ($users as $key => $user) {
+    foreach ($users as $keyUser => $user) {
         if ($inputData["userId"] == $user["userIdentity"]["id"]) {
    
             $arrayWithReviews = $user["albumData"]["reviews"];
-            removeItemFromArray($arrayWithReviews, $inputData["reviewId"], "reviewId");
 
-            
-            foreach ($user["albumData"]["boards"] as $key => $board) {
-                removeItemFromArray($board["reviews"], $inputData["reviewId"], "$key");
+
+                 //   removeItemFromArray($arrayWithReviews, $inputData["reviewId"], $keyReview);
+
+            $updatedReviewArray = [];
+            foreach ($arrayWithReviews as $key => $review) {
+                if ($review["reviewId"] != $inputData["reviewId"]){  $updatedReviewArray[] = $review;  }
             }
 
-              
+            $users[$keyUser]["albumData"]["reviews"] = $updatedReviewArray;
 
-            // $user["albumData"]["reviews"] = $arrayWithReviews;
-            $users[$key]["albumData"]["reviews"] = $arrayWithReviews;
+            $updatedReviewIdArray = [];
+            foreach ($user["albumData"]["boards"] as $keyBoard => $board) {
+            //    removeItemFromArray($board["reviews"], $inputData["reviewId"], $key);
+                foreach ($user["albumData"]["boards"][$keyBoard]["reviews"] as $keyReviewId => $reviewId) {
+                    
+                    if ($reviewId != $inputData["reviewId"]){  $updatedReviewIdArray[] = $reviewId;  }
+                }
+                $users[$keyUser]["albumData"]["boards"][$keyBoard]["reviews"] = $updatedReviewIdArray;
+            }
+
+            
+/*             // $user["albumData"]["reviews"] = $arrayWithReviews; */
+/*             $users[$key]["albumData"]["reviews"] = $arrayWithReviews; */
 
 
         }

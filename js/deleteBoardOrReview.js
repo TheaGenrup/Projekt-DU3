@@ -1,4 +1,6 @@
-async function deleteReview(reviewId) {
+async function deleteReview(reviewId, reviewElement) {
+
+    reviewElement.remove();
 
     const requestDelete = new Request(`../server/deleteReview.php`, {
         method: "DELETE",

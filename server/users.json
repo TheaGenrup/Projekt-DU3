@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "m5Eg5YUdRBjjaYsycUGLPYN3h",
+        "loginKey": "KTC1XEoquaOXZqAdTrs9HIY6S",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -27,9 +27,7 @@
                     "boardId": 0,
                     "reviews": [
                         0,
-                        0,
-                        0,
-                        0
+                        1
                     ],
                     "thumbnail": "defaultBoardImage.jpg"
                 },
@@ -55,6 +53,19 @@
                     ],
                     "timestamp": 1684566265,
                     "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0240461e96808378ae2787a7e4"
+                },
+                {
+                    "albumName": "Mope Amok",
+                    "artist": "Robo Rat",
+                    "albumId": "6yHghkwnaz76HRsPzPY9uz",
+                    "reviewId": 1,
+                    "reviewDescription": "xxxxx",
+                    "rating": 4,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684694024,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0273b3278cdf51bc6e0a6b66f8"
                 }
             ],
             "favourites": []
@@ -65,7 +76,7 @@
             "username": "test2",
             "password": "test2"
         },
-        "loginKey": "weGKLDpN7Bn10v2U3QneKrtnr",
+        "loginKey": "cpW82Mo23yDvLwbd3fKQcGbyC",
         "userSocial": {
             "following": [
                 "507163198196757529667525417704",
@@ -103,7 +114,8 @@
                     "boardName": "Assorted",
                     "boardId": 2,
                     "reviews": [
-                        3
+                        3,
+                        4
                     ],
                     "thumbnail": "defaultBoardImage.jpg"
                 }
@@ -160,6 +172,19 @@
                     ],
                     "timestamp": 1684433567,
                     "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0264c19b24ce947ffa363f8f96"
+                },
+                {
+                    "albumName": "Live at Madison Square Garden",
+                    "artist": "Vulfpeck",
+                    "albumId": "5KmXBjpN0wHutYBoDJBxmM",
+                    "reviewId": 4,
+                    "reviewDescription": "xxxx",
+                    "rating": 4,
+                    "boards": [
+                        2
+                    ],
+                    "timestamp": 1684694072,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02670e99b5ad2dcd60b7d05dc0"
                 }
             ],
             "favourites": []
@@ -284,11 +309,10 @@
             "username": "thea",
             "password": "thea"
         },
-        "loginKey": "k4zLWk0fGDbe6ErGZ9VgKsgZb",
+        "loginKey": "za88QE60gEoTth5qxr9ueLKvJ",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
-                "507163198196757529667525417704",
                 "607133432034891031030642696328"
             ],
             "followers": [
@@ -303,16 +327,18 @@
         "albumData": {
             "boards": [
                 {
-                    "boardName": "Psychadelic acid rock",
+                    "boardName": "Favourites",
                     "boardId": 0,
                     "reviews": [
-                        4,
-                        6
+                        6,
+                        3,
+                        1,
+                        5290
                     ],
                     "thumbnail": "defaultBoardImage.jpg"
                 },
                 {
-                    "boardName": "Katy Perry's best albums (all of them)",
+                    "boardName": "Sobral's best albums (all of them)",
                     "boardId": 1,
                     "reviews": [
                         5
@@ -369,19 +395,6 @@
                     ],
                     "timestamp": 1684339766,
                     "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02bb5cd06b0ca1899407e83d7e"
-                },
-                {
-                    "albumName": "Teenage Dream",
-                    "artist": "Katy Perry",
-                    "albumId": "2eQMC9nJE3f3hCNKlYYHL1",
-                    "reviewId": 4,
-                    "reviewDescription": "No, thanks",
-                    "rating": 2,
-                    "boards": [
-                        0
-                    ],
-                    "timestamp": 1684414637,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02d20c38f295039520d688a888"
                 },
                 {
                     "albumName": "The Money Store",
