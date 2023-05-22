@@ -34,7 +34,6 @@ function timeConverter(UNIX_timestamp) {
 
 function makeReview(review, container, inProfile) {
     // shorten comment if needed
-    console.log(1);
     let reviewDescription = review.reviewDescription;
     if (reviewDescription.length > 45) {
         reviewDescription = reviewDescription.slice(0, 45) + "...";

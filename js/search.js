@@ -32,7 +32,6 @@ function toggleSearchIcon(params) {
 async function renderSearchView(e) {
     clearSearch();
     const originButton = e.target.id
-    console.log(originButton);
     // Get Spotify token
     token = await fetchToken();
     if (document.querySelector("#searchWindow")) { return };
@@ -205,7 +204,6 @@ function listUsers(usersFound) {
             const userDisplayName = user.displayName;
             const userId = user.id;
             const userProfilePicture = user.profilePicture;
-            console.log(userId);
 
 
 

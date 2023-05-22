@@ -66,7 +66,7 @@ async function editAccount(e) {
         overlay.remove();
     })
 
-    if (user.userIdentity.profilePic = "") {
+    if (user.userIdentity.profilePic === "" ) {
         imagePreview.style.backgroundImage = `url(/media/default.png)`;
     } else {
         imagePreview.style.backgroundImage = `url(/media/usersMedia/${userId}/${usersCurrentProfielPicture})`;
@@ -95,7 +95,7 @@ async function editAccount(e) {
         e.preventDefault();
         if (imagePreview.classList.contains("imageUploaded")) {
 
-            const formWrapper = editAccountContainer.querySelector("form");
+            const formWrapper = overlay.querySelector("form");
             const formData = new FormData(formWrapper);
             const request = new Request("/server/updateUserProfile.php",{
             header: "Content-Type: application/json",

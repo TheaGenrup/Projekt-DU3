@@ -4,135 +4,73 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "kcJNtseTLhVfTX78DlMevM9DF",
+        "loginKey": "Fb84O6PX57xyURdFYXNiqnAky",
         "userSocial": {
             "following": [],
             "followers": []
         },
         "userIdentity": {
-            "id": "094495232987426247309055986598",
-            "profilePic": "test.jpg",
-            "displayName": "ses"
+            "id": "071897782377104435133843971347",
+            "profilePic": "test.jpeg",
+            "displayName": "test"
         },
         "albumData": {
             "boards": [
                 {
-                    "boardName": "test",
+                    "boardName": "cat music for cats",
                     "boardId": 0,
                     "reviews": [
                         0
                     ],
-                    "thumbnail": ""
-                },
-                {
-                    "boardName": "e",
-                    "boardId": 1,
-                    "reviews": [],
-                    "thumbnail": ""
+                    "thumbnail": "1684775537.jpeg"
                 }
             ],
             "reviews": [
                 {
-                    "albumName": "TESTING",
-                    "artist": "A$AP Rocky",
-                    "albumId": "3MATDdrpHmQCmuOcozZjDa",
+                    "albumName": "Cats On Mars '20",
+                    "artist": "Natsu Fuji",
+                    "albumId": "74wxqF12zArGXm61vmkrx3",
                     "reviewId": 0,
-                    "reviewDescription": "test",
-                    "rating": 1,
-                    "boards": [
-                        0
-                    ],
-                    "timestamp": 1684763857,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029feadc48ab0661e9b3a9170b"
-                }
-            ],
-            "favourites": [
-                {
-                    "albumName": "Teen Beach Movie",
-                    "artist": "Various Artists",
-                    "albumId": "5ANe5AfOnYydm3lXELfiHF",
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e028f9a38eaef72352da716ccdb",
-                    "favouriteId": 1,
-                    "timestamp": 1684770245
-                },
-                {
-                    "albumName": "Ella Baila Sola",
-                    "artist": "Eslabon Armado",
-                    "albumId": "3Mm1P5CEEAiuJqBclr2EyU",
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e022071a0c79802d9375a53bfef",
-                    "favouriteId": 2,
-                    "timestamp": 1684770336
-                },
-                {
-                    "albumName": "TESTING",
-                    "artist": "A$AP Rocky",
-                    "albumId": "3MATDdrpHmQCmuOcozZjDa",
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029feadc48ab0661e9b3a9170b",
-                    "favouriteId": 3,
-                    "timestamp": 1684770459
-                }
-            ]
-        }
-    },
-    {
-        "userCredentials": {
-            "username": "123",
-            "password": "123"
-        },
-        "loginKey": "hX29biw3gQyECCojrGtnPLVF9",
-        "userSocial": {
-            "following": [],
-            "followers": []
-        },
-        "userIdentity": {
-            "id": "071793074969736863504450909753",
-            "profilePic": "123.jpeg",
-            "displayName": "catty"
-        },
-        "albumData": {
-            "boards": [
-                {
-                    "boardName": "test",
-                    "boardId": 0,
-                    "reviews": [
-                        0
-                    ],
-                    "thumbnail": "1684772942.jpeg"
-                }
-            ],
-            "reviews": [
-                {
-                    "albumName": "The Low End Theory",
-                    "artist": "A Tribe Called Quest",
-                    "albumId": "1p12OAWwudgMqfMzjMvl2a",
-                    "reviewId": 0,
-                    "reviewDescription": "Zolo nation",
+                    "reviewDescription": "",
                     "rating": 5,
                     "boards": [
                         0
                     ],
-                    "timestamp": 1684772974,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02f38c6b37a21334e22005b1f7"
+                    "timestamp": 1684775563,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0279ac931a20ce792bea8f9845"
                 }
             ],
-            "favourites": [
+            "favourites": []
+        }
+    },
+    {
+        "userCredentials": {
+            "username": "test2",
+            "password": "test2"
+        },
+        "loginKey": "16SGwdoGAViEgh5w35IzUHt6X",
+        "userSocial": {
+            "following": [
+                "071897782377104435133843971347"
+            ],
+            "followers": []
+        },
+        "userIdentity": {
+            "id": "314088336379485626338627095800",
+            "profilePic": "",
+            "displayName": "test2"
+        },
+        "albumData": {
+            "boards": [
                 {
-                    "albumName": "The Low End Theory",
-                    "artist": "A Tribe Called Quest",
-                    "albumId": "1p12OAWwudgMqfMzjMvl2a",
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02f38c6b37a21334e22005b1f7",
-                    "favouriteId": 0,
-                    "timestamp": 1684772964
-                },
-                {
-                    "albumName": "People's Instinctive Travels and the Paths of Rhythm (25th Anniversary Edition)",
-                    "artist": "A Tribe Called Quest",
-                    "albumId": "3kV0i1qqudjf0PGawJ4jck",
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e024ba1fe238a517021ebcc2ace",
-                    "favouriteId": 1,
-                    "timestamp": 1684772965
+                    "boardName": "test",
+                    "boardId": 0,
+                    "reviews": [],
+                    "thumbnail": ""
                 }
-            ]
+            ],
+            "reviews": [],
+            "favourites": []
         }
     }
 ]

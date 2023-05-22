@@ -120,7 +120,6 @@ async function renderDiscoverView() {
 
             // go through all reviews to create them
             allFollowingUsersReviews.forEach(review => {
-                console.log(review);
                 makeReview(review, "#contentContainer");
             });
 
@@ -173,17 +172,16 @@ async function renderCreateReviewView(album) {
     createBoardDom.addEventListener("click", renderCreateBoard)
     function renderCreateBoard() {
         html =
-            `
-            <form id="uploadWrapper" data-type="board">
-            <input type="text" id="searchField" name="nameInput" placeholder="Name your board queen yas..." autocomplete="off">
-            <input name="userId" style="display:none" value="${userId}">
-
+        `
+        <form id="uploadWrapper" data-type="board">
             <div id="imageUploaderContainer">
                 <img id="imagePreview" src=""></img>
                 <input type="file" id="imageUploader" accept="image/*" name="imageInput">
             </div>
-            </form>
-            <div class="horizontalContainer">
+            <input type="text" id="searchField" name="nameInput" placeholder="Name your board queen yas..." autocomplete="off">
+            <input name="userId" style="display:none" value="${userId}">
+        </form>
+        <div class="horizontalContainer">
             <button id="goBackButton" class="navigationButton">Go back</button>
             <button for="uploadWrapper" id="createButton" class="navigationButton disabled">Create</button>
         </div>
