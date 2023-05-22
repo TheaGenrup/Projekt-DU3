@@ -21,6 +21,8 @@
     height: 25vw;
     width: 25vw;
     border-radius: 50%;
+    background-position: center;
+    background-size: cover;
 }
 
 #followButton {
@@ -129,7 +131,6 @@
 
 .board {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     cursor: pointer;

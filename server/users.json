@@ -26,9 +26,6 @@
                     "boardName": "test",
                     "boardId": 0,
                     "reviews": [
-                        0,
-                        0,
-                        0,
                         0
                     ],
                     "thumbnail": "defaultBoardImage.jpg"
@@ -71,7 +68,7 @@
             "username": "test2",
             "password": "test2"
         },
-        "loginKey": "PugZTH9mF6Ww19q2GQCI4B0wr",
+        "loginKey": "udsFzQ73xqKmA2hNy9lSo5BSE",
         "userSocial": {
             "following": [
                 "507163198196757529667525417704",
@@ -83,7 +80,7 @@
         },
         "userIdentity": {
             "id": "317161457770161228256467772618",
-            "profilePic": "default.png",
+            "profilePic": "",
             "displayName": "Stevie Nicks"
         },
         "albumData": {
@@ -170,7 +167,7 @@
         },
         "userIdentity": {
             "id": "716916262583862677799694090077",
-            "profilePic": "default.png",
+            "profilePic": "",
             "displayName": "test5"
         },
         "albumData": {
@@ -277,7 +274,7 @@
             "username": "thea",
             "password": "thea"
         },
-        "loginKey": "XK1MfebC7ya6ScJL8RnyseZPW",
+        "loginKey": "1BKEIPtwNzacqaS41BcXksXcj",
         "userSocial": {
             "following": [
                 "317161457770161228256467772618",
@@ -290,13 +287,13 @@
         },
         "userIdentity": {
             "id": "507163198196757529667525417704",
-            "profilePic": "default.png",
+            "profilePic": "",
             "displayName": "thea"
         },
         "albumData": {
             "boards": [
                 {
-                    "boardName": "Psychadelic acid rock",
+                    "boardName": "Favourites",
                     "boardId": 0,
                     "reviews": [
                         4,
@@ -305,7 +302,7 @@
                     "thumbnail": "defaultBoardImage.jpg"
                 },
                 {
-                    "boardName": "Katy Perry's best albums (all of them)",
+                    "boardName": "Sobral's best albums (all of them)",
                     "boardId": 1,
                     "reviews": [
                         5

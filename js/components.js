@@ -45,14 +45,24 @@ function renderLoggedInView(profilePic) {
         <div id="contentContainer"></div>
     </main>
     <nav>
-        <button class="viewIcon" id="discoverIcon"></button>
-        <button class="viewIcon" id="searchIcon"></button>
-        <button class="viewIcon" id="addIcon"></button>
-        <img class="viewIcon" id="profilePicture" src="/media/${profilePic}" alt="Profile"></img>
+        <img class="viewIcon" id="discoverIcon" src="/media/icons/discover.png" alt="Discover"></img>
+        <img class="viewIcon" id="searchIcon" src="/media/icons/search.png" alt="Search"></img>
+        <img class="viewIcon" id="addIcon" src="/media/icons/add.png" alt="Add"></img>
+        <div class="viewIcon" id="profilePicture"></div>
     </nav>
     `;
 
     document.querySelector(`#profilePicture`).dataset.userId = localStorage.getItem("userId");
+
+    if (profilePic === "" || profilePic === undefined || profilePic === null) {
+
+        document.querySelector(`#profilePicture`).style.backgroundImage = `url(/media/default.png)`;
+    } else {
+
+        document.querySelector(`#profilePicture`).style.backgroundImage = `url(/media/usersMedia/${localStorage.userId}/${profilePic})`;
+    }
+
+
     // DOM Event listeners
     document.querySelector("#discoverIcon").addEventListener("click", renderDiscoverView);
     document.querySelector("#profilePicture").addEventListener("click", renderProfileView);
@@ -284,7 +294,7 @@ function addBoardOrReview(bodyData) {
 
 function renderProfileView(event) {
     const allReviewsOpen = document.querySelectorAll(".overlayReview");
-    if (allReviewsOpen.length > 0 ) {
+    if (allReviewsOpen.length > 0) {
         allReviewsOpen.forEach(review => {
             review.remove();
         });
@@ -313,7 +323,7 @@ function renderProfileView(event) {
             document.querySelector("#contentContainer").innerHTML = `
                 <div id="profileHeader">
                     <div>
-                        <img id="profilePictureTop" src="../media/${profilePicture}"></img>
+                        <div id="profilePictureTop"></div>
                         <p>@${displayName}</p>
                     </div> 
                     <div class="center">
@@ -333,6 +343,16 @@ function renderProfileView(event) {
                     <div id="boardContainer"></div>
                 </div>`
 
+            // add profile picture
+            if (profilePicture === "" || profilePicture === undefined || profilePicture === null) {
+
+                document.querySelector(`#profilePictureTop`).style.backgroundImage = `url(/media/default.png)`;
+            } else {
+
+                document.querySelector(`#profilePictureTop`).style.backgroundImage = `url(/media/usersMedia/${localStorage.userId}/${profilePicture})`;
+            }
+
+            // check if logged in: follow button or icons
             if (clickedUserId !== loggedInUserId) {
 
                 const followers = user.userSocial.followers;
@@ -571,7 +591,7 @@ async function expandReview(event) {
     overlayContainer.classList.add("overlayReview");
 
     document.querySelector("main").append(overlayContainer);
-    
+
 
     const clickedUserId = event.currentTarget.dataset.userId;
     const clickedReviewId = event.currentTarget.dataset.reviewId;
@@ -708,6 +728,6 @@ async function expandReview(event) {
 
         }
     })
-    
+
 };
 
