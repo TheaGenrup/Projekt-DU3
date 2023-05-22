@@ -20,7 +20,7 @@ if ($_POST) {
             $imageType = $_FILES["imageInput"]["type"];
             $uniqueImageName = time();
             $imageName = "$uniqueImageName" . "$imageType";
-            $destination = __DIR__ . "/../media/usersMedia/$userId/boards/" . "$uniqueImageName" . "$imageType";
+            $destination = (__DIR__) . "/media/usersMedia/$userId/boards/" . "$uniqueImageName" . "$imageType";
             // Fråga Sebbe wtf mannen
             if (!move_uploaded_file($source,$destination)) {
                 $response = ["error" => "Failed to upload file"];

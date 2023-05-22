@@ -17,8 +17,10 @@ $possibleMatches = [];
 $userData = getFileData("users.json");
 foreach ($userData as $key => $user) {
     $displayName = $user["userIdentity"]["displayName"];
+    $displayNameLowerCase = strtolower($displayName);
+    $inputLowerCase = strtolower($input);
 
-    if (str_contains($displayName, $input) == true) {
+    if (str_contains($displayNameLowerCase, $inputLowerCase) == true) {
         $id = $user["userIdentity"]["id"];
         $profilePicture = $user["userIdentity"]["profilePic"];
         $userObject = [

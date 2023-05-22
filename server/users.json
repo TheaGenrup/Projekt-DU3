@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "jImA7oGmo6bmh1s3KDyJMKKGU",
+        "loginKey": "IfYt7rE6QZeHa5206ZVPrrqQr",
         "userSocial": {
             "following": [
                 "848402422005626697163776521185"
@@ -26,8 +26,15 @@
                     "reviews": [
                         0,
                         1,
-                        2
+                        2,
+                        3
                     ],
+                    "thumbnail": "defaultBoardImage.jpg"
+                },
+                {
+                    "boardName": "tet",
+                    "boardId": 1,
+                    "reviews": [],
                     "thumbnail": "defaultBoardImage.jpg"
                 }
             ],
@@ -70,6 +77,19 @@
                     ],
                     "timestamp": 1684680537,
                     "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02454bc3dd1bdc4a62ce9cf8db"
+                },
+                {
+                    "albumName": "SOUR",
+                    "artist": "Olivia Rodrigo",
+                    "albumId": "6s84u2TUpR3wdUv4NgKA2j",
+                    "reviewId": 3,
+                    "reviewDescription": "test",
+                    "rating": 3,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684741486,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02a91c10fe9472d9bd89802e5a"
                 }
             ],
             "favourites": [
