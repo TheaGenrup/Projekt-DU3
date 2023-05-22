@@ -19,8 +19,8 @@ if ($_POST) {
             $source = $_FILES["imageInput"]["tmp_name"];
             $imageType = $_FILES["imageInput"]["type"];
             $uniqueImageName = time();
-            $imageName = "$uniqueImageName" . "$imageType";
-            $destination = (__DIR__) . "/media/usersMedia/$userId/boards/" . "$uniqueImageName" . "$imageType";
+            $imageName = "$uniqueImageName";
+            $destination = (__DIR__) . "/media/usersMedia/$userId/boards/" . "$uniqueImageName";
             // Fråga Sebbe wtf mannen
             if (!move_uploaded_file($source,$destination)) {
                 $response = ["error" => "Failed to upload file"];
@@ -29,6 +29,9 @@ if ($_POST) {
             
         }
 
+
+        
+        
 
         $userData = getFileData("users.json");
         foreach ($userData as $key => $user) {

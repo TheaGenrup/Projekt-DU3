@@ -402,7 +402,7 @@ function renderProfileView(event) {
             function openBoard(event) {
 
                 document.querySelector("#boardAndReviewContainer").innerHTML = `
-                <h2 id="title">${event.currentTarget.dataset.boardName}</h2>`;
+                <h2 id="title">${event.dataset.boardName}</h2>`;
 
                 const reviewsInBoard = [];
 
