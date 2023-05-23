@@ -4,12 +4,10 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "R64BJhwsga0sH35ifWkYpWngw",
+        "loginKey": "3F1ahkvc6JLDObZCRt5jAJOuf",
         "userSocial": {
             "following": [],
-            "followers": [
-                "314088336379485626338627095800"
-            ]
+            "followers": []
         },
         "userIdentity": {
             "id": "071897782377104435133843971347",
@@ -133,14 +131,10 @@
             "username": "test2",
             "password": "test2"
         },
-        "loginKey": "Q9C1NA5JZAW8RiqdHupWsRp3W",
+        "loginKey": "adXEBonuMFlHX97G8apMhrQQM",
         "userSocial": {
-            "following": [
-                "071897782377104435133843971347"
-            ],
-            "followers": [
-                "071897782377104435133843971347"
-            ]
+            "following": [],
+            "followers": []
         },
         "userIdentity": {
             "id": "314088336379485626338627095800",
@@ -156,6 +150,27 @@
                     "thumbnail": ""
                 }
             ],
+            "reviews": [],
+            "favourites": []
+        }
+    },
+    {
+        "userCredentials": {
+            "username": "thea",
+            "password": "thea"
+        },
+        "loginKey": "P9srNroVXgnG9TAPe3NL6wJ2r",
+        "userSocial": {
+            "following": [],
+            "followers": []
+        },
+        "userIdentity": {
+            "id": "569541764829191085726368161431",
+            "profilePic": "",
+            "displayName": "Thea"
+        },
+        "albumData": {
+            "boards": [],
             "reviews": [],
             "favourites": []
         }

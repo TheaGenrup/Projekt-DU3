@@ -73,7 +73,7 @@ function renderLoggedInView(profilePic) {
 
 async function renderDiscoverView() {
     const allOverlaysOpen = document.querySelectorAll(".overlayReview");
-    if (allOverlaysOpen.length > 0) {    allOverlaysOpen.forEach(overlay => overlay.remove() );    }
+    if (allOverlaysOpen.length > 0) { allOverlaysOpen.forEach(overlay => overlay.remove()); }
 
     document.querySelector("#contentContainer").innerHTML = "";
 
@@ -134,7 +134,7 @@ async function renderDiscoverView() {
 
 async function renderCreateReviewView(album) {
     const allOverlaysOpen = document.querySelectorAll(".overlayReview");
-    if (allOverlaysOpen.length > 0) {    allOverlaysOpen.forEach(overlay => overlay.remove() );    }
+    if (allOverlaysOpen.length > 0) { allOverlaysOpen.forEach(overlay => overlay.remove()); }
     // Get user boards
     const userId = localStorage.getItem("userId");
     const response = await fetch(`/server/getUser.php?id=${userId}`);
@@ -287,7 +287,7 @@ function addBoardOrReview(bodyData) {
 
 function renderProfileView(event) {
     const allOverlaysOpen = document.querySelectorAll(".overlayReview");
-    if (allOverlaysOpen.length > 0) {    allOverlaysOpen.forEach(overlay => overlay.remove() );    }
+    if (allOverlaysOpen.length > 0) { allOverlaysOpen.forEach(overlay => overlay.remove()); }
 
     startLoadingScreen(document.querySelector("main"));
 
@@ -308,6 +308,8 @@ function renderProfileView(event) {
             const userFollowing = user.userSocial.following.length;
             const userReviews = user.albumData.reviews.length;
             const displayName = user.userIdentity.displayName;
+
+            console.log(userFollowing);
 
             document.querySelector("#contentContainer").innerHTML = `
                 <div id="profileHeader">
@@ -438,17 +440,18 @@ function renderProfileView(event) {
 
 function followUnfollow(user, eventTarget) {
 
-    const request = new Request("/server/follow.php", {
-        headers: { "Content-type": "application/json" },
-        method: "POST",
-        body: JSON.stringify({
-            id: user.userIdentity.id,
-            currentUserId: localStorage.userId
-        }),
-    });
 
     try {
-        fetch(request)
+
+        fetch(new Request("/server/follow.php", {
+            headers: { "Content-type": "application/json" },
+            method: "POST",
+            body: JSON.stringify({
+                id: user.userIdentity.id,
+                currentUserId: localStorage.userId
+            }),
+        }))
+            .then(r => console.log(r));
 
     } catch (error) {
         console.log(error);
