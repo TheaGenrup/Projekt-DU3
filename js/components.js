@@ -172,7 +172,7 @@ async function renderCreateReviewView(album) {
     createBoardDom.addEventListener("click", renderCreateBoard)
     function renderCreateBoard() {
         html =
-        `
+            `
         <form id="uploadWrapper" data-type="board">
             <div id="imageUploaderContainer">
                 <img id="imagePreview" src=""></img>
@@ -315,17 +315,18 @@ function renderProfileView(event) {
                         <div id="profilePictureTop""></div>
                         <p>@${displayName}</p>
                     </div> 
-                    <div class="center">
-                    <div id="followingFollowersReviews">
-                        <div>Reviews</div>
-                        <div>${userReviews}</div>
-                        <div>Followers</div>
-                        <div id="followers">${userFollowers}</div>
-                        <div>Following</div>
-                        <div id="following">${userFollowing}</div>
+                    <div id="headerRightContainer">
+                        <div id="followingFollowersReviews">
+                            <div>Reviews</div>
+                            <div>${userReviews}</div>
+                            <div>Followers</div>
+                            <div id="followers">${userFollowers}</div>
+                            <div>Following</div>
+                            <div id="following">${userFollowing}</div>
                         </div>
                         <div id="profileIconsOrFollowButton"></div>
                     </div>
+                    
                 </div>
                 <div id="boardAndReviewContainer">
                     <h2 id="title">BOARDS</h2>
@@ -363,14 +364,14 @@ function renderProfileView(event) {
             } else {
                 document.querySelector("#profileIconsOrFollowButton").innerHTML = `
                 <div class="settingsDropdown">
-                    <div id="settingsIcon" class="pointer"></div>
+                    <div id="settingsIcon" class="headerIcon"></div>
                     <div id="dropdownContent" class="closed">
                         <div id="editAccountBtn" class="pointer">Edit Account</div>
                         <div id="logOutBtn" class="pointer">Log Out</div>
                     </div>
                 </div>                            
-                <div id="bookmarkIcon" class="pointer"></div>
-                <div id="boardIcon" class="pointer"></div>
+                <div id="bookmarkIcon" class="headerIcon"></div>
+                <div id="boardIcon" class="headerIcon"></div>
                 `;
 
                 document.querySelector("#settingsIcon").addEventListener("click", openCloseSettings);
@@ -381,18 +382,21 @@ function renderProfileView(event) {
                 document.querySelector("#bookmarkIcon").addEventListener("click", showFavourites);
                 const editAccountBtn = document.querySelector("#editAccountBtn");
                 editAccountBtn.addEventListener("click", editAccount);
-                
-                document.addEventListener("click", (e)=>{
+
+                document.addEventListener("click", (e) => {
                     if (document.querySelector("#settingsIcon")) {
                         if (e.target != document.querySelector("#settingsIcon")) {
-                             document.querySelector("#dropdownContent").classList.add("closed") };
-                        }
+                            document.querySelector("#dropdownContent").classList.add("closed")
+                        };
+                    }
                 })
-                function openCloseSettings(e) { document.querySelector("#dropdownContent").classList.toggle("closed")};
+                function openCloseSettings(e) { document.querySelector("#dropdownContent").classList.toggle("closed") };
 
             }
 
+            // add boards
             const boards = user.albumData.boards;
+
 
             boards.forEach(board => {
 
@@ -499,6 +503,8 @@ async function showFavourites() {
 
 function openBoard(user, eventCurrentTarget, clickedUserId) {
 
+
+
     const loggedInUserId = localStorage.getItem("userId");
 
     document.querySelector("#boardAndReviewContainer").innerHTML = `
@@ -512,6 +518,10 @@ function openBoard(user, eventCurrentTarget, clickedUserId) {
 
             const boardId = board.boardId;
             const arrayWithReviews = user.albumData.reviews;
+
+            if (board.reviews.length === 0) {
+                document.querySelector("#boardAndReviewContainer").innerHTML += "<p>You haven't added any reviews to this board yet...</p>";
+            }
 
             arrayWithReviews.forEach(review => {
 

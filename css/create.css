@@ -1,6 +1,4 @@
-
-
-#createContainer{
+#createContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,14 +6,15 @@
     /*max-height: 72vh;*/
 }
 
-#contentContainer h3{
+#contentContainer h3 {
     text-align: center;
-    margin: 10px 0px;
+    margin: 10vh 0;
+    font-size: 9vw;
 }
 
 
 /* Big button styling*/
-#createContainer .selectButton{
+#createContainer .selectButton {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,25 +28,26 @@
     background-position: center;
     background-size: 45%;
 }
-#createContainer #createBoard{
+
+#createContainer #createBoard {
     background-image: url(/media/icons/board.svg);
 }
-#createContainer #createReview{
+
+#createContainer #createReview {
     background-image: url(/media/icons/vinyl.svg);
     background-size: 60%;
 }
 
-#createContainer .selectButton:hover{
+#createContainer .selectButton:hover {
     background-color: rgb(109, 109, 109);
 }
 
 /* Navigation button styling*/
-#createContainer .horizontalContainer{
-}
+#createContainer .horizontalContainer {}
 
 
 /* form styling*/
-#createContainer #uploadWrapper{
+#createContainer #uploadWrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,15 +55,17 @@
     width: 100%;
     height: 75%;
 }
-#createContainer #uploadWrapper .review{
+
+#createContainer #uploadWrapper .review {
     justify-content: space-between;
 }
-#createContainer #uploadWrapper .board{
+
+#createContainer #uploadWrapper .board {
     justify-content: center;
 }
 
 /* Image upload section*/
-#createContainer #imageUploaderContainer{
+#createContainer #imageUploaderContainer {
     position: relative;
     display: flex;
     justify-content: center;
@@ -74,11 +76,12 @@
     margin-top: 5vw;
 
     border-radius: 20px;
-    background-color:rgba(109, 109, 109, 0.426);
+    background-color: rgba(109, 109, 109, 0.426);
 
 
 }
-#imagePreview{
+
+#imagePreview {
     position: absolute;
 
     width: 100%;
@@ -92,13 +95,14 @@
     background-size: 35%;
     background-repeat: no-repeat;
 }
-#createContainer #imagePreview.imageUploaded{
+
+#createContainer #imagePreview.imageUploaded {
     background-position: center;
-    background-size:cover;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
-#createContainer #imageUploader{
+#createContainer #imageUploader {
     position: absolute;
     opacity: 0%;
     width: 100%;
@@ -106,38 +110,44 @@
     border-radius: 20px;
     cursor: pointer;
 }
-#createContainer #imageUploader:hover + #imagePreview{
+
+#createContainer #imageUploader:hover+#imagePreview {
     background-color: #393939;
 }
 
-#uploadWrapper div{
+#uploadWrapper div {
     width: 100%;
     margin-bottom: 10px;
 }
 
 /* Add review Section */
-#rateAlbumContainer{
+#rateAlbumContainer {
     width: 100%;
 }
-#albumImagePreview{
+
+#albumImagePreview {
     height: 100%;
 }
+
 #chooseRatingContainer {
     display: flex;
     width: 100%;
 }
-#chooseRatingContainer div{
+
+#chooseRatingContainer div {
     background-image: url(/media/icons/star-regular.svg);
     background-repeat: no-repeat;
     width: 30px;
     height: 30px;
     cursor: pointer;
 }
-#chooseRatingContainer div:nth-child(1){
+
+#chooseRatingContainer div:nth-child(1) {
     background-image: url(/media/icons/star-solid.svg);
 }
+
 /* Search for artist / album section */
-#searchContainer{
+#searchContainer {
     position: relative;
     width: 100%;
 }
@@ -149,7 +159,8 @@
     top: 10px;
     cursor: pointer;
 }
-#albumUl{
+
+#albumUl {
     position: absolute;
     width: 100%;
     padding: 0;
@@ -157,25 +168,28 @@
     overflow: scroll;
     overflow-x: none;
 }
-#albumUl li{
+
+#albumUl li {
     list-style-type: none;
     display: flex;
     align-items: center;
     padding: 3px 5px;
-    margin:0px;
+    margin: 0px;
     gap: 5px;
     background-color: rgb(112, 112, 112);
     height: 6vh;
 }
-#albumUl li:nth-last-child(1){
+
+#albumUl li:nth-last-child(1) {
     border-radius: 0px 0px 5px 5px;
 }
 
-#albumUl li:hover{
+#albumUl li:hover {
     background-color: rgb(83, 82, 82);
     cursor: pointer;
 }
-#albumUl li .albumPreviewImage{
+
+#albumUl li .albumPreviewImage {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -183,16 +197,19 @@
 
     height: 30px;
 }
-#albumUl li .albumListingInformation{
+
+#albumUl li .albumListingInformation {
     display: flex;
     flex-direction: column;
     font-size: 7px;
 }
+
 /* Choose board section */
-#chooseBoardContainer{
+#chooseBoardContainer {
     margin: 5px 0px;
 }
-#customSelect{
+
+#customSelect {
     position: relative;
     display: flex;
     align-items: center;
@@ -205,7 +222,8 @@
     cursor: pointer;
     z-index: 3;
 }
-#customSelect #selectedValue{
+
+#customSelect #selectedValue {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -216,10 +234,12 @@
     padding: 4px;
     border-radius: 7px;
 }
-#customSelect #selectedValue:hover{
+
+#customSelect #selectedValue:hover {
     background-color: #cec9c9;
 }
-#customSelect #selectArrow{
+
+#customSelect #selectArrow {
     position: absolute;
 
     background-image: url(/media/icons/arrow-up-340-svgrepo-com.svg);
@@ -227,7 +247,7 @@
     background-size: contain;
 
     height: 10px;
-    width: 10px ;
+    width: 10px;
 
     right: 10px;
     top: 10px;
@@ -235,10 +255,12 @@
     transition: 1s;
     z-index: 2;
 }
-#customSelect #selectArrow.spin{
+
+#customSelect #selectArrow.spin {
     transform: rotate(180deg);
 }
-#customSelect #dropdownSelector{
+
+#customSelect #dropdownSelector {
     position: absolute;
     box-sizing: border-box;
     width: 100%;
@@ -247,7 +269,8 @@
     border-top: none;
     border-radius: 0px 0px 7px 7px;
 }
-#customSelect #dropdownSelector .option{
+
+#customSelect #dropdownSelector .option {
     background-color: rgb(118, 118, 118);
     height: 35px;
     margin: 0px;
@@ -256,27 +279,30 @@
     padding: 0px 5px;
     box-sizing: border-box;
 }
-#customSelect #dropdownSelector .option:hover{
+
+#customSelect #dropdownSelector .option:hover {
     background-color: rgb(74, 74, 74);
     cursor: pointer;
 }
-#customSelect #dropdownSelector .option:last-child{
+
+#customSelect #dropdownSelector .option:last-child {
     border-radius: 0px 0px 7px 7px;
 }
 
 /* Chosen ablumb section */
-#selectedAlbumContainer{
+#selectedAlbumContainer {
     height: 25%;
 
 }
-#selectedAlbumContainer img{
+
+#selectedAlbumContainer img {
     box-shadow: rgba(0, 0, 0, 0.15) 5.4px 4.4px 25.2px;
     border-radius: 5px;
     border: 1px solid black;
     height: 110%;
 }
 
-#reviewDescription{
+#reviewDescription {
     resize: none;
     width: 100%;
     padding: 0;
@@ -287,20 +313,22 @@
     border: 1px solid gray;
     color: #bbb;
 }
-#reviewDescription:focus-within{
+
+#reviewDescription:focus-within {
     outline: rgb(211, 211, 211);
 }
 
 /* JS classes*/
-#createContainer .disabled{
+#createContainer .disabled {
     background-color: #393939;
-    cursor:auto;
-}
-#createContainer .disabled:hover{
-    background-color: #393939;
-    cursor:auto;
+    cursor: auto;
 }
 
-#dropdownSelector.hidden{
+#createContainer .disabled:hover {
+    background-color: #393939;
+    cursor: auto;
+}
+
+#dropdownSelector.hidden {
     display: none;
 }

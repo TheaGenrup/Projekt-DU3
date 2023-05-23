@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "Fb84O6PX57xyURdFYXNiqnAky",
+        "loginKey": "pb0ZOtvhTgDAWPKsX4eua3AbI",
         "userSocial": {
             "following": [],
             "followers": []
@@ -12,7 +12,7 @@
         "userIdentity": {
             "id": "071897782377104435133843971347",
             "profilePic": "test.jpeg",
-            "displayName": "test"
+            "displayName": "Evelyn"
         },
         "albumData": {
             "boards": [
@@ -20,9 +20,26 @@
                     "boardName": "cat music for cats",
                     "boardId": 0,
                     "reviews": [
-                        0
+                        0,
+                        2,
+                        3,
+                        4
                     ],
                     "thumbnail": "1684775537.jpeg"
+                },
+                {
+                    "boardName": "dog music for dogs",
+                    "boardId": 2,
+                    "reviews": [
+                        1
+                    ],
+                    "thumbnail": "1684823655.jpeg"
+                },
+                {
+                    "boardName": "test",
+                    "boardId": 1,
+                    "reviews": [],
+                    "thumbnail": ""
                 }
             ],
             "reviews": [
@@ -38,9 +55,70 @@
                     ],
                     "timestamp": 1684775563,
                     "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0279ac931a20ce792bea8f9845"
+                },
+                {
+                    "albumName": "Tha Doggfather",
+                    "artist": "Snoop Dogg",
+                    "albumId": "0vOm2bkcuDCXS6AQqWXyAQ",
+                    "reviewId": 1,
+                    "reviewDescription": "xxxx",
+                    "rating": 5,
+                    "boards": [
+                        2
+                    ],
+                    "timestamp": 1684823848,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e025ad6c8d36eb04f6a177cbbcc"
+                },
+                {
+                    "albumName": "cats in the cold",
+                    "artist": "mage tears",
+                    "albumId": "3uAfl6s5AOxDpbL51sqUfe",
+                    "reviewId": 2,
+                    "reviewDescription": "xxxxx",
+                    "rating": 3,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684825216,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0221539f2a88363609c6f75160"
+                },
+                {
+                    "albumName": "Purrr!",
+                    "artist": "Doja Cat",
+                    "albumId": "6qLRpElUtErtN1VJa8tS5Y",
+                    "reviewId": 3,
+                    "reviewDescription": "xxxx",
+                    "rating": 2,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684825264,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02d477215063b32b7681b3c05e"
+                },
+                {
+                    "albumName": "Cats",
+                    "artist": "The Living Tombstone",
+                    "albumId": "4rFIBNrUsjzH7ZefMRj6ml",
+                    "reviewId": 4,
+                    "reviewDescription": "npjop",
+                    "rating": 5,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684825288,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02ababb065e92613028d0e27ea"
                 }
             ],
-            "favourites": []
+            "favourites": [
+                {
+                    "albumName": "Tha Doggfather",
+                    "artist": "Snoop Dogg",
+                    "albumId": "0vOm2bkcuDCXS6AQqWXyAQ",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e025ad6c8d36eb04f6a177cbbcc",
+                    "favouriteId": 0,
+                    "timestamp": 1684823830
+                }
+            ]
         }
     },
     {

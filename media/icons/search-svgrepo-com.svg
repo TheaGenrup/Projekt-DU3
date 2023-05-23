@@ -1,4 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M21.2929 22.7071C21.6834 23.0976 22.3166 23.0976 22.7071 22.7071C23.0976 22.3166 23.0976 21.6834 22.7071 21.2929L21.2929 22.7071ZM17 10C17 13.866 13.866 17 10 17V19C14.9706 19 19 14.9706 19 10H17ZM10 17C6.13401 17 3 13.866 3 10H1C1 14.9706 5.02944 19 10 19V17ZM3 10C3 6.13401 6.13401 3 10 3V1C5.02944 1 1 5.02944 1 10H3ZM10 3C13.866 3 17 6.13401 17 10H19C19 5.02944 14.9706 1 10 1V3ZM14.7929 16.2071L21.2929 22.7071L22.7071 21.2929L16.2071 14.7929L14.7929 16.2071Z" fill="#000000"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1080" height="1080" viewBox="0 0 1080 1080" xml:space="preserve">
+<desc>Created with Fabric.js 5.2.4</desc>
+<defs>
+</defs>
+<g transform="matrix(1 0 0 1 540 540)" id="d123701c-325f-466b-8077-1f30b6616fd0"  >
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1; visibility: hidden;" vector-effect="non-scaling-stroke"  x="-540" y="-540" rx="0" ry="0" width="1080" height="1080" />
+</g>
+<g transform="matrix(1 0 0 1 540 540)" id="9f78e204-172c-48d8-b86f-fe25f36828dc"  >
+</g>
+<g transform="matrix(38.87 0 0 38.87 540 540)" id="e9fa582c-0bfd-4855-84bf-df767c5cefa9"  >
+<path style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-12, -12)" d="M 21.2929 22.7071 C 21.6834 23.0976 22.3166 23.0976 22.7071 22.7071 C 23.0976 22.3166 23.0976 21.6834 22.7071 21.2929 L 21.2929 22.7071 Z M 17 10 C 17 13.866 13.866 17 10 17 L 10 19 C 14.9706 19 19 14.9706 19 10 L 17 10 Z M 10 17 C 6.13401 17 3 13.866 3 10 L 1 10 C 1 14.9706 5.02944 19 10 19 L 10 17 Z M 3 10 C 3 6.13401 6.13401 3 10 3 L 10 1 C 5.02944 1 1 5.02944 1 10 L 3 10 Z M 10 3 C 13.866 3 17 6.13401 17 10 L 19 10 C 19 5.02944 14.9706 1 10 1 L 10 3 Z M 14.7929 16.2071 L 21.2929 22.7071 L 22.7071 21.2929 L 16.2071 14.7929 L 14.7929 16.2071 Z" stroke-linecap="round" />
+</g>
 </svg>
