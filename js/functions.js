@@ -123,6 +123,7 @@ async function displayAlbum(albumData) {
         <div id="addReviewButtonContainer">
             <button id="reviewButton">Review Album?</button>
         </div>
+        <div>Revies of this album</div>
         <ul id="reviewsContainer"></ul>
     `
     resultsWindow.innerHTML = html
@@ -147,54 +148,18 @@ async function displayAlbum(albumData) {
                 const reviews = resource.reviews;
                 reviews.sort((a, b) => b.timestamp - a.timestamp);
                 averageRatingPDom.textContent = `${averageRating}/5`;
-                totalReviewsPDom.textContent = `Total reviews: ${averageRating}`;
+                totalReviewsPDom.textContent = `Total reviews: ${totalReviews}`;
                 if (reviews.length > 0) {
                     reviews.forEach(review => {
-                        listReview(review)
+                        makeReview(review, "#reviewsContainer")
                     });
                 }
-
-                function listReview(review) {
-                    // shorten comment if needed
-                    let reviewDescription = review.reviewDescription;
-                    if (reviewDescription.length > 45) {
-                        reviewDescription = reviewDescription.slice(0, 45) + "...";
-                    }
-
-                    // make html for new review
-                    const newReview = document.createElement("div");
-                    newReview.classList.add("review");
-                    newReview.innerHTML = `
-                    
-                        <p id="who" class="bold">@${review.displayName}</p>
-                        <p id="when">${timeConverter(review.timestamp)}</p>
-                        <div id="albumOverview">
-                                <div id="albumDetails">
-
-                                    <p id="albumName">${review.albumName}</p>
-                                    <p id="artist">${review.artist}</p>
-                                    <div id="stars_${review.reviewId}" class="stars">
-                                        <div class="star"></div>
-                                        <div class="star"></div>
-                                        <div class="star"></div>
-                                        <div class="star"></div>
-                                        <div class="star"></div>
-                                    </div>
-                                    <p id="reviewDescription">${reviewDescription}</p>
-                            </div>
-                        </div>`;
-
-                    newReview.dataset.userId = review.userId;
-                    newReview.dataset.reviewId = review.reviewId;
-
-                    fillStars(review.rating, newReview);
-
-                    reviewsUl.append(newReview)
-                }
+            document.querySelectorAll(`.review`).forEach(review => review.addEventListener("click", expandReview));
+  
 
 
             })
-    } catch (error) { console.log(error); };
+    } catch (error) { };
 
     resultsWindow.dataset.albumId = albumId;
     resultsWindow.style.display = "flex";

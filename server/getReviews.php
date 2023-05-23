@@ -52,6 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     $reviewsCount++;
                     $reviewRatingTotal += $reviewRating;
                     $review["displayName"] = $user["userIdentity"]["displayName"];
+                    $review["userId"] = $user["userIdentity"]["id"];
                     $reviews [] = $review;
                 }
             }
