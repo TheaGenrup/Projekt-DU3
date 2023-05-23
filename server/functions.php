@@ -76,14 +76,4 @@ function removeItemFromArray($oldArray, $idToRemove, $idName){
     }
     return $updatedArray;
 }
-
-function getFavouritesId($usersfavourites, $id){
-    foreach ($usersfavourites as $key => $favourite) {
-        if ($favourite["favouriteId"] == $id) {
-            $id++;
-            getFavouritesId($usersfavourites, $id);
-        }
-    }
-    return $id;
-}
 ?>

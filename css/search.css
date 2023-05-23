@@ -100,7 +100,7 @@
     padding: 10px;
 
 
-    z-index: 25;
+    z-index: 99999;
 
     background-color: rgb(54, 54, 54);
 }
@@ -183,7 +183,6 @@ button {
 
     overflow: scroll;
     gap: 10px;
-    border-radius: 5px 5px 20px 20px;
 }
 
 #resultsWindow #reviewsContainer .review {
