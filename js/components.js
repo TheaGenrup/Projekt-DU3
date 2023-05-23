@@ -7,7 +7,7 @@ function renderLoginPage() {
         <div id="limitWrapper">
             <div id="loginAndRegisterPageContainer">
                 <div id="logoBanner">
-                    <h1>Laulu :D</h1>
+                    <h1>Laulu</h1>
                 </div>
                 <div id="loginMessageContainer">
                     <div id="loginRegisterSign">Login</div>
@@ -149,7 +149,7 @@ async function renderCreateReviewView(album) {
     let html =
         `
         <div id="createContainer" class="">
-            <h3>Add new review</h3>
+            <h3>Add board or review</h3>
             <div class="horizontalContainer">
                 <div class="verticalContainer alignCenter">
                     <button id="createBoard" class="selectButton"></button>
@@ -184,7 +184,7 @@ async function renderCreateReviewView(album) {
                 <img id="imagePreview" src=""></img>
                 <input type="file" id="imageUploader" accept="image/*" name="imageInput">
             </div>
-            <input type="text" id="searchField" name="nameInput" placeholder="Name your board queen yas..." autocomplete="off">
+            <input type="text" id="searchField" name="nameInput" placeholder="Choose name for your board" autocomplete="off">
             <input name="userId" style="display:none" value="${userId}">
         </form>
         <div class="horizontalContainer">
@@ -477,9 +477,7 @@ async function showFavourites() {
     const user = await getUserData(localStorage.getItem("userId"));
 
     document.querySelector("#boardAndReviewContainer").innerHTML = `
-    <div id="favouritesIconContainer">
-        <img id="favouritesIcon" src="../media/icons/bookmark.png"></img>
-    </div>
+    <h1 id="title">SAVED</h1>
     <div id="favourites"></div>`;
 
     const arrayWithFavourites = user.albumData.favourites;

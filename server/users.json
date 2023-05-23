@@ -153,7 +153,40 @@
                 }
             ],
             "reviews": [],
-            "favourites": []
+            "favourites": [
+                {
+                    "albumName": "Harry's House",
+                    "artist": "Harry Styles",
+                    "albumId": "5r36AJ6VOJtp00oxSkBZ5h",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e022e8ed79e177ff6011076f5f0",
+                    "favouriteId": 0,
+                    "timestamp": 1684841667
+                },
+                {
+                    "albumName": "Harry Styles",
+                    "artist": "Harry Styles",
+                    "albumId": "1FZKIm3JVDCxTchXDo5jOV",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e026c619c39c853f8b1d67b7859",
+                    "favouriteId": 1,
+                    "timestamp": 1684841668
+                },
+                {
+                    "albumName": "Fine Line",
+                    "artist": "Harry Styles",
+                    "albumId": "7xV2TzoaVc0ycW7fwBwAml",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0277fdcfda6535601aff081b6a",
+                    "favouriteId": 2,
+                    "timestamp": 1684841669
+                },
+                {
+                    "albumName": "cats in the cold",
+                    "artist": "mage tears",
+                    "albumId": "3uAfl6s5AOxDpbL51sqUfe",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0221539f2a88363609c6f75160",
+                    "favouriteId": 3,
+                    "timestamp": 1684845676
+                }
+            ]
         }
     },
     {

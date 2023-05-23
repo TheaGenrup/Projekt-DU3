@@ -1,15 +1,35 @@
+@font-face {
+    font-family: "monoton";
+    src: url(/media/fonts/Monoton/Monoton-Regular.ttf);
+}
+
+@font-face {
+    font-family: "ralewayLight";
+    src: url(/media/fonts/Raleway/static/Raleway-Light.ttf);
+}
+
+@font-face {
+    font-family: "comfortaa";
+    src: url(/media/fonts/Comfortaa/static/Comfortaa-Light.ttf);
+}
+
+@font-face {
+    font-family: "raleway";
+    src: url(/media/fonts/Raleway/static/Raleway-Bold.ttf);
+}
+
 #popUp {
     position: absolute;
     height: 30vh;
-    width: 80vw;
-    background-color: #1c1c1cfa;
+    width: 95vw;
+    background-color: #294247f5;
     z-index: 10;
     border-radius: 20px;
     margin: auto;
     left: 0;
     right: 0;
     top: 0px;
-    bottom: 0px;
+    bottom: 20px;
     text-align: center;
 }
 
@@ -33,7 +53,7 @@
 #popUp>div>div {
     height: 100%;
     width: 48%;
-    background-color: gray;
+    background-color: #d9d9d9;
     border-radius: 8px;
     cursor: pointer;
     display: flex;
@@ -55,6 +75,8 @@ nav * {
     background-position: center;
     background-size: cover;
     background-image: url(../media/icons/empty_star.png);
+    height: 2vh;
+    width: 2vh;
 }
 
 .bold {
@@ -159,8 +181,8 @@ nav * {
     box-sizing: border-box;
     padding: 5vw;
     overflow-x: scroll;
-    background-color: rgb(153, 153, 153);
     z-index: 30;
+    background-image: linear-gradient(#e6dada, #274046);
 }
 
 /* input field styling*/

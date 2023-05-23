@@ -8,7 +8,7 @@ async function editAccount(e) {
     overlay.classList.add("editContainer");
     overlay.innerHTML = "";
     let html = `
-    <div>Edit profile</div>
+    <div id="title">Edit your profile</div>
         <form id="uploadWrapper">
             <div id="imageUploaderContainer">
                 <img id="imagePreview" src=""></img>

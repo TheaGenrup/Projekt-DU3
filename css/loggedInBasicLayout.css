@@ -4,7 +4,6 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-
     overflow: hidden;
     /* Ta bort? verkar finnas en onödig scroll annars? */
 }
@@ -16,18 +15,15 @@ ul {
 /* General styling */
 button {
     cursor: pointer;
-    border: 1.5px solid black;
+    border: 1.5px solid #00000057;
     border-radius: 10px;
-    height: 6vw;
-    width: 20vw;
+    height: 10vw;
+    width: 40vw;
 }
 
 body main #contentCOntainer #noResults {
     padding: 10px 0px;
 }
-
-
-
 
 .horizontalContainer {
     display: flex;
@@ -47,6 +43,10 @@ body main #contentCOntainer #noResults {
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+.alignCenter p {
+    margin: 1vh 0 4vh 0;
 }
 
 #contentContainer {
@@ -97,14 +97,10 @@ nav {
     background-repeat: no-repeat;
     min-height: 0;
     min-width: 0;
-    height: 5vh;
-    width: 5vh;
+    height: 6vh;
+    width: 6vh;
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0);
-
-}
-
-button.viewIcon {
     border: none;
     transition: 0.2s;
 }

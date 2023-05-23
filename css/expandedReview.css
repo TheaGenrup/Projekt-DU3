@@ -82,7 +82,6 @@ button.savedButton {
 }
 
 .stars {
-    margin-top: 2vh;
     margin-bottom: 2vh;
 }
 
@@ -95,8 +94,9 @@ button.savedButton {
 }
 
 .star {
-    height: 3vh;
-    width: 3vh;
+    height: 5vh;
+    width: 5vh;
+    margin-top: 1vh;
 }
 
 #userInfo {

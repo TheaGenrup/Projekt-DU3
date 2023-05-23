@@ -6,7 +6,7 @@
 #discoverTitle {
     font-size: 35px;
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "raleway";
     color: #27373c;
 }
 
@@ -16,8 +16,8 @@
 }
 
 .albumCover {
-    height: 12vh;
-    width: 12vh;
+    height: 15vh;
+    width: 15vh;
     background-position: center;
     background-size: cover;
     border-radius: 20%;
