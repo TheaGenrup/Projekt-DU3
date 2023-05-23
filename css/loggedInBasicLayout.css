@@ -211,12 +211,12 @@ textarea {
 /* Loader */
 .vinylloaderC {
     position: absolute;
-    background-color: rgba(68, 68, 68, 0.444);
+    background-color: rgba(68, 68, 68, 0.364);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
-    width: 90vw;
+    width: 100vw;
     z-index: 1;
 }
 
