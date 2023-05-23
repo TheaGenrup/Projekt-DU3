@@ -4,9 +4,11 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "3F1ahkvc6JLDObZCRt5jAJOuf",
+        "loginKey": "0SafzvMY8IG0gwq7sQzblN1q3",
         "userSocial": {
-            "following": [],
+            "following": [
+                "569541764829191085726368161431"
+            ],
             "followers": []
         },
         "userIdentity": {
@@ -162,7 +164,9 @@
         "loginKey": "P9srNroVXgnG9TAPe3NL6wJ2r",
         "userSocial": {
             "following": [],
-            "followers": []
+            "followers": [
+                "071897782377104435133843971347"
+            ]
         },
         "userIdentity": {
             "id": "569541764829191085726368161431",

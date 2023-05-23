@@ -309,7 +309,6 @@ function renderProfileView(event) {
             const userReviews = user.albumData.reviews.length;
             const displayName = user.userIdentity.displayName;
 
-            console.log(userFollowing);
 
             document.querySelector("#contentContainer").innerHTML = `
                 <div id="profileHeader">
@@ -450,8 +449,7 @@ function followUnfollow(user, eventTarget) {
                 id: user.userIdentity.id,
                 currentUserId: localStorage.userId
             }),
-        }))
-            .then(r => console.log(r));
+        }));
 
     } catch (error) {
         console.log(error);
