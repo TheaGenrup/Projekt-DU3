@@ -52,15 +52,4 @@ foreach ($userData as $key => $user) {
 $error = ["message" => "Internal error: Issues with users"];
 sendJSON($error, 200);
 
-function getFavouritesId($usersfavourites, $id){
-    foreach ($usersfavourites as $key => $favourite) {
-        if ($favourite["favouriteId"] == $id) {
-            $id++;
-            getFavouritesId($usersfavourites, $id);
-        }
-    }
-    return $id;
-}
-
-
 ?>
