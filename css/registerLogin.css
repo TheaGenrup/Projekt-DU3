@@ -1,15 +1,8 @@
-@font-face {
-    font-family: "rubikPuddles";
-    src: url(/media/fonts/Rubik_Puddles/RubikPuddles-Regular.ttf);
-
-    font-family: "monoton";
-    src: url(/media/fonts/Monoton/Monoton-Regular.ttf);
-}
-
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: "ralewayLight";
 }
 
 body {
@@ -41,7 +34,7 @@ body {
     text-align: center;
     font-family: "monoton";
     color: white;
-    font-size: 15vw;
+    font-size: 20vw;
 }
 
 
@@ -72,6 +65,7 @@ body {
     justify-content: space-between;
     align-items: center;
     height: 250px;
+    font-family: "ralewayLight";
 }
 
 #loginMessageContainer #loginRegisterSign {

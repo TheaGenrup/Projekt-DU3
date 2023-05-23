@@ -1,3 +1,23 @@
+@font-face {
+    font-family: "monoton";
+    src: url(/media/fonts/Monoton/Monoton-Regular.ttf);
+}
+
+@font-face {
+    font-family: "ralewayLight";
+    src: url(/media/fonts/Raleway/static/Raleway-Light.ttf);
+}
+
+@font-face {
+    font-family: "comfortaa";
+    src: url(/media/fonts/Comfortaa/static/Comfortaa-Light.ttf);
+}
+
+@font-face {
+    font-family: "raleway";
+    src: url(/media/fonts/Raleway/static/Raleway-Light.ttf);
+}
+
 #popUp {
     position: absolute;
     height: 30vh;
@@ -141,12 +161,12 @@ nav * {
     transition: 0.5s;
 }
 
-.savedButton:hover{
+.savedButton:hover {
     background-image: url(/media/icons/close_0.png);
 }
 
 /* overlay */
-.overlayReview{
+.overlayReview {
     display: flex;
     flex-direction: column;
     align-items: center;
