@@ -32,7 +32,7 @@ foreach ($userData as $key => $user) {
             }
         }
 
-        $favouriteId = getFavouritesId($usersfavourites, 0);
+        $favouriteId = getId($usersfavourites, "favouriteId");
         $newFavouritesObject = [
             "albumName" => $albumName,
             "artist" => $artist,

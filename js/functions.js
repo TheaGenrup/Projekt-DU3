@@ -441,3 +441,23 @@ async function fetchReview(userId) {
     const reviews = await response.json();
     return reviews;
 }
+
+function sendResponseMessage(message) {
+    const messageContainer = document.createElement("div");
+    const html = `
+    <div>
+        <button></button>
+        <p> ${message}</p>
+    </div>
+    `
+    messageContainer.id = "messageContainer";
+    messageContainer.innerHTML = html;
+    const closeButton = messageContainer.querySelector("button");
+    console.log(message);
+    if (message === "You've already reviewed this album in this board" || message === "A board with that name already exists") {
+        closeButton.addEventListener("click", ()=>{ messageContainer.remove(); })
+    } else { closeButton.addEventListener("click", ()=>{ messageContainer.remove(); renderCreateReviewView();})}
+    document.body.append(messageContainer);
+
+
+}

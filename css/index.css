@@ -179,3 +179,46 @@ nav * {
     min-height: 15px;
     min-width: 15px;
 }
+
+#messageContainer{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: rgba(68, 68, 68, 0.364);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 31;
+    transition: 4s;
+}
+
+@keyframes popUp {
+    0%{bottom: -99vh;}
+    100%{
+        bottom: 0vh;
+    }
+}
+#messageContainer div{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 25%;
+    animation: popUp 1.5s;
+    background-color: rgb(98, 98, 98);
+    border-radius: 10px 10px 0px 0px;
+}
+#messageContainer button{
+    position: absolute;
+    z-index: 32;
+    top: 4vw;
+    right: 4vw;
+    height: 7vw;
+    width: 7vw;
+    background-color: transparent;
+    border: none;
+    background-image: url(/media/icons/close_0.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
