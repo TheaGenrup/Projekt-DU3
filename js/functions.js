@@ -109,21 +109,18 @@ async function displayAlbum(albumData) {
     let html = `
         <button id="closeResultsButton"></button>
         <div id="albumInfo">
-            <div id="averageRatingContainer">
-                <p id="averageRating"></p>
-                <p>Rating</p>
-                <p id="totalReviews"></p>
+            <div id="artistInfo">
+                <p id="albumName">${albumName}</p>
+                <p id="artistName">${artistName}</p>
             </div>
             <img id="" src="${albumCover}" alt="">
         </div>
-        <div id="artistInfo">
-            <p id="albumName">${albumName}</p>
-            <p id="artistName">${artistName}</p>
+        <div id="averageRatingContainer">
+            <p id="averageRating"></p>
+            <p id="totalReviews"></p>
         </div>
-        <div id="addReviewButtonContainer">
-            <button id="reviewButton">Review Album?</button>
-        </div>
-        <div>Revies of this album</div>
+        <button id="reviewButton">Review Album?</button>
+        <div>Reviews of this album</div>
         <ul id="reviewsContainer"></ul>
     `
     resultsWindow.innerHTML = html
@@ -177,10 +174,7 @@ async function displayAlbum(albumData) {
             albumData.reviewDirectly = true;
             renderCreateReviewView(albumData);
         });
-    } else {
-        ReviewAlbumButton.textContent = "Wish to review this album? Start by creating a board!"
-        ReviewAlbumButton.addEventListener("click", renderCreateReviewView)
-    }
+    } else {  ReviewAlbumButton.addEventListener("click", renderCreateReviewView)    }
 }
 
 async function renderCreateReview(albumData) {
@@ -210,7 +204,7 @@ async function renderCreateReview(albumData) {
         <div id="chooseBoardContainer">
             <label for="chooseBoard">Choose board</label>
             <div id="customSelect">
-                <div id="selectedValue">test</div>
+                <div id="selectedValue"></div>
                 <div id="selectArrow"></div>
                 <div id="dropdownSelector" class="hidden">
                 </div>
@@ -279,9 +273,9 @@ async function renderCreateReview(albumData) {
         dropdownSelector.append(optionDom);
 
     });
-
-    customSelect.dataset.boardId = usersBoards[0].boardId
-    customSelect.value = usersBoards[0].boardName
+    selectedValue.textContent = usersBoards[0].boardName;
+    customSelect.dataset.boardId = usersBoards[0].boardId;
+    customSelect.value = usersBoards[0].boardName;
     customSelect.addEventListener("click", () => {
         dropdownSelector.classList.toggle("hidden");
         selectArrow.classList.toggle("spin");
@@ -442,7 +436,7 @@ async function fetchReview(userId) {
     return reviews;
 }
 
-function sendResponseMessage(message) {
+function sendResponseMessage(message, statusCode) {
     const messageContainer = document.createElement("div");
     const html = `
     <div>
@@ -453,10 +447,22 @@ function sendResponseMessage(message) {
     messageContainer.id = "messageContainer";
     messageContainer.innerHTML = html;
     const closeButton = messageContainer.querySelector("button");
+    console.log(closeButton);
     console.log(message);
-    if (message === "You've already reviewed this album in this board" || message === "A board with that name already exists") {
+    console.log(statusCode);
+    if (statusCode < 200 || statusCode > 299) {
         closeButton.addEventListener("click", () => { messageContainer.remove(); })
-    } else { closeButton.addEventListener("click", () => { messageContainer.remove(); renderCreateReviewView(); }) }
+    } else {
+        console.log("test2");
+    if (message == "You've already reviewed this album in this board" || message === "A board with that name already exists") {
+        closeButton.addEventListener("click", () => { messageContainer.remove(); renderCreateReviewView(); }) 
+    } 
+    if (message == "Profile updated") {
+        closeButton.addEventListener("click", () => { messageContainer.remove(); document.querySelector(".overlayReview").remove(); }) 
+    }
+    
+    }
+
     document.body.append(messageContainer);
 
 

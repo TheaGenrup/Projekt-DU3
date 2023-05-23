@@ -77,7 +77,7 @@ async function editAccount(e) {
             });
             const response = await fetch(request);
             const responseMessage = await response.json();
-            console.log(responseMessage);
+            sendResponseMessage(responseMessage.message, response.status);
         }
 
         if (displayNameInput.value) {
@@ -91,7 +91,7 @@ async function editAccount(e) {
             });
             const response = await fetch(request);
             const responseMessage = await response.json();
-            console.log(responseMessage);
+            sendResponseMessage(responseMessage.message, response.status);
         }
         /*
         if (displayNameInput.value) {

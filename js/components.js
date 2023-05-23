@@ -149,7 +149,6 @@ async function renderCreateReviewView(album) {
     let html =
         `
         <div id="createContainer" class="">
-            <h3>Add board or review</h3>
             <div class="horizontalContainer">
                 <div class="verticalContainer alignCenter">
                     <button id="createBoard" class="selectButton"></button>
@@ -233,33 +232,21 @@ async function renderCreateReviewView(album) {
 };
 
 // Add a new review or board function
-function addBoardOrReview(bodyData) {
+async function addBoardOrReview(bodyData) {
     const uploadWrapper = document.querySelector("#uploadWrapper");
     console.log(uploadWrapper.dataset.type);
     startLoadingScreen(document.querySelector("main"));
     if (uploadWrapper.dataset.type === "review") {
+
         const request = new Request("/server/addBoardOrReview.php", {
             header: "Content-Type: application/json",
             method: "POST",
             body: JSON.stringify(bodyData),
         });
-        try {
-            fetch(request)
-                .then(response => {
-                    if (response.ok) {
-                        return response.json();
-                    }
-                })
-                .then(r => {
-                    sendResponseMessage(r.message);
-                    stopLoadingScreen();
-                })
-
-        } catch (error) {
-            console.log(error);
-            sendResponseMessage("Failed to upload");
-        }
-
+        const response = await fetch(request);
+        const resource = await response.json();
+        stopLoadingScreen();
+        sendResponseMessage(resource.message, response.status);
     }
 
 
@@ -269,22 +256,10 @@ function addBoardOrReview(bodyData) {
             method: "POST",
             body: bodyData,
         });
-
-        try {
-            fetch(request)
-                .then(response => {
-                    return response.json();
-                })
-                .then(r => {
-                    console.log(r);
-                    sendResponseMessage(r.message);
-                    stopLoadingScreen();
-                })
-
-        } catch (error) {
-            sendResponseMessage(r.message);
-            stopLoadingScreen();
-        }
+        const response = await fetch(request);
+        const resource = await response.json();
+        stopLoadingScreen();
+        sendResponseMessage(resource.message, response.status);
     }
 }
 

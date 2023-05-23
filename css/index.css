@@ -232,11 +232,16 @@ nav * {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    font-size: 8vw;
+
     width: 100vw;
     height: 25%;
-    animation: popUp 1.5s;
-    background-color: rgb(98, 98, 98);
+
+    background-color: rgb(58, 61, 64);
     border-radius: 10px 10px 0px 0px;
+
+    animation: popUp 1.5s;
 }
 
 #messageContainer button {

@@ -30,7 +30,7 @@ if ($requestMethod == "POST") {
                 if (move_uploaded_file($source, $destination)) {
                     $userData[$key]["userIdentity"]["profilePic"] = $imageName ;
                     saveFileData("users.json", $userData);
-                    $response = ["error" => "Profile picture updated"];
+                    $response = ["message" => "Profile updated"];
                     sendJSON($response, 200);
                 };
             
@@ -58,7 +58,7 @@ if ($requestMethod == "PATCH") {
             if ($user["userIdentity"]["displayName"] == $newDisplayName) {    $response = ["message" => "Display already in use!"];    sendJson($response, 200);    };
                 $userData[$key]["userIdentity"]["displayName"] = $newDisplayName;
                 saveFileData("users.json", $userData);
-                $response = ["message"=>"Display name changed! "];
+                $response = ["message" => "Profile updated"];
                 sendJson($response, 202);
         }
     }
