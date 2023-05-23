@@ -157,6 +157,7 @@ nav * {
     padding: 5vw;
     overflow-x: scroll;
     background-color: rgb(153, 153, 153);
+    z-index: 30;
 }
 
 /* input field styling*/

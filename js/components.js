@@ -72,6 +72,8 @@ function renderLoggedInView(profilePic) {
 }
 
 async function renderDiscoverView() {
+    const allOverlaysOpen = document.querySelectorAll(".overlayReview");
+    if (allOverlaysOpen.length > 0) {    allOverlaysOpen.forEach(overlay => overlay.remove() );    }
 
     document.querySelector("#contentContainer").innerHTML = "";
 
@@ -131,6 +133,8 @@ async function renderDiscoverView() {
 };
 
 async function renderCreateReviewView(album) {
+    const allOverlaysOpen = document.querySelectorAll(".overlayReview");
+    if (allOverlaysOpen.length > 0) {    allOverlaysOpen.forEach(overlay => overlay.remove() );    }
     // Get user boards
     const userId = localStorage.getItem("userId");
     const response = await fetch(`/server/getUser.php?id=${userId}`);
@@ -282,12 +286,8 @@ function addBoardOrReview(bodyData) {
 }
 
 function renderProfileView(event) {
-    const allReviewsOpen = document.querySelectorAll(".overlayReview");
-    if (allReviewsOpen.length > 0) {
-        allReviewsOpen.forEach(review => {
-            review.remove();
-        });
-    }
+    const allOverlaysOpen = document.querySelectorAll(".overlayReview");
+    if (allOverlaysOpen.length > 0) {    allOverlaysOpen.forEach(overlay => overlay.remove() );    }
 
     startLoadingScreen(document.querySelector("main"));
 

@@ -30,6 +30,8 @@ function toggleSearchIcon(params) {
 
 // SEARCH SECTION
 async function renderSearchView(e) {
+    const allOverlaysOpen = document.querySelectorAll(".overlayReview");
+    if (allOverlaysOpen.length > 0) {    allOverlaysOpen.forEach(overlay => overlay.remove() );    }
     clearSearch();
     const originButton = e.target.id
     // Get Spotify token
