@@ -174,3 +174,8 @@ nav * {
 #searchField:focus {
     outline: none;
 }
+
+.star{
+    min-height: 15px;
+    min-width: 15px;
+}
