@@ -454,7 +454,7 @@ function sendResponseMessage(message, statusCode) {
         closeButton.addEventListener("click", () => { messageContainer.remove(); })
     } else {
         console.log("test2");
-    if (message == "You've already reviewed this album in this board" || message === "A board with that name already exists") {
+    if (message === "Review added!" || message === "Board added!") {
         closeButton.addEventListener("click", () => { messageContainer.remove(); renderCreateReviewView(); }) 
     } 
     if (message == "Profile updated") {

@@ -233,6 +233,8 @@ nav * {
     justify-content: center;
     align-items: center;
 
+    text-align: center;
+
     font-size: 8vw;
 
     width: 100vw;
@@ -246,14 +248,18 @@ nav * {
 
 #messageContainer button {
     position: absolute;
-    z-index: 32;
     top: 4vw;
     right: 4vw;
+
     height: 7vw;
     width: 7vw;
+
     background-color: transparent;
     border: none;
+    
     background-image: url(/media/icons/close_0.png);
     background-repeat: no-repeat;
     background-size: contain;
+
+    z-index: 32;
 }

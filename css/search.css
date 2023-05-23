@@ -157,7 +157,9 @@
     margin-bottom: 2vw;
     background-color: #86868675;
     border: 1.5px solid #00000091;
-
+}
+#resultsWindow #reviewButton :hover{
+    background-color: #39393975;
 }
 
 button {
