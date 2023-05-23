@@ -13,7 +13,7 @@ if ($_POST) {
 
         $boardName = $_POST["nameInput"];
         $userId = $_POST["userId"];
-        $imageName;
+        $imageName = "";
 
         if (isset($_FILES["imageInput"]) && $_FILES["imageInput"]["tmp_name"] != "") {
             if ($_FILES["imageInput"]["size"] > 50000) {
@@ -51,7 +51,7 @@ if ($_POST) {
                         sendJSON($response, 200);
                     }
                 }
-                $boardId = getBoardId($usersBoards, 0);
+                $boardId = getId($usersBoards, "boardId");
                 
                 $newBoardObject = [
                     "boardName" => $boardName,
@@ -91,7 +91,7 @@ if ($_POST) {
             $rating = $data["rating"];
             $timestamp = time();
             $albumCover = $data["albumCover"];
-            $reviewId = getReviewId($usersReviews, 0);
+            $reviewId = getId($usersReviews, "reviewId");
 
             foreach ($usersReviews as $review) {
                 if ($review["albumId"] == $albumId) {
@@ -139,101 +139,4 @@ if ($_POST) {
     }
 
 };
-function getReviewId($usersReviews, $id){
-    foreach ($usersReviews as $key => $review) {
-        if ($review["reviewId"] == $id) {
-            $id++;
-            getReviewId($usersReviews, $id);
-        }
-    }
-    return $id;
-}
-
-function getBoardId($usersBoards, $id){
-    foreach ($usersBoards as $key => $board) {
-        if ($board["boardId"] == $id) {
-            $id++;
-            getBoardId($usersBoards, $id);
-        }
-    }
-    return $id;
-}
-
-/*
-    "albumName": "Och Stora Havet",
-    "artist": "Jakob Hellman",
-    "albumId": "5Bz2LxOp0wz7ov0T9WiRmc",
-    "reviewId": 57,
-    "reviewDescription": "SOOOO smooth sounding. even in its simplicity this album is SOOO amazing, and it's absolutely timeless. probably in my top 5 of all time.",
-    "rating": 3,
-    "boards": [
-        0
-    ],
-
-
-
-
-    $test = ["test" => $_POST];
-    sendJSON($test, 202);
-
-            rating: rating,
-            reviewDescription: reviewDescription,
-            boardId: boardId,
-            artistName: artistName,
-            albumName: albumName,
-            albumCover: albumCover,
-            albumId: albumId,
-            userId: userId,
-            review: "review"
-
-*/
-
-/*
-
-            $usersBoards = $user["albumData"]["boards"];
-            $usersReviews = $user["albumData"]["reviews"];
-            $test = ["test" => $userId];
-            sendJSON($test, 503);
-
-            $albumName = $data["albumName"];
-            $boardId = $data["boardId"];
-            $artist =   $data["artistName"];
-            $albumId =  $data["albumId"];
-            $reviewDescription = $data["reviewDescription"];
-            $rating = $data["rating"];
-            $timestamp = time();
-            $albumCover = $data["albumCover"];
-            $reviewId = getReviewId($usersReviews, 0);
-
-            $arrayWithBoards = [];
-            $arrayWithBoards[] = $boardId;
-            $newReviewObject = [
-                "albumName" => $albumName,
-                "artist" => $artist,
-                "albumId" => $albumId,
-                "reviewId" => $reviewId,
-                "reviewDescription" => "$imageName",
-                "rating" => $rating,
-                "boards" => $arrayWithBoards,
-                "timestamp" => $timestamp,
-                "albumCover" => $albumCover,
-            ];
-
-            foreach ($usersBoards as $key => $board) {
-                if ($board["boardId"] == $boardId) {
-                    $userData[$key]["albumData"]["boards"]["reviews"][] = $reviewId;
-                    $userData[$key]["albumData"]["reviews"][] = $newReviewObject;
-                }
-            }
-
-            
-            $userData[$key]["albumData"]["boards"][] = $newBoardObject;
-            saveFileData("users.json", $userData);
-            sendJson($userData[$key]["albumData"]["boards"], 201);
-
-
-
-
-*/
-
 ?>

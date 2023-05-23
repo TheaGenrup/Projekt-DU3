@@ -251,38 +251,3 @@ function clearSearchUsers() {
     const userDomUl = document.querySelector("#albumUl");
     if (userDomUl) { userDomUl.innerHTML = ""; };
 }
-
-/*
-token.json information:
-{
-    "access_token": "BQAoCUDwy7YUnKgcDVi5cB9LmHM-ooJrjjFQIqiTwBwvVmcR_E912gr5ANoIKYGh-X64gdkgSYiw-Zs5w2CtqaK6LBFsxNCxTbTKN8bcVtOW5HopwoA5",
-    "token_type": "Bearer",
-    "expires_in": 3600,
-    "timestamp": 1683221337
-}
-*/
-
-
-/*
-
-    function addReview() {
-        const rating = document.querySelectorAll(".chosen").length
-        const reviewDescription = document.querySelector("#reviewDescription").value
-        const boardId = parseInt(document.querySelector("#selectBoard").dataset.boardId);
-        const reviewObject = {
-            rating: rating,
-            reviewDescription: reviewDescription,
-            boardId: boardId,
-            artistName: artistName,
-            albumName: albumName,
-            albumCover: albumCover,
-            albumId: albumId,
-            userId: userId,
-            review: "review"
-        }
-        addBoardOrReview(reviewObject);
-        
-    }
-
-
-*/

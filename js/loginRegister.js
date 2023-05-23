@@ -64,7 +64,7 @@ function loginRegister(e) {
 async function attemptLogin(username, password, access, loginKey) {
     if (!loginKey) {
         const userData = await fetchLogin(username, password, access);
-        if (userData.message) { sendMessageToUser(document.querySelector("#loginRegistermessage"),userData.message); return }
+        if (userData.message) { sendLoginPageMessage(userData.message); return }
         else { loginUser(userData); }
     }
     if (loginKey) {
@@ -126,9 +126,6 @@ function registerUser(username, password, displayname) {
                 console.log(r);
                 sendLoginPageMessage(r.message);
 
-                if (r.message === "Registered!") {
-                    setTimeout(switchLoginRegsiter, 3000)
-                }
             })
     } catch (error) {
         sendMessageToUser(document.querySelector("#loginRegistermessage"), "whoopsie, an error occured, please try again another time")
@@ -146,7 +143,7 @@ function sendLoginPageMessage(message) {
     setTimeout(() => {
         loginRegistermessageDom.style.transition = "1.5s"
         loginRegistermessageDom.style.opacity = "0%"
-    })
+    }, 6000)
 
 }
 function sendMessageToUser(DomElement, message) {

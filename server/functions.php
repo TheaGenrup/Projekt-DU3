@@ -76,4 +76,17 @@ function removeItemFromArray($oldArray, $idToRemove, $idName){
     }
     return $updatedArray;
 }
+
+function getId ($array, $idKeyName) {
+    $id = 0;
+    $idAvailable = false;
+    while ($idAvailable == false) {
+        $idAvailable = true;
+        foreach ($array as $item) {
+            if ($item[$idKeyName] == $id) {    $idAvailable = false;   $id++;}
+        }
+        
+    }
+    return $id;
+}
 ?>

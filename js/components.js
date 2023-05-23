@@ -167,6 +167,8 @@ async function renderCreateReviewView(album) {
     createContainer = contentContainer.querySelector("#createContainer");
     const createBoardDom = contentContainer.querySelector("#createBoard");
     const createReviewDom = contentContainer.querySelector("#createReview");
+    // If album chosen then render create a new review section;
+    if (album) { if (album.reviewDirectly) { renderCreateReview(album) }}
     // Check if user have a board to which to add reviews to else they must first create a board
     if (usersBoards.length > 0) {
         createReviewDom.classList.remove("disabled");
@@ -228,16 +230,13 @@ async function renderCreateReviewView(album) {
         }
         backButton.addEventListener("click", renderCreateReviewView);
     }
-
-
-    // If album chosen then render create a new review section;
-    if (album.reviewDirectly) { renderCreateReview(album) }
 };
 
 // Add a new review or board function
 function addBoardOrReview(bodyData) {
     const uploadWrapper = document.querySelector("#uploadWrapper");
     console.log(uploadWrapper.dataset.type);
+    startLoadingScreen(document.querySelector("main"));
     if (uploadWrapper.dataset.type === "review") {
         const request = new Request("/server/addBoardOrReview.php", {
             header: "Content-Type: application/json",
@@ -251,12 +250,14 @@ function addBoardOrReview(bodyData) {
                         return response.json();
                     }
                 })
-                .then(resource => {
-                    console.log(resource);
+                .then(r => {
+                    sendResponseMessage(r.message);
+                    stopLoadingScreen();
                 })
 
         } catch (error) {
             console.log(error);
+            sendResponseMessage("Failed to upload");
         }
 
     }
@@ -272,15 +273,17 @@ function addBoardOrReview(bodyData) {
         try {
             fetch(request)
                 .then(response => {
-                    //   console.log(response);
                     return response.json();
                 })
                 .then(r => {
-                    //  console.log(r);
+                    console.log(r);
+                    sendResponseMessage(r.message);
+                    stopLoadingScreen();
                 })
 
         } catch (error) {
-            console.log(error);
+            sendResponseMessage(r.message);
+            stopLoadingScreen();
         }
     }
 }
