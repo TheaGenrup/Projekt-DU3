@@ -449,9 +449,6 @@ function followUnfollow(user, eventTarget) {
 
     try {
         fetch(request)
-            .then(response => {
-                return response.json();
-            })
 
     } catch (error) {
         console.log(error);
@@ -462,6 +459,7 @@ function followUnfollow(user, eventTarget) {
         const followers = parseInt(document.querySelector("#followers").textContent);
         const newFollowersNumber = followers + 1;
         document.querySelector("#followers").textContent = newFollowersNumber;
+
     } else {
         eventTarget.textContent = "Follow";
         const followers = parseInt(document.querySelector("#followers").textContent);
@@ -482,11 +480,15 @@ async function showFavourites() {
 
     const arrayWithFavourites = user.albumData.favourites;
 
-    arrayWithFavourites.forEach(favourite => {
+    if (arrayWithFavourites.length === 0) {
+        document.querySelector("#favourites").innerHTML += "<p>No saved albums</p>";
+    } else {
 
-        const newFavourite = document.createElement("div");
-        newFavourite.classList.add("favourite");
-        newFavourite.innerHTML = `
+        arrayWithFavourites.forEach(favourite => {
+
+            const newFavourite = document.createElement("div");
+            newFavourite.classList.add("favourite");
+            newFavourite.innerHTML = `
                 <img class="favouriteCover"></img>
             <div id="favouriteInfoContainer">
                 <p class="favouriteAlbumName">${favourite.albumName}</p>
@@ -494,14 +496,14 @@ async function showFavourites() {
             </div>
             <button class="savedButton"></button>`;
 
-        document.querySelector("#favourites").append(newFavourite);
-        newFavourite.querySelector(".favouriteCover").style.backgroundImage = `url(${favourite.albumCover})`;
-        const saveButton = newFavourite.querySelector(".savedButton");
-        saveButton.addEventListener("click", () => {
-            addToListenList(favourite, saveButton)
-        })
-    });
-
+            document.querySelector("#favourites").append(newFavourite);
+            newFavourite.querySelector(".favouriteCover").style.backgroundImage = `url(${favourite.albumCover})`;
+            const saveButton = newFavourite.querySelector(".savedButton");
+            saveButton.addEventListener("click", () => {
+                addToListenList(favourite, saveButton)
+            })
+        });
+    }
 
 };
 

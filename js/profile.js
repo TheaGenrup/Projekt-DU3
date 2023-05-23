@@ -1,6 +1,5 @@
 "use strict";
 
-
 async function editAccount(e) {
     const userId = localStorage.getItem("userId");
     const user = await getUserData(userId);

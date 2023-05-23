@@ -42,10 +42,6 @@
     background-color: rgb(119, 119, 119);
 }
 
-#bookmarkIcon,
-#settingsIcon,
-#boardIcon {}
-
 .headerIcon {
     background-position: center;
     background-size: cover;
@@ -65,10 +61,7 @@
 #boardIcon {
     background-image: url(/media/icons/board.svg);
     filter: invert(75%) sepia(73%) saturate(1%) hue-rotate(34deg) brightness(110%) contrast(78%);
-    height: 7vw;
-    width: 9vw;
 }
-
 
 #profileIconsOrFollowButton {
     display: flex;

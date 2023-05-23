@@ -4,10 +4,12 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "hfg8f1IaEBkz7KEVODvrXSoBv",
+        "loginKey": "R64BJhwsga0sH35ifWkYpWngw",
         "userSocial": {
             "following": [],
-            "followers": []
+            "followers": [
+                "314088336379485626338627095800"
+            ]
         },
         "userIdentity": {
             "id": "071897782377104435133843971347",
@@ -109,16 +111,7 @@
                     "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02ababb065e92613028d0e27ea"
                 }
             ],
-            "favourites": [
-                {
-                    "albumName": "Tha Doggfather",
-                    "artist": "Snoop Dogg",
-                    "albumId": "0vOm2bkcuDCXS6AQqWXyAQ",
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e025ad6c8d36eb04f6a177cbbcc",
-                    "favouriteId": 0,
-                    "timestamp": 1684823830
-                }
-            ]
+            "favourites": []
         }
     },
     {
@@ -126,12 +119,14 @@
             "username": "test2",
             "password": "test2"
         },
-        "loginKey": "wRqrSXwVzpQ513ucIeDDfAPhA",
+        "loginKey": "Byukm27f6TZ2md8ICGoonzw6p",
         "userSocial": {
             "following": [
                 "071897782377104435133843971347"
             ],
-            "followers": []
+            "followers": [
+                "071897782377104435133843971347"
+            ]
         },
         "userIdentity": {
             "id": "314088336379485626338627095800",

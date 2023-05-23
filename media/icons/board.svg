@@ -1,14 +1,12 @@
-<svg
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path
-    fill-rule="evenodd"
-    clip-rule="evenodd"
-    d="M2 19C2 20.6569 3.34315 22 5 22H19C20.6569 22 22 20.6569 22 19V5C22 3.34315 20.6569 2 19 2H5C3.34315 2 2 3.34315 2 5V19ZM20 19C20 19.5523 19.5523 20 19 20H5C4.44772 20 4 19.5523 4 19V5C4 4.44772 4.44772 4 5 4H10V12.0111L12.395 12.0112L14.0001 9.86419L15.6051 12.0112H18.0001L18 4H19C19.5523 4 20 4.44772 20 5V19ZM16 4H12V9.33585L14.0001 6.66046L16 9.33571V4Z"
-    fill="currentColor"
-  />
+<svg width="1080" height="1080" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1">
+ <desc>Created with Fabric.js 5.2.4</desc>
+
+ <g>
+  <title>Layer 1</title>
+  <rect id="svg_1" fill="transparent" height="100%" width="100%" y="0" x="0"/>
+  <g id="4839b63c-a3de-4a25-81f9-e53189d7f1cb" transform="matrix(1 0 0 1 540 540)"/>
+  <g id="10b638d8-6d25-48ce-82e2-b68c3d45269a" transform="matrix(53.6999, 0, 0, 53.6993, 540.72, 540.11)">
+   <path id="svg_3" fill-rule=" nonzero" fill=" rgb(0,0,0)" stroke-miterlimit="4" stroke-linejoin=" miter" stroke-dashoffset="0" stroke-dasharray=" none" stroke-width="0" stroke=" rgb(0,0,0)" stroke-linecap=" butt" d="m-10,7c0,1.6569 1.34315,3 3,3l14,0c1.6569,0 3,-1.3431 3,-3l0,-14c0,-1.65685 -1.3431,-3 -3,-3l-14,0c-1.65685,0 -3,1.34315 -3,3l0,14zm18,0c0,0.5523 -0.4477,1 -1,1l-14,0c-0.55228,0 -1,-0.4477 -1,-1l0,-14c0,-0.55228 0.44772,-1 1,-1l5,0l0,8.0111l2.395,0.0001l1.6051,-2.14701l1.605,2.14701l2.395,0l-0.0001,-8.0112l1,0c0.5523,0 1,0.44772 1,1l0,14zm-4,-15l-4,0l0,5.33585l2.0001,-2.67539l1.9999,2.67525l0,-5.33571z" vector-effect="non-scaling-stroke"/>
+  </g>
+ </g>
 </svg>
