@@ -331,7 +331,7 @@ function renderProfileView(event) {
                 <div id="boardAndReviewContainer">
                     <h2 id="title">BOARDS</h2>
                     <div id="boardContainer"></div>
-                </div>`
+                </div>`;
 
             // add profile picture
             if (profilePicture === "" || profilePicture === undefined || profilePicture === null) {
@@ -391,6 +391,10 @@ function renderProfileView(event) {
                     }
                 })
                 function openCloseSettings(e) { document.querySelector("#dropdownContent").classList.toggle("closed") };
+
+                document.querySelector("#boardIcon").dataset.userId = clickedUserId;
+
+                document.querySelector("#boardIcon").addEventListener("click", renderProfileView);
 
             }
 

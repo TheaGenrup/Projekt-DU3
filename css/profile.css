@@ -5,15 +5,10 @@
     align-items: center;
     padding-top: 5vw;
     box-sizing: border-box;
-    padding: 2vh;
+    padding: 2vw;
 }
 
-/* #headerRightContainer {
-    height: 100%;
-    width: 100%;
-    padding: 30px;
-    box-sizing: border-box;
-} */
+#headerRightContainer {}
 
 #profilePicture img {
     height: 30vw;
