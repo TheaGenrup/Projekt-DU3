@@ -30,8 +30,6 @@ function toggleSearchIcon(params) {
 
 // SEARCH SECTION
 async function renderSearchView(e) {
-    const allOverlaysOpen = document.querySelectorAll(".overlayReview");
-    if (allOverlaysOpen.length > 0) { allOverlaysOpen.forEach(overlay =>  overlay.remove() );}
     clearSearch();
     const originButton = e.target.id
     // Get Spotify token
@@ -157,8 +155,6 @@ async function renderSearchView(e) {
             stopLoadingScreen();
         }
     };
-    localStorage.removeItem("currentPage")
-    localStorage.setItem("currentPage", "search")
 };
 
 function searchUsers(e) {
@@ -237,88 +233,6 @@ function listUsers(usersFound) {
     }
 }
 
-async function displayAlbum(albumData) {
-    const resultsWindow = document.querySelector("#resultsWindow");
-    const artistName = albumData.artistName
-    const albumName = albumData.albumName
-    const albumCover = albumData.albumCover
-    const albumId = albumData.albumId
-    let html = `
-        <button id="closeResultsButton"></button>
-        <div id="albumInfo">
-            <div id="averageRatingContainer">
-                <p id="averageRating"></p>
-                <p>Rating</p>
-                <p id="totalReviews"></p>
-            </div>
-            <img id="" src="${albumCover}" alt="">
-        </div>
-        <div id="artistInfo">
-            <p id="albumName">${albumName}</p>
-            <p id="artistName">${artistName}</p>
-        </div>
-        <div id="addReviewButtonContainer">
-            <button id="reviewButton">Review Album?</button>
-        </div>
-        <div class="alignCenter">Reviews of this album</div>
-        <ul id="reviewsContainer"></ul>
-    `
-    resultsWindow.innerHTML = html
-    if (albumData.reviewDirectly) { renderCreateReviewView(albumData) }
-    const averageRatingContainer = resultsWindow.querySelector("#averageRatingContainer");
-    const averageRatingPDom = resultsWindow.querySelector("#averageRating");
-    const totalReviewsPDom = resultsWindow.querySelector("#totalReviews");
-    const reviewsUl = resultsWindow.querySelector("#reviewsContainer");
-    const searchwWindow = document.querySelector("#searchWindow");
-    try {
-        fetch(`/server/getReviews.php/?albumId=${albumId}`)
-            .then(response => {
-                if (response.status === 204) {
-                    averageRatingContainer.innerHTML = `<p>Unrated, be the first!</p>`;
-                    reviewsUl.innerHTML = "<p>No reviews yet<p>"
-                }
-                return response.json();
-            })
-            .then(resource => {
-                const averageRating = resource.averageRating;
-                const totalReviews = resource.totalReviews;
-                const reviews = resource.reviews;
-                reviews.sort((a, b) => b.timestamp - a.timestamp);
-                averageRatingPDom.textContent = `${averageRating}/5`;
-                totalReviewsPDom.textContent = `Total reviews: ${totalReviews}`;
-                if (reviews.length > 0) {
-                    reviews.forEach(review => {
-                        makeReview(review, "#reviewsContainer")
-                    });
-                }
-                document.querySelectorAll(".review").forEach(review => {
-                    review.addEventListener("click", expandReview);
-                })
-            })
-    } catch (error) { console.log(error); };
-
-    resultsWindow.dataset.albumId = albumId;
-    resultsWindow.style.display = "flex";
-    const closeButton = resultsWindow.querySelector("#closeResultsButton");
-    const ReviewAlbumButton = resultsWindow.querySelector("#reviewButton");
-    // Event listers
-    // Closing the result window
-    closeButton.addEventListener("click", () => { resultsWindow.style.display = "none"; searchwWindow.classList.remove("hidden") });
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") { resultsWindow.style.display = "none"; } })
-
-    document.querySelector("#searchWindow").classList.add("hidden");
-    const userData = await getUserData(localStorage.getItem("userId"));
-    if (userData.albumData.boards.length > 0) {
-        ReviewAlbumButton.addEventListener("click", () => {
-            albumData.reviewDirectly = true;
-            renderCreateReviewView(albumData);
-        });
-    } else {
-        ReviewAlbumButton.textContent = "Wish to review this album? Start by creating a board!"
-        ReviewAlbumButton.addEventListener("click", renderCreateReviewView)
-    }
-}
-
 function clearSearch() {
     const albumDomUl = document.querySelector("#albumUl");
     const userDomUl = document.querySelector("#userUl");
@@ -335,3 +249,38 @@ function clearSearchUsers() {
     const userDomUl = document.querySelector("#albumUl");
     if (userDomUl) { userDomUl.innerHTML = ""; };
 }
+
+/*
+token.json information:
+{
+    "access_token": "BQAoCUDwy7YUnKgcDVi5cB9LmHM-ooJrjjFQIqiTwBwvVmcR_E912gr5ANoIKYGh-X64gdkgSYiw-Zs5w2CtqaK6LBFsxNCxTbTKN8bcVtOW5HopwoA5",
+    "token_type": "Bearer",
+    "expires_in": 3600,
+    "timestamp": 1683221337
+}
+*/
+
+
+/*
+
+    function addReview() {
+        const rating = document.querySelectorAll(".chosen").length
+        const reviewDescription = document.querySelector("#reviewDescription").value
+        const boardId = parseInt(document.querySelector("#selectBoard").dataset.boardId);
+        const reviewObject = {
+            rating: rating,
+            reviewDescription: reviewDescription,
+            boardId: boardId,
+            artistName: artistName,
+            albumName: albumName,
+            albumCover: albumCover,
+            albumId: albumId,
+            userId: userId,
+            review: "review"
+        }
+        addBoardOrReview(reviewObject);
+        
+    }
+
+
+*/

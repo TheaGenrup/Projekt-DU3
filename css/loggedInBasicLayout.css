@@ -4,6 +4,7 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: rgb(24, 24, 24);
 
     overflow: hidden;
     /* Ta bort? verkar finnas en onödig scroll annars? */
@@ -62,7 +63,7 @@ body main #contentCOntainer #noResults {
     height: 100%;
     width: 100vw;
     background-color: rgb(68, 68, 68);
-    background-image: linear-gradient(#e6dada, #274046);
+    box-shadow: 0px 0px 11px 4px rgb(15, 15, 15);
 }
 
 #profilePicture {
@@ -80,7 +81,7 @@ main {
 nav {
     position: relative;
     color: white;
-    background-color: #354b51;
+    background-color: black;
     height: 8%;
     display: flex;
     justify-content: space-evenly;
@@ -127,6 +128,10 @@ button.iconHover {
 
 button.iconHover:hover {
     filter: invert(95%) sepia(0%) saturate(147%) hue-rotate(196deg) brightness(92%) contrast(95%);
+}
+
+#profilePicture {
+    border: 1px solid rgb(29, 29, 29);
 }
 
 #logoutBtn {
@@ -326,3 +331,4 @@ textarea {
         transform: rotate(360deg);
     }
 }
+

@@ -72,8 +72,6 @@ function renderLoggedInView(profilePic) {
 }
 
 async function renderDiscoverView() {
-    const allOverlaysOpen = document.querySelectorAll(".overlayReview");
-    if (allOverlaysOpen.length > 0) { allOverlaysOpen.forEach(overlay =>  overlay.remove() );}
 
     document.querySelector("#contentContainer").innerHTML = "";
 
@@ -133,8 +131,6 @@ async function renderDiscoverView() {
 };
 
 async function renderCreateReviewView(album) {
-    const allOverlaysOpen = document.querySelectorAll(".overlayReview");
-    if (allOverlaysOpen.length > 0) { allOverlaysOpen.forEach(overlay =>  overlay.remove() );}
     // Get user boards
     const userId = localStorage.getItem("userId");
     const response = await fetch(`/server/getUser.php?id=${userId}`);
@@ -149,7 +145,8 @@ async function renderCreateReviewView(album) {
     let html =
         `
         <div id="createContainer" class="">
-            <div class="verticalContainer">
+            <h3>Add new review</h3>
+            <div class="horizontalContainer">
                 <div class="verticalContainer alignCenter">
                     <button id="createBoard" class="selectButton"></button>
                     <p>New board</p>
@@ -285,8 +282,12 @@ function addBoardOrReview(bodyData) {
 }
 
 function renderProfileView(event) {
-    const allOverlaysOpen = document.querySelectorAll(".overlayReview");
-    if (allOverlaysOpen.length > 0) { allOverlaysOpen.forEach(overlay =>  overlay.remove() );}
+    const allReviewsOpen = document.querySelectorAll(".overlayReview");
+    if (allReviewsOpen.length > 0) {
+        allReviewsOpen.forEach(review => {
+            review.remove();
+        });
+    }
 
     startLoadingScreen(document.querySelector("main"));
 
@@ -463,7 +464,7 @@ function followUnfollow(user, eventTarget) {
         document.querySelector("#followers").textContent = newFollowersNumber;
     } else {
         eventTarget.textContent = "Follow";
-        const followers = parseInt(document.querySelector("#followers").textContent);
+        const followers = parseInt(document.querySelector("#following").textContent);
         const newFollowersNumber = followers - 1;
         document.querySelector("#followers").textContent = newFollowersNumber;
     }

@@ -100,7 +100,7 @@ function loginUser(userData) {
     const profilePicture = userData.userIdentity.profilePic
 
     renderLoggedInView(profilePicture)
-    renderDiscoverView()
+    renderDiscoverView();
 }
 
 // Register Section
@@ -125,9 +125,13 @@ function registerUser(username, password, displayname) {
             .then(r => {
                 console.log(r);
                 sendLoginPageMessage(r.message);
+
+                if (r.message === "Registered!") {
+                    setTimeout(switchLoginRegsiter, 3000)
+                }
             })
     } catch (error) {
-        sendLoginPageMessage("whoopsie, an error occured, please try again another time")
+        sendMessageToUser(document.querySelector("#loginRegistermessage"), "whoopsie, an error occured, please try again another time")
     }
 
 }
@@ -142,7 +146,7 @@ function sendLoginPageMessage(message) {
     setTimeout(() => {
         loginRegistermessageDom.style.transition = "1.5s"
         loginRegistermessageDom.style.opacity = "0%"
-    }, 5000)
+    })
 
 }
 function sendMessageToUser(DomElement, message) {
