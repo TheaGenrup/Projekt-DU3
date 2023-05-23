@@ -85,8 +85,11 @@ nav * {
     right: 4.5vw;
 }
 
-#previousReviewsContainer {
+.previousReviewsContainer {
     width: 100%;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .review {
@@ -141,12 +144,12 @@ nav * {
     transition: 0.5s;
 }
 
-.savedButton:hover{
+.savedButton:hover {
     background-image: url(/media/icons/close_0.png);
 }
 
 /* overlay */
-.overlayReview{
+.overlayReview {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -175,12 +178,12 @@ nav * {
     outline: none;
 }
 
-.star{
+.star {
     min-height: 15px;
     min-width: 15px;
 }
 
-#messageContainer{
+#messageContainer {
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -193,12 +196,16 @@ nav * {
 }
 
 @keyframes popUp {
-    0%{bottom: -99vh;}
-    100%{
+    0% {
+        bottom: -99vh;
+    }
+
+    100% {
         bottom: 0vh;
     }
 }
-#messageContainer div{
+
+#messageContainer div {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -209,7 +216,8 @@ nav * {
     background-color: rgb(98, 98, 98);
     border-radius: 10px 10px 0px 0px;
 }
-#messageContainer button{
+
+#messageContainer button {
     position: absolute;
     z-index: 32;
     top: 4vw;

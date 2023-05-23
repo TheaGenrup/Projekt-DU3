@@ -168,7 +168,7 @@ async function renderCreateReviewView(album) {
     const createBoardDom = contentContainer.querySelector("#createBoard");
     const createReviewDom = contentContainer.querySelector("#createReview");
     // If album chosen then render create a new review section;
-    if (album) { if (album.reviewDirectly) { renderCreateReview(album) }}
+    if (album) { if (album.reviewDirectly) { renderCreateReview(album) } }
     // Check if user have a board to which to add reviews to else they must first create a board
     if (usersBoards.length > 0) {
         createReviewDom.classList.remove("disabled");
@@ -624,6 +624,7 @@ async function expandReview(event) {
     const clickedUserId = event.currentTarget.dataset.userId;
     const clickedReviewId = event.currentTarget.dataset.reviewId;
     const albumId = event.currentTarget.dataset.albumId;
+    console.log(albumId);
 
     const reviewsOfClickedUser = await fetchReview(clickedUserId);
 
@@ -651,7 +652,7 @@ async function expandReview(event) {
                 </div>
                 <p id="reviewDescription">${firstLoopThroughReview.reviewDescription}</p>
                 <p id="otherReviewsHead">Other reviews of this album</p>
-                <div id="previousReviewsContainer"></div>`;
+                <div class="previousReviewsContainer"></div>`;
 
             fillStars(firstLoopThroughReview.rating, overlayContainer);
 
@@ -680,79 +681,72 @@ async function expandReview(event) {
 
             // previous reviews
             const users = await getAllUsers();
-
-            const allReviewsOfAlbum = [];
-            users.forEach(user => {
-                user.albumData.reviews.forEach(secondLoopThroughReview => {
-
-                    if (secondLoopThroughReview.albumId === firstLoopThroughReview.albumId) {
-
-                        secondLoopThroughReview.displayName = user.userIdentity.displayName;
-                        secondLoopThroughReview.userId = user.userIdentity.id;
-                        secondLoopThroughReview.profilePicture = user.userIdentity.profilePic;
-
-                        // se till så att den reviewn vi redan kollar på inte kommer upp under sig själv
-                        if (secondLoopThroughReview.reviewId === firstLoopThroughReview.reviewId) {
-                            return;
-                        }
-
-                        allReviewsOfAlbum.push(secondLoopThroughReview);
-                    }
-                });
-            })
+            const response = await fetch(`/server/getReviews.php/?albumId=${albumId}`)
+            const resource = await response.json();
+            const allReviewsOfAlbum = resource.reviews
 
             //kolla om det inte finns några
             if (allReviewsOfAlbum.length === 0) {
-                document.querySelector("#previousReviewsContainer").innerHTML = "<p>No other reviews yet...</p>";
+                overlayContainer.querySelector(".previousReviewsContainer").innerHTML = "<p>No other reviews yet...</p>";
+            } else {
+                allReviewsOfAlbum.forEach(review => {
+                    if (review.userId != localStorage.getItem("userId")) {
+
+
+                        if (review.userId === clickedUserId) {
+                            return;
+                        }
+
+                        // shorten comment if needed
+                        let reviewDescription = review.reviewDescription;
+                        if (reviewDescription.length > 70) {
+                            reviewDescription = reviewDescription.slice(0, 70) + "...";
+                        }
+
+                        // make html for new review
+                        const newReview = document.createElement("div");
+                        newReview.id = review.reviewId
+                        newReview.innerHTML = `
+                            <div id="userInfo">
+                                <div id="profilePictureInReview"></div>
+                                <div>
+                                    <p id="who" class="bold">@${review.displayName}</p>
+                                    <p id="when">${timeConverter(review.timestamp)}</p>
+                                </div>
+                            </div>
+                            <div id="albumDetails">
+                                <p id="albumName">${review.albumName}</p>
+                                <p id="artist">${review.artist}</p>
+                                <div id="stars_${review.reviewId}" class="stars">
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                </div>
+                                <p id="reviewDescription">${reviewDescription}</p>
+                            </div>
+                        `;
+
+                        // add new review to html
+                        overlayContainer.querySelector(".previousReviewsContainer").append(newReview);
+                        console.log(review);
+                        newReview.dataset.userId = review.userId;
+                        newReview.dataset.reviewId = review.reviewId;
+                        newReview.dataset.albumId = review.albumId;
+                        newReview.classList.add("review");
+
+                        fillStars(review.rating, newReview);
+
+                        //profilbilderna funkar inte
+
+                        newReview.addEventListener("click", e => expandReview(e));
+
+                    }
+
+                })
+
             }
-
-            allReviewsOfAlbum.forEach(review => {
-
-                // shorten comment if needed
-                let reviewDescription = review.reviewDescription;
-                if (reviewDescription.length > 70) {
-                    reviewDescription = reviewDescription.slice(0, 70) + "...";
-                }
-
-                // make html for new review
-                const newReview = document.createElement("div");
-                newReview.id = review.reviewId
-                newReview.innerHTML = `
-                    <div id="userInfo">
-                        <div id="profilePictureInReview"></div>
-                        <div>
-                            <p id="who" class="bold">@${review.displayName}</p>
-                            <p id="when">${timeConverter(review.timestamp)}</p>
-                        </div>
-                    </div>
-                    <div id="albumDetails">
-                        <p id="albumName">${review.albumName}</p>
-                        <p id="artist">${review.artist}</p>
-                        <div id="stars_${review.reviewId}" class="stars">
-                            <div class="star"></div>
-                            <div class="star"></div>
-                            <div class="star"></div>
-                            <div class="star"></div>
-                            <div class="star"></div>
-                        </div>
-                        <p id="reviewDescription">${reviewDescription}</p>
-                    </div>
-                `;
-
-                // add new review to html
-                document.querySelector("#previousReviewsContainer").append(newReview);
-
-                newReview.dataset.userId = review.userId;
-                newReview.dataset.reviewId = review.reviewId;
-                newReview.classList.add("review");
-
-                fillStars(review.rating, newReview);
-
-                //profilbilderna funkar inte
-
-                newReview.addEventListener("click", e => expandReview(e));
-
-            })
 
         }
     })

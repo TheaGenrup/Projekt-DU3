@@ -154,8 +154,8 @@ async function displayAlbum(albumData) {
                         makeReview(review, "#reviewsContainer")
                     });
                 }
-            document.querySelectorAll(`.review`).forEach(review => review.addEventListener("click", expandReview));
-  
+                document.querySelectorAll(`.review`).forEach(review => review.addEventListener("click", expandReview));
+
 
 
             })
@@ -455,8 +455,8 @@ function sendResponseMessage(message) {
     const closeButton = messageContainer.querySelector("button");
     console.log(message);
     if (message === "You've already reviewed this album in this board" || message === "A board with that name already exists") {
-        closeButton.addEventListener("click", ()=>{ messageContainer.remove(); })
-    } else { closeButton.addEventListener("click", ()=>{ messageContainer.remove(); renderCreateReviewView();})}
+        closeButton.addEventListener("click", () => { messageContainer.remove(); })
+    } else { closeButton.addEventListener("click", () => { messageContainer.remove(); renderCreateReviewView(); }) }
     document.body.append(messageContainer);
 
 

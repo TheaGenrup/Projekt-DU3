@@ -99,13 +99,6 @@ button.savedButton {
     width: 3vh;
 }
 
-#previousReviewsContainer {
-    gap: 10px;
-    display: flex;
-    flex-direction: column;
-
-}
-
 #userInfo {
     display: flex;
     gap: 5px;
