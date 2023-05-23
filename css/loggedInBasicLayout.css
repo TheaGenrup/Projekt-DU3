@@ -17,20 +17,16 @@ button {
     cursor: pointer;
     border: 1.5px solid #00000057;
     border-radius: 10px;
-    height: 6vw;
-    width: 20vw;
+    height: 10vw;
+    width: 40vw;
 }
 
 body main #contentCOntainer #noResults {
     padding: 10px 0px;
 }
 
-
-
-
 .horizontalContainer {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     width: 100%;
