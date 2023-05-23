@@ -11,6 +11,7 @@
     margin: 5vh 0;
     font-size: 9vw;
     color: #27373c;
+    font-family: "raleway";
 }
 
 
@@ -40,7 +41,7 @@
 }
 
 #createContainer .selectButton:hover {
-    background-color: rgb(109, 109, 109);
+    background-color: rgba(164, 164, 164, 0.8);
 }
 
 /* Navigation button styling*/

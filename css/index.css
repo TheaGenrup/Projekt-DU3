@@ -15,7 +15,7 @@
 
 @font-face {
     font-family: "raleway";
-    src: url(/media/fonts/Raleway/static/Raleway-Light.ttf);
+    src: url(/media/fonts/Raleway/static/Raleway-Bold.ttf);
 }
 
 #popUp {
@@ -176,7 +176,7 @@ nav * {
     box-sizing: border-box;
     padding: 5vw;
     overflow-x: scroll;
-    background-color: rgb(153, 153, 153);
+    background-image: linear-gradient(#e6dada, #274046);
 }
 
 /* input field styling*/

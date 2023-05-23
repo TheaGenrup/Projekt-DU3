@@ -145,7 +145,7 @@ async function renderCreateReviewView(album) {
     let html =
         `
         <div id="createContainer" class="">
-            <h3>Add new review</h3>
+            <h3>Add board or review</h3>
             <div class="horizontalContainer">
                 <div class="verticalContainer alignCenter">
                     <button id="createBoard" class="selectButton"></button>
@@ -475,9 +475,7 @@ async function showFavourites() {
     const user = await getUserData(localStorage.getItem("userId"));
 
     document.querySelector("#boardAndReviewContainer").innerHTML = `
-    <div id="favouritesIconContainer">
-        <img id="favouritesIcon" src="../media/icons/bookmark.png"></img>
-    </div>
+    <h1 id="title">SAVED</h1>
     <div id="favourites"></div>`;
 
     const arrayWithFavourites = user.albumData.favourites;
