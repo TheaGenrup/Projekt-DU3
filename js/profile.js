@@ -1,32 +1,6 @@
 "use strict";
 
-function followUnfollow(event) {
 
-    const request = new Request("/server/follow.php", {
-        headers: { "Content-type": "application/json" },
-        method: "POST",
-        body: JSON.stringify({
-            id: user.userIdentity.id,
-            currentUserId: localStorage.userId
-        }),
-    });
-
-    try {
-        fetch(request)
-            .then(response => {
-                return response.json();
-            })
-
-    } catch (error) {
-        console.log(error);
-    }
-
-    if (event.target.textContent === "Follow") {
-        event.target.textContent = "Following";
-    } else {
-        event.target.textContent = "Follow";
-    }
-}
 async function editAccount(e) {
     const userId = localStorage.getItem("userId");
     const user = await getUserData(userId);
@@ -62,11 +36,11 @@ async function editAccount(e) {
     const displayNameInput = document.querySelector("#searchField");
     const usersCurrentProfielPicture = user.userIdentity.profilePic;
     createButton.addEventListener("click", (e) => { e.preventDefault() });
-    backButton.addEventListener("click", () =>{
+    backButton.addEventListener("click", () => {
         overlay.remove();
     })
 
-    if (user.userIdentity.profilePic === "" ) {
+    if (user.userIdentity.profilePic === "") {
         imagePreview.style.backgroundImage = `url(/media/default.png)`;
     } else {
         imagePreview.style.backgroundImage = `url(/media/usersMedia/${userId}/${usersCurrentProfielPicture})`;
@@ -80,7 +54,7 @@ async function editAccount(e) {
             createButton.addEventListener("click", editProfile);
         }
     };
-    displayNameInput.addEventListener("keyup", (e)=>{
+    displayNameInput.addEventListener("keyup", (e) => {
         if (!displayNameInput.value && !imagePreview.classList.contains("imageUploaded")) {
             createButton.classList.add("disabled");
             createButton.removeEventListener("click", editProfile);
@@ -89,7 +63,7 @@ async function editAccount(e) {
             createButton.addEventListener("click", editProfile);
         }
     })
-    
+
 
     async function editProfile(e) {
         e.preventDefault();
@@ -97,10 +71,10 @@ async function editAccount(e) {
 
             const formWrapper = overlay.querySelector("form");
             const formData = new FormData(formWrapper);
-            const request = new Request("/server/updateUserProfile.php",{
-            header: "Content-Type: application/json",
-            method: "POST",
-            body: formData,
+            const request = new Request("/server/updateUserProfile.php", {
+                header: "Content-Type: application/json",
+                method: "POST",
+                body: formData,
             });
             const response = await fetch(request);
             const responseMessage = await response.json();
@@ -108,13 +82,13 @@ async function editAccount(e) {
         }
 
         if (displayNameInput.value) {
-            const request = new Request("/server/updateUserProfile.php",{
-            header: "Content-Type: application/json",
-            method: "PATCH",
-            body: JSON.stringify({
-                userId: userId,
-                newDisplayName: displayNameInput.value
-            }),
+            const request = new Request("/server/updateUserProfile.php", {
+                header: "Content-Type: application/json",
+                method: "PATCH",
+                body: JSON.stringify({
+                    userId: userId,
+                    newDisplayName: displayNameInput.value
+                }),
             });
             const response = await fetch(request);
             const responseMessage = await response.json();
