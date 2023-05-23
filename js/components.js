@@ -464,7 +464,7 @@ function followUnfollow(user, eventTarget) {
         document.querySelector("#followers").textContent = newFollowersNumber;
     } else {
         eventTarget.textContent = "Follow";
-        const followers = parseInt(document.querySelector("#followers").textContent);
+        const followers = parseInt(document.querySelector("#following").textContent);
         const newFollowersNumber = followers - 1;
         document.querySelector("#followers").textContent = newFollowersNumber;
     }

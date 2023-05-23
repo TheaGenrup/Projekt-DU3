@@ -1,5 +1,5 @@
 #contentContainer {
-    gap: 2vh;
+    gap: 20px;
     align-items: center;
 }
 
@@ -7,7 +7,6 @@
     font-size: 35px;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
-    color: #27373c;
 }
 
 #albumOverview {
