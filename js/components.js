@@ -7,7 +7,7 @@ function renderLoginPage() {
         <div id="limitWrapper">
             <div id="loginAndRegisterPageContainer">
                 <div id="logoBanner">
-                    <h1>Laulu :D</h1>
+                    <h1>Laulu</h1>
                 </div>
                 <div id="loginMessageContainer">
                     <div id="loginRegisterSign">Login</div>

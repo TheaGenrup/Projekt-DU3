@@ -1,3 +1,11 @@
+@font-face {
+    font-family: "rubikPuddles";
+    src: url(/media/fonts/Rubik_Puddles/RubikPuddles-Regular.ttf);
+
+    font-family: "monoton";
+    src: url(/media/fonts/Monoton/Monoton-Regular.ttf);
+}
+
 * {
     box-sizing: border-box;
     padding: 0;
@@ -10,7 +18,7 @@ body {
     height: 100vh;
     display: flex;
     align-items: flex-end;
-    background-image: url(/media/register_bg.png);
+    background-image: linear-gradient(#e6dada, #274046);
     background-position: center;
     background-size: cover;
 }
@@ -21,7 +29,6 @@ body {
     align-items: center;
     height: 100%;
     width: 50%;
-    background-color: rgba(0, 0, 0, 0.525);
 }
 
 body {
@@ -29,6 +36,14 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+#logoBanner h1 {
+    text-align: center;
+    font-family: "monoton";
+    color: white;
+    font-size: 15vw;
+}
+
 
 #mainContainer {
     display: flex;
@@ -62,8 +77,9 @@ body {
 #loginMessageContainer #loginRegisterSign {
     font-size: 32px;
     text-align: center;
-    color: rgb(202, 202, 202);
+    color: #27373c;
 }
+
 #loginMessageContainer #loginRegistermessage {
     opacity: 0%;
     color: rgb(202, 202, 202);
@@ -139,8 +155,6 @@ body {
 #loginRegisterSwitch #switchBtn:hover {
     color: rgb(119, 119, 119);
 }
-
-
 
 /* Desktop */
 @media only screen and (min-width: 600px) {
