@@ -8,8 +8,9 @@
 
 #contentContainer h3 {
     text-align: center;
-    margin: 10vh 0;
+    margin: 5vh 0;
     font-size: 9vw;
+    color: #27373c;
 }
 
 
@@ -18,9 +19,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 35vw;
-    height: 35vw;
-    background-color: gray;
+    width: 50vw;
+    height: 50vw;
+    background-color: #bfbfbfbd;
 
     border-radius: 30px;
 

@@ -6,6 +6,7 @@
     padding-top: 5vw;
     box-sizing: border-box;
     padding: 2vw;
+    color: #27373c;
 }
 
 #headerRightContainer {}
@@ -262,6 +263,7 @@ p {
     text-align: center;
     font-size: 30px;
     margin: 10px 0 20px 0;
+    color: #27373c;
 }
 
 .deleteBtn {

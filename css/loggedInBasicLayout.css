@@ -16,7 +16,7 @@ ul {
 /* General styling */
 button {
     cursor: pointer;
-    border: 1.5px solid black;
+    border: 1.5px solid #00000057;
     border-radius: 10px;
     height: 6vw;
     width: 20vw;
@@ -31,6 +31,7 @@ body main #contentCOntainer #noResults {
 
 .horizontalContainer {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -47,6 +48,10 @@ body main #contentCOntainer #noResults {
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+.alignCenter p {
+    margin: 1vh 0 4vh 0;
 }
 
 #contentContainer {
