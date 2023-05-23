@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "hfg8f1IaEBkz7KEVODvrXSoBv",
+        "loginKey": "LHVqSEFA7zAPuTLC6CPHy57rR",
         "userSocial": {
             "following": [],
             "followers": []
@@ -126,7 +126,7 @@
             "username": "test2",
             "password": "test2"
         },
-        "loginKey": "kY22HN5vnhYr8E2Vx5RHRIzyG",
+        "loginKey": "obKWhUrqJs7ouT6IqptpTU8uH",
         "userSocial": {
             "following": [
                 "071897782377104435133843971347"
@@ -172,6 +172,14 @@
                     "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0277fdcfda6535601aff081b6a",
                     "favouriteId": 2,
                     "timestamp": 1684841669
+                },
+                {
+                    "albumName": "cats in the cold",
+                    "artist": "mage tears",
+                    "albumId": "3uAfl6s5AOxDpbL51sqUfe",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0221539f2a88363609c6f75160",
+                    "favouriteId": 3,
+                    "timestamp": 1684845676
                 }
             ]
         }
