@@ -291,6 +291,9 @@ function renderProfileView(userId) {
 
                 document.querySelector(`#profilePictureTop`).style.backgroundImage = `url(/media/usersMedia/${user.userIdentity.id}/${profilePicture})`;
             }
+            document.querySelector(`#profilePictureTop`).addEventListener("click", ()=>{
+                renderProfileView(clickedUserId);
+            })
 
             // check if logged in: follow button or icons
             if (clickedUserId !== loggedInUserId) {
@@ -387,106 +390,6 @@ function renderProfileView(userId) {
 
 
 };
-
-function openBoard(user, eventCurrentTarget, clickedUserId) {
-
-
-
-    const loggedInUserId = localStorage.getItem("userId");
-
-    document.querySelector("#boardAndReviewContainer").innerHTML = `
-    <h2 id="title">${eventCurrentTarget.dataset.boardName}</h2>`;
-
-    const reviewsInBoard = [];
-
-    user.albumData.boards.forEach(board => {
-
-        if (board.boardId == eventCurrentTarget.dataset.boardId) {
-
-            const boardId = board.boardId;
-            const arrayWithReviews = user.albumData.reviews;
-
-            if (board.reviews.length === 0) {
-                document.querySelector("#boardAndReviewContainer").innerHTML += "<p>There are no reviews in this board yet...</p>";
-            }
-
-            arrayWithReviews.forEach(review => {
-
-                review.boards.forEach(board => {
-
-                    if (board === boardId) {
-                        review.userId = user.userIdentity.id;
-                        review.displayName = user.userIdentity.displayName;
-                        reviewsInBoard.push(review);
-                    }
-                })
-            })
-
-        }
-    });
-
-    reviewsInBoard.sort((a, b) => b.timestamp - a.timestamp);
-
-    reviewsInBoard.forEach(review => {
-        makeReview(review, "#boardAndReviewContainer");
-    });
-    document.querySelectorAll(".review > who").forEach(element => element.textContent = `@${review.displayName}`);
-
-
-
-    if (clickedUserId === loggedInUserId) {
-        document.querySelectorAll(".review").forEach(review => {
-
-            const reviewId = review.dataset.reviewId;
-
-            const newElement = document.createElement("div");
-            newElement.classList.add("deleteBtn");
-            review.prepend(newElement);
-
-
-            newElement.dataset.reviewId = reviewId;
-
-        });
-
-
-        document.querySelectorAll(".deleteBtn").forEach(button => {
-
-            button.addEventListener("click", event1 => {
-                event1.stopPropagation();
-
-                const popUp = document.createElement("div");
-
-                popUp.id = "popUp";
-
-                popUp.innerHTML = ` 
-                    <p>Are you sure you want to delete this review?</p>
-                    <div>
-                        <div id="cancelBtn">Cancel</div>
-                        <div id="continueBtn">Continue</div>
-                    </div>`;
-
-                document.querySelector("#contentContainer").prepend(popUp);
-
-                document.querySelector("#cancelBtn").addEventListener("click", hidePopUp);
-                document.querySelector("#continueBtn").addEventListener("click", event => {
-                    event1.target.parentElement.remove();
-                    deleteReview(event.target.dataset.reviewId);
-                    hidePopUp();
-                });
-                document.querySelector("#continueBtn").dataset.reviewId = event.currentTarget.dataset.reviewId;
-            });
-
-        });
-
-
-
-    }
-
-    document.querySelectorAll(".review").forEach(review => {
-        review.addEventListener("click", expandReview);
-    })
-
-}
 
 async function expandReview(event) {
 

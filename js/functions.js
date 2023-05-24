@@ -67,7 +67,7 @@ function makeReview(review, container, inProfile) {
     newReview.dataset.reviewId = review.reviewId;
 
     // add new review to html
-    document.querySelector(container).append(newReview);
+    if (container) { document.querySelector(container).append(newReview);} 
 
     if (inProfile) {
         newReview.id = `review_${review.reviewId}`;
@@ -260,7 +260,6 @@ async function renderCreateReview(albumData) {
     createButton.addEventListener("click", addReview);
 }
 
-
 function addToListenList(album, saveButton) {
     const userId = localStorage.getItem("userId")
     const bodyData = {
@@ -316,7 +315,6 @@ function stopLoadingScreen() {
     const loaderDom = document.querySelector(".vinylloaderC");
     loaderDom.remove();
 }
-
 
 function renderPopUp(event) {
     event.stopPropagation();

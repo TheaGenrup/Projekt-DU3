@@ -243,7 +243,7 @@ async function displayAlbum(albumData) {
     closeButton.addEventListener("click", () => { resultsWindow.style.display = "none"; searchwWindow.classList.remove("hidden") });
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") { resultsWindow.style.display = "none"; } })
 
-    document.querySelector("#searchWindow").classList.add("hidden");
+    if (searchwWindow) {    searchwWindow.classList.add("hidden");  }
     const userData = await getUserData(localStorage.getItem("userId"));
     if (userData.albumData.boards.length > 0) {
         ReviewAlbumButton.addEventListener("click", () => {
