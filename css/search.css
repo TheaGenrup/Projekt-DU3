@@ -1,6 +1,4 @@
 #searchWindow {
-    overflow: scroll;
-    overflow-x: hidden;
     position: relative;
 }
 
@@ -112,7 +110,7 @@
     width: 100%;
     align-content: center;
     justify-content: center;
-    margin-top: 4vh;
+    margin-top: 1vh;
 }
 
 #resultsWindow #albumInfo #artistInfo {
