@@ -68,7 +68,7 @@ function renderLoggedInView(profilePic) {
     document.querySelector("#profilePicture").addEventListener("click", () => {
         renderProfileView(localStorage.getItem("userId"));
     })
-    
+
     document.querySelector("#searchIcon").addEventListener("click", renderSearchView);
     document.querySelector("#addIcon").addEventListener("click", renderCreateReviewView);
     return;
@@ -189,7 +189,7 @@ async function renderCreateReviewView(album) {
             <input type="text" id="searchField" name="nameInput" placeholder="Choose name for your board" autocomplete="off">
             <input name="userId" style="display:none" value="${userId}">
         </form>
-        <div class="horizontalContainer">
+        <div id="buttonContainer">
             <button id="goBackButton" class="navigationButton">Go back</button>
             <button for="uploadWrapper" id="createButton" class="navigationButton disabled">Create</button>
         </div>
@@ -344,7 +344,7 @@ function renderProfileView(userId) {
 
                 document.querySelector("#boardIcon").dataset.userId = clickedUserId;
 
-                document.querySelector("#boardIcon").addEventListener("click", ()=>{
+                document.querySelector("#boardIcon").addEventListener("click", () => {
                     renderProfileView(clickedUserId);
                 });
 
@@ -534,7 +534,7 @@ async function expandReview(event) {
 
             document.querySelector("#displayNameExpanded").dataset.userId = firstLoopThroughReview.userId;
 
-            document.querySelector(`#displayNameExpanded`).addEventListener("click", ()=>{
+            document.querySelector(`#displayNameExpanded`).addEventListener("click", () => {
                 renderProfileView(clickedUserId);
             });
             overlayContainer.querySelector(`#closeReview`).addEventListener("click", (e) => {

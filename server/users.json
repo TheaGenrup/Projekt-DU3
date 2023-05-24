@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "0uqxY0AMIsrUcdPzPTKH2TqTf",
+        "loginKey": "jIAQM18MkRiijXjw66bwJS2Gq",
         "userSocial": {
             "following": [
                 "569541764829191085726368161431"
@@ -201,30 +201,6 @@
                 }
             ],
             "favourites": [
-                {
-                    "albumName": "Her Loss",
-                    "artist": "Drake",
-                    "albumId": "5MS3MvWHJ3lOZPLiMxzOU6",
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0202854a7060fccc1a66a4b5ad",
-                    "favouriteId": 1,
-                    "timestamp": 1684929255
-                },
-                {
-                    "albumName": "Harry's House",
-                    "artist": "Harry Styles",
-                    "albumId": "5r36AJ6VOJtp00oxSkBZ5h",
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e022e8ed79e177ff6011076f5f0",
-                    "favouriteId": 2,
-                    "timestamp": 1684929442
-                },
-                {
-                    "albumName": "Hamilton (Original Broadway Cast Recording)",
-                    "artist": "Lin-Manuel Miranda",
-                    "albumId": "1kCHru7uhxBUdzkm4gzRQc",
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02d72fb5571087bca0a2fed008",
-                    "favouriteId": 3,
-                    "timestamp": 1684929800
-                },
                 {
                     "albumName": "TESTING",
                     "artist": "A$AP Rocky",
