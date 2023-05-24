@@ -368,12 +368,15 @@ function sendResponseMessage(message, statusCode) {
     if (statusCode < 200 || statusCode > 299) {
         closeButton.addEventListener("click", () => { messageContainer.remove(); })
     } else {
-        console.log("test2");
     if (message === "Review added!" || message === "Board added!") {
         closeButton.addEventListener("click", () => { messageContainer.remove(); renderCreateReviewView(); }) 
     } 
     if (message == "Profile updated") {
-        closeButton.addEventListener("click", () => { messageContainer.remove(); document.querySelector(".overlayReview").remove(); }) 
+        closeButton.addEventListener("click", () => { 
+            messageContainer.remove(); 
+            document.querySelector(".overlayReview").remove(); 
+            location.reload();
+        }) 
     }
     
     }
