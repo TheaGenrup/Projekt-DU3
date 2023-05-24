@@ -1,19 +1,11 @@
-<?php ini_set("display_errors", 1);
-
+<?php
 require_once("functions.php");
 
 if (!$_SERVER["REQUEST_METHOD"] == "GET") {
-
     $error = ["message" => "Invalid HTTP-method"];
     sendJSON($error, 405);
-
 } else {
-
-    $filename = "users.json";
-
-    $usersContent = file_get_contents($filename);
-    $users = json_decode($usersContent, true);
-
+    $users = getFileData("users.json");
     $userID = $_GET["id"];
 
     foreach ($users as $user) {
@@ -23,7 +15,5 @@ if (!$_SERVER["REQUEST_METHOD"] == "GET") {
         }
     }
 }
-
 sendJSON(["message" => "You need to use the GET method"], 405);
-
 ?>

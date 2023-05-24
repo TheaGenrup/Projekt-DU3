@@ -16,15 +16,23 @@ if ($_POST) {
         $imageName = "";
 
         if (isset($_FILES["imageInput"]) && $_FILES["imageInput"]["tmp_name"] != "") {
-            if ($_FILES["imageInput"]["size"] > 500000) {
+            if ($_FILES["imageInput"]["size"] > 50000) {
                 $response = ["message" => "Photo size too large king"];
                 sendJSON($response, 200);
             }
             $source = $_FILES["imageInput"]["tmp_name"];
             $imageType = $_FILES["imageInput"]["type"];
             $uniqueImageName = time();
-            $ending = str_replace("image/", ".", $imageType);
-            $imageName = "$uniqueImageName" . $ending;
+            // $ending = str_replace("image/", ".", $imageType);
+
+            $path_parts = pathinfo($_FILES["imageInput"]["name"]);
+            $ext = $path_parts["extension"];
+
+            if (!in_array($ext, ["jpg", "png", "jpeg"])){
+                sendJSON(["message" => "File type not allowed :/"]);
+            }
+
+            $imageName = "$uniqueImageName" . $ext;
             // $destination = (__DIR__) . "/media/usersMedia/$userId/boards/" . $imageName;
             $destination = "../media/usersMedia/$userId/boards/$imageName";
             // Fråga Sebbe wtf mannen
@@ -48,7 +56,7 @@ if ($_POST) {
                 foreach ($usersBoards as $board) {
                     if ($board["boardName"] === $boardName) {
                         $response = ["message" => "A board with that name already exists"];
-                        sendJSON($response, 200);
+                        sendJSON($response, 400);
                     }
                 }
                 $boardId = getId($usersBoards, "boardId");

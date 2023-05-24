@@ -1,3 +1,4 @@
+"Use strict";
 async function deleteReview(reviewId) {
 
     const requestDelete = new Request(`../server/deleteReview.php`, {

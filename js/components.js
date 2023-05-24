@@ -106,7 +106,7 @@ async function renderDiscoverView() {
         // get reviews of all following users by their ids, one user at a time
         for (const followingUserId of followingIds) {
 
-            const reviewsOneUser = await getReviews(followingUserId);
+            const reviewsOneUser = await getUsersReviews(followingUserId);
 
             if (reviewsOneUser.length === 0) {
                 continue;
@@ -233,37 +233,6 @@ async function renderCreateReviewView(album) {
         backButton.addEventListener("click", renderCreateReviewView);
     }
 };
-
-// Add a new review or board function
-async function addBoardOrReview(bodyData) {
-    const uploadWrapper = document.querySelector("#uploadWrapper");
-    startLoadingScreen(document.querySelector("main"));
-    if (uploadWrapper.dataset.type === "review") {
-
-        const request = new Request("/server/addBoardOrReview.php", {
-            header: "Content-Type: application/json",
-            method: "POST",
-            body: JSON.stringify(bodyData),
-        });
-        const response = await fetch(request);
-        const resource = await response.json();
-        stopLoadingScreen();
-        sendResponseMessage(resource.message, response.status);
-    }
-
-
-    if (uploadWrapper.dataset.type === "board") {
-        const request = new Request("/server/addBoardOrReview.php", {
-            header: "Content-Type: application/json",
-            method: "POST",
-            body: bodyData,
-        });
-        const response = await fetch(request);
-        const resource = await response.json();
-        stopLoadingScreen();
-        sendResponseMessage(resource.message, response.status);
-    }
-}
 
 function renderProfileView(userId) {
     const allOverlaysOpen = document.querySelectorAll(".overlayReview");
@@ -416,73 +385,6 @@ function renderProfileView(userId) {
 
         });
 
-
-};
-
-function followUnfollow(user, eventTarget) {
-
-
-    try {
-
-        fetch(new Request("/server/follow.php", {
-            headers: { "Content-type": "application/json" },
-            method: "POST",
-            body: JSON.stringify({
-                id: user.userIdentity.id,
-                currentUserId: localStorage.userId
-            }),
-        }));
-
-    } catch (error) { sendMessageToUser("Server Error") }
-
-    if (eventTarget.textContent === "Follow") {
-        eventTarget.textContent = "Following";
-        const followers = parseInt(document.querySelector("#followers").textContent);
-        const newFollowersNumber = followers + 1;
-        document.querySelector("#followers").textContent = newFollowersNumber;
-
-    } else {
-        eventTarget.textContent = "Follow";
-        const followers = parseInt(document.querySelector("#followers").textContent);
-        const newFollowersNumber = followers - 1;
-        document.querySelector("#followers").textContent = newFollowersNumber;
-    }
-
-};
-
-async function showFavourites() {
-    const user = await getUserData(localStorage.getItem("userId"));
-
-    document.querySelector("#boardAndReviewContainer").innerHTML = `
-    <h1 id="title">SAVED</h1>
-    <div id="favourites"></div>`;
-
-    const arrayWithFavourites = user.albumData.favourites;
-
-    if (arrayWithFavourites.length === 0) {
-        document.querySelector("#favourites").innerHTML += "<p>No saved albums</p>";
-    } else {
-
-        arrayWithFavourites.forEach(favourite => {
-
-            const newFavourite = document.createElement("div");
-            newFavourite.classList.add("favourite");
-            newFavourite.innerHTML = `
-                <img class="favouriteCover"></img>
-            <div id="favouriteInfoContainer">
-                <p class="favouriteAlbumName">${favourite.albumName}</p>
-                <p class="favouriteArtist">${favourite.artist}</p>
-            </div>
-            <button class="savedButton"></button>`;
-
-            document.querySelector("#favourites").append(newFavourite);
-            newFavourite.querySelector(".favouriteCover").style.backgroundImage = `url(${favourite.albumCover})`;
-            const saveButton = newFavourite.querySelector(".savedButton");
-            saveButton.addEventListener("click", () => {
-                addToListenList(favourite, saveButton)
-            })
-        });
-    }
 
 };
 

@@ -1,10 +1,7 @@
 <?php ini_set("display_errors", 1);
-
 require_once "functions.php";
 
-
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-
     $users = getFileData("users.json");
 
     if (isset($_GET["id"])) {
@@ -13,8 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         foreach ($users as $user) {
 
             // find the user
-            if ($user["userIdentity"]["id"] == $userId) {
-                
+            if ($user["userIdentity"]["id"] == $userId) {                
                 $reviewsToSend = [];
 
                 foreach ($user["albumData"]["reviews"] as $review) {
@@ -60,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         };
         if ($reviewsCount == 0) {
             $response = ["message" => "No rating score yet"];
-            sendJSON($response, 204);
+            sendJSON($response, 200);
         }
         $averageRating = $reviewRatingTotal / $reviewsCount;
         $response = [

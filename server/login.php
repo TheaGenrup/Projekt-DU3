@@ -3,9 +3,6 @@ require_once("functions.php");
 
 $requestMethod = $_SERVER["REQUEST_METHOD"];
 
-
-
-
 //  Check if method is POST
 if ($requestMethod != "POST") {
     $error = ["message" => "Invalid method"];
@@ -72,7 +69,6 @@ if (isset($data["loginTokenKey"]) && isset($data["access"])) {
             unset($foundUser["userCredentials"]);
             sendJSON($foundUser, 200);
         }
+    }
 }
-}
-
 ?>

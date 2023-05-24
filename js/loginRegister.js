@@ -1,7 +1,7 @@
 "use strict";
 
 checkIfAlreadyLoggedIn();
-
+// Sticky login 
 function checkIfAlreadyLoggedIn() {
     const key = localStorage.getItem("logInKey");
     if (key === undefined || key === null) {
@@ -128,11 +128,11 @@ function registerUser(username, password, displayname) {
 
             })
     } catch (error) {
-        sendMessageToUser(document.querySelector("#loginRegistermessage"), "whoopsie, an error occured, please try again another time")
+        sendLoginPageMessage("whoopsie, an error occured, please try again another time")
     }
 
 }
-
+// Message to user
 function sendLoginPageMessage(message) {
     const loginRegistermessageDom = document.querySelector("#loginRegistermessage");
     loginRegistermessageDom.textContent = ""
@@ -159,117 +159,3 @@ function sendMessageToUser(DomElement, message) {
     DomElement.style.transition = "0s"
     return;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// temporary call to function
-/* loginUser({
-    loginKey: "HkoZ87CbKB8dw6X990CT5hPye",
-    profilePic: "../media/profile_picture.jpg",
-},
-    [
-        {
-            displayName: "Filip",
-            date: "23-02-13",
-            timestamp: "18:23",
-            albumName: "Dreams",
-            artist: "Fleetwood Mac",
-            albumId: "5Bz2LxOp0wz7ov0T9WiRmc",
-            reviewDescription: "I like when the music is making noise",
-            rating: 4,
-            reviewId: 34,
-            albumCover: `url(../media/dreams.jpg)`,
-        },
-        {
-            displayName: "Elin",
-            date: "23-02-14",
-            timestamp: "16:25",
-            albumName: "Och stora havet",
-            artist: "Jakob Hellman",
-            albumId: "???",
-            reviewDescription: "Woah! I've never cried like this before, except maybe when I saw the whale in theaters and I sat there bawling for like 2\/3 hours? Yeah great feeling.",
-            rating: 5,
-            reviewId: 31,
-            albumCover: `url(../media/hellman.jpg)`,
-        },
-        {
-            displayName: "Thea",
-            date: "23-02-15",
-            timestamp: "12:45",
-            albumName: "Abbey Road",
-            artist: "The Beatles",
-            albumId: "???",
-            reviewDescription: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem quod cum dolorum vel libero repellendus tempora, suscipit nam qui aliquid.",
-            rating: 3,
-            reviewId: 32,
-            albumCover: `url(../media/beatles.jpg)`,
-        },
-        {
-            displayName: "Thea",
-            date: "23-02-17",
-            timestamp: "17:54",
-            albumName: "Och stora havet",
-            artist: "Jakob Hellman",
-            albumId: "???",
-            reviewDescription: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem quod cum dolorum vel libero repellendus tempora, suscipit nam qui aliquid.",
-            rating: 4,
-            reviewId: 43,
-            albumCover: `url(../media/beatles.jpg)`,
-        }
-    ]);
- */
-
-/*
-const server = "login";
-const request = new Request (`server/login.php`);
-const data = {
-    headers: {"Content-type": "application/json"},
-    method: "POST",
-    body: JSON.stringify({
-        username: "test",
-        password: "test",
-        access: "Access-Login: Auth / Access-Key: Auth"
-    })
-}
-
-fetch(request, data)
-.then(r=>{
-    console.log(r);
-    return r.json()
-})
-.then(r => {
-    console.log(r);
-})
-
-Om allt går bra returneras användaren och dess info förutom dess användarnamn & lösenord
-*/
