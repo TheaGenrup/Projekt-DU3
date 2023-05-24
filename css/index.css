@@ -18,6 +18,11 @@
     src: url(/media/fonts/Raleway/static/Raleway-Bold.ttf);
 }
 
+@font-face {
+    font-family: "ralewayMedium";
+    src: url(/media/fonts/Raleway/static/Raleway-Medium.ttf);
+}
+
 #popUp {
     position: absolute;
     height: 30vh;
@@ -204,6 +209,7 @@ nav * {
     min-height: 15px;
     min-width: 15px;
 }
+
 /* Vinyl loading screen */
 
 /* Loader */
@@ -324,6 +330,7 @@ nav * {
         transform: rotate(360deg);
     }
 }
+
 /* Response to user styling */
 #messageContainer {
     display: flex;
