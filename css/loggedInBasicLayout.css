@@ -118,7 +118,7 @@ nav {
 }
 
 button.iconHover {
-    filter: invert(43%) sepia(0%) saturate(3065%) hue-rotate(172deg) brightness(98%) contrast(67%);
+    filter: invert(71%) sepia(5%) saturate(75%) hue-rotate(201deg) brightness(94%) contrast(89%);
 }
 
 button.iconHover:hover {
