@@ -110,7 +110,7 @@
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     margin-top: 1vh;
-    background-color: grey;
+    background-color: #838a8dee;
 }
 
 #dropdownContent * {
@@ -309,6 +309,7 @@ p {
 
 .overlayReview.editContainer {
     background-color: rgb(68, 68, 68);
+    padding-top: 10vh;
 }
 
 .overlayReview #uploadWrapper {
@@ -317,7 +318,6 @@ p {
     align-items: center;
 
     width: 100%;
-    height: 45%;
 }
 
 .overlayReview #uploadWrapper * {

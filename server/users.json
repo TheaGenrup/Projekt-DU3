@@ -242,7 +242,16 @@
                     "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0258039b5147731b6e52202e46"
                 }
             ],
-            "favourites": []
+            "favourites": [
+                {
+                    "albumName": "TESTING",
+                    "artist": "A$AP Rocky",
+                    "albumId": "3MATDdrpHmQCmuOcozZjDa",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029feadc48ab0661e9b3a9170b",
+                    "favouriteId": 4,
+                    "timestamp": 1684929815
+                }
+            ]
         }
     },
     {
