@@ -4,7 +4,7 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "KisEKxZYIERXrmbv5RwmBL5Fj",
+        "loginKey": "0uqxY0AMIsrUcdPzPTKH2TqTf",
         "userSocial": {
             "following": [
                 "569541764829191085726368161431"
@@ -200,7 +200,40 @@
                     "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02c7ea04a9b455e3f68ef82550"
                 }
             ],
-            "favourites": []
+            "favourites": [
+                {
+                    "albumName": "Her Loss",
+                    "artist": "Drake",
+                    "albumId": "5MS3MvWHJ3lOZPLiMxzOU6",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0202854a7060fccc1a66a4b5ad",
+                    "favouriteId": 1,
+                    "timestamp": 1684929255
+                },
+                {
+                    "albumName": "Harry's House",
+                    "artist": "Harry Styles",
+                    "albumId": "5r36AJ6VOJtp00oxSkBZ5h",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e022e8ed79e177ff6011076f5f0",
+                    "favouriteId": 2,
+                    "timestamp": 1684929442
+                },
+                {
+                    "albumName": "Hamilton (Original Broadway Cast Recording)",
+                    "artist": "Lin-Manuel Miranda",
+                    "albumId": "1kCHru7uhxBUdzkm4gzRQc",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02d72fb5571087bca0a2fed008",
+                    "favouriteId": 3,
+                    "timestamp": 1684929800
+                },
+                {
+                    "albumName": "TESTING",
+                    "artist": "A$AP Rocky",
+                    "albumId": "3MATDdrpHmQCmuOcozZjDa",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029feadc48ab0661e9b3a9170b",
+                    "favouriteId": 4,
+                    "timestamp": 1684929815
+                }
+            ]
         }
     },
     {
