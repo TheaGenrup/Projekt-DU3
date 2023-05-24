@@ -95,9 +95,8 @@
 
     box-sizing: border-box;
     padding: 10px;
-
-
     z-index: 25;
+    text-align: center;
 
     overflow: scroll;
 

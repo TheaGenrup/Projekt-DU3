@@ -67,7 +67,7 @@ function makeReview(review, container, inProfile) {
     newReview.dataset.reviewId = review.reviewId;
 
     // add new review to html
-    if (container) { document.querySelector(container).append(newReview);} 
+    if (container) { document.querySelector(container).append(newReview); }
 
     if (inProfile) {
         newReview.id = `review_${review.reviewId}`;
@@ -116,9 +116,9 @@ async function renderCreateReview(albumData) {
         `
     <form id="uploadWrapper" data-type="review">
         <div id="selectedAlbumContainer" class="horizontalContainer">
-            <div class="verticalContainer">
-                <p id="chosenArtist">${artistName}</p>
-                <p id="chosenAlbum">${albumName}</p>
+            <div id="artist">
+            <p id="chosenAlbum">${albumName}</p>
+            <p id="chosenArtist">${artistName}</p>
             </div>
             <img src="${albumCover}" id="albumImagePreview">
         </div>
@@ -134,7 +134,6 @@ async function renderCreateReview(albumData) {
         </div>
 
         <div id="rateAlbumContainer" class="open">
-            <label for="">Album rating</label>
             <div id="chooseRatingContainer">
                 <div class="chosen" data-rating="1"></div>
                 <div data-rating="2"></div>
@@ -145,12 +144,11 @@ async function renderCreateReview(albumData) {
         </div>
 
         <div class="open">
-            <label for="">ReviewDescription</label>
-            <textarea name="" id="reviewDescription" cols="30" rows="10"></textarea>
+            <textarea name="" id="reviewDescription" placeholder="Describe your feelings when listening to this album" cols="30" rows="10"></textarea>
         </div>
     </form>
 
-    <div class="horizontalContainer">
+    <div class="buttonContainer">
         <button id="goBackButton" class="navigationButton">Go back</button>
         <button for="uploadWrapper" id="createButton" class="navigationButton">Create</button>
     </div>  
@@ -368,17 +366,17 @@ function sendResponseMessage(message, statusCode) {
     if (statusCode < 200 || statusCode > 299) {
         closeButton.addEventListener("click", () => { messageContainer.remove(); })
     } else {
-    if (message === "Review added!" || message === "Board added!") {
-        closeButton.addEventListener("click", () => { messageContainer.remove(); renderCreateReviewView(); }) 
-    } 
-    if (message == "Profile updated") {
-        closeButton.addEventListener("click", () => { 
-            messageContainer.remove(); 
-            document.querySelector(".overlayReview").remove(); 
-            location.reload();
-        }) 
-    }
-    
+        if (message === "Review added!" || message === "Board added!") {
+            closeButton.addEventListener("click", () => { messageContainer.remove(); renderCreateReviewView(); })
+        }
+        if (message == "Profile updated") {
+            closeButton.addEventListener("click", () => {
+                messageContainer.remove();
+                document.querySelector(".overlayReview").remove();
+                location.reload();
+            })
+        }
+
     }
 
     document.body.append(messageContainer);

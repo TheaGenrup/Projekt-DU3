@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     height: 100%;
 }
 
@@ -44,8 +43,9 @@
     background-color: rgba(164, 164, 164, 0.8);
 }
 
-/* Navigation button styling*/
-#createContainer .horizontalContainer {}
+#chosenArtist {
+    font-size: 5vw;
+}
 
 
 /* form styling*/
@@ -53,7 +53,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 60%;
 }
 
 #createContainer #uploadWrapper .review {
@@ -77,6 +76,20 @@
 
     border-radius: 20px;
     background-color: #bfbfbfbd;
+}
+
+#chosenAlbum {
+    font-size: 6vw;
+    font-weight: bold;
+}
+
+#chosenArtist {
+    font-size: 5vw;
+}
+
+#selectedAlbumContainer {
+    display: flex;
+    flex-direction: row;
 }
 
 #imagePreview {
@@ -115,16 +128,13 @@
 
 #uploadWrapper div {
     width: 100%;
+    margin-top: 0.5vh;
     margin-bottom: 10px;
 }
 
 /* Add review Section */
 #rateAlbumContainer {
     width: 100%;
-}
-
-#albumImagePreview {
-    height: 100%;
 }
 
 #chooseRatingContainer {
@@ -213,7 +223,6 @@
     align-items: center;
 
     height: 29px;
-    border: 1px solid black;
     border-radius: 7px;
     height: 29px;
 
@@ -227,8 +236,9 @@
     height: 100%;
     box-sizing: border-box;
     top: 0px;
-    background-color: #858585;
+    background-color: #d2d2d2;
     z-index: 1;
+    outline: none;
     padding: 4px;
     border-radius: 7px;
 }
@@ -299,8 +309,8 @@
 #selectedAlbumContainer img {
     box-shadow: rgba(0, 0, 0, 0.15) 5.4px 4.4px 25.2px;
     border-radius: 5px;
-    border: 1px solid black;
-    height: 110%;
+    border: 1px solid rgb(164, 166, 169);
+    height: 45vw;
 }
 
 #reviewDescription {
@@ -308,11 +318,11 @@
     width: 100%;
     padding: 0;
     border-radius: 10px;
-    background-color: #1c1c1c;
+    background-color: #ffffff;
     box-sizing: border-box;
     padding: 7px;
     border: 1px solid gray;
-    color: #bbb;
+    color: #3e3e3e;
 }
 
 #reviewDescription:focus-within {
@@ -337,7 +347,15 @@
 #goBackButton,
 #createButton {
     height: 12vw;
-    width: 40vw;
+    width: 44vw;
+    color: #596a70;
+    border: none;
+
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
 }
 
 .horizontalContainer {
