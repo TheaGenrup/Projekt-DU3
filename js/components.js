@@ -503,7 +503,7 @@ function openBoard(user, eventCurrentTarget, clickedUserId) {
             const arrayWithReviews = user.albumData.reviews;
 
             if (board.reviews.length === 0) {
-                document.querySelector("#boardAndReviewContainer").innerHTML += "<p>You haven't added any reviews to this board yet...</p>";
+                document.querySelector("#boardAndReviewContainer").innerHTML += "<p>There are no reviews in this board yet...</p>";
             }
 
             arrayWithReviews.forEach(review => {
@@ -597,7 +597,6 @@ async function expandReview(event) {
     const clickedUserId = event.currentTarget.dataset.userId;
     const clickedReviewId = event.currentTarget.dataset.reviewId;
     const albumId = event.currentTarget.dataset.albumId;
-    console.log(albumId);
 
     const reviewsOfClickedUser = await fetchReview(clickedUserId);
 
@@ -653,33 +652,38 @@ async function expandReview(event) {
             })
 
             // previous reviews
-            const users = await getAllUsers();
-            const response = await fetch(`/server/getReviews.php/?albumId=${albumId}`)
+            const response = await fetch(`/server/getReviews.php/?albumId=${albumId}`);
             const resource = await response.json();
-            const allReviewsOfAlbum = resource.reviews
+            const allReviewsOfAlbum = resource.reviews;
+            console.log(allReviewsOfAlbum.length);
+
+            // exclude the current one
+            for (let i = 0; i < allReviewsOfAlbum.length; i++) {
+                const review = allReviewsOfAlbum[i];
+
+                if (review.userId === clickedUserId) {
+                    allReviewsOfAlbum.splice(i, 1);
+                }
+            }
+
 
             //kolla om det inte finns några
             if (allReviewsOfAlbum.length === 0) {
                 overlayContainer.querySelector(".previousReviewsContainer").innerHTML = "<p>No other reviews yet...</p>";
             } else {
                 allReviewsOfAlbum.forEach(review => {
-                    if (review.userId != localStorage.getItem("userId")) {
 
 
-                        if (review.userId === clickedUserId) {
-                            return;
-                        }
+                    // shorten comment if needed
+                    let reviewDescription = review.reviewDescription;
+                    if (reviewDescription.length > 70) {
+                        reviewDescription = reviewDescription.slice(0, 70) + "...";
+                    }
 
-                        // shorten comment if needed
-                        let reviewDescription = review.reviewDescription;
-                        if (reviewDescription.length > 70) {
-                            reviewDescription = reviewDescription.slice(0, 70) + "...";
-                        }
-
-                        // make html for new review
-                        const newReview = document.createElement("div");
-                        newReview.id = review.reviewId
-                        newReview.innerHTML = `
+                    // make html for new review
+                    const newReview = document.createElement("div");
+                    newReview.id = review.reviewId
+                    newReview.innerHTML = `
                             <div id="userInfo">
                                 <div id="profilePictureInReview"></div>
                                 <div>
@@ -701,23 +705,23 @@ async function expandReview(event) {
                             </div>
                         `;
 
-                        // add new review to html
-                        overlayContainer.querySelector(".previousReviewsContainer").append(newReview);
-                        console.log(review);
-                        newReview.dataset.userId = review.userId;
-                        newReview.dataset.reviewId = review.reviewId;
-                        newReview.dataset.albumId = review.albumId;
-                        newReview.classList.add("review");
+                    // add new review to html
+                    overlayContainer.querySelector(".previousReviewsContainer").append(newReview);
+                    console.log(review);
+                    newReview.dataset.userId = review.userId;
+                    newReview.dataset.reviewId = review.reviewId;
+                    newReview.dataset.albumId = review.albumId;
+                    newReview.classList.add("review");
 
-                        fillStars(review.rating, newReview);
+                    fillStars(review.rating, newReview);
 
-                        //profilbilderna funkar inte
+                    //profilbilderna funkar inte
 
-                        newReview.addEventListener("click", e => expandReview(e));
+                    newReview.addEventListener("click", e => expandReview(e));
 
-                    }
+                }
 
-                })
+                )
 
             }
 
