@@ -212,36 +212,27 @@ async function displayAlbum(albumData) {
     const totalReviewsPDom = resultsWindow.querySelector("#totalReviews");
     const reviewsUl = resultsWindow.querySelector("#reviewsContainer");
     const searchwWindow = document.querySelector("#searchWindow");
-    try {
-        fetch(`/server/getReviews.php/?albumId=${albumId}`)
-            .then(response => {
-                if (response.status === 204) {
-                    averageRatingContainer.innerHTML = `<p>Unrated, be the first!</p>`;
-                    reviewsUl.innerHTML = "<p>No reviews yet<p>"
-                }
-                console.log("före");
-                console.log(response);
-                return response.json();
-            })
-            .then(resource => {
-                console.log("efter");
-                const averageRating = resource.averageRating;
-                const totalReviews = resource.totalReviews;
-                const reviews = resource.reviews;
-                reviews.sort((a, b) => b.timestamp - a.timestamp);
-                averageRatingPDom.textContent = `${averageRating}/5`;
-                totalReviewsPDom.textContent = `Total reviews: ${totalReviews}`;
-                if (reviews.length > 0) {
-                    reviews.forEach(review => {
-                        makeReview(review, "#reviewsContainer")
-                    });
-                }
-                document.querySelectorAll(`.review`).forEach(review => review.addEventListener("click", expandReview));
 
-
-
-            })
-    } catch (error) { };
+    const response = await fetch(`/server/getReviews.php/?albumId=${albumId}`);
+    const resource = await response.json();
+    if (resource.reviews) {
+        const averageRating = resource.averageRating;
+        const totalReviews = resource.totalReviews;
+        const reviews = resource.reviews;
+        reviews.sort((a, b) => b.timestamp - a.timestamp);
+        averageRatingPDom.textContent = `${averageRating}/5`;
+        totalReviewsPDom.textContent = `Total reviews: ${totalReviews}`;
+        if (reviews.length > 0) {
+            reviews.forEach(review => {
+                makeReview(review, "#reviewsContainer")
+            });
+        }
+        document.querySelectorAll(`.review`).forEach(review => review.addEventListener("click", expandReview));
+        
+    } else {
+        averageRatingContainer.innerHTML = `<p>Unrated, be the first!</p>`;
+        reviewsUl.innerHTML = "<p>No reviews yet<p>"
+    }
 
     resultsWindow.dataset.albumId = albumId;
     resultsWindow.style.display = "flex";
