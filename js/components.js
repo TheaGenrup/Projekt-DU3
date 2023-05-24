@@ -408,20 +408,23 @@ async function expandReview(event) {
 
     const reviewsOfClickedUser = await fetchReview(clickedUserId);
 
-    reviewsOfClickedUser.forEach(async (firstLoopThroughReview) => {
+    reviewsOfClickedUser.forEach(async (review) => {
+        console.log(review);
 
-        if (clickedReviewId == firstLoopThroughReview.reviewId) {
+        if (clickedReviewId == review.reviewId) {
+            const reviewWithLineBreaks = lineBreakString(review.reviewDescription);
+            console.log(reviewWithLineBreaks);
 
             overlayContainer.innerHTML = `
                 
                 <div id="closeReview" class="pointer"></div>
-                <p id="timestampExpanded"><span>${timeConverter(firstLoopThroughReview.timestamp)}</span></p>
-                <p id="displayNameExpanded"><span class="bold pointer">@${firstLoopThroughReview.displayName}</span> reviewed</p>
-                <p id="albumNameExpanded">${firstLoopThroughReview.albumName}</p>
-                <p id="artistExpanded">${firstLoopThroughReview.artist}</p>
+                <p id="timestampExpanded"><span>${timeConverter(review.timestamp)}</span></p>
+                <p id="displayNameExpanded"><span class="bold pointer">@${review.displayName}</span> reviewed</p>
+                <p id="albumNameExpanded">${review.albumName}</p>
+                <p id="artistExpanded">${review.artist}</p>
                 <div class="albumCoverContainer">
                     <button id="bookmark" class="saveButton" alt="Bookmark"></button>
-                    <img src="${firstLoopThroughReview.albumCover}" alt="Album Cover" id="albumCoverExpanded">
+                    <img src="${review.albumCover}" alt="Album Cover" id="albumCoverExpanded">
                 </div>
                 <div class="stars">
                     <div class="star" class="starExpanded"></div>
@@ -430,13 +433,14 @@ async function expandReview(event) {
                     <div class="star" class="starExpanded"></div>
                     <div class="star" class="starExpanded"></div>
                 </div>
-                <p id="reviewDescription">${firstLoopThroughReview.reviewDescription}</p>
+                <p id="reviewDescription">${review.reviewDescription}</p>
                 <p id="otherReviewsHead">Other reviews of this album</p>
                 <div class="previousReviewsContainer"></div>`;
 
-            fillStars(firstLoopThroughReview.rating, overlayContainer);
+            fillStars(review.rating, overlayContainer);
 
-            document.querySelector("#displayNameExpanded").dataset.userId = firstLoopThroughReview.userId;
+            document.querySelector("#displayNameExpanded").dataset.userId = review.userId;
+            overlayContainer.querySelector("#reviewDescription").innerHTML = reviewWithLineBreaks;
 
             document.querySelector(`#displayNameExpanded`).addEventListener("click", () => {
                 renderProfileView(clickedUserId);
@@ -458,7 +462,7 @@ async function expandReview(event) {
                 }
             });
             saveButton.addEventListener("click", () => {
-                addToListenList(firstLoopThroughReview, saveButton);
+                addToListenList(review, saveButton);
             })
 
             // previous reviews

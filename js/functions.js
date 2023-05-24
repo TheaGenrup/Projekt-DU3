@@ -385,3 +385,13 @@ function sendResponseMessage(message, statusCode) {
 
 
 }
+
+function lineBreakString(string) {
+    let adjustedString = string;
+    while (string.includes("\n")) {
+        console.log(string);
+        adjustedString = adjustedString.replace("\n", "<br>");
+        string = adjustedString;
+    }
+    return string;
+}

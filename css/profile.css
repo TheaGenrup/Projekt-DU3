@@ -131,7 +131,6 @@
 #boardAndReviewContainer {
     display: flex;
     flex-direction: column;
-    overflow: scroll;
     gap: 1.5vh;
 }
 

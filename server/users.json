@@ -4,14 +4,15 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "6VzkAo688wXyyA84C7XmxTooU",
+        "loginKey": "5cKG2MlpaYhyQWK8JK8pNMc0p",
         "userSocial": {
             "following": [
                 "569541764829191085726368161431"
             ],
             "followers": [
                 "569541764829191085726368161431",
-                "314088336379485626338627095800"
+                "314088336379485626338627095800",
+                "021702187154527261922983210463"
             ]
         },
         "userIdentity": {
@@ -251,10 +252,11 @@
             "username": "test2",
             "password": "test2"
         },
-        "loginKey": "b6e2VOWE358BFJc37jR7xcMW8",
+        "loginKey": "AiGHk6TrFWjctuGs7WQuLYZt5",
         "userSocial": {
             "following": [
-                "071897782377104435133843971347"
+                "071897782377104435133843971347",
+                "021702187154527261922983210463"
             ],
             "followers": []
         },
@@ -268,11 +270,83 @@
                 {
                     "boardName": "test",
                     "boardId": 0,
-                    "reviews": [],
+                    "reviews": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4
+                    ],
                     "thumbnail": ""
                 }
             ],
-            "reviews": [],
+            "reviews": [
+                {
+                    "albumName": "Take Care (Deluxe)",
+                    "artist": "Drake",
+                    "albumId": "6X1x82kppWZmDzlXXK3y3q",
+                    "reviewId": 0,
+                    "reviewDescription": "test\n\ntest",
+                    "rating": 1,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684940595,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02c7ea04a9b455e3f68ef82550"
+                },
+                {
+                    "albumName": "21",
+                    "artist": "Adele",
+                    "albumId": "0Lg1uZvI312TPqxNWShFXL",
+                    "reviewId": 1,
+                    "reviewDescription": "test\n\ntest",
+                    "rating": 1,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684940661,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e022118bf9b198b05a95ded6300"
+                },
+                {
+                    "albumName": "evermore",
+                    "artist": "Taylor Swift",
+                    "albumId": "2Xoteh7uEpea4TohMxjtaq",
+                    "reviewId": 2,
+                    "reviewDescription": "",
+                    "rating": 1,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684940676,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0233b8541201f1ef38941024be"
+                },
+                {
+                    "albumName": "beerbongs & bentleys",
+                    "artist": "Post Malone",
+                    "albumId": "6trNtQUgC8cgbWcqoMYkOR",
+                    "reviewId": 3,
+                    "reviewDescription": "test\n\ntest",
+                    "rating": 1,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684940698,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02b1c4b76e23414c9f20242268"
+                },
+                {
+                    "albumName": "Broken",
+                    "artist": "Nine Inch Nails",
+                    "albumId": "4jyWDa1yM9ul7zgUdR80hw",
+                    "reviewId": 4,
+                    "reviewDescription": "Let\u2019s begin, as we must, with death by cock and ball torture. A man walks into a dark and grimy basement decorated like a makeshift temple. He offers a rose to a ramshackle altar, then lights a candle. As he undresses, the camera lingers on each piece of his suit, then notices the barbed wire tattooed above his clean-shaven genitals. He climbs into the chair in the center of the room, purified, an offering. The motorized chair clenches around his body like a fist. Needles pierce his hand, and he groans in pleasure; a robotic claw pinches at his stomach, his scrotum, his dick. He moans again, in ecstasy. Then the machine and its appendages disembowel him completely and feed the slurry of his guts through a metal sphincter, which, if I may, draws to mind the harmony between a camera lens and an anus. So much for Bob. Trent stands up from the spot where he\u2019s been watching in the waiting room and enters the same chamber of worship. He\u2019s next.\n\nThis is \u201cHappiness in Slavery,\u201d the revolting, hypnotizing, beautiful video that accompanied Nine Inch Nails\u2019 Broken EP in 1992. The man fed to the machine is played by Bob Flanagan, a performance and video artist who lived with cystic fibrosis and made gruesomely provocative art from his station inside the late 20th century\u2019s techno-medical apparatus. He was likely best known for nailing the head of his penis to a board in front of a live audience to Pete Seeger\u2019s \u201cIf I Had a Hammer\u201d; that\u2019s how Trent Reznor heard of him, anyway. They made a natural pair: the scrappy, squalling poster boy for the newly mainstreamed industrial movement and the professional masochist who carried on in the tradition of COUM Transmissions, the violent and depraved performance-art collective that gave rise to Throbbing Gristle, the first band to claim \u201cindustrial\u201d as a descriptor for themselves. The sound of metal chewing meat and actual metal chewing actual meat fused together again. By the time he recorded Broken, Reznor had gotten everything he\u2019d ever wanted and hated it. He wrought a lucrative career from a childhood fascination with music; he also seethed about the indignities of Reagan-era capitalist machinery only to find himself its shiniest new cog. Like his contemporary Kurt Cobain, Reznor came of age gagging at the pap that slicked MTV, the tired rock bands with aerated hair surfing the last dregs of glam. He grew up in a part of Pennsylvania where nothing happened. As a kid, he latched onto the juvenile antics of shock rock outfits like Alice Cooper and KISS that he saw on TV and suggested that something, somewhere, might be happening. Eventually, he found his way to the Chicago-based industrial label Wax Trax! and their mainstay act Ministry, who taught him that songs could be hideous and irresistible at the same time. WATCH Yaya Bey: Abbey Road Amplify x Pitchfork London Sessions After a fleeting college stint, Reznor dropped out in 1984 and moved to Cleveland, where he briefly suffered the humiliation of playing in a new wave band. He quit that, too, and scooped up a job cleaning toilets at a local recording studio in exchange for a little money and a lot of free studio time. He taught himself MIDI and began scratching out the jagged synthpop demos that would ultimately mutate into Nine Inch Nails\u2019 debut album, 1989\u2019s Pretty Hate Machine. Released on the independent label TVT, Pretty Hate Machine moved exponentially more copies than any other record in the proto-industrial scene. It helped that some minor controversy attended NIN\u2019s first single: While recording the video for \u201cDown In It,\u201d a weather balloon filming an aerial shot got away from the crew and ended up in the hands of the cops, who took it for a snuff film. The authorities tracked down the very much alive Reznor, who either got the footage back or refilmed it. Though you can now see the uncut version, MTV ultimately axed the shot of Reznor lying completely dead on the pavement, glooped up in corn starch that suggested early-stage decomposition. The fresh FBI file may have boosted Nine Inch Nails\u2019 reputation, but the songs powered themselves: all hard edges and taut screams, galvanized by production assistance from British producer Flood (known for his work with Depeche Mode and Soft Cell) and Adrien Sherwood and Keith Leblanc of the New York industrial hip-hop ensemble Tackhead. With these new collaborators, Nine Inch Nails coiled the clang and scrape of Skinny Puppy and Front 242 tightly around hooks as delicious as anything in Duran Duran\u2019s chart-swallowers\u2014a winning contrast. Reznor\u2019s rural American alienation glittered in cellophane. It turned out there was a massive untapped market of teenagers who felt the same frustration and despair, who found themselves stranded in the hinterlands of life, who hated everything but loved to dance about it. Pretty Hate Machine sold 350,000 copies; then Nine Inch Nails thrashed their way through a daytime slot at the inaugural Lollapalooza in 1991, and the number swelled to over a million. It all came so close to never happening. When Reznor first delivered Pretty Hate Machine to TVT, label head Steve Gottlieb scoffed. He took the sour, abrasive collection for a failure, the complete deflation of the promise he\u2019d heard in Reznor\u2019s demos. Gottlieb almost canned the release, then decided to put it out anyway, and then found himself with a megalith under his roof. Still, the windfall didn\u2019t sway him. Rather than allow Reznor the creative leeway he craved, Gottlieb boxed him in further. He tried to push NIN toward his own vision of a commercially successful band: chipper remixes designed to play in the worst possible clubs, lazy music videos decorated in hot, anonymous women. The conflict reached a fever pitch when TVT buried a collaboration with Ministry\u2019s Al Jourgensen and Paul Barker, a cover of Black Sabbath\u2019s \u201cSupernaut\u201d recorded under the moniker 1000 Homo DJs, after Gottlieb held Reznor\u2019s performance rights for ransom. Most Read Reviews The Sex EP The Sex EP Blawan: Dismantled Into Juice EP Dismantled Into Juice EP Mega Bog: End of Everything End of Everything \u201cI hate them,\u201d Reznor said of his label in a 1991 interview with the Boston Globe. \u201cI thought maybe we\u2019d prove ourselves and they\u2019d leave us alone, but it\u2019s turned into, \u2018OK, you\u2019ve sold this many records, but you could sell\u2014well, add a 0 to it\u2014if you use this producer or do this house mix.\u2019 What are you talking about!? That\u2019s the mentality I\u2019m dealing with.\u201d Deep in the music industry, moving units, and amassing fans, Reznor found out that a shitty boss was a shitty boss no matter what kind of job you had. Nothing seemed to motivate him so much as an adversary. Instead of combing down the bristles on his music, Reznor took it darker. After Lollapalooza wrapped, he set out on a second, secret tour, recording songs under aliases at studios across the country with the full-band, guitar-heavy sound he\u2019d honed onstage. He sluiced the bile he\u2019d been fermenting into tighter, hotter, toothier songs than he\u2019d ever written before. The thin layer of arch coolness that protected Pretty Hate Machine flaked away, leaving a raw, festering core. He collected this burst of work under the name Broken, and put it out as a six-song EP (with two hidden bonus tracks\u2014a cheeky cover of an early Adam and the Ants song, \u201cPhysical,\u201d and a fleshing-out of a track Reznor had recorded with the industrial supergroup Pigface, \u201cSuck\u201d). It served as a kiss-off to TVT as he ditched them for Jimmy Iovine\u2019s new label, Interscope, and launched his own incubator imprint, Nothing. Broken amplified the elements that sucked listeners into NIN\u2019s chaotic live shows, hoisting the guitars in the mix and deepening the beats with a smattering of acoustic drums. Reznor went nastier, figuring he might shake the specter of pop success. Instead of derailing, he only gained momentum. In October of 1992, Broken debuted at No. 7 on the Billboard 200 chart while Pretty Hate Machine hung around at No. 173, three years after its release. In 1993, the Recording Academy awarded NIN\u2019s first Grammy, in the Best Metal Performance category, to the single \u201cWish.\u201d (Three years later, their mud-covered Woodstock \u201994 performance of \u201cHappiness in Slavery\u201d would score a trophy in the same category; NIN hasn\u2019t bagged a Grammy since.) The deeper Reznor dug, the deeper the world burrowed. At the daybreak of the \u201990s, his misery was a lightning-hot commodity. But Broken didn\u2019t just moan. Alongside the inflammatory anger and paralyzing dejection, Reznor kept his keen ear for pleasure. He found the erotic charge in surrendering to the fullness of your pain, the frisson in the place where suffering obliterates the ego. Sex\u2014real sex, the improvisational, scriptless, scary kind, not just the mechanical performance of studied acts\u2014works the same way. It storms you until all the \u201cyou\u201d washes away. With Broken, in the grind of \u201cLast\u201d and the shrieks of \u201cGave Up,\u201d Reznor split new layers of skin into a thundering eroticism. These songs would pave the way for \u201cCloser,\u201d the brutally romantic single off of NIN\u2019s 1994 watershed The Downward Spiral, an album that would, in fact, flow abundantly through radio and MTV alike. Most Read Reviews The Sex EP The Sex EP Blawan: Dismantled Into Juice EP Dismantled Into Juice EP Mega Bog: End of Everything End of Everything To accompany the Broken EP, Reznor worked with directors Peter \u201cSleazy\u201d Christopherson (Throbbing Gristle\u2019s in-house synth pervert and half of Coil), Eric Goode, Serge Becker, and Jon Reiss to make a series of videos, each more prurient than the last, all of which make the \u201cDown In It\u201d video look like a Pixar short. The full sequence would come to be known as the Broken movie; though NIN never officially released it, Reznor passed around VHS copies to his inner circle, each marked with a unique glitch so he would know the source of any bootlegs. It circulated like a snuff film, copy to grainy copy; years later, Reznor would leak it himself as a hidden digital download on NIN\u2019s website. In the video for \u201cWish,\u201d the only airable segment from the series, Reznor flails in a sea of starving men, beautiful under Sleazy\u2019s lens. Latex opera gloves cling to his biceps; fishnets crisscross his pasty legs. He scrapes out a distorted guitar riff and screams about fist-fucking. Sleazy fixes a lascivious gaze on the scene. Men grope each other, glistening; they reach for Reznor through the bars of the cage that enclose him and his band, grabbing at his long, greasy hair as he staggers around the stage. For over 20 years, starting with that first Lollapalooza, \u201cWish\u201d has been a staple of the band\u2019s sets. Live videos from the \u201991 tour show Reznor in a similar stance as he makes his way onstage: slouched and hobbling, dusted in corn starch and streaked with grime, bent over the mic with his forehead to the floor, rolling around in torn glitter tights and creased combat boots, almost weeping. Rather than lead the crowds that have gathered for him, rather than stand upright and fling his arms wide and bask in their love like a rock star, he makes himself an offering. He submits. He does the same in an alternate, safe-for-work video for \u201cGave Up,\u201d filmed in the house where Charles Manson\u2019s followers murdered Sharon Tate (and where Reznor would complete much of The Downward Spiral), featuring a baby-faced Marilyn Manson in the accompanying band. Reznor cradles himself as he whispers into the microphone in the middle of a dimly lit studio setup. It\u2019s got to be the first rock video to show someone playing an Apple computer; the track name \u201cFuck you steve\u201d flashes on the screen just before the band erupts into the first pre-chorus. Reactionary glosses of Nine Inch Nails position them as little more than an expression of male power jutting out into a submissive culture, a plume of hot violence that makes impressionable teens do terrible things. More than anything else in Reznor\u2019s catalog, Broken troubles that story. NIN found power in the venting of rage, sure; plenty of fans attached their own frustrated anger to what Reznor spewed. But those vents let in as much air as they let out steam. Throughout Broken, apertures appear: words whispered close to the ear into near silence, fractured and terrified screams. Reznor discovered his falsetto on Broken and found it to be a bidirectional valve, a vulnerable emission. As \u201cHappiness in Slavery\u201d thunders to a close, he repeats the song\u2019s title over and over. \u201cHappiness\u201d comes out as a defeated whisper; \u201cslavery\u201d as a cascade of corroded, enfeebled shrieks\u2014the last gasp of the mutilated, not the victory call of the mutilator. He twisted his voice into a stark departure from his idols and mentors in Ministry. In place of Al Jourgensen\u2019s blockaded sneer, Reznor pressed a bleeding fissure into the wire. Most Read Reviews The Sex EP The Sex EP Blawan: Dismantled Into Juice EP Dismantled Into Juice EP Mega Bog: End of Everything End of Everything \u201cSmashed up my sanity\/Smashed up integrity\/Smashed up what I believed in\/Smashed up what\u2019s left of me,\u201d Reznor squeals in that same pathetic register on \u201cGave Up,\u201d his voice digitally lacerated and mixed with the vocalizations of his beloved golden labrador, Maise. \u201cAfter everything I\u2019ve done, I hate myself for what I\u2019ve become.\u201d Over a brisk one-two step\u2014a rhythm you could almost skip to\u2014Reznor \nTEST at the bottom of his fully realized aspirations, finding them as hollow as anything else. Broken occurs at that pivotal point where self-loathing softens into self-exploration, where the nadir of your suffering both obliterates \nTEST known world and expands its borders. It made way for the ugliness of The Downward Spiral, but it also cleared space for its tremendous and spare beauty: the painful sweetness of \u201cHurt,\u201d the impossible delicacy of \u201cA Warm Place.\u201d Broken jettisoned venom and turned over newly fertile soil. Like the monolithic albums on either side of it, Broken sold more than a million copies. Its slim volume towered over the decade that followed, as the seat of the beleaguered outsider became one of the readiest places to park a megaphone, as \n\nTEST2 metal thinned into Korn and curdled into Limp Bizkit in parallel streams. Turgid masculinity ruled MTV again, drained of its eroticism, all openings walled off. But there was a moment, captured in Broken, when the world\u2019s leading industrial pop star was a sub for the masses, laying bare his worst impulses TEST2\n\nthen chasing them all the way down the pipes to searing, mangled bliss. The corollary to \u201cfuck everything\u201d is \u201cthere has to be more than this.\u201d And maybe the \u201cmore\u201d of the world is sealed by a door you have to bite open",
+                    "rating": 1,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684940802,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02f1234cfed5f06fd58e76b06f"
+                }
+            ],
             "favourites": [
                 {
                     "albumName": "Harry's House",
@@ -390,6 +464,106 @@
             "boards": [],
             "reviews": [],
             "favourites": []
+        }
+    },
+    {
+        "userCredentials": {
+            "username": "sofie",
+            "password": "sofie123"
+        },
+        "loginKey": "flRIa9bpACCbPtozpRHcjgG1L",
+        "userSocial": {
+            "following": [
+                "071897782377104435133843971347"
+            ],
+            "followers": [
+                "314088336379485626338627095800"
+            ]
+        },
+        "userIdentity": {
+            "id": "021702187154527261922983210463",
+            "profilePic": "sofiejpeg",
+            "displayName": "soffan"
+        },
+        "albumData": {
+            "boards": [
+                {
+                    "boardName": "My favorites",
+                    "boardId": 0,
+                    "reviews": [
+                        0,
+                        2
+                    ],
+                    "thumbnail": ""
+                },
+                {
+                    "boardName": "problem",
+                    "boardId": 1,
+                    "reviews": [
+                        1
+                    ],
+                    "thumbnail": ""
+                }
+            ],
+            "reviews": [
+                {
+                    "albumName": "Harry's House",
+                    "artist": "Harry Styles",
+                    "albumId": "5r36AJ6VOJtp00oxSkBZ5h",
+                    "reviewId": 0,
+                    "reviewDescription": "best album eveeeer",
+                    "rating": 5,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684938809,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e022e8ed79e177ff6011076f5f0"
+                },
+                {
+                    "albumName": "Harry's House",
+                    "artist": "Harry Styles",
+                    "albumId": "5r36AJ6VOJtp00oxSkBZ5h",
+                    "reviewId": 1,
+                    "reviewDescription": "",
+                    "rating": 1,
+                    "boards": [
+                        1
+                    ],
+                    "timestamp": 1684939332,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e022e8ed79e177ff6011076f5f0"
+                },
+                {
+                    "albumName": "Broken",
+                    "artist": "Nine Inch Nails",
+                    "albumId": "4jyWDa1yM9ul7zgUdR80hw",
+                    "reviewId": 2,
+                    "reviewDescription": "Let\u2019s begin, as we must, with death by cock and ball torture. A man walks into a dark and grimy basement decorated like a makeshift temple. He offers a rose to a ramshackle altar, then lights a candle. As he undresses, the camera lingers on each piece of his suit, then notices the barbed wire tattooed above his clean-shaven genitals. He climbs into the chair in the center of the room, purified, an offering. The motorized chair clenches around his body like a fist. Needles pierce his hand, and he groans in pleasure; a robotic claw pinches at his stomach, his scrotum, his dick. He moans again, in ecstasy. Then the machine and its appendages disembowel him completely and feed the slurry of his guts through a metal sphincter, which, if I may, draws to mind the harmony between a camera lens and an anus. So much for Bob. Trent stands up from the spot where he\u2019s been watching in the waiting room and enters the same chamber of worship. He\u2019s next.\n\nThis is \u201cHappiness in Slavery,\u201d the revolting, hypnotizing, beautiful video that accompanied Nine Inch Nails\u2019 Broken EP in 1992. The man fed to the machine is played by Bob Flanagan, a performance and video artist who lived with cystic fibrosis and made gruesomely provocative art from his station inside the late 20th century\u2019s techno-medical apparatus. He was likely best known for nailing the head of his penis to a board in front of a live audience to Pete Seeger\u2019s \u201cIf I Had a Hammer\u201d; that\u2019s how Trent Reznor heard of him, anyway. They made a natural pair: the scrappy, squalling poster boy for the newly mainstreamed industrial movement and the professional masochist who carried on in the tradition of COUM Transmissions, the violent and depraved performance-art collective that gave rise to Throbbing Gristle, the first band to claim \u201cindustrial\u201d as a descriptor for themselves. The sound of metal chewing meat and actual metal chewing actual meat fused together again.\n\nBy the time he recorded Broken, Reznor had gotten everything he\u2019d ever wanted and hated it. He wrought a lucrative career from a childhood fascination with music; he also seethed about the indignities of Reagan-era capitalist machinery only to find himself its shiniest new cog. Like his contemporary Kurt Cobain, Reznor came of age gagging at the pap that slicked MTV, the tired rock bands with aerated hair surfing the last dregs of glam. He grew up in a part of Pennsylvania where nothing happened. As a kid, he latched onto the juvenile antics of shock rock outfits like Alice Cooper and KISS that he saw on TV and suggested that something, somewhere, might be happening. Eventually, he found his way to the Chicago-based industrial label Wax Trax! and their mainstay act Ministry, who taught him that songs could be hideous and irresistible at the same time.\n\nWATCH\n\nYaya Bey: Abbey Road Amplify x Pitchfork London Sessions\n\nAfter a fleeting college stint, Reznor dropped out in 1984 and moved to Cleveland, where he briefly suffered the humiliation of playing in a new wave band. He quit that, too, and scooped up a job cleaning toilets at a local recording studio in exchange for a little money and a lot of free studio time. He taught himself MIDI and began scratching out the jagged synthpop demos that would ultimately mutate into Nine Inch Nails\u2019 debut album, 1989\u2019s Pretty Hate Machine.\n\nReleased on the independent label TVT, Pretty Hate Machine moved exponentially more copies than any other record in the proto-industrial scene. It helped that some minor controversy attended NIN\u2019s first single: While recording the video for \u201cDown In It,\u201d a weather balloon filming an aerial shot got away from the crew and ended up in the hands of the cops, who took it for a snuff film. The authorities tracked down the very much alive Reznor, who either got the footage back or refilmed it. Though you can now see the uncut version, MTV ultimately axed the shot of Reznor lying completely dead on the pavement, glooped up in corn starch that suggested early-stage decomposition.\n\nThe fresh FBI file may have boosted Nine Inch Nails\u2019 reputation, but the songs powered themselves: all hard edges and taut screams, galvanized by production assistance from British producer Flood (known for his work with Depeche Mode and Soft Cell) and Adrien Sherwood and Keith Leblanc of the New York industrial hip-hop ensemble Tackhead. With these new collaborators, Nine Inch Nails coiled the clang and scrape of Skinny Puppy and Front 242 tightly around hooks as delicious as anything in Duran Duran\u2019s chart-swallowers\u2014a winning contrast. Reznor\u2019s rural American alienation glittered in cellophane. It turned out there was a massive untapped market of teenagers who felt the same frustration and despair, who found themselves stranded in the hinterlands of life, who hated everything but loved to dance about it. Pretty Hate Machine sold 350,000 copies; then Nine Inch Nails thrashed their way through a daytime slot at the inaugural Lollapalooza in 1991, and the number swelled to over a million.\n\nIt all came so close to never happening. When Reznor first delivered Pretty Hate Machine to TVT, label head Steve Gottlieb scoffed. He took the sour, abrasive collection for a failure, the complete deflation of the promise he\u2019d heard in Reznor\u2019s demos. Gottlieb almost canned the release, then decided to put it out anyway, and then found himself with a megalith under his roof. Still, the windfall didn\u2019t sway him. Rather than allow Reznor the creative leeway he craved, Gottlieb boxed him in further. He tried to push NIN toward his own vision of a commercially successful band: chipper remixes designed to play in the worst possible clubs, lazy music videos decorated in hot, anonymous women. The conflict reached a fever pitch when TVT buried a collaboration with Ministry\u2019s Al Jourgensen and Paul Barker, a cover of Black Sabbath\u2019s \u201cSupernaut\u201d recorded under the moniker 1000 Homo DJs, after Gottlieb held Reznor\u2019s performance rights for ransom.\nMost Read Reviews\n\n    The Sex EP\n    The Sex EP\n\n    Blawan: Dismantled Into Juice EP\n    Dismantled Into Juice EP\n\n    Mega Bog: End of Everything\n    End of Everything\n\n\u201cI hate them,\u201d Reznor said of his label in a 1991 interview with the Boston Globe. \u201cI thought maybe we\u2019d prove ourselves and they\u2019d leave us alone, but it\u2019s turned into, \u2018OK, you\u2019ve sold this many records, but you could sell\u2014well, add a 0 to it\u2014if you use this producer or do this house mix.\u2019 What are you talking about!? That\u2019s the mentality I\u2019m dealing with.\u201d Deep in the music industry, moving units, and amassing fans, Reznor found out that a shitty boss was a shitty boss no matter what kind of job you had.\n\nNothing seemed to motivate him so much as an adversary. Instead of combing down the bristles on his music, Reznor took it darker. After Lollapalooza wrapped, he set out on a second, secret tour, recording songs under aliases at studios across the country with the full-band, guitar-heavy sound he\u2019d honed onstage. He sluiced the bile he\u2019d been fermenting into tighter, hotter, toothier songs than he\u2019d ever written before. The thin layer of arch coolness that protected Pretty Hate Machine flaked away, leaving a raw, festering core. He collected this burst of work under the name Broken, and put it out as a six-song EP (with two hidden bonus tracks\u2014a cheeky cover of an early Adam and the Ants song, \u201cPhysical,\u201d and a fleshing-out of a track Reznor had recorded with the industrial supergroup Pigface, \u201cSuck\u201d). It served as a kiss-off to TVT as he ditched them for Jimmy Iovine\u2019s new label, Interscope, and launched his own incubator imprint, Nothing.\n\nBroken amplified the elements that sucked listeners into NIN\u2019s chaotic live shows, hoisting the guitars in the mix and deepening the beats with a smattering of acoustic drums. Reznor went nastier, figuring he might shake the specter of pop success. Instead of derailing, he only gained momentum. In October of 1992, Broken debuted at No. 7 on the Billboard 200 chart while Pretty Hate Machine hung around at No. 173, three years after its release. In 1993, the Recording Academy awarded NIN\u2019s first Grammy, in the Best Metal Performance category, to the single \u201cWish.\u201d (Three years later, their mud-covered Woodstock \u201994 performance of \u201cHappiness in Slavery\u201d would score a trophy in the same category; NIN hasn\u2019t bagged a Grammy since.) The deeper Reznor dug, the deeper the world burrowed. At the daybreak of the \u201990s, his misery was a lightning-hot commodity.\n\nBut Broken didn\u2019t just moan. Alongside the inflammatory anger and paralyzing dejection, Reznor kept his keen ear for pleasure. He found the erotic charge in surrendering to the fullness of your pain, the frisson in the place where suffering obliterates the ego. Sex\u2014real sex, the improvisational, scriptless, scary kind, not just the mechanical performance of studied acts\u2014works the same way. It storms you until all the \u201cyou\u201d washes away. With Broken, in the grind of \u201cLast\u201d and the shrieks of \u201cGave Up,\u201d Reznor split new layers of skin into a thundering eroticism. These songs would pave the way for \u201cCloser,\u201d the brutally romantic single off of NIN\u2019s 1994 watershed The Downward Spiral, an album that would, in fact, flow abundantly through radio and MTV alike.\nMost Read Reviews\n\n    The Sex EP\n    The Sex EP\n\n    Blawan: Dismantled Into Juice EP\n    Dismantled Into Juice EP\n\n    Mega Bog: End of Everything\n    End of Everything\n\nTo accompany the Broken EP, Reznor worked with directors Peter \u201cSleazy\u201d Christopherson (Throbbing Gristle\u2019s in-house synth pervert and half of Coil), Eric Goode, Serge Becker, and Jon Reiss to make a series of videos, each more prurient than the last, all of which make the \u201cDown In It\u201d video look like a Pixar short. The full sequence would come to be known as the Broken movie; though NIN never officially released it, Reznor passed around VHS copies to his inner circle, each marked with a unique glitch so he would know the source of any bootlegs. It circulated like a snuff film, copy to grainy copy; years later, Reznor would leak it himself as a hidden digital download on NIN\u2019s website.\n\nIn the video for \u201cWish,\u201d the only airable segment from the series, Reznor flails in a sea of starving men, beautiful under Sleazy\u2019s lens. Latex opera gloves cling to his biceps; fishnets crisscross his pasty legs. He scrapes out a distorted guitar riff and screams about fist-fucking. Sleazy fixes a lascivious gaze on the scene. Men grope each other, glistening; they reach for Reznor through the bars of the cage that enclose him and his band, grabbing at his long, greasy hair as he staggers around the stage.\n\nFor over 20 years, starting with that first Lollapalooza, \u201cWish\u201d has been a staple of the band\u2019s sets. Live videos from the \u201991 tour show Reznor in a similar stance as he makes his way onstage: slouched and hobbling, dusted in corn starch and streaked with grime, bent over the mic with his forehead to the floor, rolling around in torn glitter tights and creased combat boots, almost weeping. Rather than lead the crowds that have gathered for him, rather than stand upright and fling his arms wide and bask in their love like a rock star, he makes himself an offering. He submits.\n\nHe does the same in an alternate, safe-for-work video for \u201cGave Up,\u201d filmed in the house where Charles Manson\u2019s followers murdered Sharon Tate (and where Reznor would complete much of The Downward Spiral), featuring a baby-faced Marilyn Manson in the accompanying band. Reznor cradles himself as he whispers into the microphone in the middle of a dimly lit studio setup. It\u2019s got to be the first rock video to show someone playing an Apple computer; the track name \u201cFuck you steve\u201d flashes on the screen just before the band erupts into the first pre-chorus.\n\nReactionary glosses of Nine Inch Nails position them as little more than an expression of male power jutting out into a submissive culture, a plume of hot violence that makes impressionable teens do terrible things. More than anything else in Reznor\u2019s catalog, Broken troubles that story. NIN found power in the venting of rage, sure; plenty of fans attached their own frustrated anger to what Reznor spewed. But those vents let in as much air as they let out steam. Throughout Broken, apertures appear: words whispered close to the ear into near silence, fractured and terrified screams. Reznor discovered his falsetto on Broken and found it to be a bidirectional valve, a vulnerable emission. As \u201cHappiness in Slavery\u201d thunders to a close, he repeats the song\u2019s title over and over. \u201cHappiness\u201d comes out as a defeated whisper; \u201cslavery\u201d as a cascade of corroded, enfeebled shrieks\u2014the last gasp of the mutilated, not the victory call of the mutilator. He twisted his voice into a stark departure from his idols and mentors in Ministry. In place of Al Jourgensen\u2019s blockaded sneer, Reznor pressed a bleeding fissure into the wire.\nMost Read Reviews\n\n    The Sex EP\n    The Sex EP\n\n    Blawan: Dismantled Into Juice EP\n    Dismantled Into Juice EP\n\n    Mega Bog: End of Everything\n    End of Everything\n\n\u201cSmashed up my sanity\/Smashed up integrity\/Smashed up what I believed in\/Smashed up what\u2019s left of me,\u201d Reznor squeals in that same pathetic register on \u201cGave Up,\u201d his voice digitally lacerated and mixed with the vocalizations of his beloved golden labrador, Maise. \u201cAfter everything I\u2019ve done, I hate myself for what I\u2019ve become.\u201d Over a brisk one-two step\u2014a rhythm you could almost skip to\u2014Reznor collapses at the bottom of his fully realized aspirations, finding them as hollow as anything else. Broken occurs at that pivotal point where self-loathing softens into self-exploration, where the nadir of your suffering both obliterates the known world and expands its borders. It made way for the ugliness of The Downward Spiral, but it also cleared space for its tremendous and spare beauty: the painful sweetness of \u201cHurt,\u201d the impossible delicacy of \u201cA Warm Place.\u201d Broken jettisoned venom and turned over newly fertile soil.\n\nLike the monolithic albums on either side of it, Broken sold more than a million copies. Its slim volume towered over the decade that followed, as the seat of the beleaguered outsider became one of the readiest places to park a megaphone, as industrial metal thinned into Korn and curdled into Limp Bizkit in parallel streams. Turgid masculinity ruled MTV again, drained of its eroticism, all openings walled off. But there was a moment, captured in Broken, when the world\u2019s leading industrial pop star was a sub for the masses, laying bare his worst impulses and then chasing them all the way down the pipes to searing, mangled bliss. The corollary to \u201cfuck everything\u201d is \u201cthere has to be more than this.\u201d And maybe the \u201cmore\u201d of the world is sealed by a door you have to bite open.",
+                    "rating": 1,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1684939617,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02f1234cfed5f06fd58e76b06f"
+                }
+            ],
+            "favourites": [
+                {
+                    "albumName": "Harry Styles",
+                    "artist": "Harry Styles",
+                    "albumId": "1FZKIm3JVDCxTchXDo5jOV",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e026c619c39c853f8b1d67b7859",
+                    "favouriteId": 0,
+                    "timestamp": 1684938627
+                },
+                {
+                    "albumName": "Harry's House",
+                    "artist": "Harry Styles",
+                    "albumId": "5r36AJ6VOJtp00oxSkBZ5h",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e022e8ed79e177ff6011076f5f0",
+                    "favouriteId": 1,
+                    "timestamp": 1684938644
+                }
+            ]
         }
     }
 ]
