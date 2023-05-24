@@ -65,7 +65,10 @@ function renderLoggedInView(profilePic) {
 
     // DOM Event listeners
     document.querySelector("#discoverIcon").addEventListener("click", renderDiscoverView);
-    document.querySelector("#profilePicture").addEventListener("click", renderProfileView);
+    document.querySelector("#profilePicture").addEventListener("click", () => {
+        renderProfileView(localStorage.getItem("userId"));
+    })
+    
     document.querySelector("#searchIcon").addEventListener("click", renderSearchView);
     document.querySelector("#addIcon").addEventListener("click", renderCreateReviewView);
     return;
@@ -234,7 +237,6 @@ async function renderCreateReviewView(album) {
 // Add a new review or board function
 async function addBoardOrReview(bodyData) {
     const uploadWrapper = document.querySelector("#uploadWrapper");
-    console.log(uploadWrapper.dataset.type);
     startLoadingScreen(document.querySelector("main"));
     if (uploadWrapper.dataset.type === "review") {
 
@@ -263,13 +265,13 @@ async function addBoardOrReview(bodyData) {
     }
 }
 
-function renderProfileView(event) {
+function renderProfileView(userId) {
     const allOverlaysOpen = document.querySelectorAll(".overlayReview");
     if (allOverlaysOpen.length > 0) { allOverlaysOpen.forEach(overlay => overlay.remove()); }
 
     startLoadingScreen(document.querySelector("main"));
 
-    const clickedUserId = event.currentTarget.dataset.userId;
+    const clickedUserId = userId;
     const loggedInUserId = localStorage.getItem("userId");
 
     document.querySelector("#css1").setAttribute("href", "../css/loggedInBasicLayout.css");
@@ -373,7 +375,9 @@ function renderProfileView(event) {
 
                 document.querySelector("#boardIcon").dataset.userId = clickedUserId;
 
-                document.querySelector("#boardIcon").addEventListener("click", renderProfileView);
+                document.querySelector("#boardIcon").addEventListener("click", ()=>{
+                    renderProfileView(clickedUserId);
+                });
 
             }
 
@@ -429,9 +433,7 @@ function followUnfollow(user, eventTarget) {
             }),
         }));
 
-    } catch (error) {
-        console.log(error);
-    }
+    } catch (error) { sendMessageToUser("Server Error") }
 
     if (eventTarget.textContent === "Follow") {
         eventTarget.textContent = "Following";
@@ -630,7 +632,9 @@ async function expandReview(event) {
 
             document.querySelector("#displayNameExpanded").dataset.userId = firstLoopThroughReview.userId;
 
-            document.querySelector(`#displayNameExpanded`).addEventListener("click", renderProfileView);
+            document.querySelector(`#displayNameExpanded`).addEventListener("click", ()=>{
+                renderProfileView(clickedUserId);
+            });
             overlayContainer.querySelector(`#closeReview`).addEventListener("click", (e) => {
                 const allReviewsOpen = document.querySelectorAll(".overlayReview");
                 if (allReviewsOpen.length === 1) {
@@ -655,7 +659,6 @@ async function expandReview(event) {
             const response = await fetch(`/server/getReviews.php/?albumId=${albumId}`);
             const resource = await response.json();
             const allReviewsOfAlbum = resource.reviews;
-            console.log(allReviewsOfAlbum.length);
 
             // exclude the current one
             for (let i = 0; i < allReviewsOfAlbum.length; i++) {
@@ -707,7 +710,6 @@ async function expandReview(event) {
 
                     // add new review to html
                     overlayContainer.querySelector(".previousReviewsContainer").append(newReview);
-                    console.log(review);
                     newReview.dataset.userId = review.userId;
                     newReview.dataset.reviewId = review.reviewId;
                     newReview.dataset.albumId = review.albumId;

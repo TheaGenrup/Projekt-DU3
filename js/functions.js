@@ -447,20 +447,11 @@ function sendResponseMessage(message, statusCode) {
     messageContainer.id = "messageContainer";
     messageContainer.innerHTML = html;
     const closeButton = messageContainer.querySelector("button");
-    console.log(closeButton);
-    console.log(message);
-    console.log(statusCode);
-    if (statusCode < 200 || statusCode > 299) {
+    if (statusCode < 200 || statusCode > 299 || statusCode === undefined) {
         closeButton.addEventListener("click", () => { messageContainer.remove(); })
     } else {
-        console.log("test2");
-    if (message === "Review added!" || message === "Board added!") {
-        closeButton.addEventListener("click", () => { messageContainer.remove(); renderCreateReviewView(); }) 
-    } 
-    if (message == "Profile updated") {
-        closeButton.addEventListener("click", () => { messageContainer.remove(); document.querySelector(".overlayReview").remove(); }) 
-    }
-    
+        if (message === "Review added!" || message === "Board added!") { closeButton.addEventListener("click", () => { messageContainer.remove(); renderCreateReviewView(); }) } 
+        if (message == "Profile updated") {closeButton.addEventListener("click", () => { location.reload();}); }
     }
 
     document.body.append(messageContainer);

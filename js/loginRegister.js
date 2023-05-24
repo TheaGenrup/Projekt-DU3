@@ -97,10 +97,10 @@ function loginUser(userData) {
 
     localStorage.setItem("logInKey", userData.loginKey);
     localStorage.setItem("userId", userData.userIdentity.id);
-    const profilePicture = userData.userIdentity.profilePic
+    const profilePicture = userData.userIdentity.profilePic;
 
-    renderLoggedInView(profilePicture)
-    renderDiscoverView();
+    renderLoggedInView(profilePicture);
+    renderProfileView(localStorage.getItem("userId"));
 }
 
 // Register Section
