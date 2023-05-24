@@ -371,6 +371,7 @@ function renderProfileView(userId) {
                 if (board.thumbnail === "" || board.thumbnail === undefined || board.thumbnail === null || board.thumbnail === "defaultBoardImage.jpg") {
 
                     newBoard.querySelector(".boardCover").style.backgroundImage = "url(../media/icons/board.svg)";
+                    newBoard.querySelector(".boardCover").classList.add("defaultPicture");
                 } else {
 
                     newBoard.querySelector(".boardCover").style.backgroundImage = `url(/media/usersMedia/${user.userIdentity.id}/boards/${board.thumbnail}`;

@@ -124,6 +124,7 @@
 /* Boards */
 #boardAndReviewContainer p {
     cursor: pointer;
+    text-align: center;
 }
 
 #boardAndReviewContainer {
@@ -257,7 +258,7 @@ p {
 #title {
     text-align: center;
     font-size: 30px;
-    margin: 10px 0 20px 0;
+    margin: 3vh 0 2vh 0;
     color: #27373c;
     font-family: "raleway";
 }
@@ -358,4 +359,11 @@ p {
 
 #searchField:focus {
     outline: none;
+}
+
+.defaultPicture {
+    background-size: 45%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #bfbfbf3b;
 }
