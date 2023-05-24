@@ -228,7 +228,7 @@ function listUsers(usersFound) {
 
                 liDom.querySelector(`.searchProfilePicture`).style.backgroundImage = `url(/media/usersMedia/${userId}/${userProfilePicture})`;
             }
-            liDom.addEventListener("click", renderProfileView)
+            liDom.addEventListener("click", ()=>{ renderProfileView(userId); })
         });
     } else {
         userDomUl.innerHTML = "No users found";
