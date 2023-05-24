@@ -263,7 +263,7 @@ function renderProfileView(userId) {
                 <div id="profileHeader">
                     <div>
                         <div id="profilePictureTop""></div>
-                        <p>@${displayName}</p>
+                        <p>${displayName}</p>
                     </div> 
                     <div id="headerRightContainer">
                         <div id="followingFollowersReviews">
