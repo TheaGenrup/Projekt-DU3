@@ -9,7 +9,9 @@
     color: #27373c;
 }
 
-#headerRightContainer {}
+#headerRightContainer {
+    width: 50vw;
+}
 
 #profilePicture img {
     height: 30vw;
@@ -81,7 +83,7 @@
     grid-template-columns: auto auto auto;
     text-align: center;
     column-gap: 1vh;
-    font-size: 2vh;
+    font-size: 3.5vw;
     margin-bottom: 1.5vh;
 }
 
