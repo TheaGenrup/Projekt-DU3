@@ -4,13 +4,14 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "fggMf58sCYmaydmAEZ301Z0B8",
+        "loginKey": "6VzkAo688wXyyA84C7XmxTooU",
         "userSocial": {
             "following": [
                 "569541764829191085726368161431"
             ],
             "followers": [
-                "569541764829191085726368161431"
+                "569541764829191085726368161431",
+                "314088336379485626338627095800"
             ]
         },
         "userIdentity": {
@@ -259,9 +260,11 @@
             "username": "test2",
             "password": "test2"
         },
-        "loginKey": "j9uidZaGj3m74xBe38hC7RHXa",
+        "loginKey": "b6e2VOWE358BFJc37jR7xcMW8",
         "userSocial": {
-            "following": [],
+            "following": [
+                "071897782377104435133843971347"
+            ],
             "followers": []
         },
         "userIdentity": {
