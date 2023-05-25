@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] != "GET") {
     sendJSON($error, 405);
 } 
 if (!isset($_GET["id"])) {
-    $error = ["message" => "Missing id inpput key"];
+    $error = ["message" => "Missing id input key"];
     sendJSON($error, 400);
 }
 $users = getFileData("users.json");
