@@ -216,7 +216,6 @@ async function displayAlbum(albumData) {
     const response = await fetch(`/server/getReviews.php/?albumId=${albumId}`);
     const resource = await response.json();
     if (resource.reviews) {
-        console.log(resource);
         const averageRating = resource.averageRating;
         const totalReviews = resource.totalReviews;
         const reviews = resource.reviews;

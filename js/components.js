@@ -409,11 +409,9 @@ async function expandReview(event) {
     const reviewsOfClickedUser = await fetchReview(clickedUserId);
 
     reviewsOfClickedUser.forEach(async (review) => {
-        console.log(review);
 
         if (clickedReviewId == review.reviewId) {
             const reviewWithLineBreaks = lineBreakString(review.reviewDescription);
-            console.log(reviewWithLineBreaks);
 
             overlayContainer.innerHTML = `
                 

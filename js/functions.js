@@ -362,9 +362,6 @@ function sendResponseMessage(message, statusCode) {
     messageContainer.id = "messageContainer";
     messageContainer.innerHTML = html;
     const closeButton = messageContainer.querySelector("button");
-    console.log(closeButton);
-    console.log(message);
-    console.log(statusCode);
     if (statusCode < 200 || statusCode > 299) {
         closeButton.addEventListener("click", () => { messageContainer.remove(); })
     } else {
@@ -389,7 +386,6 @@ function sendResponseMessage(message, statusCode) {
 function lineBreakString(string) {
     let adjustedString = string;
     while (string.includes("\n")) {
-        console.log(string);
         adjustedString = adjustedString.replace("\n", "<br>");
         string = adjustedString;
     }
