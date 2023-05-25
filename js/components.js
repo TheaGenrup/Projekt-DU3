@@ -411,6 +411,7 @@ async function expandReview(event) {
     reviewsOfClickedUser.forEach(async (review) => {
 
         if (clickedReviewId == review.reviewId) {
+            const reviewWithLineBreaks = lineBreakString(review.reviewDescription);
 
             overlayContainer.innerHTML = `
                 
@@ -442,6 +443,7 @@ async function expandReview(event) {
             })
 
             document.querySelector("#displayNameExpanded").dataset.userId = review.userId;
+            overlayContainer.querySelector("#reviewDescription").innerHTML = reviewWithLineBreaks;
 
             overlayContainer.querySelector(`#displayNameExpanded`).addEventListener("click", () => {
                 renderProfileView(clickedUserId);

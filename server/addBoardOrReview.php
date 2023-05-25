@@ -2,7 +2,6 @@
 ini_set("display_errors", 1);
 require_once("functions.php");
 // Check if uploaded data is the type of review or board
-// PHP mapp 1
 if ($_POST) {
     // Check if input for board name was sent
     if (!isset($_POST["nameInput"]) && !isset($_POST["userId"])) {
@@ -35,7 +34,6 @@ if ($_POST) {
             $imageName = "$uniqueImageName" . $ext;
             // $destination = (__DIR__) . "/media/usersMedia/$userId/boards/" . $imageName;
             $destination = "../media/usersMedia/$userId/boards/$imageName";
-            // Fråga Sebbe wtf mannen
             if (!move_uploaded_file($source, $destination)) {
                 $response = ["error" => "Failed to upload file"];
                 sendJSON($response, 400);
