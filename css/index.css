@@ -1,26 +1,21 @@
 @font-face {
     font-family: "monoton";
-    src: url(/media/fonts/Monoton/Monoton-Regular.ttf);
+    src: url(/ht22/dig_cave/Laulu/media/fonts/Monoton/Monoton-Regular.ttf);
 }
 
 @font-face {
     font-family: "ralewayLight";
-    src: url(/media/fonts/Raleway/static/Raleway-Light.ttf);
-}
-
-@font-face {
-    font-family: "comfortaa";
-    src: url(/media/fonts/Comfortaa/static/Comfortaa-Light.ttf);
+    src: url(/ht22/dig_cave/Laulu/media/fonts/Raleway/static/Raleway-Light.ttf);
 }
 
 @font-face {
     font-family: "raleway";
-    src: url(/media/fonts/Raleway/static/Raleway-Bold.ttf);
+    src: url(/ht22/dig_cave/Laulu/media/fonts/Raleway/static/Raleway-Bold.ttf);
 }
 
 @font-face {
     font-family: "ralewayMedium";
-    src: url(/media/fonts/Raleway/static/Raleway-Medium.ttf);
+    src: url(/ht22/dig_cave/Laulu/media/fonts/Raleway/static/Raleway-Medium.ttf);
 }
 
 #popUp {
@@ -79,7 +74,7 @@ nav * {
 .star {
     background-position: center;
     background-size: cover;
-    background-image: url(../media/icons/empty_star.png);
+    background-image: url(/ht22/dig_cave/Laulu/media/icons/empty_star.png);
     height: 2vh;
     width: 2vh;
 }
@@ -103,7 +98,7 @@ nav * {
 }
 
 #closeReview {
-    background-image: url(../media/icons/close_0.png);
+    background-image: url(/ht22/dig_cave/Laulu/media/icons/close_0.png);
     background-position: center;
     background-size: cover;
     height: 3vh;
@@ -145,7 +140,7 @@ nav * {
     height: 5vw;
     border-radius: 0px;
     right: 15px;
-    background-image: url(/media/icons/bookmark.png);
+    background-image: url(/ht22/dig_cave/Laulu/media/icons/bookmark.png);
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -159,7 +154,7 @@ nav * {
     height: 5vw;
     border-radius: 0px;
     right: 15px;
-    background-image: url(/media/icons/vinyl.svg);
+    background-image: url(/ht22/dig_cave/Laulu/media/icons/vinyl.svg);
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -172,7 +167,7 @@ nav * {
 }
 
 .savedButton:hover {
-    background-image: url(/media/icons/close_0.png);
+    background-image: url(/ht22/dig_cave/Laulu/media/icons/close_0.png);
 }
 
 /* overlay */
@@ -385,7 +380,7 @@ nav * {
     background-color: transparent;
     border: none;
 
-    background-image: url(/media/icons/close_0.png);
+    background-image: url(/ht22/dig_cave/Laulu/media/icons/close_0.png);
     background-repeat: no-repeat;
     background-size: contain;
 

@@ -60,7 +60,7 @@
     height: 35px;
     width: 35px;
     border-radius: 50%;
-    background-image: url(/media/default.png);
+    background-image: url(/ht22/dig_cave/Laulu/media/default.png);
     background-size: cover;
 }
 
@@ -186,7 +186,7 @@
 }
 
 #resultsWindow #closeResultsButton {
-    background-image: url(/media/icons/close_0.png);
+    background-image: url(/ht22/dig_cave/Laulu/media/icons/close_0.png);
     background-position: center;
     background-size: 90%;
     background-repeat: no-repeat;

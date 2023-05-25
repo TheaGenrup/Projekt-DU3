@@ -35,11 +35,11 @@ function renderLoginPage() {
     switchBtn.addEventListener("click", switchLoginRegsiter);
     loginRegisterbtn.addEventListener("click", loginRegister)
     document.querySelector("#css1").setAttribute("href", "/ht22/dig_cave/Laulu/css/registerLogin.css");
-    document.querySelector("#css2").setAttribute("href", "../css/loggedInBasicLayout.css");
+    document.querySelector("#css2").setAttribute("href", "/ht22/dig_cave/Laulu/css/loggedInBasicLayout.css");
     return
 }
 // Render Logged in view
-function renderLoggedInView(profilePic) {
+function renderLoggedInView(profilePicture) {
 
     document.querySelector("body").innerHTML = `
     <main>
@@ -55,12 +55,12 @@ function renderLoggedInView(profilePic) {
 
     document.querySelector(`#profilePicture`).dataset.userId = localStorage.getItem("userId");
 
-    if (profilePic === "" || profilePic === undefined || profilePic === null) {
+    if (profilePicture === "" || profilePicture === undefined || profilePicture === null) {
 
-        document.querySelector(`#profilePicture`).style.backgroundImage = `url(/media/default.png)`;
+        document.querySelector(`#profilePicture`).style.backgroundImage = `url(/ht22/dig_cave/Laulu/media/default.png)`;
     } else {
 
-        document.querySelector(`#profilePicture`).style.backgroundImage = `url(/media/usersMedia/${localStorage.userId}/${profilePic})`;
+        document.querySelector(`#profilePicture`).style.backgroundImage = `url(/ht22/dig_cave/Laulu/media/usersMedia/${localStorage.userId}/${profilePicture})`;
     }
 
 
@@ -84,11 +84,11 @@ async function renderDiscoverView() {
     const userId = localStorage.getItem("userId");
 
     // switch css files
-    document.querySelector("#css1").setAttribute("href", "../css/loggedInBasicLayout.css");
-    document.querySelector("#css2").setAttribute("href", "../css/discover.css");
+    document.querySelector("#css1").setAttribute("href", "/ht22/dig_cave/Laulu/css/loggedInBasicLayout.css");
+    document.querySelector("#css2").setAttribute("href", "/ht22/dig_cave/Laulu/css/discover.css");
     startLoadingScreen(document.querySelector("main"));
     // fetch logged in user to get following ids
-    const responseUser = await fetch(new Request(`../server/getUser.php/?id=${userId}`));
+    const responseUser = await fetch(new Request(`/ht22/dig_cave/Laulu/server/getUser.php/?id=${userId}`));
     const userData = await responseUser.json();
     const followingIds = userData.userSocial.following;
 
@@ -141,12 +141,12 @@ async function renderCreateReviewView(album) {
     if (allOverlaysOpen.length > 0) { allOverlaysOpen.forEach(overlay => overlay.remove()); }
     // Get user boards
     const userId = localStorage.getItem("userId");
-    const response = await fetch(`/server/getUser.php?id=${userId}`);
+    const response = await fetch(`/ht22/dig_cave/Laulu/server/getUser.php?id=${userId}`);
     const userData = await response.json();
     const usersBoards = userData.albumData.boards;
 
     // CSS Change
-    document.querySelector("#css2").setAttribute("href", "/css/create.css");
+    document.querySelector("#css2").setAttribute("href", "/ht22/dig_cave/Laulu/css/create.css");
 
     const contentContainer = document.querySelector("#contentContainer");
     contentContainer.innerHTML = "";
@@ -189,16 +189,16 @@ function renderProfileView(userId) {
     const clickedUserId = userId;
     const loggedInUserId = localStorage.getItem("userId");
 
-    document.querySelector("#css1").setAttribute("href", "../css/loggedInBasicLayout.css");
-    document.querySelector("#css2").setAttribute("href", "../css/profile.css");
+    document.querySelector("#css1").setAttribute("href", "/ht22/dig_cave/Laulu/css/loggedInBasicLayout.css");
+    document.querySelector("#css2").setAttribute("href", "/ht22/dig_cave/Laulu/css/profile.css");
 
-    const request = new Request(`/server/getUser.php/?id=${clickedUserId}`);
+    const request = new Request(`/ht22/dig_cave/Laulu/server/getUser.php/?id=${clickedUserId}`);
     fetch(request)
         .then(r => r.json())
         .then(resource => {
             const user = resource;
 
-            const profilePicture = user.userIdentity.profilePic;
+            const profilePicture = user.userIdentity.profilePicture;
             const userFollowers = user.userSocial.followers.length;
             const userFollowing = user.userSocial.following.length;
             const userReviews = user.albumData.reviews.length;
@@ -232,10 +232,10 @@ function renderProfileView(userId) {
             // add profile picture
             if (profilePicture === "" || profilePicture === undefined || profilePicture === null) {
 
-                document.querySelector(`#profilePictureTop`).style.backgroundImage = `url(/media/default.png)`;
+                document.querySelector(`#profilePictureTop`).style.backgroundImage = `url(/ht22/dig_cave/Laulu/media/default.png)`;
             } else {
 
-                document.querySelector(`#profilePictureTop`).style.backgroundImage = `url(/media/usersMedia/${user.userIdentity.id}/${profilePicture})`;
+                document.querySelector(`#profilePictureTop`).style.backgroundImage = `url(/ht22/dig_cave/Laulu/media/usersMedia/${user.userIdentity.id}/${profilePicture})`;
             }
             document.querySelector(`#profilePictureTop`).addEventListener("click", () => {
                 renderProfileView(clickedUserId);
@@ -319,11 +319,11 @@ function renderProfileView(userId) {
                 // set board thumbnail
                 if (board.thumbnail === "" || board.thumbnail === undefined || board.thumbnail === null || board.thumbnail === "defaultBoardImage.jpg") {
 
-                    newBoard.querySelector(".boardCover").style.backgroundImage = "url(../media/icons/board.svg)";
+                    newBoard.querySelector(".boardCover").style.backgroundImage = "url(/ht22/dig_cave/Laulu/media/icons/board.svg)";
                     newBoard.querySelector(".boardCover").classList.add("defaultPicture");
                 } else {
 
-                    newBoard.querySelector(".boardCover").style.backgroundImage = `url(/media/usersMedia/${user.userIdentity.id}/boards/${board.thumbnail}`;
+                    newBoard.querySelector(".boardCover").style.backgroundImage = `url(/ht22/dig_cave/Laulu/media/usersMedia/${user.userIdentity.id}/boards/${board.thumbnail}`;
                 }
 
                 newBoard.addEventListener("click", (e) => {
@@ -340,8 +340,8 @@ function renderProfileView(userId) {
 
 async function expandReview(event) {
 
-    document.querySelector("#css1").setAttribute("href", "../css/loggedInBasicLayout.css");
-    document.querySelector("#css3").setAttribute("href", "../css/expandedReview.css");
+    document.querySelector("#css1").setAttribute("href", "/ht22/dig_cave/Laulu/css/loggedInBasicLayout.css");
+    document.querySelector("#css3").setAttribute("href", "/ht22/dig_cave/Laulu/css/expandedReview.css");
     const overlayContainer = document.createElement("div");
     overlayContainer.classList.add("overlayReview");
 
@@ -415,7 +415,7 @@ async function expandReview(event) {
             })
 
             // previous reviews
-            const response = await fetch(`/server/getReviews.php/?albumId=${albumId}`);
+            const response = await fetch(`/ht22/dig_cave/Laulu/server/getReviews.php/?albumId=${albumId}`);
             const resource = await response.json();
             const allReviewsOfAlbum = resource.reviews;
 

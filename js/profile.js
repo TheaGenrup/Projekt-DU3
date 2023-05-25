@@ -33,16 +33,16 @@ async function editAccount(e) {
     const backButton = document.querySelector("#goBackButton");
     const createButton = document.querySelector("#createButton");
     const displayNameInput = document.querySelector("#searchField");
-    const usersCurrentProfielPicture = user.userIdentity.profilePic;
+    const usersCurrentProfielPicture = user.userIdentity.profilePicture;
     createButton.addEventListener("click", (e) => { e.preventDefault() });
     backButton.addEventListener("click", () => {
         overlay.remove();
     })
 
-    if (user.userIdentity.profilePic === "") {
-        imagePreview.style.backgroundImage = `url(/media/default.png)`;
+    if (user.userIdentity.profilePicture === "") {
+        imagePreview.style.backgroundImage = `url(/ht22/dig_cave/Laulu/media/default.png)`;
     } else {
-        imagePreview.style.backgroundImage = `url(/media/usersMedia/${userId}/${usersCurrentProfielPicture})`;
+        imagePreview.style.backgroundImage = `url(/ht22/dig_cave/Laulu/media/usersMedia/${userId}/${usersCurrentProfielPicture})`;
     }
     imageUploader.onchange = evt => {
         const [file] = imageUploader.files;
@@ -70,7 +70,7 @@ async function editAccount(e) {
 
             const formWrapper = overlay.querySelector("form");
             const formData = new FormData(formWrapper);
-            const request = new Request("/server/updateUserProfile.php", {
+            const request = new Request("/ht22/dig_cave/Laulu/server/updateUserProfile.php", {
                 header: "Content-Type: application/json",
                 method: "POST",
                 body: formData,
@@ -81,7 +81,7 @@ async function editAccount(e) {
         }
 
         if (displayNameInput.value) {
-            const request = new Request("/server/updateUserProfile.php", {
+            const request = new Request("/ht22/dig_cave/Laulu/server/updateUserProfile.php", {
                 header: "Content-Type: application/json",
                 method: "PATCH",
                 body: JSON.stringify({
@@ -101,7 +101,7 @@ function followUnfollow(user, eventTarget) {
 
     try {
 
-        fetch(new Request("/server/follow.php", {
+        fetch(new Request("/ht22/dig_cave/Laulu/server/follow.php", {
             headers: { "Content-type": "application/json" },
             method: "POST",
             body: JSON.stringify({

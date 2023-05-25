@@ -1,7 +1,7 @@
 "Use strict";
 async function deleteReview(reviewId) {
 
-    const requestDelete = new Request(`../server/deleteReview.php`, {
+    const requestDelete = new Request(`/ht22/dig_cave/Laulu/server/deleteReview.php`, {
         method: "DELETE",
         body: JSON.stringify({
             userId: localStorage.getItem("userId"),

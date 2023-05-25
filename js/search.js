@@ -3,7 +3,7 @@ let token = "";
 let tokenTimer;
 // Fetch spotify api token from server
 async function fetchToken(params) {
-    fetch("/server/spotifyApi/tokenAccess.php")
+    fetch("/ht22/dig_cave/Laulu/server/spotifyApi/tokenAccess.php")
         .then(r => r.json())
         .then(r => {
             token = r.token;
@@ -49,7 +49,7 @@ async function renderSearchView(e) {
     */
     if (originButton === "searchIcon") { searchField.addEventListener("keyup", searchUsers); }
     // CSS change
-    document.querySelector("#css2").setAttribute("href", "/css/search.css");
+    document.querySelector("#css2").setAttribute("href", "/ht22/dig_cave/Laulu/css/search.css");
 
     searchField.style.width = "100%";
 
@@ -146,7 +146,7 @@ async function renderSearchView(e) {
 function searchUsers(e) {
     let input = e.target.value;
     if (!input) { return }
-    const request = new Request(`/server/searchUsers.php?search=${input}`);
+    const request = new Request(`/ht22/dig_cave/Laulu/server/searchUsers.php?search=${input}`);
     fetch(request)
         .then(r => r.json())
         .then(userResource => {
@@ -213,7 +213,7 @@ async function displayAlbum(albumData) {
     const reviewsUl = resultsWindow.querySelector("#reviewsContainer");
     const searchwWindow = document.querySelector("#searchWindow");
 
-    const response = await fetch(`/server/getReviews.php/?albumId=${albumId}`);
+    const response = await fetch(`/ht22/dig_cave/Laulu/server/getReviews.php/?albumId=${albumId}`);
     const resource = await response.json();
     if (resource.reviews) {
         const averageRating = resource.averageRating;
@@ -278,10 +278,10 @@ function listUsers(usersFound) {
 
             if (userProfilePicture === "" || userProfilePicture === undefined || userProfilePicture === null) {
 
-                liDom.querySelector(`.searchProfilePicture`).style.backgroundImage = `url(/media/default.png)`;
+                liDom.querySelector(`.searchProfilePicture`).style.backgroundImage = `url(/ht22/dig_cave/Laulu/media/default.png)`;
             } else {
 
-                liDom.querySelector(`.searchProfilePicture`).style.backgroundImage = `url(/media/usersMedia/${userId}/${userProfilePicture})`;
+                liDom.querySelector(`.searchProfilePicture`).style.backgroundImage = `url(/ht22/dig_cave/Laulu/media/usersMedia/${userId}/${userProfilePicture})`;
             }
             liDom.addEventListener("click", ()=>{ renderProfileView(userId); })
         });

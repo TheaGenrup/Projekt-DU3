@@ -91,7 +91,7 @@ if (isset($data["username"], $data["password"], $data["displayName"])) {
                   ], 
             "userIdentity" => [
                               "id" => "$id", 
-                              "profilePic" => "", 
+                              "profilePicture" => "", 
                               "displayName" => "$sentDisplayName" 
                            ], 
             "albumData" => [
@@ -100,15 +100,15 @@ if (isset($data["username"], $data["password"], $data["displayName"])) {
                 "favourites" => [] 
             ]
         ]; 
-        if (!file_exists("../media/usersMedia/$id")) {
-            if (!mkdir("../media/usersMedia/$id", 0777, true)) {
+        if (!file_exists("/ht22/dig_cave/Laulu/media/usersMedia/$id")) {
+            if (!mkdir("/ht22/dig_cave/Laulu/media/usersMedia/$id", 0777, true)) {
                 $response = [
                     "message" => "failed to register",
                     "error" => "User dir"
                 ];
                 sendJSON($response, 400);
             }
-            if (!mkdir("../media/usersMedia/$id/boards", 0777, true)) {
+            if (!mkdir("/ht22/dig_cave/Laulu/media/usersMedia/$id/boards", 0777, true)) {
                 $response = [
                     "message" => "failed to register",
                     "error" => "User boards"

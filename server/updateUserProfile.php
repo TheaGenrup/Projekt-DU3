@@ -29,17 +29,17 @@ if ($requestMethod == "POST") {
                 $ending = str_replace("image/", ".", $imageType);
                 $username = $user["userCredentials"]["username"];
                 $imageName = $username . $ext;
-                $destination = "../media/usersMedia/$userId/$imageName";
-                $userData[$key]["userIdentity"]["profilePic"] = $imageName ;
+                $destination = "/ht22/dig_cave/Laulu/media/usersMedia/$userId/$imageName";
+                $userData[$key]["userIdentity"]["profilePicture"] = $imageName ;
 
 
 
-                $usersCurrentProfilePicture = $user["userIdentity"]["profilePic"];
-                if ($user["userIdentity"]["profilePic"] != "") {
-                    unlink("../media/usersMedia/$userId/$usersCurrentProfilePicture");
+                $usersCurrentProfilePicture = $user["userIdentity"]["profilePicture"];
+                if ($user["userIdentity"]["profilePicture"] != "") {
+                    unlink("/ht22/dig_cave/Laulu/media/usersMedia/$userId/$usersCurrentProfilePicture");
                 }
                 if (move_uploaded_file($source, $destination)) {
-                    $userData[$key]["userIdentity"]["profilePic"] = $imageName ;
+                    $userData[$key]["userIdentity"]["profilePicture"] = $imageName ;
                     saveFileData("users.json", $userData);
                     $response = ["message" => "Profile updated"];
                     sendJSON($response, 200);

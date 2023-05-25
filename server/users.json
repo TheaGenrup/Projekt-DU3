@@ -18,7 +18,7 @@
         },
         "userIdentity": {
             "id": "071897782377104435133843971347",
-            "profilePic": "testjpeg",
+            "profilePicture": "testjpeg",
             "displayName": "Eveline"
         },
         "albumData": {
@@ -425,7 +425,7 @@
         },
         "userIdentity": {
             "id": "314088336379485626338627095800",
-            "profilePic": "",
+            "profilePicture": "",
             "displayName": "test2"
         },
         "albumData": {
@@ -490,7 +490,7 @@
         },
         "userIdentity": {
             "id": "569541764829191085726368161431",
-            "profilePic": "",
+            "profilePicture": "",
             "displayName": "Thea"
         },
         "albumData": {
@@ -550,7 +550,7 @@
         },
         "userIdentity": {
             "id": "407241801844936907921103259541",
-            "profilePic": "",
+            "profilePicture": "",
             "displayName": "test6"
         },
         "albumData": {

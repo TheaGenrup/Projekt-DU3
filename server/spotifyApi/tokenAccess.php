@@ -85,7 +85,7 @@ if ($requestMethod == "GET") {
     <script>
         let token = "<?php echo $token; ?>";
     </script>
-    <script src="/server/spotify-api.js"></script>
+    <script src="/ht22/dig_cave/Laulu/server/spotify-api.js"></script>
     <script>
 
         /*

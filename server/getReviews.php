@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     $reviewRatingTotal += $reviewRating;
                     $review["displayName"] = $user["userIdentity"]["displayName"];
                     $review["userId"] = $user["userIdentity"]["id"];
-                    $review["userProfilePicture"] = $user["userIdentity"]["profilePic"];
+                    $review["userProfilePicture"] = $user["userIdentity"]["profilePicture"];
                     $reviews [] = $review;
                 }
             }
