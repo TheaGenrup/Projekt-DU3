@@ -18,6 +18,4 @@ foreach ($users as $user) {
         sendJSON($user);
     }
 }
-
-sendJSON(["message" => "You need to use the GET method"], 405);
 ?>
