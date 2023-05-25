@@ -27,8 +27,8 @@ function renderLoginPage() {
                 </div>
             </div>
         </div>
-    </main>
-    `
+    </main>`;
+
     document.body.innerHTML = html;
     const switchBtn = document.querySelector("#switchBtn");
     const loginRegisterbtn = document.querySelector("#loginRegisterBtn");
@@ -36,7 +36,7 @@ function renderLoginPage() {
     loginRegisterbtn.addEventListener("click", loginRegister)
     document.querySelector("#css1").setAttribute("href", "/ht22/dig_cave/Laulu/css/registerLogin.css");
     document.querySelector("#css2").setAttribute("href", "/ht22/dig_cave/Laulu/css/loggedInBasicLayout.css");
-    return
+    return;
 }
 // Render Logged in view
 function renderLoggedInView(profilePicture) {
@@ -50,8 +50,7 @@ function renderLoggedInView(profilePicture) {
         <button class="viewIcon iconHover" id="searchIcon"></button>
         <button class="viewIcon iconHover" id="addIcon"></button>
         <button class="viewIcon" id="profilePicture"></button>
-    </nav>
-    `;
+    </nav>`;
 
     document.querySelector(`#profilePicture`).dataset.userId = localStorage.getItem("userId");
 
@@ -163,8 +162,8 @@ async function renderCreateReviewView(album) {
                     <p>New review</p>
                 </div>
             </div>
-        </div>
-    `;
+        </div>`;
+
     // <input type="text" placeholder="Album, Artist" id="searchField">   
     contentContainer.innerHTML = html;
     const createBoardDom = contentContainer.querySelector("#createBoard");
@@ -177,7 +176,7 @@ async function renderCreateReviewView(album) {
         createReviewDom.addEventListener("click", renderSearchView);
     };
     // Render create a new board section; Flytta till functions? men det är samtidigt en egen component
-    createBoardDom.addEventListener("click", renderCreateBoard)
+    createBoardDom.addEventListener("click", renderCreateBoard);
 };
 
 function renderProfileView(userId) {
@@ -287,7 +286,7 @@ function renderProfileView(userId) {
                 document.addEventListener("click", (e) => {
                     if (document.querySelector("#settingsIcon")) {
                         if (e.target != document.querySelector("#settingsIcon")) {
-                            document.querySelector("#dropdownContent").classList.add("closed")
+                            document.querySelector("#dropdownContent").classList.add("closed");
                         };
                     }
                 })

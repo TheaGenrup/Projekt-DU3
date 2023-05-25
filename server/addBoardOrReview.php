@@ -39,7 +39,7 @@ if ($_FILES) {
 
             $imageName = "$uniqueImageName" . $ext;
             // $destination = (__DIR__) . "/media/usersMedia/$userId/boards/" . $imageName;
-            $destination = "/ht22/dig_cave/Laulu/media/usersMedia/$userId/boards/$imageName";
+            $destination = "../media/usersMedia/$userId/boards/$imageName";
             if (!move_uploaded_file($source, $destination)) {
                 $response = ["error" => "Failed to upload file"];
                 sendJSON($response, 400);
