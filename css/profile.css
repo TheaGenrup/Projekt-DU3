@@ -163,6 +163,11 @@
 
 
 /* inside board */
+
+#favourites>p:nth-child(1) {
+    text-align: center;
+}
+
 #albumOverview {
     display: flex;
     margin-top: 10px;

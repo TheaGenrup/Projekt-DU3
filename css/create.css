@@ -300,7 +300,7 @@
     border-radius: 0px 0px 7px 7px;
 }
 
-/* Chosen ablumb section */
+/* Chosen album section */
 #selectedAlbumContainer {
     height: 25%;
 
@@ -331,12 +331,12 @@
 
 /* JS classes*/
 #createContainer .disabled {
-    background-color: #c6c6c6a7;
+    background-color: #e5e5e5a7;
     cursor: auto;
 }
 
 #createContainer .disabled:hover {
-    background-color: #c6c6c6a7;
+    background-color: #d2d2d2a7;
     cursor: auto;
 }
 
@@ -353,8 +353,9 @@
 
 }
 
-.buttonContainer {
+#buttonContainer {
     display: flex;
+    margin-top: 1vh;
     justify-content: space-between;
 }
 
