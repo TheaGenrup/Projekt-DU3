@@ -60,6 +60,7 @@
 
 #settingsIcon {
     background-image: url(/ht22/dig_cave/Laulu/media/icons/settings.svg);
+    filter: invert(75%) sepia(73%) saturate(1%) hue-rotate(34deg) brightness(110%) contrast(78%);
 }
 
 #boardIcon {

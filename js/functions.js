@@ -197,7 +197,7 @@ function sendResponseMessage(message, statusCode) {
         <button></button>
         <p> ${message}</p>
     </div>
-    `
+    `;
     messageContainer.id = "messageContainer";
     messageContainer.innerHTML = html;
     const closeButton = messageContainer.querySelector("button");

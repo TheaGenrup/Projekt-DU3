@@ -28,7 +28,7 @@ async function renderSearchView(e) {
     <div id="searchWindow">
         <div id="searchContainer">
             <input type="text" id="searchField" placeholder="Find an album, artist or user" autocomplete="off">
-            <img id="searchNavigator" src="/media/icons/Search.png" alt="">
+            <img id="searchNavigator" src="/ht22/dig_cave/Laulu/media/icons/search.svg" alt="">
         </div>
         <ul id=userUl> </ul>
         <ul id=albumUl> </ul>

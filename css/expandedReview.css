@@ -41,7 +41,7 @@
 }
 
 button.saveButton {
-    background-image: url(/ht22/dig_cave/Laulu/media/media/icons/bookmark.png);
+    background-image: url(/ht22/dig_cave/Laulu/media/icons/bookmark.png);
     background-repeat: no-repeat;
     background-size: contain;
 
@@ -111,7 +111,7 @@ button.savedButton {
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    background-image: url(/ht22/dig_cave/Laulu/media/media/default.png);
+    background-image: url(/ht22/dig_cave/Laulu/media/default.png);
     background-position: center;
     background-size: cover;
 }

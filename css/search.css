@@ -17,6 +17,7 @@
     padding: 0px 5px;
     border: none;
     box-sizing: border-box;
+    padding-left: 2vw;
 }
 
 #searchWindow #searchField:focus {
@@ -29,6 +30,8 @@
     right: 10px;
     height: 20px;
     cursor: pointer;
+    z-index: 3;
+    filter: invert(71%) sepia(5%) saturate(75%) hue-rotate(201deg) brightness(94%) contrast(89%);
 }
 
 .userInformation {
@@ -41,7 +44,6 @@
     padding: 0;
     overflow: scroll;
     overflow-x: none;
-    padding-right: 10px;
 }
 
 #searchWindow ul li {
@@ -194,6 +196,7 @@
     width: 25px;
     background-color: rgba(0, 0, 0, 0);
     border: none;
+    filter: invert(71%) sepia(5%) saturate(75%) hue-rotate(201deg) brightness(94%) contrast(89%);
 
     z-index: 10;
 }

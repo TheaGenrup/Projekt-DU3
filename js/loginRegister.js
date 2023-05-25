@@ -100,7 +100,6 @@ async function fetchLogin(username, password, access, loginKey) {
         return
     }
     const resource = await response.json();
-    console.log(resource);
     return resource
 }
 
@@ -108,7 +107,7 @@ function loginUser(userData) {
 
     localStorage.setItem("logInKey", userData.loginKey);
     localStorage.setItem("userId", userData.userIdentity.id);
-    const profilePicture = userData.userIdentity.profilePic;
+    const profilePicture = userData.userIdentity.profilePicture;
 
     renderLoggedInView(profilePicture);
     renderProfileView(localStorage.getItem("userId"));

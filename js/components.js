@@ -3,7 +3,6 @@
 function renderLoginPage() {
     localStorage.clear();
     const html = `
-    <div>TEST</div>
     <main id="mainContainer">
         <div id="limitWrapper">
             <div id="loginAndRegisterPageContainer">
