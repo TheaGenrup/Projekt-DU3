@@ -313,11 +313,11 @@ function toggleSearchIcon(params) {
     const input = document.querySelector("#searchField");
     if (!searchNavigator) { return };
     if (input.value === "") {
-        searchNavigator.src = "/media/icons/Search.png"
+        searchNavigator.src = "/ht22/dig_cave/Laulu/media/icons/search.svg"
     } else {
-        searchNavigator.src = "/media/icons/close_0.png"
+        searchNavigator.src = "/ht22/dig_cave/Laulu//media/icons/close_0.png"
         searchNavigator.addEventListener("click", () => {
-            searchNavigator.src = "/media/icons/Search.png"
+            searchNavigator.src = "/ht22/dig_cave/Laulu//media/icons/search.svg"
             input.value = "";
             clearSearch();
         })
