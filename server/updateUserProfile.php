@@ -58,6 +58,7 @@ if ($requestMethod == "PATCH") {
     $userId = $data["userId"];
     if (!isset($data["userId"])) {    $response = ["message"=>"Id needed"];    sendJson($response, 405);    }
     if (!isset($data["newDisplayName"])) { $response = ["message"=>"missing new name input"];    sendJson($response, 400);}
+    if (str_contains($data["newDisplayName"], " ")) { $response = ["message"=>"Cannot include spaces :("];    sendJson($response, 400);}
 
 
     $newDisplayName = $data["newDisplayName"];
