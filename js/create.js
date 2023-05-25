@@ -73,10 +73,10 @@ function renderCreateBoard() {
         if (!input) {
             createButton.classList.add("disabled");
             createButton.removeEventListener("click", addBoard);
-            return
+            return;
         }
         createButton.classList.remove("disabled");
-        createButton.addEventListener("click", addBoard)
+        createButton.addEventListener("click", addBoard);
 
     })
     function addBoard(e) {
@@ -95,10 +95,10 @@ async function renderCreateReview(albumData) {
     const userData = await response.json();
     const usersBoards = userData.albumData.boards;
 
-    const artistName = albumData.artistName
-    const albumName = albumData.albumName
-    const albumCover = albumData.albumCover
-    const albumId = albumData.albumId
+    const artistName = albumData.artistName;
+    const albumName = albumData.albumName;
+    const albumCover = albumData.albumCover;
+    const albumId = albumData.albumId;
 
     const createContainer = document.querySelector("#createContainer");
     let html =
@@ -156,8 +156,8 @@ async function renderCreateReview(albumData) {
     // Prevent default for submitting forms
     createButton.addEventListener("click", (e) => { e.preventDefault() });
     backButton.addEventListener("click", (e) => { e.preventDefault() });
-    backButton.addEventListener("click", renderCreateReviewView)
-    createButton.addEventListener("click", addReview)
+    backButton.addEventListener("click", renderCreateReviewView);
+    createButton.addEventListener("click", addReview);
     //Add boards to list of options
     usersBoards.forEach(board => {
         const optionDom = document.createElement("div");
@@ -226,8 +226,8 @@ async function renderCreateReview(albumData) {
     });
 
     function addReview() {
-        const rating = document.querySelectorAll(".chosen").length
-        const reviewDescription = document.querySelector("#reviewDescription").value
+        const rating = document.querySelectorAll(".chosen").length;
+        const reviewDescription = document.querySelector("#reviewDescription").value;
         const boardId = parseInt(document.querySelector("#customSelect").dataset.boardId);
         const reviewObject = {
             rating: rating,
@@ -238,7 +238,7 @@ async function renderCreateReview(albumData) {
             albumCover: albumCover,
             albumId: albumId,
             userId: userId,
-        }
+        };
         addBoardOrReview(reviewObject);
 
     }

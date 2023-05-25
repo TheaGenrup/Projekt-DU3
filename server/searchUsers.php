@@ -22,7 +22,7 @@ foreach ($userData as $key => $user) {
 
     if (strstr($displayNameLowerCase, $inputLowerCase) == true) {
         $id = $user["userIdentity"]["id"];
-        $profilePicture = $user["userIdentity"]["profilePic"];
+        $profilePicture = $user["userIdentity"]["profilePicture"];
         $userObject = [
             "displayName" => $displayName,
             "id" => $id,

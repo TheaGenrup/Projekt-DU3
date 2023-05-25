@@ -108,7 +108,7 @@ if (isset($data["username"], $data["password"], $data["displayName"])) {
                 ];
                 sendJSON($response, 400);
             }
-            if (!mkdir("/ht22/dig_cave/Laulu/media/usersMedia/$id/boards", 0777, true)) {
+            if (!mkdir("../media/usersMedia/$id/boards", 0777, true)) {
                 $response = [
                     "message" => "failed to register",
                     "error" => "User boards"
