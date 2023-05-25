@@ -4,6 +4,9 @@
 
 #reviewDescription {
     font-style: italic;
+}
+
+.overlayReview>p:nth-child(8) {
     margin-top: 2vh;
 }
 
@@ -75,8 +78,9 @@ button.savedButton {
 
 #otherReviewsHead {
     font-size: 2.7vh;
-    margin-top: 5vh;
+    margin-top: 4vh;
     margin-bottom: 20px;
+    border-bottom: #243439 solid 1px;
 }
 
 #otherReviewsContainer {
@@ -86,14 +90,6 @@ button.savedButton {
 
 .stars {
     margin-bottom: 2vh;
-}
-
-.star .starExpanded {
-    height: 4vh;
-    width: 4vh;
-    background-position: center;
-    background-size: cover;
-    background-image: url(../media/icons/empty_star.png);
 }
 
 .star {
@@ -122,4 +118,8 @@ button.savedButton {
 
 #starsOtherReviews .stars {
     margin: 0;
+}
+
+.previousReviewsContainer>p:nth-child(1) {
+    text-align: center;
 }

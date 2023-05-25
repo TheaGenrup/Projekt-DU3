@@ -44,7 +44,7 @@ function makeReview(review, container, inProfile) {
     newReview.classList.add("review");
     newReview.innerHTML = `
      
-        <p id="who" class="bold">@${review.displayName}</p>
+        <p id="who" class="bold">${review.displayName}</p>
         <p id="when">${timeConverter(review.timestamp)}</p>
         <div id="albumOverview">
             <div class="albumCover"></div>

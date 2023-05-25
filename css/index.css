@@ -184,7 +184,7 @@ nav * {
     height: 92%;
     width: 100%;
     box-sizing: border-box;
-    padding: 5vw;
+    padding: 7vw;
     overflow-x: scroll;
     z-index: 30;
     background-image: linear-gradient(#e6dada, #274046);
@@ -365,9 +365,10 @@ nav * {
     font-size: 8vw;
 
     width: 100vw;
-    height: 25%;
+    height: 23%;
 
-    background-color: rgb(58, 61, 64);
+    background-color: #ffffffd9;
+    color: #274046;
     border-radius: 10px 10px 0px 0px;
 
     animation: popUp 1.5s;

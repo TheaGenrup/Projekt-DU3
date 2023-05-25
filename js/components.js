@@ -417,7 +417,7 @@ async function expandReview(event) {
                 
                 <div id="closeReview" class="pointer"></div>
                 <p id="timestampExpanded"><span>${timeConverter(review.timestamp)}</span></p>
-                <p id="displayNameExpanded"><span class="bold pointer">@${review.displayName}</span> reviewed</p>
+                <p id="displayNameExpanded"><span class="bold pointer">${review.displayName}</span> reviewed</p>
                 <p id="albumNameExpanded">${review.albumName}</p>
                 <p id="artistExpanded">${review.artist}</p>
                 <div class="stars">
@@ -445,7 +445,7 @@ async function expandReview(event) {
             document.querySelector("#displayNameExpanded").dataset.userId = review.userId;
             overlayContainer.querySelector("#reviewDescription").innerHTML = reviewWithLineBreaks;
 
-            document.querySelector(`#displayNameExpanded`).addEventListener("click", () => {
+            overlayContainer.querySelector(`#displayNameExpanded`).addEventListener("click", () => {
                 renderProfileView(clickedUserId);
             });
             overlayContainer.querySelector(`#closeReview`).addEventListener("click", (e) => {
@@ -503,7 +503,7 @@ async function expandReview(event) {
                             <div id="userInfo">
                                 <div id="profilePictureInReview"></div>
                                 <div>
-                                    <p id="who" class="bold">@${review.displayName}</p>
+                                    <p id="who" class="bold">${review.displayName}</p>
                                     <p id="when">${timeConverter(review.timestamp)}</p>
                                 </div>
                             </div>
