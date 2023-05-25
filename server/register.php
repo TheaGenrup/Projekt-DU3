@@ -27,7 +27,7 @@ if (isset($data["username"], $data["password"], $data["displayName"])) {
             $error = ["message" => "Please leave no field empty <3"];
             sendJSON($error, 400);
         }
-        if (str_contains($sentUsername, " ") || str_contains($sentPassword, " ") || str_contains($sentDisplayName, " ")) {
+        if (strstr($sentUsername, " ") || strstr($sentPassword, " ") || strstr($sentDisplayName, " ")) {
             $error = ["message" => "Inputs may not contain spaces"];
             sendJSON($error, 400);
         }

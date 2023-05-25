@@ -20,7 +20,7 @@ foreach ($userData as $key => $user) {
     $displayNameLowerCase = strtolower($displayName);
     $inputLowerCase = strtolower($input);
 
-    if (str_contains($displayNameLowerCase, $inputLowerCase) == true) {
+    if (strstr($displayNameLowerCase, $inputLowerCase) == true) {
         $id = $user["userIdentity"]["id"];
         $profilePicture = $user["userIdentity"]["profilePic"];
         $userObject = [
