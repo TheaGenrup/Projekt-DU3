@@ -166,7 +166,6 @@ async function renderCreateReviewView(album) {
     `;
     // <input type="text" placeholder="Album, Artist" id="searchField">   
     contentContainer.innerHTML = html;
-    createContainer = contentContainer.querySelector("#createContainer");
     const createBoardDom = contentContainer.querySelector("#createBoard");
     const createReviewDom = contentContainer.querySelector("#createReview");
     // If album chosen then render create a new review section;
@@ -178,60 +177,6 @@ async function renderCreateReviewView(album) {
     };
     // Render create a new board section; Flytta till functions? men det är samtidigt en egen component
     createBoardDom.addEventListener("click", renderCreateBoard)
-    function renderCreateBoard() {
-        html =
-            `
-        <form id="uploadWrapper" data-type="board">
-            <div id="imageUploaderContainer">
-                <img id="imagePreview" src=""></img>
-                <input type="file" id="imageUploader" accept="image/*" name="imageInput">
-            </div>
-            <input type="text" id="searchField" name="nameInput" placeholder="Choose name for your board" autocomplete="off">
-            <input name="userId" style="display:none" value="${userId}">
-        </form>
-        <div id="buttonContainer">
-            <button id="goBackButton" class="navigationButton">Go back</button>
-            <button for="uploadWrapper" id="createButton" class="navigationButton disabled">Create</button>
-        </div>
-        `;
-        createContainer.innerHTML = html;
-        createContainer.classList.add("board");
-        // consts
-        const imageUploader = createContainer.querySelector("#imageUploader");
-        const imagePreview = createContainer.querySelector("#imagePreview");
-        const boardNameInput = createContainer.querySelector("#searchField");
-        const backButton = createContainer.querySelector("#goBackButton");
-        const createButton = createContainer.querySelector("#createButton");
-        createButton.addEventListener("click", (e) => { e.preventDefault() });
-        backButton.addEventListener("click", (e) => { e.preventDefault() });
-        // Show image preview
-        imageUploader.onchange = evt => {
-            const [file] = imageUploader.files;
-            if (file) {
-                imagePreview.classList.add("imageUploaded");
-                imagePreview.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
-            }
-        };
-        // allow create if inputfield is not empy
-        boardNameInput.addEventListener("keyup", (e) => {
-            const input = e.target.value;
-            if (!input) {
-                createButton.classList.add("disabled");
-                createButton.removeEventListener("click", addBoard);
-                return
-            }
-            createButton.classList.remove("disabled");
-            createButton.addEventListener("click", addBoard)
-
-        })
-        function addBoard(e) {
-            e.preventDefault();
-            const formWrapper = createContainer.querySelector("form");
-            const formData = new FormData(formWrapper);
-            addBoardOrReview(formData);
-        }
-        backButton.addEventListener("click", renderCreateReviewView);
-    }
 };
 
 function renderProfileView(userId) {
@@ -310,8 +255,10 @@ function renderProfileView(userId) {
                     document.querySelector("#profileIconsOrFollowButton").innerHTML = `
                     <button id="followButton">Follow</button>`;
                 }
+                document.querySelector("#profileIconsOrFollowButton").innerHTML += `
+                <div id="boardIcon" class="headerIcon"></div>`;
 
-                document.querySelector("#profileIconsOrFollowButton").addEventListener("click", (e) => {
+                document.querySelector("#followButton").addEventListener("click", (e) => {
                     followUnfollow(user, e.target);
                 });
             } else {
@@ -331,7 +278,7 @@ function renderProfileView(userId) {
                 document.querySelector("#logOutBtn").addEventListener("click", e => {
                     renderLoginPage();
                 })
-                document.querySelector("#bookmarkIcon").addEventListener("click", (e) => showFavourites);
+                // document.querySelector("#bookmarkIcon").addEventListener("click", (e) => showFavourites);
                 document.querySelector("#bookmarkIcon").addEventListener("click", showFavourites);
                 const editAccountBtn = document.querySelector("#editAccountBtn");
                 editAccountBtn.addEventListener("click", editAccount);
@@ -346,12 +293,10 @@ function renderProfileView(userId) {
                 function openCloseSettings(e) { document.querySelector("#dropdownContent").classList.toggle("closed") };
 
                 document.querySelector("#boardIcon").dataset.userId = clickedUserId;
-
-                document.querySelector("#boardIcon").addEventListener("click", () => {
-                    renderProfileView(clickedUserId);
-                });
-
             }
+            document.querySelector("#boardIcon").addEventListener("click", () => {
+                renderProfileView(clickedUserId);
+            });
 
             // add boards
             const boards = user.albumData.boards;

@@ -4,9 +4,10 @@
             "username": "test",
             "password": "test"
         },
-        "loginKey": "Di6HBftsDTYif1CyZO1Dgm2jd",
+        "loginKey": "uGV9likRXlRO3sivIpYWDs6oS",
         "userSocial": {
             "following": [
+                "314088336379485626338627095800",
                 "569541764829191085726368161431"
             ],
             "followers": [
@@ -31,7 +32,8 @@
                         4,
                         5,
                         7,
-                        6
+                        6,
+                        11
                     ],
                     "thumbnail": "1684775537.jpeg"
                 },
@@ -228,6 +230,12 @@
                     "boardId": 9,
                     "reviews": [],
                     "thumbnail": ""
+                },
+                {
+                    "boardName": "tte",
+                    "boardId": 10,
+                    "reviews": [],
+                    "thumbnail": "1685001754jpg"
                 }
             ],
             "reviews": [
@@ -373,9 +381,31 @@
                     ],
                     "timestamp": 1684999811,
                     "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e020f45623be014a592a5815827"
+                },
+                {
+                    "albumName": "Take Care (Deluxe)",
+                    "artist": "Drake",
+                    "albumId": "6X1x82kppWZmDzlXXK3y3q",
+                    "reviewId": 11,
+                    "reviewDescription": "test",
+                    "rating": 1,
+                    "boards": [
+                        0
+                    ],
+                    "timestamp": 1685001822,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02c7ea04a9b455e3f68ef82550"
                 }
             ],
-            "favourites": []
+            "favourites": [
+                {
+                    "albumName": "Endless Summer Vacation",
+                    "artist": "Miley Cyrus",
+                    "albumId": "0HiZ8fNXwJOQcrf5iflrdz",
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e0258039b5147731b6e52202e46",
+                    "favouriteId": 0,
+                    "timestamp": 1685002229
+                }
+            ]
         }
     },
     {
@@ -388,7 +418,9 @@
             "following": [
                 "071897782377104435133843971347"
             ],
-            "followers": []
+            "followers": [
+                "071897782377104435133843971347"
+            ]
         },
         "userIdentity": {
             "id": "314088336379485626338627095800",
