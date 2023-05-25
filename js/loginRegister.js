@@ -69,6 +69,11 @@ async function attemptLogin(username, password, access, loginKey) {
     }
     if (loginKey) {
         const userData = await fetchLogin(username, password, access, loginKey);
+        if (userData === undefined) {
+            localStorage.clear();
+            renderLoginPage();
+            return
+        }
         if (!userData.userId) { renderLoginPage };
 
         loginUser(userData);
@@ -89,7 +94,13 @@ async function fetchLogin(username, password, access, loginKey) {
         })
     }
     const response = await fetch(request, data);
+    if (response.status === 404) {
+        localStorage.clear();
+        renderLoginPage();
+        return
+    }
     const resource = await response.json();
+    console.log(resource);
     return resource
 }
 
