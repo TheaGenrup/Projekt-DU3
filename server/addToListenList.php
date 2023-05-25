@@ -1,5 +1,10 @@
 <?php
 require_once("functions.php");
+//  Check if content type is application/json
+$contentType = $_SERVER["CONTENT_TYPE"];
+if ($contentType != "application/json") {
+    sendJSON(["message" => "invalid Content-Type, $contentType"], 415);
+}
 
 $json = file_get_contents("php://input");
 $data = json_decode($json, true);

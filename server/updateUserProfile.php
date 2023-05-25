@@ -2,6 +2,10 @@
 require_once("functions.php");
 $requestMethod = $_SERVER["REQUEST_METHOD"];
 // Update users display name
+if ($requestMethod != "POST" && $requestMethod != "PATCH") {
+    $error = ["message" => "Invalid method"];
+    sendJSON($error, 405);
+}
 
 if ($requestMethod == "POST") {
     if (isset($_FILES["imageInput"]) && $_FILES["imageInput"]["tmp_name"] != "") {

@@ -12,7 +12,7 @@ async function editAccount(e) {
         <form id="uploadWrapper">
             <div id="imageUploaderContainer">
                 <img id="imagePreview" src=""></img>
-                <input type="file" id="imageUploader" accept="image/jpeg" name="imageInput">
+                <input type="file" id="imageUploader" accept="image/*" name="imageInput">
                 <input name="userId" style="display:none" value="${userId}">
             </div>
             <div id="displayNameContainer">
@@ -93,33 +93,6 @@ async function editAccount(e) {
             const responseMessage = await response.json();
             sendResponseMessage(responseMessage.message, response.status);
         }
-        /*
-        if (displayNameInput.value) {
-            if (displayNameInput.value === user.userIdentity.displayName) {    sendMessageToUser(document.querySelector("label"), "that's already your name you ear of a bat");   return};
-            if (displayNameInput.value.length > 25) {    sendMessageToUser(document.querySelector("label"), "Display name too long king :/");   return};
-            const request = new Request("/server/updateUserProfile.php", {
-                headers: {"Content-type": "application/json"},
-                method: "PATCH",
-                body: JSON.stringify({
-                    id: userId,
-                    newDisplayName: displayNameInput.value
-                })
-            })
-
-            fetch(request)
-                .then(r=>{
-                    console.log(r);
-                    return r.json()
-                })
-                .then(r=>{
-                    sendMessageToUser(document.querySelector("label"), r.message)
-                })
-
-
-
-
-        }
-        */
     }
 }
 

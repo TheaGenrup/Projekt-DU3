@@ -2,6 +2,7 @@
 ini_set("display_errors", 1);
 require_once("functions.php");
 // Check if uploaded data is the type of review or board
+
 if ($_POST) {
     // Check if input for board name was sent
     if (!isset($_POST["nameInput"]) && !isset($_POST["userId"])) {

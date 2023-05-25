@@ -12,7 +12,7 @@ if ($requestMethod != "POST") {
 //  Check if content type is application/json
 $contentType = $_SERVER["CONTENT_TYPE"];
 if ($contentType != "application/json") {
-    sendJSON(["message" => "invalid Content-Type, $contentType"], 406);
+    sendJSON(["message" => "invalid Content-Type"], 415);
 }
 
 // User login input
