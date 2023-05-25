@@ -15,14 +15,14 @@ if ($requestMethod == "POST") {
         foreach ($userData as $key => $user) {
             if ($user["userIdentity"]["id"] === $userId) {
                 if ($_FILES["imageInput"]["size"] > 2000000) {
-                    $response = ["message" => "Photo size too large king"];
+                    $response = ["message" => "Image size too large"];
                     sendJSON($response, 400);
                 }
                 $path_parts = pathinfo($_FILES["imageInput"]["name"]);
                 $ext = $path_parts["extension"];
     
                 if (!in_array($ext, ["jpg", "png", "jpeg"])){
-                    sendJSON(["message" => "File type not allowed :/"]);
+                    sendJSON(["message" => "File type not allowed"], 400);
                 }
                 $source = $_FILES["imageInput"]["tmp_name"];
                 $imageType = $_FILES["imageInput"]["type"];
@@ -56,8 +56,8 @@ if ($requestMethod == "PATCH") {
     $json = file_get_contents("php://input");
     $data = json_decode($json, true);
     $userId = $data["userId"];
-    if (!isset($data["userId"])) {    $response = ["message"=>"Id needed"];    sendJson($response, 405);    }
-    if (!isset($data["newDisplayName"])) { $response = ["message"=>"missing new name input"];    sendJson($response, 400);}
+    if (!isset($data["userId"])) {    $response = ["message"=> "Id needed"];    sendJson($response, 405);    }
+    if (!isset($data["newDisplayName"])) { $response = ["message"=> "Missing new display name input"];    sendJson($response, 400);}
 
 
     $newDisplayName = $data["newDisplayName"];
@@ -65,11 +65,14 @@ if ($requestMethod == "PATCH") {
 
     foreach ($userData as $key => $user) {
         if ($user["userIdentity"]["id"] === $userId) {
-            if ($user["userIdentity"]["displayName"] == $newDisplayName) {    $response = ["message" => "Display already in use!"];    sendJson($response, 200);    };
+            if ($user["userIdentity"]["displayName"] == $newDisplayName) {    
+                $response = ["message" => "Display name already in use!"];    
+                sendJson($response, 400);    
+            };
                 $userData[$key]["userIdentity"]["displayName"] = $newDisplayName;
                 saveFileData("users.json", $userData);
                 $response = ["message" => "Profile updated"];
-                sendJson($response, 202);
+                sendJson($response, 200);
         }
     }
 
