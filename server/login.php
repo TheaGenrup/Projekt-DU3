@@ -70,5 +70,6 @@ if (isset($data["loginTokenKey"]) && isset($data["access"])) {
             sendJSON($foundUser, 200);
         }
     }
+    sendJSON(["message" => "Error, login failed"], 404);
 }
 ?>
