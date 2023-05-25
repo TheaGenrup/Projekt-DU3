@@ -426,7 +426,7 @@
         "userIdentity": {
             "id": "314088336379485626338627095800",
             "profilePic": "",
-            "displayName": "test2"
+            "displayName": "Anders567"
         },
         "albumData": {
             "boards": [
@@ -479,10 +479,11 @@
             "username": "thea",
             "password": "thea"
         },
-        "loginKey": "Smff5mYrts9uFtn6OgIi41ObP",
+        "loginKey": "UybNRwNsueLcSuoOGWPLGk7Ba",
         "userSocial": {
             "following": [
-                "071897782377104435133843971347"
+                "071897782377104435133843971347",
+                "407241801844936907921103259541"
             ],
             "followers": [
                 "071897782377104435133843971347"
@@ -490,47 +491,53 @@
         },
         "userIdentity": {
             "id": "569541764829191085726368161431",
-            "profilePic": "",
+            "profilePic": "theajpg",
             "displayName": "Thea"
         },
         "albumData": {
             "boards": [
                 {
-                    "boardName": "tgho",
-                    "boardId": 0,
+                    "boardName": "Favourites",
+                    "boardId": 1,
                     "reviews": [
-                        0,
-                        1
+                        2,
+                        3
                     ],
-                    "thumbnail": "1684852241.jpeg"
+                    "thumbnail": ""
+                },
+                {
+                    "boardName": "La souffleuse",
+                    "boardId": 2,
+                    "reviews": [],
+                    "thumbnail": ""
                 }
             ],
             "reviews": [
                 {
-                    "albumName": "Cats",
-                    "artist": "The Living Tombstone",
-                    "albumId": "4rFIBNrUsjzH7ZefMRj6ml",
-                    "reviewId": 0,
-                    "reviewDescription": "cuijk",
+                    "albumName": "To Let A Good Thing Die",
+                    "artist": "Bruno Major",
+                    "albumId": "4NWvFq8Cst2Y5iHOouXtMz",
+                    "reviewId": 2,
+                    "reviewDescription": "Very nice. Just the vibe I want ",
                     "rating": 4,
                     "boards": [
-                        0
+                        1
                     ],
-                    "timestamp": 1684911879,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02ababb065e92613028d0e27ea"
+                    "timestamp": 1685017664,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02e321a69d7454d9365c667187"
                 },
                 {
-                    "albumName": "TESTING",
-                    "artist": "A$AP Rocky",
-                    "albumId": "3MATDdrpHmQCmuOcozZjDa",
-                    "reviewId": 1,
-                    "reviewDescription": "giol",
-                    "rating": 4,
+                    "albumName": "Ma Fleur",
+                    "artist": "The Cinematic Orchestra",
+                    "albumId": "5VrMypyjjBGzObGwnEHIJO",
+                    "reviewId": 3,
+                    "reviewDescription": "Yes",
+                    "rating": 5,
                     "boards": [
-                        0
+                        1
                     ],
-                    "timestamp": 1684911903,
-                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e029feadc48ab0661e9b3a9170b"
+                    "timestamp": 1685017735,
+                    "albumCover": "https:\/\/i.scdn.co\/image\/ab67616d00001e02bc4f2af489b7fca6cb18e933"
                 }
             ],
             "favourites": []
@@ -539,19 +546,41 @@
     {
         "userCredentials": {
             "username": "test6",
-            "password": "yesy6"
+            "password": "test6"
         },
         "loginKey": "",
         "userSocial": {
             "following": [],
             "followers": [
-                "071897782377104435133843971347"
+                "071897782377104435133843971347",
+                "569541764829191085726368161431"
             ]
         },
         "userIdentity": {
             "id": "407241801844936907921103259541",
             "profilePic": "",
-            "displayName": "test6"
+            "displayName": "iloveelvis563"
+        },
+        "albumData": {
+            "boards": [],
+            "reviews": [],
+            "favourites": []
+        }
+    },
+    {
+        "userCredentials": {
+            "username": "YellowSnowman",
+            "password": "YellowSnowman"
+        },
+        "loginKey": "XlFljNSSpubQY6diHZqH24CGG",
+        "userSocial": {
+            "following": [],
+            "followers": []
+        },
+        "userIdentity": {
+            "id": "196057934671897709263336440840",
+            "profilePic": "",
+            "displayName": "YellowSnowman"
         },
         "albumData": {
             "boards": [],

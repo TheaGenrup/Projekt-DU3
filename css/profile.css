@@ -7,6 +7,14 @@
     box-sizing: border-box;
     padding: 2vw;
     color: #27373c;
+    font-size: 4vw;
+}
+
+#profileHeader>div:nth-child(1) {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 #headerRightContainer {
@@ -71,6 +79,7 @@
     display: flex;
     gap: 3vw;
     justify-content: center;
+    align-items: center;
     padding-top: 2vh;
     border-top: #313131 solid 1px;
 }
@@ -283,7 +292,7 @@ p {
     font-size: 30px;
     margin: 3vh 0 2vh 0;
     color: #27373c;
-    font-family: "ralewayMedium";
+    font-family: "raleway";
 }
 
 .deleteBtn {
