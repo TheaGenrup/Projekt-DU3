@@ -34,8 +34,8 @@ function renderLoginPage() {
     const loginRegisterbtn = document.querySelector("#loginRegisterBtn");
     switchBtn.addEventListener("click", switchLoginRegsiter);
     loginRegisterbtn.addEventListener("click", loginRegister)
-    document.querySelector("#css1").setAttribute("href", "/css/registerLogin.css");
-    document.querySelector("#css2").setAttribute("href", "/css/loggedInBasicLayout.css");
+    document.querySelector("#css1").setAttribute("href", "/ht22/dig_cave/Laulu/css/registerLogin.css");
+    document.querySelector("#css2").setAttribute("href", "../css/loggedInBasicLayout.css");
     return
 }
 // Render Logged in view
