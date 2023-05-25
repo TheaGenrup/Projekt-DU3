@@ -22,7 +22,7 @@ if ($_FILES) {
 
         if (isset($_FILES["imageInput"]) && $_FILES["imageInput"]["tmp_name"] != "") {
             if ($_FILES["imageInput"]["size"] > 2000000) {
-                $response = ["message" => "Photo size too large king"];
+                $response = ["message" => "Image size too large"];
                 sendJSON($response, 200);
             }
             $source = $_FILES["imageInput"]["tmp_name"];
