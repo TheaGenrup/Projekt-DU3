@@ -7,7 +7,6 @@ async function addBoardOrReview(bodyData) {
     if (uploadWrapper.dataset.type === "review") {
 
         const request = new Request("/server/addBoardOrReview.php", {
-            header: "Content-Type: application/json",
             method: "POST",
             body: JSON.stringify(bodyData),
         });
@@ -20,7 +19,6 @@ async function addBoardOrReview(bodyData) {
 
     if (uploadWrapper.dataset.type === "board") {
         const request = new Request("/server/addBoardOrReview.php", {
-            header: "Content-Type: application/json",
             method: "POST",
             body: bodyData,
         });
@@ -61,6 +59,8 @@ function renderCreateBoard() {
     backButton.addEventListener("click", (e) => { e.preventDefault() });
     // Show image preview
     imageUploader.onchange = evt => {
+        // Hämta filen från bild input, 
+        // bilden finns som en nyckel "files"
         const [file] = imageUploader.files;
         if (file) {
             imagePreview.classList.add("imageUploaded");
@@ -238,7 +238,6 @@ async function renderCreateReview(albumData) {
             albumCover: albumCover,
             albumId: albumId,
             userId: userId,
-            review: "review"
         }
         addBoardOrReview(reviewObject);
 
