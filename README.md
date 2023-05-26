@@ -1,3 +1,3 @@
 # Projekt-DU3
 
-album rater app
+Album rating app
