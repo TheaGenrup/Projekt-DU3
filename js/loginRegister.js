@@ -82,7 +82,7 @@ async function attemptLogin(username, password, access, loginKey) {
 }
 
 async function fetchLogin(username, password, access, loginKey) {
-    const request = new Request(`/ht22/dig_cave/Laulu/server/login.php`);
+    const request = new Request(`../server/login.php`);
     const data = {
         headers: { "Content-type": "application/json" },
         method: "POST",
@@ -115,7 +115,7 @@ function loginUser(userData) {
 
 // Register Section
 function registerUser(username, password, displayname) {
-    const request = new Request(`/ht22/dig_cave/Laulu/server/register.php`);
+    const request = new Request(`../server/register.php`);
     const data = {
         headers: { "Content-type": "application/json" },
         method: "POST",
