@@ -217,11 +217,11 @@ async function displayAlbum(albumData) {
     const resource = await response.json();
     if (resource.reviews) {
         const averageRating = resource.averageRating;
-        const totalReviews = resource.totalReviews;
+        const totalReviews = resource;
         const reviews = resource.reviews;
         reviews.sort((a, b) => b.timestamp - a.timestamp);
         averageRatingPDom.textContent = `${averageRating}/5`;
-        totalReviewsPDom.textContent = `Total reviews: ${totalReviews}`;
+        totalReviewsPDom.textContent = `Total reviews: ${review.length}`;
         if (reviews.length > 0) {
             reviews.forEach(review => {
                 makeReview(review, "#reviewsContainer")

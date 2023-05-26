@@ -40,9 +40,9 @@ async function editAccount(e) {
     })
 
     if (user.userIdentity.profilePicture === "") {
-        imagePreview.style.backgroundImage = `url(../media/defaultProfilePicture.png)`;
+        imagePreview.style.backgroundImage = `url(../Laulu/media/defaultProfilePicture.png)`;
     } else {
-        imagePreview.style.backgroundImage = `url(../media/usersMedia/${userId}/${usersCurrentProfielPicture})`;
+        imagePreview.style.backgroundImage = `url(../Laulu/media/usersMedia/${userId}/${usersCurrentProfielPicture})`;
     }
     imageUploader.onchange = evt => {
         const [file] = imageUploader.files;

@@ -39,7 +39,7 @@ function renderCreateBoard() {
             <img id="imagePreview" src=""></img>
             <input type="file" id="imageUploader" accept="image/*" name="imageInput">
         </div>
-        <input type="text" id="searchField" name="nameInput" placeholder="Choose name for your board" autocomplete="off">
+        <input type="text" id="searchField" name="nameInput" placeholder="Choose a name for your board" autocomplete="off">
         <input name="userId" style="display:none" value="${localStorage.getItem("userId")}">
     </form>
     <div id="buttonContainer">

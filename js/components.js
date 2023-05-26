@@ -171,11 +171,9 @@ async function renderCreateReviewView(album) {
     if (album) { if (album.reviewDirectly) { renderCreateReview(album) } }
     // Check if user have a board to which to add reviews to else they must first create a board
     if (usersBoards.length > 0) {
-        createReviewDom.style.backgroundColor = "#7171716b";
         createReviewDom.classList.remove("disabled");
         createReviewDom.addEventListener("click", renderSearchView);
-
-    };
+    } else { createReviewDom.style.backgroundColor = "#7171716b"; };
     // Render create a new board section; Flytta till functions? men det är samtidigt en egen component
     createBoardDom.addEventListener("click", renderCreateBoard);
 };

@@ -88,6 +88,7 @@
 
 /* Results window */
 #resultsWindow {
+    position: relative;
     display: none;
     flex-direction: column;
     height: 100%;
@@ -151,9 +152,10 @@
 
 }
 
-#resultsWindow #albumInfo #averageRatingContainer p {
-    margin: 0px;
-}
+#averageRating {
+    margin-top: 2vh;
+   }
+   
 
 #resultsWindow #albumInfo #averageRatingContainer #totalReviews {
     position: absolute;
@@ -174,10 +176,10 @@
 #resultsWindow #reviewButton {
     width: 100%;
     min-height: 10vw;
-    margin-bottom: 2vw;
-    border: 1.5px solid #00000091;
-    color: #6e797b;
+    margin: 3vw 0;
+    color: #555e60;
     border: none;
+    background-color: #a8acae;
 }
 
 #resultsWindow #reviewButton :hover {
@@ -187,7 +189,7 @@
 #resultsWindow>div:nth-child(5) {
     text-align: center;
     font-size: 2.5vh;
-    margin: 1vh 0;
+    margin: 2vh 0;
 }
 
 #resultsWindow #closeResultsButton {
@@ -203,6 +205,7 @@
     filter: invert(71%) sepia(5%) saturate(75%) hue-rotate(201deg) brightness(94%) contrast(89%);
 
     z-index: 10;
+    right: 2vw;
 }
 
 #resultsWindow #reviewsContainer {
@@ -216,10 +219,6 @@
     padding: 0px;
 
     gap: 10px;
-}
-
-#resultsWindow #reviewsContainer .review {
-    font-size: 2.4vw;
 }
 
 #resultsWindow #reviewsContainer .review p {

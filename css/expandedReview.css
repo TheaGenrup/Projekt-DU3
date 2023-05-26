@@ -5,6 +5,7 @@
 #reviewDescription {
     font-style: italic;
     word-wrap: break-word;
+    width: 100%;
 }
 
 .overlayReview>p:nth-child(8) {

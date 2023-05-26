@@ -14,7 +14,7 @@ if ($requestMethod == "POST") {
 
         foreach ($userData as $key => $user) {
             if ($user["userIdentity"]["id"] === $userId) {
-                if ($_FILES["imageInput"]["size"] > 2000000) {
+                if ($_FILES["imageInput"]["size"] > 4000000) {
                     $response = ["message" => "Image size too large"];
                     sendJSON($response, 400);
                 }
