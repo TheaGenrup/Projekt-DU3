@@ -113,11 +113,16 @@ body {
     color: rgba(83, 83, 83, 0.9);
     border: none;
     margin-bottom: 25px;
+    font-size: 2vh;
 }
 
 #loginAndRegisterForm input:focus {
     outline: none;
     box-shadow: 0px 0px 15px 0px rgba(170, 170, 170, 0.75);
+}
+
+#loginRegisterButton{
+    font-size: 2vh;
 }
 
 #loginRegisterSwitch {

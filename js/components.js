@@ -33,8 +33,8 @@ function renderLoginPage() {
     const loginRegisterbtn = document.querySelector("#loginRegisterBtn");
     switchBtn.addEventListener("click", switchLoginRegsiter);
     loginRegisterbtn.addEventListener("click", loginRegister)
-    document.querySelector("#css1").setAttribute("href", "../css/registerLogin.css");
-    document.querySelector("#css2").setAttribute("href", "../css/loggedInBasicLayout.css");
+    document.querySelector("#css1").setAttribute("href", "../Laulu/css/registerLogin.css");
+    document.querySelector("#css2").setAttribute("href", "../Laulu/css/loggedInBasicLayout.css");
     return;
 }
 // Render Logged in view
@@ -55,10 +55,10 @@ function renderLoggedInView(profilePicture) {
 
     if (profilePicture === "" || profilePicture === undefined || profilePicture === null) {
 
-        document.querySelector(`#profilePicture`).style.backgroundImage = `url(../media/defaultProfilePicture.png)`;
+        document.querySelector(`#profilePicture`).style.backgroundImage = `url(../Laulu/media/defaultProfilePicture.png)`;
     } else {
 
-        document.querySelector(`#profilePicture`).style.backgroundImage = `url(../media/usersMedia/${localStorage.userId}/${profilePicture})`;
+        document.querySelector(`#profilePicture`).style.backgroundImage = `url(../Laulu//media/usersMedia/${localStorage.userId}/${profilePicture})`;
     }
 
 
@@ -82,11 +82,11 @@ async function renderDiscoverView() {
     const userId = localStorage.getItem("userId");
 
     // switch css files
-    document.querySelector("#css1").setAttribute("href", "../css/loggedInBasicLayout.css");
-    document.querySelector("#css2").setAttribute("href", "../css/discover.css");
+    document.querySelector("#css1").setAttribute("href", "../Laulu/css/loggedInBasicLayout.css");
+    document.querySelector("#css2").setAttribute("href", "../Laulu/css/discover.css");
     startLoadingScreen(document.querySelector("main"));
     // fetch logged in user to get following ids
-    const responseUser = await fetch(new Request(`../server/getUser.php/?id=${userId}`));
+    const responseUser = await fetch(new Request(`../Laulu/server/getUser.php/?id=${userId}`));
     const userData = await responseUser.json();
     const followingIds = userData.userSocial.following;
 
@@ -97,7 +97,7 @@ async function renderDiscoverView() {
 
     // check if the user follows anyone
     if (followingIds.length === 0) {
-        document.querySelector("#contentContainer").innerHTML = `<p id="message">It seems like you're not following anyone...</p>`;
+        document.querySelector("#contentContainer").innerHTML += `<p id="message">It seems like you're not following anyone...</p>`;
     } else {
 
         const allFollowingUsersReviews = [];
@@ -117,7 +117,7 @@ async function renderDiscoverView() {
         }
 
         if (allFollowingUsersReviews.length === 0) {
-            document.querySelector("#contentContainer").innerHTML = `<p id="message">It seems like there are no reviews to show...</p>`;
+            document.querySelector("#contentContainer").innerHTML += `<p id="message">It seems like there are no reviews to show...</p>`;
         } else {
 
             allFollowingUsersReviews.sort((a, b) => b.timestamp - a.timestamp);
@@ -139,12 +139,12 @@ async function renderCreateReviewView(album) {
     if (allOverlaysOpen.length > 0) { allOverlaysOpen.forEach(overlay => overlay.remove()); }
     // Get user boards
     const userId = localStorage.getItem("userId");
-    const response = await fetch(`../server/getUser.php?id=${userId}`);
+    const response = await fetch(`../Laulu/server/getUser.php?id=${userId}`);
     const userData = await response.json();
     const usersBoards = userData.albumData.boards;
 
     // CSS Change
-    document.querySelector("#css2").setAttribute("href", "../css/create.css");
+    document.querySelector("#css2").setAttribute("href", "../Laulu/css/create.css");
 
     const contentContainer = document.querySelector("#contentContainer");
     contentContainer.innerHTML = "";
@@ -171,8 +171,10 @@ async function renderCreateReviewView(album) {
     if (album) { if (album.reviewDirectly) { renderCreateReview(album) } }
     // Check if user have a board to which to add reviews to else they must first create a board
     if (usersBoards.length > 0) {
+        createReviewDom.style.backgroundColor = "#7171716b";
         createReviewDom.classList.remove("disabled");
         createReviewDom.addEventListener("click", renderSearchView);
+
     };
     // Render create a new board section; Flytta till functions? men det är samtidigt en egen component
     createBoardDom.addEventListener("click", renderCreateBoard);
@@ -187,10 +189,10 @@ function renderProfileView(userId) {
     const clickedUserId = userId;
     const loggedInUserId = localStorage.getItem("userId");
 
-    document.querySelector("#css1").setAttribute("href", "../css/loggedInBasicLayout.css");
-    document.querySelector("#css2").setAttribute("href", "../css/profile.css");
+    document.querySelector("#css1").setAttribute("href", "../Laulu/css/loggedInBasicLayout.css");
+    document.querySelector("#css2").setAttribute("href", "../Laulu/css/profile.css");
 
-    const request = new Request(`../server/getUser.php/?id=${clickedUserId}`);
+    const request = new Request(`../Laulu/server/getUser.php/?id=${clickedUserId}`);
     fetch(request)
         .then(r => r.json())
         .then(resource => {
@@ -230,10 +232,10 @@ function renderProfileView(userId) {
             // add profile picture
             if (profilePicture === "" || profilePicture === undefined || profilePicture === null) {
 
-                document.querySelector(`#profilePictureTop`).style.backgroundImage = `url(../media/defaultProfilePicture.png)`;
+                document.querySelector(`#profilePictureTop`).style.backgroundImage = `url(../Laulu/media/defaultProfilePicture.png)`;
             } else {
 
-                document.querySelector(`#profilePictureTop`).style.backgroundImage = `url(../media/usersMedia/${user.userIdentity.id}/${profilePicture})`;
+                document.querySelector(`#profilePictureTop`).style.backgroundImage = `url(../Laulu/media/usersMedia/${user.userIdentity.id}/${profilePicture})`;
             }
             document.querySelector(`#profilePictureTop`).addEventListener("click", () => {
                 renderProfileView(clickedUserId);
@@ -317,11 +319,11 @@ function renderProfileView(userId) {
                 // set board thumbnail
                 if (board.thumbnail === "" || board.thumbnail === undefined || board.thumbnail === null || board.thumbnail === "defaultBoardImage.jpg") {
 
-                    newBoard.querySelector(".boardCover").style.backgroundImage = "url(../media/icons/board.svg)";
+                    newBoard.querySelector(".boardCover").style.backgroundImage = "url(../Laulu/media/icons/board.svg)";
                     newBoard.querySelector(".boardCover").classList.add("defaultPicture");
                 } else {
 
-                    newBoard.querySelector(".boardCover").style.backgroundImage = `url(../media/usersMedia/${user.userIdentity.id}/boards/${board.thumbnail}`;
+                    newBoard.querySelector(".boardCover").style.backgroundImage = `url(../Laulu/media/usersMedia/${user.userIdentity.id}/boards/${board.thumbnail}`;
                 }
 
                 newBoard.addEventListener("click", (e) => {
@@ -338,8 +340,8 @@ function renderProfileView(userId) {
 
 async function expandReview(event) {
 
-    document.querySelector("#css1").setAttribute("href", "../css/loggedInBasicLayout.css");
-    document.querySelector("#css3").setAttribute("href", "../css/expandedReview.css");
+    document.querySelector("#css1").setAttribute("href", "../Laulu/css/loggedInBasicLayout.css");
+    document.querySelector("#css3").setAttribute("href", "../Laulu/css/expandedReview.css");
     const overlayContainer = document.createElement("div");
     overlayContainer.classList.add("overlayReview");
 
@@ -413,7 +415,7 @@ async function expandReview(event) {
             })
 
             // previous reviews
-            const response = await fetch(`../server/getReviews.php/?albumId=${albumId}`);
+            const response = await fetch(`../Laulu/server/getReviews.php/?albumId=${albumId}`);
             const resource = await response.json();
             const allReviewsOfAlbum = resource.reviews;
 

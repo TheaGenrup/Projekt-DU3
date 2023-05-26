@@ -84,7 +84,7 @@ if ($_FILES) {
     $data = json_decode($json, true);
 
     if (!isset($data["userId"]) && isset($data["boardId"]) && isset($data["rating"]) && isset($data["albumName"]) && isset($data["artistName"])) {
-        $response = ["message" => "Invlaid, missing inputs"];
+        $response = ["message" => "Invalid, missing inputs"];
         sendJSON($response, 405);
     }
     $userId = $data["userId"];
@@ -111,7 +111,7 @@ if ($_FILES) {
                     foreach ($reviewsBoards as $IdForboard) {
                         if ($IdForboard == $boardId) {
                             $response = ["message" => "You've already reviewed this album in this board"];
-                            sendJSON($response, 200);
+                            sendJSON($response, 400);
                         }
                     }
                 }

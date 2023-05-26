@@ -70,7 +70,7 @@ async function editAccount(e) {
 
             const formWrapper = overlay.querySelector("form");
             const formData = new FormData(formWrapper);
-            const request = new Request("../server/updateUserProfile.php", {
+            const request = new Request("../Laulu/server/updateUserProfile.php", {
                 header: "Content-Type: application/json",
                 method: "POST",
                 body: formData,
@@ -81,7 +81,7 @@ async function editAccount(e) {
         }
 
         if (displayNameInput.value) {
-            const request = new Request("../server/updateUserProfile.php", {
+            const request = new Request("../Laulu/server/updateUserProfile.php", {
                 header: "Content-Type: application/json",
                 method: "PATCH",
                 body: JSON.stringify({
@@ -101,7 +101,7 @@ function followUnfollow(user, eventTarget) {
 
     try {
 
-        fetch(new Request("../server/follow.php", {
+        fetch(new Request("../Laulu/server/follow.php", {
             headers: { "Content-type": "application/json" },
             method: "POST",
             body: JSON.stringify({

@@ -357,7 +357,7 @@ nav * {
 
     text-align: center;
 
-    font-size: 8vw;
+    font-size: 5vw;
 
     width: 100vw;
     height: 23%;
@@ -367,6 +367,9 @@ nav * {
     border-radius: 10px 10px 0px 0px;
 
     animation: popUp 1.5s;
+
+    box-sizing: border-box;
+    padding: 10vw;
 }
 
 #messageContainer button {

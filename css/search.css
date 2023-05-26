@@ -18,6 +18,7 @@
     border: none;
     box-sizing: border-box;
     padding-left: 2vw;
+    font-size: 1.8vh;
 }
 
 #searchWindow #searchField:focus {
@@ -100,7 +101,6 @@
 
 
     z-index: 25;
-    text-align: center;
 
     overflow: scroll;
 
@@ -176,6 +176,8 @@
     min-height: 10vw;
     margin-bottom: 2vw;
     border: 1.5px solid #00000091;
+    color: #6e797b;
+    border: none;
 }
 
 #resultsWindow #reviewButton :hover {
@@ -184,10 +186,12 @@
 
 #resultsWindow>div:nth-child(5) {
     text-align: center;
+    font-size: 2.5vh;
+    margin: 1vh 0;
 }
 
 #resultsWindow #closeResultsButton {
-    background-image: url(../media/icons/search.svg);
+    background-image: url(../media/icons/close_0.png);
     background-position: center;
     background-size: 90%;
     background-repeat: no-repeat;

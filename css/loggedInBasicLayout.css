@@ -108,15 +108,15 @@ nav {
 }
 
 #discoverIcon {
-    background-image: url(/ht22/dig_cave/Laulu/media/icons/home-svgrepo-com.svg);
+    background-image: url(../media/icons/home-svgrepo-com.svg);
 }
 
 #searchIcon {
-    background-image: url(/ht22/dig_cave/Laulu/media/icons/search-svgrepo-com.svg);
+    background-image: url(../media/icons/search-svgrepo-com.svg);
 }
 
 #addIcon {
-    background-image: url(/ht22/dig_cave/Laulu/media/icons/plus-svgrepo-com.svg);
+    background-image: url(../media/icons/plus-svgrepo-com.svg);
 }
 
 button.iconHover {

@@ -300,6 +300,7 @@ p {
 
 #reviewDescription {
     font-style: italic;
+    word-wrap: break-word;
 }
 
 /* Upload image section */

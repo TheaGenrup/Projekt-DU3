@@ -27,7 +27,7 @@
 #albumDetails {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 50%;
 }
 
 .review {
@@ -44,6 +44,7 @@ p {
 
 #reviewDescription {
     font-style: italic;
+    word-wrap: break-word;
 }
 
 #albumName {
