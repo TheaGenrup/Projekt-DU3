@@ -64,7 +64,6 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 250px;
     font-family: "ralewayLight";
 }
 
@@ -78,6 +77,7 @@ body {
     opacity: 0%;
     color: rgb(202, 202, 202);
     text-align: center;
+    margin-top: 1vw;
 }
 
 
