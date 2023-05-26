@@ -133,7 +133,6 @@ function registerUser(username, password, displayname) {
                 return response.json();
             })
             .then(r => {
-                console.log(r);
                 sendLoginPageMessage(r.message);
 
             })
