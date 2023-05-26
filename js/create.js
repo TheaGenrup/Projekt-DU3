@@ -6,7 +6,7 @@ async function addBoardOrReview(bodyData) {
     startLoadingScreen(document.querySelector("main"));
     if (uploadWrapper.dataset.type === "review") {
 
-        const request = new Request("../server/addBoardOrReview.php", {
+        const request = new Request("../Laulu/server/addBoardOrReview.php", {
             method: "POST",
             body: JSON.stringify(bodyData),
         });
@@ -18,7 +18,7 @@ async function addBoardOrReview(bodyData) {
 
 
     if (uploadWrapper.dataset.type === "board") {
-        const request = new Request("../server/addBoardOrReview.php", {
+        const request = new Request("../Laulu/server/addBoardOrReview.php", {
             method: "POST",
             body: bodyData,
         });
@@ -91,7 +91,7 @@ function renderCreateBoard() {
 async function renderCreateReview(albumData) {
     // Get user boards
     const userId = localStorage.getItem("userId");
-    const response = await fetch(`../server/getUser.php?id=${userId}`);
+    const response = await fetch(`../Laulu/server/getUser.php?id=${userId}`);
     const userData = await response.json();
     const usersBoards = userData.albumData.boards;
 
@@ -196,10 +196,10 @@ async function renderCreateReview(albumData) {
             const index = parseInt(e.target.dataset.rating);
             const starRatings = e.target.parentElement.querySelectorAll("div");
             starRatings.forEach(star => {
-                star.style.backgroundImage = "url(../media/icons/star-regular.svg)";
+                star.style.backgroundImage = "url(../Laulu/media/icons/star-regular.svg)";
             });
             for (let i = 0; i < index; i++) {
-                starRatings[i].style.backgroundImage = "url(../media/icons/star-solid.svg)";
+                starRatings[i].style.backgroundImage = "url(../Laulu/media/icons/star-solid.svg)";
 
             }
         });
@@ -208,7 +208,7 @@ async function renderCreateReview(albumData) {
             starRatings.forEach(star => {
                 if (!star.classList.contains("chosen")) {
                     star.style.backgroundImage = "url(/media/icons/star-regular.svg)";
-                    starRatings[0].style.backgroundImage = "url(../media/icons/star-solid.svg)";
+                    starRatings[0].style.backgroundImage = "url(../Laulu/media/icons/star-solid.svg)";
                 }
             });
         });
@@ -219,7 +219,7 @@ async function renderCreateReview(albumData) {
                 star.classList.remove("chosen");
             });
             for (let i = 0; i < index; i++) {
-                starRatings[i].style.backgroundImage = "url(../media/icons/star-solid.svg)";
+                starRatings[i].style.backgroundImage = "url(../Laulu/media/icons/star-solid.svg)";
                 starRatings[i].classList.add("chosen");
             }
         });

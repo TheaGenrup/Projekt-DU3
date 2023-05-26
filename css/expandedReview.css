@@ -41,7 +41,7 @@
 }
 
 button.saveButton {
-    background-image: url(../media/icons/bookmark.png);
+    background-image: url(../Laulu/media/icons/bookmark.png);
     background-repeat: no-repeat;
     background-size: contain;
 
@@ -53,7 +53,8 @@ button.saveButton {
 }
 
 button.savedButton {
-    background-image: url(/media/icons/vinyl.svg);
+    background-image: url(../Laulu/media/icons/vinyl.svg);
+    background-image: url(../Laulu/media/icons/vinyl.svg);
     background-repeat: no-repeat;
     background-size: contain;
 
@@ -111,7 +112,7 @@ button.savedButton {
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    background-image: url(../media/defaultProfilePicture.png);
+    background-image: url(../Laulu/media/defaultProfilePicture.png);
     background-position: center;
     background-size: cover;
 }

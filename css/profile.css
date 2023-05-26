@@ -55,16 +55,16 @@
 }
 
 #bookmarkIcon {
-    background-image: url(../media/icons/bookmark.png);
+    background-image: url(../Laulu/media/icons/bookmark.png);
 }
 
 #settingsIcon {
-    background-image: url(../media/icons/settings.svg);
+    background-image: url(../Laulu/media/icons/settings.svg);
     filter: invert(75%) sepia(73%) saturate(1%) hue-rotate(34deg) brightness(110%) contrast(78%);
 }
 
 #boardIcon {
-    background-image: url(../media/icons/board.svg);
+    background-image: url(../Laulu/media/icons/board.svg);
     filter: invert(75%) sepia(73%) saturate(1%) hue-rotate(34deg) brightness(110%) contrast(78%);
 }
 
@@ -288,7 +288,7 @@ p {
 }
 
 .deleteBtn {
-    background-image: url(../media/icons/close_0.png);
+    background-image: url(../Laulu/media/icons/close_0.png);
     background-position: center;
     background-size: cover;
     height: 4vw;
@@ -353,7 +353,7 @@ p {
     border: 3px solid #606060;
     border-radius: 50%;
 
-    background-image: url(../media/icons/Add.png);
+    background-image: url(../Laulu/media/icons/Add.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

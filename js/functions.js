@@ -10,7 +10,7 @@ async function getUsersReviews(followingUserId) {
 
     const allReviews = [];
 
-    const response = await fetch(new Request(`../server/getReviews.php/?id=${followingUserId}`));
+    const response = await fetch(new Request(`../Laulu/server/getReviews.php/?id=${followingUserId}`));
     const reviews = await response.json();
 
     reviews.forEach(review => {
@@ -76,7 +76,7 @@ function makeReview(review, container, inProfile) {
     // add album cover
     if (review.albumCover === "" || review.albumCover === undefined || review.albumCover === null) {
 
-        newReview.querySelector(".albumCover").style.backgroundImage = "url(../media/icons/defaultCover.png)";
+        newReview.querySelector(".albumCover").style.backgroundImage = "url(../Laulu/media/icons/defaultCover.png)";
     } else {
 
         newReview.querySelector(".albumCover").style.backgroundImage = `url(${review.albumCover}`;
@@ -94,7 +94,7 @@ function fillStars(rating, reviewContainer) {
 
         const star = stars[i];
         if (i < rating) {
-            star.style.backgroundImage = `url(../media/icons/filled_in_star.png)`;
+            star.style.backgroundImage = `url(../Laulu/media/icons/filled_in_star.png)`;
         }
     }
 }
@@ -106,7 +106,7 @@ function addToListenList(album, saveButton) {
         userId: userId
     }
 
-    const request = new Request("../server/addToListenList.php", {
+    const request = new Request("../Laulu/server/addToListenList.php", {
         header: "Content-Type: application/json",
         method: "POST",
         body: JSON.stringify(bodyData)
@@ -185,7 +185,7 @@ function hidePopUp() {
 }
 
 async function fetchReview(userId) {
-    const response = await fetch(new Request(`../server/getReviews.php/?id=${userId}`));
+    const response = await fetch(new Request(`../Laulu/server/getReviews.php/?id=${userId}`));
     const reviews = await response.json();
     return reviews;
 }

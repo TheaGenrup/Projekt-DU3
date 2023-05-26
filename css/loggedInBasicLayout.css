@@ -108,15 +108,15 @@ nav {
 }
 
 #discoverIcon {
-    background-image: url(../media/icons/home-svgrepo-com.svg);
+    background-image: url(../Laulu/media/icons/home-svgrepo-com.svg);
 }
 
 #searchIcon {
-    background-image: url(../media/icons/search-svgrepo-com.svg);
+    background-image: url(../Laulu/media/icons/search-svgrepo-com.svg);
 }
 
 #addIcon {
-    background-image: url(../media/icons/plus-svgrepo-com.svg);
+    background-image: url(../Laulu/media/icons/plus-svgrepo-com.svg);
 }
 
 button.iconHover {

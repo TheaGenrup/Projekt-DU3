@@ -3,7 +3,7 @@ let token = "";
 let tokenTimer;
 // Fetch spotify api token from server
 async function fetchToken(params) {
-    fetch("../server/spotifyApi/tokenAccess.php")
+    fetch("../Laulu/server/spotifyApi/tokenAccess.php")
         .then(r => r.json())
         .then(r => {
             token = r.token;
@@ -28,7 +28,7 @@ async function renderSearchView(e) {
     <div id="searchWindow">
         <div id="searchContainer">
             <input type="text" id="searchField" placeholder="Find an album, artist or user" autocomplete="off">
-            <img id="searchNavigator" src="../media/icons/search.svg" alt="">
+            <img id="searchNavigator" src="../Laulu/media/icons/search.svg" alt="">
         </div>
         <ul id=userUl> </ul>
         <ul id=albumUl> </ul>
@@ -49,7 +49,7 @@ async function renderSearchView(e) {
     */
     if (originButton === "searchIcon") { searchField.addEventListener("keyup", searchUsers); }
     // CSS change
-    document.querySelector("#css2").setAttribute("href", "../css/search.css");
+    document.querySelector("#css2").setAttribute("href", "../Laulu/css/search.css");
 
     searchField.style.width = "100%";
 
@@ -146,7 +146,7 @@ async function renderSearchView(e) {
 function searchUsers(e) {
     let input = e.target.value;
     if (!input) { return }
-    const request = new Request(`../server/searchUsers.php?search=${input}`);
+    const request = new Request(`../Laulu/server/searchUsers.php?search=${input}`);
     fetch(request)
         .then(r => r.json())
         .then(userResource => {
@@ -213,7 +213,7 @@ async function displayAlbum(albumData) {
     const reviewsUl = resultsWindow.querySelector("#reviewsContainer");
     const searchwWindow = document.querySelector("#searchWindow");
 
-    const response = await fetch(`../server/getReviews.php/?albumId=${albumId}`);
+    const response = await fetch(`../Laulu/server/getReviews.php/?albumId=${albumId}`);
     const resource = await response.json();
     if (resource.reviews) {
         const averageRating = resource.averageRating;
@@ -278,10 +278,10 @@ function listUsers(usersFound) {
 
             if (userProfilePicture === "" || userProfilePicture === undefined || userProfilePicture === null) {
 
-                liDom.querySelector(`.searchProfilePicture`).style.backgroundImage = `url(../media/defaultProfilePicture.png)`;
+                liDom.querySelector(`.searchProfilePicture`).style.backgroundImage = `url(../Laulu/media/defaultProfilePicture.png)`;
             } else {
 
-                liDom.querySelector(`.searchProfilePicture`).style.backgroundImage = `url(../media/usersMedia/${userId}/${userProfilePicture})`;
+                liDom.querySelector(`.searchProfilePicture`).style.backgroundImage = `url(../Laulu/media/usersMedia/${userId}/${userProfilePicture})`;
             }
             liDom.addEventListener("click", ()=>{ renderProfileView(userId); })
         });
@@ -313,11 +313,11 @@ function toggleSearchIcon(params) {
     const input = document.querySelector("#searchField");
     if (!searchNavigator) { return };
     if (input.value === "") {
-        searchNavigator.src = "../media/icons/search.svg"
+        searchNavigator.src = "../Laulu/media/icons/search.svg"
     } else {
-        searchNavigator.src = "..//media/icons/close_0.png"
+        searchNavigator.src = "../Laulu/media/icons/close_0.png"
         searchNavigator.addEventListener("click", () => {
-            searchNavigator.src = "..//media/icons/search.svg"
+            searchNavigator.src = "../Laulu/media/icons/search.svg"
             input.value = "";
             clearSearch();
         })
